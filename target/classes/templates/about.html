@@ -1,0 +1,183 @@
+<!DOCTYPE html >
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">   <!--移动端的预览设置-->
+    <title>关于我</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/myself.css">   自定义css
+</head>
+<body>
+<!--渐变线-->
+<div class="test"></div>
+<!--导航-->
+<nav th:replace="_fragments::menu(5)" class="ui inverted attached segment  m-padded-tb-mini stackable m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted secondary menu stackable">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" class="item  m-mobile-hide mobole-item"><i class="ui  home icon"></i>首页</a>
+            <a href="#" class="item  m-mobile-hide mobole-item"><i class="ui  idea icon"></i>分类</a>
+            <a href="#" class="item  m-mobile-hide mobole-item"><i class="ui  tags icon"></i>标签</a>
+            <a href="#" class="item  m-mobile-hide mobole-item"><i class="ui  clone icon"></i>归档</a>
+            <a href="#" class="item active  m-mobile-hide mobole-item"><i class="ui  info icon"></i>关于我</a>
+            <div class="right item  m-mobile-hide mobole-item">
+                <div class="ui icon input transparent inverted">
+                    <input type="text" placeholder="Search">
+                    <i class=" search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui black icon button m-top-right m-mobile-show" id="mobile-button">
+        <i class="sidebar icon "></i>
+
+    </a>
+
+
+</nav>
+
+
+<!--中间内容-->
+<div class="m-padded-tb-big m-container">
+    <div class="ui container">
+        <div class="ui grid stackable">
+            <!--左边布局-->
+            <div class="eleven wide column">
+                <div class="ui segment">
+                    <img src="https://picsum.photos/800/500?grayscale" alt="" class="ui rounded image">
+                </div>
+
+            </div>
+
+            <!--右边布局-->
+            <div class="five wide column">
+                <div class="ui top attached segment">
+                    <div class="ui header">关于我</div>
+                </div>
+                <div class="ui attached segment m-text-thin">
+                    <p>何袁辉，一个独立开发者，折腾在0和1世界的青年，一个终身学习者，势将学习无限循环，希望可以结识志同道合的小伙伴</p>
+                    <p>热爱编程，喜欢折腾，正在努力探索高级编程技术</p>
+
+                </div>
+
+                <div class="ui attached segment">
+
+                    <div class="ui orange label">编程</div>
+                    <div class="ui orange label">学习</div>
+                    <div class="ui orange label">阅读</div>
+                    <div class="ui orange label">思考</div>
+                    <div class="ui orange label">运动</div>
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui teal label m-margin-tb-tiny">java</div>
+                    <div class="ui teal label m-margin-tb-tiny">MySql</div>
+                    <div class="ui teal label m-margin-tb-tiny">c/c++</div>
+                    <div class="ui teal label m-margin-tb-tiny">HTML</div>
+                    <div class="ui teal label m-margin-tb-tiny">CSS</div>
+                    <div class="ui teal label m-margin-tb-tiny">javaScript</div>
+                    <div class="ui teal label m-margin-tb-tiny">. . .</div>
+                </div>
+                <div class="ui bottom attached segment center aligned">
+                    <a href="#" class="ui button circular qq icon "><i class="github icon orange"></i></a>
+                    <a href="#" class="ui weichart button circular icon "><i class="weixin icon orange"></i></a>
+                    <div class="ui circular icon button qq" data-content="742567489" data-position="top center"><i
+                            class="qq icon orange"></i></div>
+
+                    <a href="#" class="ui button circular icon "><i class="weibo icon  orange"></i></a>
+                </div>
+
+                <div class="ui weichat-qr flowing popup transition hidden">
+                    <img src="../static/images/weichart.png" alt="" class="ui rounded image" style="width: 110px">
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+<!--底部内容-->
+<footer th:replace="_fragments::footer" class="ui inverted vertical segment m-padded-tb-massive">
+    <div class="ui container  center aligned">
+        <div class="ui divided  inverted stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/weichart.png" class="ui rounded image" alt="" style="width: 110px">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header  m-text-spaced m-opacity-mini">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事(user story)</a>
+                    <a href="#" class="item">关于刻意练习的清单</a>
+                    <a href="#" class="item">学习要趁早</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header  m-text-spaced m-opacity-mini">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Email:742567489@qq.com</a>
+                    <a href="#" class="item">QQ:742567489</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header  m-text-spaced m-opacity-mini">Heyuanhui</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客，会分享关于编程，写作，思考相关的任何内容，希望可以给来到这的人有所帮助</p>
+
+
+            </div>
+        </div>
+
+        <div class="ui inverted section divider"><!--分割线--></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">Copyright &nbsp; 2018~2019 Heyuanhui Designed By
+            Heyuanhui</p>
+
+    </div>
+</footer>
+
+
+
+<th:block th:fragment="_fragments::script">
+
+    <script src="../static/js/jquery-1.9.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="200"
+            src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>   <!--背景特效-->
+    <script type="text/javascript" src="../static/js/mouse.js"></script>
+
+    <script>
+
+        /*移动端显示导航栏*/
+        $("#mobile-button").click(function () {
+            $(".mobole-item").toggleClass("m-mobile-hide")
+        });
+
+
+        /*淡出效果*/
+        $(".qq").popup();
+
+        $(".weichart").popup({
+            popup: $(".weichat-qr"),
+            position: "bottom center"
+        });
+
+    </script>
+</th:block>
+
+
+
+
+
+
+
+</body>
+</html>

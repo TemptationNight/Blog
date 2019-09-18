@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lucas.blog.myblog.mapper.WebsiteMapper">
+  <resultMap id="BaseResultMap" type="com.lucas.blog.myblog.entity.Website">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="articleNum" jdbcType="INTEGER" property="articlenum" />
+    <result column="commmentsNum" jdbcType="INTEGER" property="commmentsnum" />
+    <result column="categoryNum" jdbcType="INTEGER" property="categorynum" />
+    <result column="keyWordNum" jdbcType="INTEGER" property="keywordnum" />
+    <result column="linksNum" jdbcType="INTEGER" property="linksnum" />
+    <result column="endUpdateTime" jdbcType="TIMESTAMP" property="endupdatetime" />
+    <result column="browseNum" jdbcType="INTEGER" property="browsenum" />
+  </resultMap>
+</mapper>

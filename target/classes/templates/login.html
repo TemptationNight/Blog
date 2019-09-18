@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">   <!--移动端的预览设置-->
+    <title>首页</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/myself.css">   <!--自定义css-->
+
+
+
+
+
+
+<body>
+
+<div class="ui middle aligned center aligned grid  segment" style="width: 300px !important;">
+    <div class="column">
+        <h2 class="ui teal  header">
+                后台登录
+        </h2>
+        <form class="ui mini form" method="post" th:action="#">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="username" placeholder="用户名">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password" placeholder="密码">
+                    </div>
+                </div>
+                <button class="ui fluid large teal submit button">登录</button>
+            </div>
+
+            <div class="ui error message"></div>
+
+        </form>
+
+       <!-- <div class="ui message">
+            New to us? <a href="#">Sign Up</a>
+        </div>-->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>   <!--背景特效-->
+<script src="../static/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../static/js/mouse.js"></script>
+
+<script>
+
+    /*移动端显示导航栏*/
+    $("#mobile-button").click(function () {
+        $(".mobole-item").toggleClass("m-mobile-hide")
+    })
+
+</script>
+
+
+
+
+
+
+</body>
+</html>
