@@ -1,13 +1,14 @@
 package com.lucas.blog.myblog.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Table(name = "admin")
 
 
 
 
-public class Admin {
+public class Admin  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

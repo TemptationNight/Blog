@@ -4,12 +4,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
-
+import java.io.Serializable;
 
 
 @Repository
 @Table(name = "category")
-public class Category {
+public class Category  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

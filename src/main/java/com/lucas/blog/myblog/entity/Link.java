@@ -2,11 +2,12 @@ package com.lucas.blog.myblog.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "link")
-public class Link {
+public class Link  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,13 +28,16 @@ public class Link {
      * 是否通过验证   0否  1 是
      */
     @Column(name = "isAgree")
-    private String isagree;
+    private Integer  isagree;
 
-    /**
-     * 是否上架  0否   1是
-     */
-    @Column(name = "isGrouding")
-    private String isgrouding;
+
+
+
+	/**
+	 * 点击数
+	 */
+	@Column(name = "clickNum")
+    private Integer clicknum;
 
     /**
      * 添加时间
@@ -44,13 +48,14 @@ public class Link {
 
     public Link(){}
 
-	public Link(String linkurl, String linkname, String isagree, String isgrouding, Date addtime) {
+	public Link(String linkurl, String linkname, Integer isagree, Integer clicknum, Date addtime) {
 		this.linkurl = linkurl;
 		this.linkname = linkname;
 		this.isagree = isagree;
-		this.isgrouding = isgrouding;
+		this.clicknum = clicknum;
 		this.addtime = addtime;
 	}
+
 
 	/**
      * @return id
@@ -107,7 +112,7 @@ public class Link {
      *
      * @return isAgree - 是否通过验证   0否  1 是
      */
-    public String getIsagree() {
+    public Integer  getIsagree() {
         return isagree;
     }
 
@@ -116,27 +121,10 @@ public class Link {
      *
      * @param isagree 是否通过验证   0否  1 是
      */
-    public void setIsagree(String isagree) {
+    public void setIsagree(Integer  isagree) {
         this.isagree = isagree;
     }
 
-    /**
-     * 获取是否上架  0否   1是
-     *
-     * @return isGrouding - 是否上架  0否   1是
-     */
-    public String getIsgrouding() {
-        return isgrouding;
-    }
-
-    /**
-     * 设置是否上架  0否   1是
-     *
-     * @param isgrouding 是否上架  0否   1是
-     */
-    public void setIsgrouding(String isgrouding) {
-        this.isgrouding = isgrouding;
-    }
 
     /**
      * 获取添加时间
@@ -155,4 +143,24 @@ public class Link {
     public void setAddtime(Date addtime) {
         this.addtime = addtime;
     }
+
+
+
+	/**
+	 * 获取点击量
+	 *
+	 * @return clicknum - 添加时间
+	 */
+	public Integer getClicknum() {
+		return clicknum;
+	}
+
+	/**
+	 * 设置点击量
+	 *
+	 * @param clicknum 添加时间
+	 */
+	public void setClicknum(Integer clicknum) {
+		this.clicknum = clicknum;
+	}
 }

@@ -9,22 +9,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link th:href="@{../lib/ionicons/css/ionicons.min.css}" href="../../static/lib/ionicons/css/ionicons.min.css" rel="stylesheet"/>
-    <link  th:href="@{../css/main.css}" href="../../static/css/main.css" rel="stylesheet"/>
-    <link  th:href="@{../lib/chartist/chartist.min.css}" href="../../static/lib/chartist/chartist.min.css" rel="stylesheet"/>
-    <link  th:href="@{../lib/editmd/css/editormd.min.css}" rel="stylesheet" href="../../static/lib/editmd/css/editormd.min.css">
-    <link   th:href="@{../}"rel="stylesheet" href="../../static/css/myself.css">
+    <link th:href="@{../lib/ionicons/css/ionicons.min.css}" href="../../static/lib/ionicons/css/ionicons.min.css"
+          rel="stylesheet"/>
+    <link th:href="@{../css/main.css}" href="../../static/css/main.css" rel="stylesheet"/>
+    <link th:href="@{../lib/chartist/chartist.min.css}" href="../../static/lib/chartist/chartist.min.css"
+          rel="stylesheet"/>
+    <link th:href="@{../lib/editmd/css/editormd.min.css}" rel="stylesheet"
+          href="../../static/lib/editmd/css/editormd.min.css">
+    <link th:href="@{../}" rel="stylesheet" href="../../static/css/myself.css">
     <script th:src="@{../js/jquery-1.9.1.min.js}" src="../../static/js/jquery-1.9.1.min.js"></script>
-
 
 
 </head>
 
 
-<body >
+<body>
 <div id="contextWrap">
+
+
     <!--左侧菜单栏-->
-    <div  th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
+    <div th:replace="_fragments::leftmenu"
+         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
          style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey">
         <a class="item logo" href="blogs.html">
             <img th:src="@{../images/logo.png}" alt="stagblogo"/><img th:src="@{../images/thumblogo.png}"
@@ -530,433 +535,10 @@
         </a>
     </div>
 
+
     <!--右侧隐藏小菜单-->
-    <div th:replace="_fragments::rightmenu"  class="ui right sidebar">
-        <div class="ui pointing secondary two item tabular menu">
-            <a class="item active" data-tab="first"><i class="red icon ion-chatbox-working icon"></i></a>
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar">
 
-            <a class="item" data-tab="fourth"><i class="blue icon ion-gear-a"></i></a>
-        </div>
-        <div class="ui tab active" data-tab="first">
-            <div class="ui small feed">
-                <h4 class="ui header">Followers Activity</h4>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Abraham.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="date">
-                            3 days ago
-                        </div>
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/carol.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                            <div class="date">
-                                3 days ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Daryl.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="date">
-                            3 days ago
-                        </div>
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/deana.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                            <div class="date">
-                                3 days ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/enid.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="date">
-                            3 days ago
-                        </div>
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Glenn.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                            <div class="date">
-                                3 days ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Hershell.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="date">
-                            3 days ago
-                        </div>
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Hershell.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                            <div class="date">
-                                3 days ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Meggie.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="date">
-                            3 days ago
-                        </div>
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Michonne.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                            <div class="date">
-                                3 days ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Rick.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="date">
-                            3 days ago
-                        </div>
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                        </div>
-                    </div>
-                </div>
-                <div class="event">
-                    <div class="label">
-                        <img th:src="@{../images/avatar/people/Tara.png}" alt="label-image"/>
-                    </div>
-                    <div class="content">
-                        <div class="summary">
-                            You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-                            <div class="date">
-                                3 days ago
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="ui tab" data-tab="fourth">
-            <div class="ui form fluid">
-                <div class="grouped fields">
-                    <label>Connection Limited</label>
-                    <div class="field">
-                        <div class="ui slider checkbox">
-                            <input type="radio" name="throughput" checked="checked">
-                            <label>20 mbps max</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui slider checkbox">
-                            <input type="radio" name="throughput">
-                            <label>10mbps max</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui slider checkbox">
-                            <input type="radio" name="throughput">
-                            <label>5mbps max</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui slider checkbox checked">
-                            <input type="radio" name="throughput">
-                            <label>Unmetered</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ui divider"></div>
-            <div class="ui form fluid">
-                <div class="grouped fields">
-                    <label>Notifications</label>
-                    <div class="field">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" checked name="public">
-                            <label class="coloring red">Enabled</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="public">
-                            <label class="coloring green">Updates</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="public">
-                            <label>Comments</label>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="public">
-                            <label>Chat</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ui divider"></div>
-
-            <h4 class="ui header">Navbar Color</h4>
-            <div class="ui basic segment">
-
-                <ul class="colorlist">
-                    <li>
-                        <a class="ui segment yellow inverted" data-addClass="inverted yellow">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment red inverted" data-addClass="inverted red">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment blue inverted" data-addClass="inverted blue">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment black inverted" data-addClass="inverted black">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment orange inverted" data-addClass="inverted orange">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment pink inverted" data-addClass="inverted pink">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment green inverted" data-addClass="inverted green">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment purple inverted" data-addClass="inverted purple">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment violet inverted" data-addClass="inverted violet">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment brown inverted" data-addClass="inverted brown">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment teal inverted" data-addClass="inverted teal">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment greenli inverted" data-addClass="inverted greenli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment grey inverted" data-addClass="inverted grey">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment redli inverted" data-addClass="inverted redli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment yellowli inverted" data-addClass="inverted yellowli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment blueli inverted" data-addClass="inverted blueli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment darkpurpleli inverted" data-addClass="inverted darkpurpleli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment darkorangeli inverted" data-addClass="inverted darkorangeli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment greenli2 inverted" data-addClass="inverted greenli2">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment pinkli inverted" data-addClass="inverted pinkli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment lightyellowli inverted" data-addClass="inverted lightyellowli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment darkli inverted" data-addClass="inverted darkli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment lightbrownli inverted" data-addClass="inverted lightbrownli">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <h4 class="ui header">Sidebar Color</h4>
-            <div class="ui basic segment">
-
-                <ul class="sidecolor">
-                    <li>
-                        <a class="ui segment yellow inverted" data-addClass="inverted yellow">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment red inverted" data-addClass="inverted red">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment blue inverted" data-addClass="inverted blue">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment black inverted" data-addClass="inverted black">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment orange inverted" data-addClass="inverted orange">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment pink inverted" data-addClass="inverted pink">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment green inverted" data-addClass="inverted green">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment purple inverted" data-addClass="inverted purple">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment violet inverted" data-addClass="inverted violet">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment brown inverted" data-addClass="inverted brown">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment teal inverted" data-addClass="inverted teal">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment greenli inverted" data-addClass="inverted greenli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment grey inverted" data-addClass="inverted grey">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment redli inverted" data-addClass="inverted redli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment yellowli inverted" data-addClass="inverted yellowli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment blueli inverted" data-addClass="inverted blueli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment darkpurpleli inverted" data-addClass="inverted darkpurpleli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment darkorangeli inverted" data-addClass="inverted darkorangeli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment greenli2 inverted" data-addClass="inverted greenli2">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment pinkli inverted" data-addClass="inverted pinkli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment lightyellowli inverted" data-addClass="inverted lightyellowli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment darkli inverted" data-addClass="inverted darkli">
-                        </a>
-                    </li>
-                    <li>
-                        <a class="ui segment lightbrownli inverted" data-addClass="inverted lightbrownli">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
 
 
@@ -1047,10 +629,10 @@
 
         <!--正文内容-->
         <div class="mainWrap navslide">
-            <div class="ui segment " style="background-color: #eaeaea" >
+            <div class="ui segment " style="background-color: #eaeaea">
                 <div class="ui grid">
-                    <div class="ui four wide tab column" >
-                        <div class="ui segment teal center aligned  segment-border-none" >
+                    <div class="ui four wide tab column">
+                        <div class="ui segment teal center aligned  segment-border-none">
                             <a class="ui teal  label big fluid">友情连接</a>
                             <table class="ui red table left aligned   " style=" border:0;">
                                 <thead>
@@ -1072,7 +654,7 @@
                                 <tr>
                                     <td>
                                         <i class="user icon large"></i>
-                                        已上架
+                                        已审核
                                     </td>
                                     <td>
                                         <div class="ui label violet">4</div>
@@ -1081,7 +663,7 @@
                                 <tr>
                                     <td>
                                         <i class="user times icon large"></i>
-                                        下架
+                                        未审核
                                     </td>
                                     <td>
                                         <div class="ui label olive">14</div>
@@ -1125,14 +707,12 @@
                     </div>
 
 
-                    <div class="ui twelve wide column" >
+                    <div class="ui twelve wide column">
 
 
+                        <div class="ui segment red  attached middle aligned  segment-border-none">
 
-                        <!--发布博客头部区域-->
-                        <div class="ui segment red  attached middle aligned  segment-border-none"  >
-
-                            <div class="ui segment  attached   m-padded segment-border-hidden segment-border-none"   >
+                            <div class="ui segment  attached   m-padded segment-border-hidden segment-border-none">
 
 
                                 <div class="ui two column grid  middle aligned">
@@ -1156,7 +736,8 @@
 
 
                             </div>
-                            <table class="ui  attached red table middle aligned segment-border-hidden"   style="text-align: center !important;">
+                            <table class="ui  attached red table middle aligned segment-border-hidden"
+                                   style="text-align: center !important;">
                                 <thead>
                                 <tr>
 
@@ -1171,113 +752,38 @@
                                 </thead>
                                 <tbody>
 
-                                <tr>
 
-                                    <td>1</td>
-                                    <td>杨青个人博客</td>
-                                    <td>671</td>
-                                    <td>
-                                        <div class="ui label teal middle aligned">发布</div>
-                                    </td>
-                                    <td>2019-09-01</td>
-                                    <td>
-                                        <div class="ui button teal mini"><i class="edit icon"></i>编辑</div>
-                                        <div class="ui button red mini"><i class="thumbs down icon"></i>下架</div>
-                                    </td>
+                                <tr th:each="link:${linkPageInfo.getList()}">
 
+                                    <td th:text="${link.id}">1</td>
+                                    <td>
+                                        <a th:text="${link.linkname}" href="#" th:href="@{${link.linkurl}}">杨青个人博客</a>
+
+                                    </td>
+                                    <td th:text="${link.clicknum}">671</td>
+                                    <td>
+                                        <div class="ui label orange middle aligned" th:if="${link.isagree eq 1}">已审核</div>
+                                        <div class="ui label black middle aligned" th:if="${link.isagree eq 0}">未审核</div>
+                                    </td>
+                                    <td th:text="${link.addtime}">2019-09-01</td>
+                                    <td>
+                                        <a th:if="${link.isagree eq 1}" href="" th:href="@{/admin/delete/{id}/link(id=${link.id})}">
+                                            <div class="ui label  red">
+                                                <i class="trash icon">删除</i>
+                                            </div>
+                                        </a>
+                                        <a th:if="${link.isagree eq 0}" th:href="@{/admin/setLinkChecked/{id}/link(id=${link.id})}">
+                                            <div class="ui label  teal">
+                                                <i class="checked icon">通过审核</i>
+                                            </div>
+                                        </a>
+                                        <a th:if="${link.isagree eq 0}" th:href="@{/admin/delete/{id}/link(id=${link.id})}">
+                                            <div class="ui label  blue">
+                                                <i class="thumbs down icon">忽略</i>
+                                            </div>
+                                        </a>
+                                    </td>
                                 </tr>
-                                <tr>
-
-                                    <td>1</td>
-                                    <td>杨青个人博客</td>
-                                    <td>671</td>
-                                    <td>
-                                        <div class="ui label teal middle aligned">发布</div>
-                                    </td>
-                                    <td>2019-09-01</td>
-                                    <td>
-                                        <div class="ui button teal mini"><i class="edit icon"></i>编辑</div>
-                                        <div class="ui button red mini"><i class="thumbs down icon"></i>下架</div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-
-                                    <td>1</td>
-                                    <td>杨青个人博客</td>
-                                    <td>671</td>
-                                    <td>
-                                        <div class="ui label teal middle aligned">发布</div>
-                                    </td>
-                                    <td>2019-09-01</td>
-                                    <td>
-                                        <div class="ui button teal mini"><i class="edit icon"></i>编辑</div>
-                                        <div class="ui button red mini"><i class="thumbs down icon"></i>下架</div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-
-                                    <td>1</td>
-                                    <td>杨青个人博客</td>
-                                    <td>671</td>
-                                    <td>
-                                        <div class="ui label teal middle aligned">发布</div>
-                                    </td>
-                                    <td>2019-09-01</td>
-                                    <td>
-                                        <div class="ui button teal mini"><i class="edit icon"></i>编辑</div>
-                                        <div class="ui button red mini"><i class="thumbs down icon"></i>下架</div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-
-                                    <td>1</td>
-                                    <td>杨青个人博客</td>
-                                    <td>671</td>
-                                    <td>
-                                        <div class="ui label teal middle aligned">发布</div>
-                                    </td>
-                                    <td>2019-09-01</td>
-                                    <td>
-                                        <div class="ui button teal mini"><i class="edit icon"></i>编辑</div>
-                                        <div class="ui button red mini"><i class="thumbs down icon"></i>下架</div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-
-                                    <td>1</td>
-                                    <td>杨青个人博客</td>
-                                    <td>671</td>
-                                    <td>
-                                        <div class="ui label teal middle aligned">发布</div>
-                                    </td>
-                                    <td>2019-09-01</td>
-                                    <td>
-                                        <div class="ui button teal mini"><i class="edit icon"></i>编辑</div>
-                                        <div class="ui button red mini"><i class="thumbs down icon"></i>下架</div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-
-                                    <td>1</td>
-                                    <td>杨青个人博客</td>
-                                    <td>671</td>
-                                    <td>
-                                        <div class="ui label teal middle aligned">发布</div>
-                                    </td>
-                                    <td>2019-09-01</td>
-                                    <td>
-                                        <div class="ui button teal mini"><i class="edit icon"></i>编辑</div>
-                                        <div class="ui button red mini"><i class="thumbs down icon"></i>下架</div>
-                                    </td>
-
-                                </tr>
-
-
 
 
                                 </tbody>
@@ -1306,7 +812,6 @@
                             </table>
 
 
-
                         </div>
                     </div>
                 </div>
@@ -1318,23 +823,9 @@
 
 </body>
 <th:block th:replace="_fragments::adminscript">
-<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-<script src="../../static/lib/nicescrool/jquery.nicescroll.min.js"></script>
-<script src="../../static/lib/cookie/js.cookie.js"></script>
-<script src="../../static/js/main.js"></script>
 
-
-<script src="../../static/lib/chartjs/Chartv1.min.js"></script>
-<script src="../../static/js/customjs/custom-chart.js"></script>
-
-
-<script src="../../static/lib/chartist/chartist.min.js"></script>
-<!--<script data-pace-options='{ "ajax": false }' src="plugins/pacejs/pace.js"></script>-->
-<script src="../../static/js/customjs/custom-chart2.js"></script>
-<script src="../../static/lib/editmd/editormd.min.js"></script>
 
 </th:block>
-
 
 
 </html>

@@ -2,6 +2,7 @@ package com.lucas.blog.myblog.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lucas.blog.myblog.entity.Article;
 import com.lucas.blog.myblog.entity.Category;
 import com.lucas.blog.myblog.exception.NotFoundException;
 import com.lucas.blog.myblog.mapper.CategoryMapper;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
-
+import java.util.List;
 
 
 /**
@@ -64,6 +65,12 @@ public class CategoryServiceImpl implements CategoryService {
 	public Integer deleteCategory(Integer id) {
 		Example example = new Example(Category.class);
 		example.createCriteria().andCondition("id=", id);
+		Category category = categoryMapper.selectOneByExample(example);
+		if(category.getArticlenum()!=null){
+			//先要删除该类下的文章
+			Example example1=new Example(Article.class);
+			example1.createCriteria().andCondition("categoryid=",category.getId());
+		}
 		return categoryMapper.deleteByExample(example);
 	}
 
@@ -109,6 +116,11 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryMapper.selectOneByExample(example);
 	}
 
+	@Override
+	public List<Category> getCategoryList() {
+		return null;
+	}
+
 
 	/**
 	 * @Method
@@ -147,7 +159,6 @@ public class CategoryServiceImpl implements CategoryService {
 		PageInfo<Category> pageInfo = new PageInfo<>(categoryMapper.selectByExample(example));
 		return  pageInfo;
 	}
-
 
 
 

@@ -53,7 +53,9 @@ public class CategoryControllerAdmin {
 
 	@GetMapping("/delete/{id}/category")
 	public String deleteCategory(@PathVariable Integer id) {
+		//删除类下面的文章再删除类
 		Integer i = categoryServiceImpl.deleteCategory(id);
+		
 		return "redirect:/admin/categorys";
 	}
 
@@ -62,7 +64,7 @@ public class CategoryControllerAdmin {
 	public String addCategory(@RequestParam String name) {
 		Category c = categoryServiceImpl.getCategoryByName(name);
 		if (c != null) {
-			//已经存在  不可以从夫添加
+			//已经存在  不可以重复添加
 		} else {
 			Category category = new Category();
 			category.setCategoryname(name);

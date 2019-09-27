@@ -2,11 +2,12 @@ package com.lucas.blog.myblog.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "article")
-public class Article {
+public class Article  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -59,15 +60,11 @@ public class Article {
     private String keyword;
 
     /**
-     * 文章状态   -1，垃圾箱   0，草稿箱 1，发布状态
+     * 文章状态     0，草稿箱 1，发布状态
      */
     private Integer status;
 
-    /**
-     * 文章是否上架 0否 1是
-     */
-    @Column(name = "isGrouding")
-    private Integer isgrouding;
+
 
     /**
      * 是否为推荐文章 0否  1是
@@ -95,7 +92,7 @@ public class Article {
     public Article(){}
 
 
-	public Article(String title, Integer categoryid, String author, Date addtime, Integer agreenum, Integer browsenum, Integer commentnum, String keyword, Integer status, Integer isgrouding, Integer isrecommend, Integer istop, String images, String content) {
+	public Article(String title, Integer categoryid, String author, Date addtime, Integer agreenum, Integer browsenum, Integer commentnum, String keyword, Integer status,  Integer isrecommend, Integer istop, String images, String content) {
 		this.title = title;
 		this.categoryid = categoryid;
 		this.author = author;
@@ -105,7 +102,7 @@ public class Article {
 		this.commentnum = commentnum;
 		this.keyword = keyword;
 		this.status = status;
-		this.isgrouding = isgrouding;
+
 		this.isrecommend = isrecommend;
 		this.istop = istop;
 		this.images = images;
@@ -280,30 +277,12 @@ public class Article {
     }
 
     /**
-     * 设置文章状态   -1，垃圾箱   0，草稿箱 1，发布状态
+     * 设置文章状态    0，草稿箱 1，发布状态
      *
-     * @param status 文章状态   -1，垃圾箱   0，草稿箱 1，发布状态
+     * @param status 文章状态     0，草稿箱 1，发布状态
      */
     public void setStatus(Integer status) {
         this.status = status;
-    }
-
-    /**
-     * 获取文章是否上架 0否 1是
-     *
-     * @return isGrouding - 文章是否上架 0否 1是
-     */
-    public Integer getIsgrouding() {
-        return isgrouding;
-    }
-
-    /**
-     * 设置文章是否上架 0否 1是
-     *
-     * @param isgrouding 文章是否上架 0否 1是
-     */
-    public void setIsgrouding(Integer isgrouding) {
-        this.isgrouding = isgrouding;
     }
 
     /**

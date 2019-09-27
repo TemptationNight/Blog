@@ -48,7 +48,7 @@ public class LogAspect {
 		String browser=UserAgentUtils.getBrowserName(request);
 		String city=UserAgentUtils.getCity(request,ip);
 		Date date=new Date();
-		Visitor visitor=new Visitor(date,ip,city,url,browser,os);
+		Visitor visitor=new Visitor(date,ip,city,url,browser,os,1);
 		//将访客信息写入数据库
 		Integer i=visitorServiceImpl.insertVisitor(visitor);
 	}

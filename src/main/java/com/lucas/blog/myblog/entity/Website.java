@@ -2,11 +2,12 @@ package com.lucas.blog.myblog.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "website")
-public class Website {
+public class Website implements Serializable {
     /**
      * 网站文章数量
      */

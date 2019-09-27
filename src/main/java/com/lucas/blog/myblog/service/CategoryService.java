@@ -3,6 +3,8 @@ package com.lucas.blog.myblog.service;
 import com.github.pagehelper.PageInfo;
 import com.lucas.blog.myblog.entity.Category;
 
+import java.util.List;
+
 /**
  * @ProjectName: myblog
  * @Package: com.heyuanhui.blog.myblog.service
@@ -23,6 +25,7 @@ public interface CategoryService {
 
 	Category getCategoryById(Integer id);
 
+	public List<Category> getCategoryList();
 	Category getCategoryByName(String name);
 	PageInfo<Category> getCategoryPage(Integer startPage, Integer pageSize);
 }
