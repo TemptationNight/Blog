@@ -41,6 +41,11 @@ public class ArticleControllerAdmin {
 	}
 
 
+	@GetMapping("/addArticle")
+	public String add(){
+		return "admin/write_blog";
+	}
+
 	@GetMapping("/delete/{id}/article")
 	public String deleteArticle(@PathVariable Integer id){
 		int i=articleServiceImpl.deleteArticle(id);

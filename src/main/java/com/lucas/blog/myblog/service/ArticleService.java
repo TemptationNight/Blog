@@ -29,6 +29,4 @@ public interface ArticleService {
 	Integer upOrDownShilft(Integer id, Integer status);
 
 	Integer downOrUpRecommend(Integer id, Integer status);
-
-
 }

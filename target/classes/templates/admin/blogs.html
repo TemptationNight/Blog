@@ -3,36 +3,22 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
+
+<head th:replace="_fragments::adminHead(~{::title})">
     <title>博客列表</title>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link th:href="@{../lib/ionicons/css/ionicons.min.css}" href="../../static/lib/ionicons/css/ionicons.min.css"
-          rel="stylesheet"/>
-    <link th:href="@{../css/main.css}" href="../../static/css/main.css" rel="stylesheet"/>
-    <link th:href="@{../lib/chartist/chartist.min.css}" href="../../static/lib/chartist/chartist.min.css"
-          rel="stylesheet"/>
-    <script th:src="@{../js/jquery-1.9.1.min.js}" src="../../static/js/jquery-1.9.1.min.js"></script>
-</head>
+   </head>
 <body>
 <div id="contextWrap">
     <!--左侧菜单栏-->
     <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
-
     <!--右侧隐藏小菜单-->
     <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
-
     <!--中间部分-->
     <div class="pusher">
         <!--头部导航栏-->
-
         <div th:replace="_fragments::topmenu" class="navslide navwrap"></div>
-
         <!--正文内容-->
         <div class="mainWrap navslide">
-
             <div class="ui segment  m-padded segment-border-none">
 
 
@@ -92,15 +78,11 @@
                         </td>
                         <td th:text="${blog.addtime}"> 2019-12-7</td>
                         <td>
-
-
                             <a href="" th:href="@{/admin/delete/{id}/article(id=${blog.id})}">
                                 <div class="ui label  red">
                                     删除
                                 </div>
                             </a>
-
-
                             <a href="" th:if="${blog.status} eq 1"
                                th:href="@{/admin/downShilft/{id}/article(id=${blog.id})}">
                                 <div class="ui label  black">
@@ -125,12 +107,8 @@
                                     加推荐
                                 </div>
                             </a>
-
-
                         </td>
                     </tr>
-
-
                     </tbody>
                     <tfoot>
                     <tr>
@@ -159,11 +137,6 @@
         </div>
     </div>
 </div>
-
-
 </body>
-
-<th:block th:replace="_fragments::adminscript">
-
-</th:block>
+<th:block th:replace="_fragments::adminscript"></th:block>
 </html>

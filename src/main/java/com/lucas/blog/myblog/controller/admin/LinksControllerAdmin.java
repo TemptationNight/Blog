@@ -6,12 +6,11 @@ import com.lucas.blog.myblog.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ProjectName: myblog
@@ -30,7 +29,7 @@ public class LinksControllerAdmin {
 	private LinkService linkServiceImpl;
 	
 	
-	@GetMapping("/link")
+	@GetMapping("/links")
 	public String  getLinks(Model model,Integer startPage,Integer pageSize){
 		PageInfo<Link> pageInfo = linkServiceImpl.getLinkByPage(startPage, pageSize);
 		model.addAttribute("linkPageInfo",pageInfo);
@@ -43,7 +42,7 @@ public class LinksControllerAdmin {
 	public String getLinksListNotChecked(Model model){
 		List<Link> checkedNot = linkServiceImpl.getLinksListCheckedOrNot(0);
 		model.addAttribute("notCheck",checkedNot);
-		return "redirect:/admin/link";
+		return "redirect:/admin/links";
 	}
 
 
@@ -54,23 +53,31 @@ public class LinksControllerAdmin {
 	public String getLinksListChecked(Model model){
 		List<Link> checked = linkServiceImpl.getLinksListCheckedOrNot(1);
 		model.addAttribute("checked",checked);
-		return "redirect:/admin/link";
+		return "redirect:/admin/links";
 	}
 
 
 	@GetMapping("/delete/{id}/link")
 	public String deleteLink(@PathVariable Integer id){
 		linkServiceImpl.deleteLink(id);
-		return "redirect:/admin/link";
+		return "redirect:/admin/links";
 	}
 
 
 	@GetMapping("/setLinkChecked/{id}/link")
 	public String setLinkChecked(@PathVariable Integer id){
 		linkServiceImpl.setLinkChecked(id);
-
-		return "redirect:/admin/link";
+		return "redirect:/admin/links";
 	}
+
+
+	@PostMapping("/addLink")
+	public String  addLink(@RequestParam String linkUrl,@RequestParam String linkName){
+		linkServiceImpl.addLink(linkUrl,linkName);
+		return "redirect:/admin/links";
+	}
+
+
 
 
 

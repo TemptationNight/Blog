@@ -3,34 +3,18 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Stagb Admin Template</title>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link th:href="@{../lib/ionicons/css/ionicons.min.css}" href="../../static/lib/ionicons/css/ionicons.min.css"
-          rel="stylesheet"/>
-    <link th:href="@{../css/main.css}" href="../../static/css/main.css" rel="stylesheet"/>
-    <link th:href="@{../lib/chartist/chartist.min.css}" href="../../static/lib/chartist/chartist.min.css"
-          rel="stylesheet"/>
-    <script th:src="@{../js/jquery-1.9.1.min.js}" src="../../static/js/jquery-1.9.1.min.js"></script>
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>后台首页</title>
 </head>
-
 
 <body>
 <div id="contextWrap">
     <!--左侧菜单栏-->
-    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey">
-
-    </div>
-
+    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
     <!--右侧隐藏小菜单-->
     <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
-
     <!--中间部分-->
     <div class="pusher">
-
         <!--头部导航栏-->
         <div th:replace="_fragments::topmenu" class="navslide navwrap">
             <div class="ui menu icon borderless grid" data-color="inverted white">
@@ -111,8 +95,6 @@
                 </div>
             </div>
         </div>
-
-
         <!--正文内容-->
         <div class="mainWrap navslide">
             <div class="ui equal width left aligned padded grid stackable fluid">
@@ -365,8 +347,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="sixteen wide tablet four wide computer column">
                         <div class="ui segments stackable">
                             <div class="ui segment middle aligned m-padding-tiny">
@@ -383,14 +363,10 @@
                             </div>
                             <div class="ui segment center aligned" style="height: 125px !important;">
                                 <div class="ui  ">
-
                                     <div class="ui  statistic ">
                                         <div class="value counter " th:text="${websiteInfo.sourceNum}">
                                             1,952
                                         </div>
-                                        <!--
-                                                                                <i class="icon ion-bookmark blue statisticIcon"></i>
-                                        -->
                                     </div>
                                 </div>
                                 <div class="ui divider"></div>
@@ -403,65 +379,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--   <div class="sixteen wide tablet four wide computer column">
-                           <div class="ui segments stackable">
-                               <div class="ui segment middle aligned m-padding-tiny">
-                                   <div class="ui secondary ">
-                                       <div class="ui two column grid">
-                                           <div class="column middle aligned">
-                                               <h3>资源数量</h3>
-                                           </div>
-                                           <div class="column right aligned">
-                                               <a href="#" target="_blank"><h1><i class="cloud icon"></i></h1></a>
-                                           </div>
-                                       </div>
-                                   </div>
-
-
-                               </div>
-                               <div class="ui segment" style="height: 125px !important;">
-                                   <div class="ui   ">
-
-                                       <div class="ui  statistic">
-                                           <div class="value counter" th:text="${websiteInfo.souceNum}">
-                                               3,952
-                                           </div>
-
-
-                                           &lt;!&ndash;
-
-                                           &ndash;&gt;
-
-                                       </div>
-
-                                   </div>
-
-
-                                   &lt;!&ndash;<div class="ui  ">
-
-                                       <div class="ui  statistic ">
-                                           <div class="value counter " th:text="${websiteInfo.moneyNum}">
-                                               1,952
-                                           </div>
-                                           &lt;!&ndash;
-                                                                                   <i class="icon ion-bookmark blue statisticIcon"></i>
-                                           &ndash;&gt;
-                                       </div>
-                                   </div>&ndash;&gt;
-                                   <div class="ui divider"></div>
-                                   <div class="ui icon">
-
-                                       <span style="font-size: 15px !important;">
-                                       刷新&nbsp; &nbsp; &nbsp; &nbsp;
-                                       <a href=""><i class="ui undo  icon"></i></a>
-                                       </span>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>-->
                 </div>
-
-
                 <div class="row">
                     <div class="sixteen wide tablet eight wide computer column">
                         <div class="ui segments">
@@ -486,13 +404,9 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </div>
-
 </body>
 <th:block th:replace="_fragments::adminscript">
 </th:block>
-
 </html>

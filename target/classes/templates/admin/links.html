@@ -3,30 +3,13 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Stagb Admin Template</title>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link th:href="@{../lib/ionicons/css/ionicons.min.css}" href="../../static/lib/ionicons/css/ionicons.min.css"
-          rel="stylesheet"/>
-    <link th:href="@{../css/main.css}" href="../../static/css/main.css" rel="stylesheet"/>
-    <link th:href="@{../lib/chartist/chartist.min.css}" href="../../static/lib/chartist/chartist.min.css"
-          rel="stylesheet"/>
-    <link th:href="@{../lib/editmd/css/editormd.min.css}" rel="stylesheet"
-          href="../../static/lib/editmd/css/editormd.min.css">
-    <link th:href="@{../}" rel="stylesheet" href="../../static/css/myself.css">
-    <script th:src="@{../js/jquery-1.9.1.min.js}" src="../../static/js/jquery-1.9.1.min.js"></script>
-
-
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>友情连接</title>
 </head>
 
 
 <body>
 <div id="contextWrap">
-
-
     <!--左侧菜单栏-->
     <div th:replace="_fragments::leftmenu"
          class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
@@ -534,17 +517,11 @@
             </div>
         </a>
     </div>
-
-
     <!--右侧隐藏小菜单-->
     <div th:replace="_fragments::rightmenu" class="ui right sidebar">
-
     </div>
-
-
     <!--中间部分-->
     <div class="pusher">
-
         <!--头部导航栏-->
         <div th:replace="_fragments::topmenu" class="navslide navwrap ">
             <div class="ui menu icon borderless grid " data-color="inverted white">
@@ -625,8 +602,6 @@
                 </div>
             </div>
         </div>
-
-
         <!--正文内容-->
         <div class="mainWrap navslide">
             <div class="ui segment " style="background-color: #eaeaea">
@@ -685,45 +660,33 @@
                                             <div class="ui label mini teal">
                                                 地址：
                                             </div>
-                                            <input type="text" placeholder="连接地址">
+                                            <input class="linkUrl" type="text" placeholder="连接地址">
                                         </div>
-
                                         <div class="ui labeled input mini">
                                             <div class="ui label teal">
                                                 名称：
                                             </div>
-                                            <input type="text" placeholder="连接名称">
+                                            <input class="linkName" type="text" placeholder="连接名称">
                                         </div>
-                                        <button class="ui icon button mini teal">
+                                        <button id="addLink" class="ui icon button mini teal">
                                             提交
                                         </button>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
-
-
                         </div>
                     </div>
-
-
                     <div class="ui twelve wide column">
-
-
                         <div class="ui segment red  attached middle aligned  segment-border-none">
-
                             <div class="ui segment  attached   m-padded segment-border-hidden segment-border-none">
-
-
                                 <div class="ui two column grid  middle aligned">
                                     <div class="column">
                                         <h2 class="ui header ">友情连接</h2>
                                         <button type="button" class="ui button basic mini">
                                             刷新&nbsp;&nbsp;&nbsp; <a href=""><i class="refresh icon"></i></a>
                                         </button>
-
                                     </div>
-
                                     <div class="right aligned column">
                                         <div class="ui  action input ">
                                             <input type="text" placeholder="Search...">
@@ -733,32 +696,24 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                             <table class="ui  attached red table middle aligned segment-border-hidden"
                                    style="text-align: center !important;">
                                 <thead>
                                 <tr>
-
                                     <th>序号</th>
                                     <th>名称</th>
                                     <th>点击数</th>
                                     <th>状态</th>
                                     <th>发表时间</th>
                                     <th>操做</th>
-
                                 </tr>
                                 </thead>
                                 <tbody>
-
-
                                 <tr th:each="link:${linkPageInfo.getList()}">
-
                                     <td th:text="${link.id}">1</td>
                                     <td>
                                         <a th:text="${link.linkname}" href="#" th:href="@{${link.linkurl}}">杨青个人博客</a>
-
                                     </td>
                                     <td th:text="${link.clicknum}">671</td>
                                     <td>
@@ -784,8 +739,6 @@
                                         </a>
                                     </td>
                                 </tr>
-
-
                                 </tbody>
                                 <tfoot>
                                 <tr>
@@ -810,8 +763,6 @@
                                 </tr>
                                 </tfoot>
                             </table>
-
-
                         </div>
                     </div>
                 </div>
@@ -819,13 +770,27 @@
         </div>
     </div>
 </div>
-
-
 </body>
-<th:block th:replace="_fragments::adminscript">
-
-
-</th:block>
-
-
+<th:block th:replace="_fragments::adminscript"></th:block>
+<script type="text/javascript">
+    $("#addLink").click(function () {
+        var linkUrl = $(".linkUrl").val();
+        var linkName = $(".linkName").val();
+        alert(linkName +""+ linkUrl);
+        $.ajax({
+            url: "/admin/addLink",
+            data: {linkUrl: linkUrl, linkName: linkName}, //参数值
+            type: "POST",    //请求方式
+            success: function () {
+                alert("添加成功");
+                window.location.reload();
+            },
+            //请求失败，包含具体的错误信息
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    });
+</script>
 </html>

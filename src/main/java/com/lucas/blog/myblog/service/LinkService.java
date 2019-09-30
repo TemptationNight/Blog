@@ -29,4 +29,6 @@ public interface LinkService {
 	public Integer getClickNum(Integer id);
 	public Integer clickNumAddOne(Integer id);
 
+	public Integer addLink(String url,String name);
+
 }
