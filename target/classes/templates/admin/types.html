@@ -60,60 +60,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                <tr th:each="type:${pageInfo.getList()}">
+
+                                    <td th:text="${type.categoryname}">1</td>
                                     <td>
-                                        <i class="circle icon large green"></i>
-                                        java
-                                    </td>
-                                    <td>
-                                        <div class="ui label green">11篇</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large blue"></i>
-                                        mysql
-                                    </td>
-                                    <td>
-                                        <div class="ui label blue">3篇</div>
+                                        <div class="ui label teal"
+                                             th:text="${type.articlenum!=null?type.articlenum+'  篇':'0  篇'}">11篇
+                                        </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large violet"></i>
-                                        Linux
-                                    </td>
-                                    <td>
-                                        <div class="ui label violet">7篇</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large purple"></i>
-                                        前端基础
-                                    </td>
-                                    <td>
-                                        <div class="ui label purple">14篇</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large pink"></i>
-                                        网站建设
-                                    </td>
-                                    <td>
-                                        <div class="ui label pink">3篇</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large brown"></i>
-                                        生活
-                                    </td>
-                                    <td>
-                                        <div class="ui label brown">14篇</div>
-                                    </td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -139,6 +95,9 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
                             <table class="ui  attached red table middle aligned segment-border-none" frame="void"
                                    rules="none" style="text-align: center !important;">
                                 <thead>
@@ -151,9 +110,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="type:${pageInfo.getList()}">
-
-                                    <td th:text="${type.id}">1</td>
+                                <tr th:each="type,iterStat:${pageInfo.getList()}">
+                                    <td th:text="${iterStat.count}">1</td>
                                     <td th:id="${type.id}" th:text="${type.categoryname}">java</td>
                                     <td th:text="${type.articlenum}">11</td>
                                     <td th:text="${type.addtime}">2019-09-01</td>
@@ -169,26 +127,26 @@
 
                                 </tbody>
                                 <tfoot>
-                                <tr>
+                                <tr th:if="${pageInfo.getList().size()>=10}">
                                     <th colspan="10">
                                         每页显示数据量
                                         <select name="gender" class="ui dropdown" id="select">
                                             <option value="male">10条</option>
                                             <option value="female">30条</option>
                                         </select>
-                                        <div class="ui right floated pagination menu">
-                                            <a class="icon item">
-                                                <i class="left chevron icon"></i>
-                                            </a>
+                                        <!-- <div class="ui right floated pagination menu">
+                                             <a class="icon item">
+                                                 <i class="left chevron icon"></i>
+                                             </a>
 
-                                            <a th:href="@{admin/categorys/(startPage=${ pageInfo.getPrePage()})}"
-                                               class="item">上一页</a>
-                                            <a th:href="@{admin/categorys/(startPage=${pageInfo.getNextPage()})}"
-                                               class="item">下一页</a>
-                                            <a class="icon item">
-                                                <i class="right chevron icon"></i>
-                                            </a>
-                                        </div>
+                                             <a th:href="@{admin/categorys/(startPage=${ pageInfo.getPrePage()})}"
+                                                class="item">上一页</a>
+                                             <a th:href="@{admin/categorys/(startPage=${pageInfo.getNextPage()})}"
+                                                class="item">下一页</a>
+                                             <a class="icon item">
+                                                 <i class="right chevron icon"></i>
+                                             </a>
+                                         </div>-->
                                     </th>
                                 </tr>
                                 </tfoot>
@@ -232,20 +190,6 @@
 
 
 <th:block th:replace="_fragments::adminscript">
-    <!-- <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-     <script src="../../static/lib/nicescrool/jquery.nicescroll.min.js"></script>
-     <script src="../../static/lib/cookie/js.cookie.js"></script>
-     <script src="../../static/js/main.js"></script>
-
-
-     <script src="../../static/lib/chartjs/Chartv1.min.js"></script>
-     <script src="../../static/js/customjs/custom-chart.js"></script>
-
-
-     <script src="../../static/lib/chartist/chartist.min.js"></script>
-     &lt;!&ndash;<script data-pace-options='{ "ajax": false }' src="plugins/pacejs/pace.js"></script>&ndash;&gt;
-     <script src="../../static/js/customjs/custom-chart2.js"></script>
-     <script src="../../static/lib/editmd/editormd.min.js"></script>-->
 </th:block>
 
 

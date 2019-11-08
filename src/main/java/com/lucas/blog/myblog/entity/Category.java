@@ -1,13 +1,9 @@
 package com.lucas.blog.myblog.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Repository;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.*;
 
-
-@Repository
 @Table(name = "category")
 public class Category  implements Serializable{
     @Id
@@ -23,9 +19,9 @@ public class Category  implements Serializable{
     /**
      * 添加时间
      */
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+
     @Column(name = "addTime")
-	private String addtime;
+    private String  addtime;
 
     /**
      * 该类别下的文章数量
@@ -33,16 +29,7 @@ public class Category  implements Serializable{
     @Column(name = "articleNum")
     private Integer articlenum;
 
-
-    public Category (){}
-
-	public Category(String categoryname, String  addtime, Integer articlenum) {
-		this.categoryname = categoryname;
-		this.addtime = addtime;
-		this.articlenum = articlenum;
-	}
-
-	/**
+    /**
      * @return id
      */
     public Integer getId() {
@@ -86,9 +73,9 @@ public class Category  implements Serializable{
     /**
      * 设置添加时间
      *
-	 * @param addtime 添加时间
-	 */
-    public void setAddtime(String addtime) {
+     * @param addtime 添加时间
+     */
+    public void setAddtime(String  addtime) {
         this.addtime = addtime;
     }
 
@@ -111,18 +98,14 @@ public class Category  implements Serializable{
     }
 
 
-	@Override
-	public String toString() {
-		return "Category{" +
-				"id=" + id +
-				", categoryname='" + categoryname + '\'' +
-				", addtime=" + addtime +
-				", articlenum=" + articlenum +
-				'}';
+	public Category(String categoryname, String addtime, Integer articlenum) {
+		this.categoryname = categoryname;
+		this.addtime = addtime;
+		this.articlenum = articlenum;
 	}
 
 
-
+	public Category() {
+		super();
+	}
 }
-
-

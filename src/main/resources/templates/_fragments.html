@@ -32,8 +32,36 @@
     <link th:href="@{../lib/ionicons/css/ionicons.min.css}" href="../../static/lib/ionicons/css/ionicons.min.css" rel="stylesheet"/>
     <link  th:href="@{../lib/editmd/css/editormd.min.css}" rel="stylesheet" href="../../static/lib/editmd/css/editormd.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{../lib/fileUp/css/index.css}"/>
+
     <link th:href="@{../css/main.css}" href="../../static/css/main.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" th:href="@{../lib/fileUp/css/normalize.css}"/>
+
+    <link rel="stylesheet" href="" th:href="@{../css/menu.css}">
+<!--
+
+        <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{../lib/fileUp/css/style.css}"/>
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" th:href="@{../lib/fileUp/css/font-awesome.min.css}"/>
+-->
+
+
+
+
+
+
+    <!--
+        <link rel="stylesheet" type="text/css" href="css/demo.css" th:href="@{../lib/fileUp/css/demo.css}">
+    -->
+
+    <link rel="stylesheet" href="" th:href="@{../css/myself.css}">
+    <link href="dist/styles.imageuploader.css" th:href="@{../lib/fileUp/dist/styles.imageuploader.css}" rel="stylesheet" type="text/css">
+
+
 </head>
+
+
+
 <body>
 
 
@@ -221,13 +249,15 @@
    <!-- <script data-pace-options='{ "ajax": false }' src="../../static/lib/pacejs/pace.js"
             th:src="@{../lib/pacejs/pace.js}"></script>-->
 
+    <script src="dist/jquery.imageuploader.js" th:src="@{../lib/fileUp/dist/jquery.imageuploader.js}" type="text/javascript"></script>
 
+
+
+    <script src="dist/jquery..js" th:src="@{../lib/fileUp/dist/index.js}" type="text/javascript"></script>
 
 
 
 </th:block>
-
-
 <div th:fragment="topmenu">
     <div class="navslide navwrap">
         <div class="ui menu icon borderless grid" data-color="inverted white">
@@ -314,8 +344,6 @@
         </div>
     </div>
 </div>
-
-
 <div th:fragment="leftmenu">
     <div class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
          style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey">
@@ -329,7 +357,7 @@
                 <i class="ion-speedometer titleIcon icon"></i> 主页 <i class="dropdown icon"></i>
             </a>
             <div class="content">
-                <a  class="item" href="blogs.html">
+                <a  class="item" href="blogs.html" th:href="@{/admin/index}">
                     返回首页
                 </a>
             </div>
@@ -340,18 +368,18 @@
                 <i class="dropdown icon"></i> 博客模块
             </div>
             <div class="content">
-                <a  class="item" href="inbox.html">
+                <a  class="item" href="inbox.html" th:href="@{/admin/articles}">
                     博客管理
                 </a>
 
-                <a class="item" href="chat.html">
+                <a class="item" href="chat.html" th:href="@{/admin/writeBlog}">
                     写博客
                 </a>
 
                 <a  class="item" href="filter.html">
                     查询博客
                 </a>
-                <a  class="item" href="todo.html">
+                <a  class="item" href="todo.html" th:href="@{/admin/categorys}">
                     博客类别
                 </a>
             </div>
@@ -361,8 +389,8 @@
                 <i class="dropdown icon"></i> 资源模块
             </div>
             <div class="content">
-                <a class="item" href="sidebar.html">
-                    所有信息
+                <a class="item" href="sidebar.html" th:href="@{/admin/pictureUp}">
+                    本地图库
                 </a>
                 <a class="item" href="menu.html">
                     添加资源
@@ -382,13 +410,13 @@
             </div>
             <div class="content">
 
-                <a class="item" href="breadcrumb.html">
+                <a class="item" href="breadcrumb.html"  th:href="@{/admin/visitors}">
                     访客记录
                 </a>
-                <a class="item" href="button.html">
+                <a class="item" href="button.html" th:href="@{/admin/visitors}">
                     访客统计
                 </a>
-                <a class="item" href="divider.html">
+                <a class="item" href="divider.html" th:href="@{/admin/visitors}">
                     黑名单
                 </a>
 
@@ -400,7 +428,7 @@
                 <i class="dropdown icon"></i> 友情连接
             </div>
             <div class="content">
-                <a class="item" href="accordion.html">
+                <a class="item" href="accordion.html" th:href="@{/admin/links}">
                     连接信息
                 </a>
 
@@ -436,22 +464,19 @@
                 <i class="dropdown icon"></i> 分类管理
             </div>
             <div class="content">
-                <a class="item" href="formelements.html">
+                <a class="item" href="formelements.html" th:href="@{/admin/categorys}">
                     分类信息
                 </a>
-
             </div>
-
             <div class="title item">
                 <i class="ion-flame titleIcon icon"></i>
 
-                <i class="dropdown icon"></i> 表单管理
+                <i class="dropdown icon"></i>日志管理
             </div>
             <div class="content">
-                <a class="item" href="table.html">
-                    表单提交
+                <a class="item" href="table.html" th:href="@{/admin/logs}">
+                    查看日志
                 </a>
-
             </div>
             <div class="title item">
                 <i class="ion-arrow-graph-up-right titleIcon icon"></i>
@@ -462,16 +487,11 @@
                 <a class="item" href="index.html">
                     查看报表
                 </a>
-
-
             </div>
-
         </div>
-
         <div class="ui dropdown item displaynone scrolling">
             <span>Dashboard</span>
             <i class="ion-speedometer icon"></i>
-
             <div class="menu">
                 <div class="header">
                     Dashboard
@@ -823,8 +843,6 @@
         </a>
     </div>
 </div>
-
-
 <div th:fragment="rightmenu">
     <div class="ui right sidebar">
         <div class="ui pointing secondary two item tabular menu">
@@ -1257,7 +1275,189 @@
 
 
 
+
+
+
+<!--中甲小菜单区域  用于访客统计的三个页面-->
+<div th:fragment="visitormenu" class="ui four wide tab column" style="background: #eaeaea">
+    <div class="ui segment teal center aligned segment-border-none">
+        <a class="ui teal  label big fluid">访客记录</a>
+        <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
+            <thead>
+            <tr>
+                <th>访客状态</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <i class="save icon large"></i>
+                    记录数
+                </td>
+                <td>
+                    <div class="ui label red" th:text="${count}">>144</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="user icon large"></i>
+                    用户数
+                </td>
+                <td>
+                    <div class="ui label violet" th:text="${blackCount}">4</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <i class="user times icon large"></i>
+                    黑名单
+                </td>
+                <td>
+                    <div class="ui label olive" th:text="${userCount}">14</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <div class="m-padding-none" style="background: #eaeaea">
+            <table class="ui red table left aligned m-font-normal"
+                   style=" border:0; background: #eaeaea">
+                <thead>
+                <tr>
+                    <th>按时间查询</th>
+                </tr>
+                </thead>
+            </table>
+
+
+            <div class="ui label grey large">起始时间</div>
+            <div class="ui mini icon input">
+                <input id="startTime" name="startTime" type="date" placeholder="Search log..."
+                       style="font-size:9px !important;">
+            </div>
+            <div class="ui label black large">截至时间</div>
+            <div class="ui mini icon input">
+                <input id="endTime" name="endTime" type="date" placeholder="Search log..."
+                       style="font-size:9px !important;line-height: 16px !important;">
+            </div>
+            <div class="ui left aligned m-margin-lr-normal m-padding-mini">
+                <input id="searchLogByTime" type="submit" class="ui button mini teal "
+                       value="查询">
+                <input id="reSetTime" type="button" class="ui button mini teal " value="重置">
+            </div>
+
+        </div>
+
+
+        <table class="ui  table left aligned m-font-normal" style=" border:0;background: #eaeaea">
+
+
+            <thead>
+            <tr>
+
+                <th>快捷查询</th>
+
+
+            </tr>
+            </thead>
+
+
+            <tbody>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)"
+                       th:onclick="searchVisitorByArgs([['四川']]);">
+                        <i class="tag right icon large black"></i>
+                        四川地区
+                    </a>
+
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)"
+                       th:onclick="searchVisitorByArgs([['教育网']]);">
+                        <i class="tag right icon large   black"></i>
+                        教育网
+                    </a>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)"
+                       th:onclick="searchVisitorByArgs([['IE']]);">
+                        <i class="tag right icon large  black "></i>
+                        IE
+                    </a>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)"
+                       th:onclick="searchVisitorByArgs([['Chrome']]);">
+                        <i class="tag right icon large  black "></i>
+                        Chrome
+                    </a>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)"
+                       th:onclick="searchVisitorByArgs([['Windows']]);">
+                        <i class="tag right icon large  black "></i>
+                        Windows
+                    </a>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)"
+                       th:onclick="searchVisitorByArgs([['Iphone']]);">
+
+                        <i class="tag right icon large  black "></i>
+                        Iphone
+                    </a>
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)"
+                       th:onclick="searchVisitorByArgs([['Ipad']]);">
+
+                        <i class="tag right icon large  black "></i>
+                        Ipad
+                    </a>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    <a href="#" th:href="@{/admin/visitors(args=Android)}">
+                        <i class="tag right icon large  black "></i>
+                        Android
+                    </a>
+                </td>
+
+            </tr>
+
+
+            </tbody>
+
+
+        </table>
+    </div>
 </div>
+
+
 
 </body>
 </html>

@@ -1,13 +1,11 @@
 package com.lucas.blog.myblog.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "comment")
-public class Comment  implements Serializable{
+public class Comment implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -15,7 +13,6 @@ public class Comment  implements Serializable{
     /**
      * 评论时间
      */
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     @Column(name = "addTime")
     private Date addtime;
 
@@ -31,7 +28,7 @@ public class Comment  implements Serializable{
     private String email;
 
     /**
-     * 容内
+     * 内容
      */
     private String content;
 
@@ -56,47 +53,10 @@ public class Comment  implements Serializable{
     /**
      * 回复时间
      */
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     @Column(name = "answerTime")
     private Date answertime;
 
-    public Comment(){}
-	public Comment(Date addtime, String nickname, String email, String content, Integer articleid, String answercontent, String answerperson, Date answertime) {
-		this.addtime = addtime;
-		this.nickname = nickname;
-		this.email = email;
-		this.content = content;
-		this.articleid = articleid;
-		this.answercontent = answercontent;
-		this.answerperson = answerperson;
-		this.answertime = answertime;
-	}
-
-
-	/*
-	*
-	* 浏览者留言
-	* */
-	public Comment(Date addtime, String nickname, String email, String content, Integer articleid) {
-		this.addtime = addtime;
-		this.nickname = nickname;
-		this.email = email;
-		this.content = content;
-		this.articleid = articleid;
-	}
-
-
-	/*
-	*
-	* 作者回复
-	* */
-	public Comment(String answercontent, String answerperson, Date answertime) {
-		this.answercontent = answercontent;
-		this.answerperson = answerperson;
-		this.answertime = answertime;
-	}
-
-	/**
+    /**
      * @return id
      */
     public Integer getId() {
@@ -253,4 +213,21 @@ public class Comment  implements Serializable{
     public void setAnswertime(Date answertime) {
         this.answertime = answertime;
     }
+
+
+	public Comment(Date addtime, String nickname, String email, String content, Integer articleid, String answercontent, String answerperson, Date answertime) {
+		this.addtime = addtime;
+		this.nickname = nickname;
+		this.email = email;
+		this.content = content;
+		this.articleid = articleid;
+		this.answercontent = answercontent;
+		this.answerperson = answerperson;
+		this.answertime = answertime;
+	}
+
+
+	public Comment() {
+		super();
+	}
 }

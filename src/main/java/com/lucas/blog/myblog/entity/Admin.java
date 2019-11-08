@@ -4,10 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Table(name = "admin")
-
-
-
-
 public class Admin  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +20,7 @@ public class Admin  implements Serializable{
     private String password;
 
     /**
-     * 邮箱
+     * 博主邮箱
      */
     private String email;
 
@@ -34,16 +30,7 @@ public class Admin  implements Serializable{
     @Column(name = "isPermission")
     private Integer ispermission;
 
-
-    public Admin(){}
-	public Admin(String username, String password, String email, Integer ispermission) {
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.ispermission = ispermission;
-	}
-
-	/**
+    /**
      * @return id
      */
     public Integer getId() {
@@ -94,18 +81,18 @@ public class Admin  implements Serializable{
     }
 
     /**
-     * 获取邮箱
+     * 获取博主邮箱
      *
-     * @return email - 邮箱
+     * @return email - 博主邮箱
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * 设置邮箱
+     * 设置博主邮箱
      *
-     * @param email 邮箱
+     * @param email 博主邮箱
      */
     public void setEmail(String email) {
         this.email = email;
@@ -128,4 +115,17 @@ public class Admin  implements Serializable{
     public void setIspermission(Integer ispermission) {
         this.ispermission = ispermission;
     }
+
+
+	public Admin(String username, String password, String email, Integer ispermission) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.ispermission = ispermission;
+	}
+
+
+	public Admin() {
+		super();
+	}
 }

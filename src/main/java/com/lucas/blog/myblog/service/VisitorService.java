@@ -3,6 +3,7 @@ package com.lucas.blog.myblog.service;
 import com.github.pagehelper.PageInfo;
 import com.lucas.blog.myblog.entity.Visitor;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,16 +16,22 @@ import java.util.List;
  * @Version: 1.0
  */
 public interface VisitorService {
+	Integer insertVisitor(Visitor visitor);
 
+	PageInfo<Visitor> getVisitorByTime(Date startTime, Date endTime, Integer startPage, Integer pageSize);
 
+	PageInfo<Visitor> getVisitorByArgs(String args, Integer startPage, Integer pageSize);
 
-	public Integer insertVisitor(Visitor visitor);
-	public List<Visitor> getAllVisitors();
-	public List<Visitor> getVisitorByTime(String startTime,String endTime);
-	public List<Visitor> getVisitorByCity(String city);
-	public List<Visitor> getVisitorByOs(String os);
-	public List<Visitor> getVisitorByInternet(String internet);
-	public Integer addVisitorToBlackList(String ip);
-	public Integer outVisitorFromBlackList(String ip);
 	PageInfo<Visitor> getVisitorPage(Integer startPage, Integer pageSize);
+
+	Integer getCount();
+
+	Integer getBlackCount();
+
+	Integer getUserCount();
+
+	public List<Visitor> getVisitorGroupByIp();
+
+	List<Visitor> getBlackVisitorIp();
+
 }

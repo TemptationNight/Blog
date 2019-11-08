@@ -1,13 +1,11 @@
 package com.lucas.blog.myblog.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
 @Table(name = "article")
-public class Article  implements Serializable{
+public class Article implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,7 +16,7 @@ public class Article  implements Serializable{
     private String title;
 
     /**
-     * 类别id
+     * 文章所属类别id
      */
     @Column(name = "categoryId")
     private Integer categoryid;
@@ -31,7 +29,6 @@ public class Article  implements Serializable{
     /**
      * 文章发布时间
      */
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     @Column(name = "addTime")
     private Date addtime;
 
@@ -60,11 +57,9 @@ public class Article  implements Serializable{
     private String keyword;
 
     /**
-     * 文章状态     0，草稿箱 1，发布状态
+     * 文章状态   -1，垃圾箱   0，草稿箱 1，发布状态
      */
     private Integer status;
-
-
 
     /**
      * 是否为推荐文章 0否  1是
@@ -88,28 +83,7 @@ public class Article  implements Serializable{
      */
     private String content;
 
-
-    public Article(){}
-
-
-	public Article(String title, Integer categoryid, String author, Date addtime, Integer agreenum, Integer browsenum, Integer commentnum, String keyword, Integer status,  Integer isrecommend, Integer istop, String images, String content) {
-		this.title = title;
-		this.categoryid = categoryid;
-		this.author = author;
-		this.addtime = addtime;
-		this.agreenum = agreenum;
-		this.browsenum = browsenum;
-		this.commentnum = commentnum;
-		this.keyword = keyword;
-		this.status = status;
-
-		this.isrecommend = isrecommend;
-		this.istop = istop;
-		this.images = images;
-		this.content = content;
-	}
-
-	/**
+    /**
      * @return id
      */
     public Integer getId() {
@@ -142,18 +116,18 @@ public class Article  implements Serializable{
     }
 
     /**
-     * 获取类别id
+     * 获取文章所属类别id
      *
-     * @return categoryId - 类别id
+     * @return categoryId - 文章所属类别id
      */
     public Integer getCategoryid() {
         return categoryid;
     }
 
     /**
-     * 设置类别id
+     * 设置文章所属类别id
      *
-     * @param categoryid 类别id
+     * @param categoryid 文章所属类别id
      */
     public void setCategoryid(Integer categoryid) {
         this.categoryid = categoryid;
@@ -277,9 +251,9 @@ public class Article  implements Serializable{
     }
 
     /**
-     * 设置文章状态    0，草稿箱 1，发布状态
+     * 设置文章状态   -1，垃圾箱   0，草稿箱 1，发布状态
      *
-     * @param status 文章状态     0，草稿箱 1，发布状态
+     * @param status 文章状态   -1，垃圾箱   0，草稿箱 1，发布状态
      */
     public void setStatus(Integer status) {
         this.status = status;
@@ -356,4 +330,25 @@ public class Article  implements Serializable{
     public void setContent(String content) {
         this.content = content;
     }
+
+	public Article(String title, Integer categoryid, String author, Date addtime, Integer agreenum, Integer browsenum, Integer commentnum, String keyword, Integer status, Integer isrecommend, Integer istop, String images, String content) {
+		this.title = title;
+		this.categoryid = categoryid;
+		this.author = author;
+		this.addtime = addtime;
+		this.agreenum = agreenum;
+		this.browsenum = browsenum;
+		this.commentnum = commentnum;
+		this.keyword = keyword;
+		this.status = status;
+		this.isrecommend = isrecommend;
+		this.istop = istop;
+		this.images = images;
+		this.content = content;
+	}
+
+
+	public Article() {
+		super();
+	}
 }

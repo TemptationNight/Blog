@@ -8,6 +8,8 @@ package com.lucas.blog.myblog.controller.admin;/**
  * @Version: 1.0
  */
 
+import com.lucas.blog.myblog.aop.ActionType;
+import com.lucas.blog.myblog.aop.SystemLog;
 import com.lucas.blog.myblog.service.WebsiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,7 +44,8 @@ public class IndexControllerAdmin {
 
 
 	@GetMapping("/index")
-	public String getWebsiteInfo(Model mdoel){
+	@SystemLog(description="登录",actionType= ActionType.UNKNOWN)
+	public String getWebsiteInfo(Model model){
 
 		/*
 		 * 获取站点所有信息
@@ -56,6 +59,7 @@ public class IndexControllerAdmin {
 		Integer visitorToday = websiteServiceImpl.getVisitorToday();
 		Integer sourceNum = websiteServiceImpl.getSourceNum();
 
+		//Website website=new Website( articleNum,   commentNum,   categoryNum,  keywordnum    linkNum,   endupdatetime   browseNum);
 		/*
 		 将获取的信息放入model  发给前台页面
 		 **/
@@ -68,9 +72,16 @@ public class IndexControllerAdmin {
 		map.put("moneyNum",moneyNum);
 		map.put("visitorToday",visitorToday);
 		map.put("sourceNum",sourceNum);
-		mdoel.addAttribute("websiteInfo",map);
+		if(map!=null){
+
+
+		model.addAttribute("websiteInfo",map);
+		}else model.addAttribute("websiteInfo",new HashMap<>());
 		return "admin/index";
 	}
+
+
+
 
 
 

@@ -10585,7 +10585,7 @@
 	
 		/**
 		 * This function is called on every 'draw' event, and allows you to
-		 * dynamically modify any aspect you want about the created DOM.
+		 * dynamically modify any aop you want about the created DOM.
 		 *  @type function
 		 *  @param {object} settings DataTables settings object
 		 *

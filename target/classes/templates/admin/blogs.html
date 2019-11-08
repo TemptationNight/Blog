@@ -7,7 +7,7 @@
 <head th:replace="_fragments::adminHead(~{::title})">
     <title>博客列表</title>
    </head>
-<body>
+<body style="background-color: white !important;">
 <div id="contextWrap">
     <!--左侧菜单栏-->
     <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
@@ -18,7 +18,7 @@
         <!--头部导航栏-->
         <div th:replace="_fragments::topmenu" class="navslide navwrap"></div>
         <!--正文内容-->
-        <div class="mainWrap navslide">
+        <div class="mainWrap navslide" style="background-color: white !important;">
             <div class="ui segment  m-padded segment-border-none">
 
 
@@ -56,14 +56,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="blog:${articlePageInfo.getList()}">
+                    <tr th:each="blog,iterStat:${articlePageInfo.getList()}">
                         <td>
                             <div class="ui checkbox">
                                 <input type="checkbox" name="example">
                                 <label></label>
                             </div>
                         </td>
-                        <td th:text="${blog.id}">1</td>
+                        <td th:text="${iterStat.count}">1</td>
                         <td th:text="${blog.title}">Docker安装mysql</td>
                         <td th:text="${blog.categoryid}">运维</td>
                         <td th:text="${blog.keyword}">Docker</td>
@@ -76,7 +76,8 @@
                             <div class="ui label black" th:if="${blog.status} eq 0">已下架</div>
                             <div class="ui label teal" th:if="${blog.status} eq 1">发布</div>
                         </td>
-                        <td th:text="${blog.addtime}"> 2019-12-7</td>
+
+                        <td th:text="${#dates.format(blog.addtime,'yyyy-MM-dd:HH:mm:ss')}" > 2019-12-7</td>
                         <td>
                             <a href="" th:href="@{/admin/delete/{id}/article(id=${blog.id})}">
                                 <div class="ui label  red">
@@ -111,14 +112,14 @@
                     </tr>
                     </tbody>
                     <tfoot>
-                    <tr>
+                    <tr th:if="${articlePageInfo.getList().size()>=10}">
                         <th colspan="10">
                             每页显示数据量
                             <select name="gender" class="ui dropdown" id="select">
                                 <option value="male">10条</option>
                                 <option value="female">30条</option>
                             </select>
-                            <div class="ui right floated pagination menu">
+                           <!-- <div class="ui right floated pagination menu">
                                 <a class="icon item">
                                     <i class="left chevron icon"></i>
                                 </a>
@@ -128,7 +129,7 @@
                                 <a class="icon item">
                                     <i class="right chevron icon"></i>
                                 </a>
-                            </div>
+                            </div>-->
                         </th>
                     </tr>
                     </tfoot>

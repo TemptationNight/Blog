@@ -65,6 +65,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public Integer deleteCategory(Integer id) {
 		Example example = new Example(Category.class);
 		example.createCriteria().andCondition("id=", id);
+
 		Category category = categoryMapper.selectOneByExample(example);
 		if(category.getArticlenum()!=null){
 			//先要删除该类下的文章
@@ -118,7 +119,8 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public List<Category> getCategoryList() {
-		return null;
+
+		return categoryMapper.selectAll();
 	}
 
 
@@ -156,6 +158,7 @@ public class CategoryServiceImpl implements CategoryService {
 	public PageInfo<Category> getCategoryPage(Integer startPage, Integer pageSize) {
 		PageHelper.startPage(0, 20);
 		Example example = new Example(Category.class);
+		example.setOrderByClause("addTime DESC");
 		PageInfo<Category> pageInfo = new PageInfo<>(categoryMapper.selectByExample(example));
 		return  pageInfo;
 	}

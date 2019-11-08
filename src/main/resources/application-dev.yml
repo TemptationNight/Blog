@@ -11,16 +11,27 @@ spring:
       # MySQL 8.x: com.mysql.cj.jdbc.Driver
       driver-class-name: com.mysql.cj.jdbc.Driver
   static-locations: ["/templates/","/resources/","/static","/public/"]
+  aop:
+    auto: true   #开启aop
+
+
+
+
 mybatis:
-    type-aliases-package: com.heyuanhui.blog.myblog.entity
+    type-aliases-package: com.lucas.blog.myblog.entity
     mapper-locations: classpath:mapper/*.xml
 logging:
   level:
+    com.lucas.blog.myblog.mapper: DEBUG        #控制台输出sql日志
     root: info
   file: log/blog-dev.log
 
+
+
 server:
   port: 8081
+
+
 
 
 

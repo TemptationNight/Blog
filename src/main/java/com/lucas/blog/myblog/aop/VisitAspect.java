@@ -1,4 +1,4 @@
-package com.lucas.blog.myblog.aspect;
+package com.lucas.blog.myblog.aop;
 
 import com.lucas.blog.myblog.entity.Visitor;
 import com.lucas.blog.myblog.service.VisitorService;
@@ -16,7 +16,7 @@ import java.util.Date;
 
 /**
  * @ProjectName: myblog
- * @Package: com.heyuanhui.blog.myblog.aspect
+ * @Package: com.heyuanhui.blog.myblog.aop
  * @ClassName: LogAspect
  * @Author: Heyuanhui
  * @Description: ${日志记录类}
@@ -26,19 +26,18 @@ import java.util.Date;
 
 @Aspect
 @Component
-public class LogAspect {
+public class VisitAspect {
 
 	@Autowired
 	private VisitorService visitorServiceImpl;
 
-
 	//切面  拦截controller包下的所有方法
 	@Pointcut("execution(* com.lucas.blog.myblog.controller.*.*(..))")
-	public void log(){}
+	public void visitor(){}
 
 
 
-	@Before("log()")
+	@Before("visitor()")
 	public void doBefore() throws IOException, GeoIp2Exception {
 		ServletRequestAttributes servletRequestAttributes = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes());
 		HttpServletRequest request=servletRequestAttributes.getRequest();
@@ -47,9 +46,10 @@ public class LogAspect {
 		String os=UserAgentUtils.getOsName(request);
 		String browser=UserAgentUtils.getBrowserName(request);
 		String city=UserAgentUtils.getCity(request,ip);
-		Date date=new Date();
+		Date date=new Date("yyyy-MM-dd HH:mm:ss");
 		Visitor visitor=new Visitor(date,ip,city,url,browser,os,1);
 		//将访客信息写入数据库
 		Integer i=visitorServiceImpl.insertVisitor(visitor);
+		System.out.println(i);
 	}
 }

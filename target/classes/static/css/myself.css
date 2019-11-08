@@ -1,6 +1,6 @@
 
 body{
-    background: url("../images/bg1.png");
+    background-color: white !important;
 
 }
 
@@ -279,6 +279,77 @@ tr{
 
 
 
+.picture {
+    float: left;
+    width: 28%;
+    box-sizing: border-box;
+    padding: 10px;
+    min-width: 15px;
+    transition: all 1.5s;
+}
+
+.picture:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#titlePicture:hover{
+    cursor: pointer;
+}
+
+/*
+
+.container1 {
+    width: 100%;
+}
+*/
+
+/*
+@media (max-width:768px ) {
+    .picture {
+        float: left;
+        width: 33%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+
+@media (max-width: 515px ) {
+    .picture {
+        float: left;
+        width: 39%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+
+@media (max-width: 465px ) {
+    .picture {
+        float: left;
+        width: 50%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 315px ) {
+    .picture {
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+}
+
+
+*/
+
+
 /*----手机端隐藏-------*/
 @media  (max-width: 768px){   /* 当屏幕小于768px时   */
     .m-mobile-hide{
@@ -306,4 +377,3 @@ tr{
     }
 
 }
-

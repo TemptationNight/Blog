@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>未处理连接</title>
+</head>
+<body style="background: white">
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
+    <!--中间部分-->
+    <div class="pusher">
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="navslide navwrap "></div>
+        <!--正文内容-->
+        <div class="mainWrap navslide">
+            <div class="ui segment ">
+                <div class="ui grid">
+                    <!--中甲小菜单区域-->
+                    <div th:replace="_fragments::visitormenu" class="ui four wide tab column" style="background: #eaeaea"></div>
+                    <div class="ui twelve wide column" style="background: #eaeaea">
+                        <!--发布博客头部区域-->
+                        <div class="ui segment red  attached middle aligned  m-padded segment-border-none">
+                            <div class="ui segment  attached rounded  m-padded segment-border-none">
+                                <div class="ui two column grid  middle aligned">
+                                    <div class="column">
+                                        <h2 class="ui header ">访客统计</h2>
+                                        <button type="button" class="ui button basic mini">
+                                            刷新&nbsp;&nbsp;&nbsp; <a href=""><i class="refresh icon"></i></a>
+                                        </button>
+                                    </div>
+                                    <div class="right aligned column">
+                                        <div class="ui  action input ">
+                                            <input type="text" placeholder="Search...">
+                                            <button class="ui icon button">
+                                                <i class="search icon"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="ui  table attached rounded segment-border-none" frame=hsides
+                                   style="text-align: center !important;">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>IP</th>
+                                    <th>地区</th>
+                                    <th>浏览器</th>
+                                    <th>系统</th>
+                                    <th>访问次数</th>
+                                    <th>操做</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="visitor,itemStat:${visitorPageInfo}">
+                                    <td th:text="${itemStat.count}">1</td>
+                                    <td th:text="${visitor.ip}">127.0.0.1</td>
+                                    <td th:text="${visitor.city}">四川省成都市</td>
+                                    <td th:text="${visitor.browsetype}">Chrome</td>
+                                    <td th:text="${visitor.ostype}">windows</td>
+                                    <td>378</td>
+                                    <td>
+                                        <div class="ui button red mini">
+                                            <i class="trash icon"></i>
+                                            加入黑名单
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr th:if="${visitorPageInfo.size()==0}">
+                                    <td colspan="6">
+                                        没有符合条件的记录
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr th:if="${visitorPageInfo.size()>10}">
+                                    <th colspan="10">
+                                        每页显示数据量
+                                        <select name="gender" class="ui dropdown" id="select">
+                                            <option value="male">10条</option>
+                                            <option value="female">30条</option>
+                                        </select>
+                                    </th>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<th:block th:replace="_fragments::adminscript"></th:block>
+
+<script type="text/javascript">
+    //日期重置
+    $("#reSet").click(function () {
+        $("#startTime").val("");
+        $("#endTime").val("");
+    });
+
+
+    function searchVisitorByArgs(args) {
+        $.ajax({
+            url: "/admin/getVisitorByArgs",
+            data: {args: args},
+            type: 'GET',
+            success: function (data) {
+                $(".visitorList").html(data);
+            }
+        });
+    }
+
+
+    $("#searchLogByTime").click(function () {
+        var startTime = $("#startTime").val();
+        var endTime = $("#endTime").val();
+        $.ajax({
+            url: "/admin/getVisitorByTime",
+            data: {startTime: startTime, endTime: endTime},
+            type: "GET",
+            success: function (data) {
+                $(".visitorList").html(data);
+            },
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        })
+    });
+
+
+    $("#reSetTime").click(function () {
+        $("#startTime").val("");
+        $("#endTime").val("");
+    });
+
+
+</script>
+</html>

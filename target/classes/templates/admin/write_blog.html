@@ -6,10 +6,14 @@
 <head th:replace="_fragments::adminHead(~{::title})">
     <title>博客发布</title>
 </head>
+
+
 <body>
 <div id="contextWrap">
     <!--左侧菜单栏-->
-    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <div th:replace="_fragments::leftmenu"
+         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
+         style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
     <!--右侧隐藏小菜单-->
     <div th:replace="_fragments::rightmenu" class="ui right sidebar">
 
@@ -93,7 +97,7 @@
 
                             </table>
 
-                            <table class="ui  table left aligned"    style=" border:0;background: #eaeaea">
+                            <table class="ui  table left aligned" style=" border:0;background: #eaeaea">
                                 <thead>
                                 <tr>
                                     <th>博客分类</th>
@@ -101,60 +105,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large green"></i>
-                                        java
+
+
+                                <tr th:each="type:${categoryList}">
+                                    <td th:text="${type.categoryname}">
+                                        <i class="circle icon large teal"></i>
+
                                     </td>
                                     <td>
-                                        <div class="ui label green">11篇</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large blue"></i>
-                                        mysql
-                                    </td>
-                                    <td>
-                                        <div class="ui label blue">3篇</div>
+
+                                        <div class="ui label teal"  th:text="${type.articlenum!=null?type.articlenum+'  篇':'0  篇'}">11篇
+                                        </div>
+
+
+
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large violet"></i>
-                                        Linux
-                                    </td>
-                                    <td>
-                                        <div class="ui label violet">7篇</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large purple"></i>
-                                        前端基础
-                                    </td>
-                                    <td>
-                                        <div class="ui label purple">14篇</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large pink"></i>
-                                        网站建设
-                                    </td>
-                                    <td>
-                                        <div class="ui label pink">3篇</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="circle icon large brown"></i>
-                                        生活
-                                    </td>
-                                    <td>
-                                        <div class="ui label brown">14篇</div>
-                                    </td>
-                                </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -167,9 +134,9 @@
                                     <h2 class="ui header">写博客</h2>
                                 </div>
                                 <div class="right aligned column">
-                                    <a href="">
-                                        <div class="ui label  large"><i class="pencil alternate icon"></i>存为草稿</div>
-                                    </a>
+
+                                    <div class="ui label  large"><i class="pencil alternate icon"></i>存为草稿</div>
+
                                     <a href="">
                                         <div class="ui label red large"><i class="delete icon"></i>&nbsp;&nbsp;删除</div>
                                     </a>
@@ -185,7 +152,12 @@
                                             <h4>首图：</h4>
                                         <td>
                                         <td>
-                                            <img src="https://picsum.photos/200/130?grayscale" alt="" class="ui image">
+                                            <div id="titlePicture">
+                                                <img id="headPicture" src="https://picsum.photos/200/130?grayscale"
+                                                     alt=""
+                                                     class="ui image"
+                                                     style="width: 30% !important; height: 25% !important;">
+                                            </div>
                                             <br>
                                         </td>
                                     </tr>
@@ -195,7 +167,7 @@
                                         <td>
                                         <td>
                                             <div class="ui fluid icon input">
-                                                <input type="text" placeholder="博客标题">
+                                                <input type="text" placeholder="博客标题" id="title">
                                             </div>
                                         </td>
                                     </tr>
@@ -219,24 +191,14 @@
                                                 <i class="dropdown icon"></i>
                                                 <div class="default text">博客类别</div>
                                                 <div class="menu">
-                                                    <div class="item" data-value="Java">
-                                                        Java
+                                                    <div class="ui item" th:each="type:${categoryList}">
+                                                        <div class="item" data-value="Java"  th:text="${type.categoryname}" th:value="${type.categoryname}">
+                                                            Java
+                                                        </div>
                                                     </div>
-                                                    <div class="item" data-value="MySql">
-                                                        MySql
-                                                    </div>
-                                                    <div class="item" data-value="Linux">
-                                                        Linux
-                                                    </div>
-                                                    <div class="item" data-value="前端基础">
-                                                        前端基础
-                                                    </div>
-                                                    <div class="item" data-value="网站建设">
-                                                        网站建设
-                                                    </div>
-                                                    <div class="item" data-value="生活">
-                                                        生活
-                                                    </div>
+
+
+
                                                 </div>
                                             </div>
                                             <br>
@@ -276,8 +238,17 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
                                 <div id="md-content">
                                     <textarea style="display:none">
+
                                     </textarea>
                                 </div>
                                 <div class="ui inline fields">
@@ -289,7 +260,8 @@
                                     </div>
                                     <div class="field">
                                         <div class="ui checkbox">
-                                            <input type="checkbox" id="recommend" name="recommend" checked class="hidden">
+                                            <input type="checkbox" id="recommend" name="recommend" checked
+                                                   class="hidden">
                                             <label for="recommend">推荐</label>
                                         </div>
                                     </div>
@@ -301,7 +273,7 @@
                                     </div>
                                     <div class="field">
                                         <div class="ui checkbox">
-                                            <input type="checkbox" name="comment"  class="hidden" id="comment">
+                                            <input type="checkbox" name="comment" class="hidden" id="comment">
                                             <label for="comment">评论</label>
                                         </div>
                                     </div>
@@ -313,8 +285,7 @@
                                     </div>
                                 </div>
                                 <div class="ui container right aligned">
-                                    <button type="button" class="ui button teal">发布</button>
-                                    <button type="button" class="ui button red" onclick="window.history.go(-1)">放弃发布</button>
+                                    <button type="button" class="ui button teal" id="giveUp">发布</button>
                                 </div>
                             </form>
                         </div>
@@ -322,19 +293,111 @@
                 </div>
             </div>
         </div>
+
+
+        <!--确认弹出层-->
+        <div class="ui modal small" id="sureModal">
+            <i class="close icon"></i>
+            <div class="header">
+                文章发布
+            </div>
+
+            <div class="content">
+                <div class="ui right labeled left icon input " style="left: 28% !important;">
+                    <i class="tags icon"></i>
+                    <input id="editTitle" type="text" readonly="readonly">
+                    <div class="ui tag label teal">
+                        标题
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui positive  labeled  icon button" style="background-color: red">
+                    放弃
+                    <i class="remove icon "></i>
+                </div>
+                <div id="updateType" class="ui positive  labeled icon button ">
+                    确认
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <!--图片弹出层-->
+        <div class="ui modal big  " id="pictureModal">
+            <i class="close icon"></i>
+            <div class="header">
+                选择图片
+            </div>
+            <div class="content">
+                <section class=" container ">
+                    <section class="boxItem " th:each="picture:${pictures}"
+                             style="background-color: whitesmoke !important;width: 30% !important;">
+                        <img class="picture" src="https://picsum.photos/200/130?grayscale" alt=""
+                             th:src="@{../images/{filename}(filename=${picture.name})}"
+                             th:onclick="choosePicture([[${picture.name}]])"
+                             style="width: 100% !important; height: 100% !important;">
+                    </section>
+                </section>
+            </div>
+        </div>
     </div>
 </div>
 </body>
-<th:block th:replace="_fragments::adminscript"></th:block>
+
+
 <script type="text/javascript">
+
+
+    //富文本编辑器插件
     var Editor;
     $(function () {
         Editor = editormd("md-content", {
             width: "100%",
             height: 500,
             syncScrolling: "single",
-            path: "/lib/editmd/lib/"
+            path: "/lib/editmd/lib/"   //此路径是富文本编辑器的路径  如果写错了  就会无限加载
         });
     });
+
+
+    //确认弹出层  确认发布博客
+    $("#giveUp").click(function () {
+        $('#sureModal').modal('show');
+        var title = $("#title").val();
+        $("#editTitle").val(title)
+    });
+
+
+    //图片弹出层    获取所有的图片
+    $("#titlePicture").click(function () {
+        alert("decbdhbvh");
+        $.ajax({
+            url: "/admin/pictureUp",
+            type: "GET",    //请求方式
+            success: function () {
+                $('#pictureModal').modal('show');
+            },
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    });
+
+
+    //选择图片
+    function choosePicture(name) {
+        $('#pictureModal').modal('hide');
+        $("#headPicture").attr("src", "../images/" + name);
+    }
+
+
 </script>
+
+
+<th:block th:replace="_fragments::adminscript"></th:block>
+
+
 </html>

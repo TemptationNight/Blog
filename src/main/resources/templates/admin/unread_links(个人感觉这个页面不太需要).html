@@ -155,7 +155,22 @@
                                 </thead>
                                 <tbody>
 
-                                <tr>
+                                <tr th:each="link:${notCheck}">
+
+                                    <td th:text="${link.id}">1</td>
+                                    <td th:text="${link.linkname}">杨青个人博客</td>
+                                    <td>0</td>
+                                    <td>
+                                        <div class="ui label orange middle aligned">未处理</div>
+                                    </td>
+                                    <td th:text="link.addtime">2019-09-01</td>
+                                    <td>
+                                        <a th:href="@{/admin/setLinkChecked/{id}/link(id=${link.id})}"  class="ui button teal mini"><i class="check icon"></i>通过审核</a>
+                                        <a th:href="@{/admin/delete/{id}/link(id=${link.id})}"  class="ui button red mini"><i class="trash icon"></i>忽略</a>
+                                    </td>
+                                </tr>
+                               <!-- <tr>
+
 
                                     <td>1</td>
                                     <td>杨青个人博客</td>
@@ -185,22 +200,7 @@
                                     </td>
 
                                 </tr>
-                                <tr>
-
-                                    <td>1</td>
-                                    <td>杨青个人博客</td>
-                                    <td>0</td>
-                                    <td>
-                                        <div class="ui label orange middle aligned">未处理</div>
-                                    </td>
-                                    <td>2019-09-01</td>
-                                    <td>
-                                        <div class="ui button teal mini"><i class="check icon"></i>通过审核</div>
-                                        <div class="ui button red mini"><i class="trash icon"></i>忽略</div>
-                                    </td>
-
-                                </tr>
-
+-->
 
 
 
@@ -213,7 +213,7 @@
                                             <option value="male">10条</option>
                                             <option value="female">30条</option>
                                         </select>
-                                        <div class="ui right floated pagination menu">
+                                       <!-- <div class="ui right floated pagination menu">
                                             <a class="icon item">
                                                 <i class="left chevron icon"></i>
                                             </a>
@@ -223,7 +223,7 @@
                                             <a class="icon item">
                                                 <i class="right chevron icon"></i>
                                             </a>
-                                        </div>
+                                        </div>-->
                                     </th>
                                 </tr>
                                 </tfoot>

@@ -871,7 +871,7 @@
     while (cur) cur = rm(cur);
   }
 
-  // When an aspect of a line changes, a string is added to
+  // When an aop of a line changes, a string is added to
   // lineView.changes. This updates the relevant part of the line's
   // DOM structure.
   function updateLineForChanges(cm, lineView, lineN, dims) {

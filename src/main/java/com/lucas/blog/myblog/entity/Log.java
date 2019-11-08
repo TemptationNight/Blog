@@ -12,122 +12,148 @@ public class Log  implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    /**
-     * 用户类型  0 普通用户   1超级管理员
+
+	/**
+     * 用户类型  0 普通管理员   1超级管理员
      */
     @Column(name = "userType")
-    private Integer usertype;
+    private String  usertype;
+
+	/**
+	 * 请求参数
+	 */
+	@Column(name = "args")
+	private String args;
+
+
 
     /**
-     * 登录主机ip
+     * 操做描述
      */
-    private String ip;
-
-    /**
-     * 管理员操做
-     */
+	@Column(name = "description")
     private String description;
 
     /**
-     * 登录时间
+     * 请求时间
      */
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+
+
+	@Column(name = "time")
     private Date time;
 
 
+	/**
+	 * 请求ip
+	 */
+	@Column(name = "ip")
+	private String  ip;
 
 
-    public Log(){}
-	public Log(Integer usertype, String ip, String description, Date time) {
+	/**
+	 * 操作的类型  这个属性主要是为了方便根操作据类型查询日志
+	 */
+	@Column(name = "actionType")
+	private String  actionType;
+
+
+	/**
+	 *日志距离当前时间  不会储存再数据库 实时刷新
+	 */
+	@Column(name = "distanceNow")
+	private String distanceNow;
+
+	public Log(Integer id,String usertype, String args, String description, Date time, String  ip,String actionType,String distanceNow) {
+		this.id=id;
 		this.usertype = usertype;
-		this.ip = ip;
+		this.args = args;
 		this.description = description;
+		this.time = time;
+		this.ip = ip;
+		this.actionType=actionType;
+		this.distanceNow=distanceNow;
+	}
+
+
+	public Log(){}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getUsertype() {
+		return usertype;
+	}
+
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
+	}
+
+	public String getArgs() {
+		return args;
+	}
+
+	public void setArgs(String args) {
+		this.args = args;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getTime() {
+		return time;
+	}
+
+	public void setTime(Date time) {
 		this.time = time;
 	}
 
-	/**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
+	public String  getIp() {
+		return ip;
+	}
 
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setIp(String  ip) {
+		this.ip = ip;
+	}
 
-    /**
-     * 获取用户类型  0 普通管理员   1超级管理员
-     *
-     * @return userType - 用户类型  0 普通管理员   1超级管理员
-     */
-    public Integer getUsertype() {
-        return usertype;
-    }
 
-    /**
-     * 设置用户类型  0 普通管理员   1超级管理员
-     *
-     * @param usertype 用户类型  0 普通管理员   1超级管理员
-     */
-    public void setUsertype(Integer usertype) {
-        this.usertype = usertype;
-    }
 
-    /**
-     * 获取登录主机ip
-     *
-     * @return ip - 登录主机ip
-     */
-    public String getIp() {
-        return ip;
-    }
 
-    /**
-     * 设置登录主机ip
-     *
-     * @param ip 登录主机ip
-     */
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
+	public String getActionType() {
+		return actionType;
+	}
 
-    /**
-     * 获取管理员操做
-     *
-     * @return description - 管理员操做
-     */
-    public String getDescription() {
-        return description;
-    }
+	public void setActionType(String actionType) {
+		this.actionType = actionType;
+	}
+	public String getDistanceNow() {
+		return distanceNow;
+	}
 
-    /**
-     * 设置管理员操做
-     *
-     * @param description 管理员操做
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDistanceNow(String distanceNow) {
+		this.distanceNow = distanceNow;
+	}
 
-    /**
-     * 获取登录时间
-     *
-     * @return time - 登录时间
-     */
-    public Date getTime() {
-        return time;
-    }
 
-    /**
-     * 设置登录时间
-     *
-     * @param time 登录时间
-     */
-    public void setTime(Date time) {
-        this.time = time;
-    }
+	@Override
+	public String toString() {
+		return "Log{" +
+				"id=" + id +
+				", usertype='" + usertype + '\'' +
+				", args='" + args + '\'' +
+				", description='" + description + '\'' +
+				", time=" + time +
+				", ip='" + ip + '\'' +
+				", actionType='" + actionType + '\'' +
+				", distanceNow='" + distanceNow + '\'' +
+				'}';
+	}
 }

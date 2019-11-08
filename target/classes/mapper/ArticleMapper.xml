@@ -15,7 +15,6 @@
     <result column="commentNum" jdbcType="INTEGER" property="commentnum" />
     <result column="keyWord" jdbcType="VARCHAR" property="keyword" />
     <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="isGrouding" jdbcType="INTEGER" property="isgrouding" />
     <result column="isRecommend" jdbcType="INTEGER" property="isrecommend" />
     <result column="isTop" jdbcType="INTEGER" property="istop" />
     <result column="images" jdbcType="VARCHAR" property="images" />

@@ -8,8 +8,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="linkUrl" jdbcType="VARCHAR" property="linkurl" />
     <result column="linkName" jdbcType="VARCHAR" property="linkname" />
-    <result column="isAgree" jdbcType="VARCHAR" property="isagree" />
-    <result column="isGrouding" jdbcType="VARCHAR" property="isgrouding" />
+    <result column="isAgree" jdbcType="INTEGER" property="isagree" />
     <result column="addTime" jdbcType="TIMESTAMP" property="addtime" />
+    <result column="clickNum" jdbcType="INTEGER" property="clicknum" />
   </resultMap>
 </mapper>

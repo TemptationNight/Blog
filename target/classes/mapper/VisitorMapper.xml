@@ -12,5 +12,6 @@
     <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="browseType" jdbcType="VARCHAR" property="browsetype" />
     <result column="osType" jdbcType="VARCHAR" property="ostype" />
+    <result column="black" jdbcType="INTEGER" property="black" />
   </resultMap>
 </mapper>

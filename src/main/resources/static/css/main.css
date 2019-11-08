@@ -18,7 +18,7 @@ Author URL: http://www.themeforest.net/user/telatkaya_
 10.Mobile Page Settings
 11.Typography Settings
 ================================================================================*/
-@import "extra_colors.css";
+
 
 body {
     -webkit-font-smoothing: antialiased;
@@ -30,7 +30,7 @@ html,
 body {
     min-height: 100%;
     height: 100%;
-    background: #f1f4f5;
+    background-color: white !important;
 }
 
 html.ios {
@@ -877,9 +877,10 @@ ul {
     content: '';
     height: 1em;
     width: auto;
+
     opacity: 0.8;
     margin: 0em 0em 0em 0.5em;
-    font-family: 'Icons';
+    /*font-family: 'Icons';*/
 }
 
 .ui.table.dataTable thead th.sorting_asc:after {
@@ -1162,3 +1163,5 @@ a.item.transition {
 .hiddenCollapse .statistics .label {
     opacity: 0.5;
 }
+
+

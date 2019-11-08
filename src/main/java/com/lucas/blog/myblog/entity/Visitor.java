@@ -1,14 +1,11 @@
 package com.lucas.blog.myblog.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
-@Entity
 @Table(name = "visitor")
-public class Visitor  implements Serializable{
+public class Visitor implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -16,7 +13,6 @@ public class Visitor  implements Serializable{
     /**
      * 访问时间
      */
-
     private Date time;
 
     /**
@@ -46,31 +42,15 @@ public class Visitor  implements Serializable{
     @Column(name = "osType")
     private String ostype;
 
+    private Integer black;
 
-	public int getBlack() {
-		return black;
-	}
-
-	public void setBlack(int black) {
-		this.black = black;
-	}
-
-	/**
-	 * 是否为黑名单
-	 */
-	@Column(name="black")
-    private int black;
-
-    public Visitor(){}
-
-
-	public Visitor(Date time, String ip, String city, String url, String browsetype, String ostype,int black) {
-		this.time = time;
-		this.ip = ip;
-		this.city = city;
-		this.url = url;
-		this.browsetype = browsetype;
-		this.ostype = ostype;
+	public Visitor(Date time, String ip, String city, String url, String browsetype, String ostype, int black) {
+		this.time=time;
+		this.ip=ip;
+		this.city=city;
+		this.url=url;
+		this.browsetype=browsetype;
+		this.ostype=ostype;
 		this.black=black;
 	}
 
@@ -196,17 +176,33 @@ public class Visitor  implements Serializable{
         this.ostype = ostype;
     }
 
+    /**
+     * @return black
+     */
+    public Integer getBlack() {
+        return black;
+    }
+
+    /**
+     * @param black
+     */
+    public void setBlack(Integer black) {
+        this.black = black;
+    }
 
 
-
-
-
-	public void set(String name){
-
+	public Visitor(Date time, String ip, String city, String url, String browsetype, String ostype, Integer black) {
+		this.time = time;
+		this.ip = ip;
+		this.city = city;
+		this.url = url;
+		this.browsetype = browsetype;
+		this.ostype = ostype;
+		this.black = black;
 	}
 
 
-
-
-
+	public Visitor() {
+		super();
+	}
 }

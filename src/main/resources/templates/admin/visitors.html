@@ -11,12 +11,14 @@
 <body>
 <div id="contextWrap">
     <!--左侧菜单栏-->
-    <div  th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey">
+    <div th:replace="_fragments::leftmenu"
+         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
+         style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey">
 
     </div>
 
     <!--右侧隐藏小菜单-->
-    <div th:replace="_fragments::rightmenu"  class="ui right sidebar">
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar">
 
     </div>
 
@@ -25,9 +27,7 @@
     <div class="pusher">
 
         <!--头部导航栏-->
-        <div th:replace="_fragments::topmenu" class="navslide navwrap">
-
-        </div>
+        <div th:replace="_fragments::topmenu" class="navslide navwrap"></div>
 
 
         <!--正文内容-->
@@ -37,170 +37,8 @@
 
 
                     <!--中甲小菜单区域-->
-                    <div class="ui four wide tab column" style="background: #eaeaea">
-                        <div class="ui segment teal center aligned segment-border-none">
-                            <a class="ui teal  label big fluid">访客记录</a>
-                            <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
-                                <thead>
-                                <tr>
-                                    <th>访客状态</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <i class="save icon large"></i>
-                                        记录数
-                                    </td>
-                                    <td>
-                                        <div class="ui label red">144</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="user icon large"></i>
-                                        用户数
-                                    </td>
-                                    <td>
-                                        <div class="ui label violet">4</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="user times icon large"></i>
-                                        黑名单
-                                    </td>
-                                    <td>
-                                        <div class="ui label olive">14</div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                    <div th:replace="_fragments::visitormenu" class="ui four wide tab column" style="background: #eaeaea">
 
-
-                            <div class="m-padding-none" style="background: #eaeaea">
-                                <table class="ui red table left aligned m-font-normal"
-                                       style=" border:0; background: #eaeaea">
-                                    <thead>
-                                    <tr>
-                                        <th>按时间查询</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                                <div class="ui label grey large">起始时间</div>
-                                <div class="ui mini icon input">
-                                    <input type="date" placeholder="Search log..." style="font-size:9px !important;">
-                                </div>
-                                <div class="ui label black large">截至时间</div>
-                                <div class="ui mini icon input">
-                                    <input type="date" placeholder="Search log..."
-                                           style="font-size:9px !important;line-height: 16px !important;">
-                                </div>
-
-                                <div class="ui left aligned m-margin-lr-normal m-padding-mini">
-
-                                    <input type="button" class="ui button mini teal " value="查询">
-                                    <input type="button" class="ui button mini teal " value="重置">
-                                </div>
-                            </div>
-
-
-                            <table class="ui  table left aligned m-font-normal" style=" border:0;background: #eaeaea">
-
-
-                                <thead>
-                                <tr>
-
-                                    <th>快捷查询</th>
-
-
-                                </tr>
-                                </thead>
-
-
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <a href="#">
-                                            <i class="tag right icon large"></i>
-                                            四川地区
-                                        </a>
-
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">
-                                            <i class="tag right icon large   "></i>
-                                            教育网
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">
-                                            <i class="tag right icon large   "></i>
-                                            IE
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">
-                                            <i class="tag right icon large   "></i>
-                                            Chrome
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">
-                                            <i class="tag right icon large   "></i>
-                                            Windows
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">
-                                            <i class="tag right icon large   "></i>
-                                            Iphone
-                                        </a>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#">
-                                            <i class="tag right icon large   "></i>
-                                            Ipad
-                                        </a>
-                                    </td>
-
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <a href="#">
-                                            <i class="tag right icon large   "></i>
-                                            Android
-                                        </a>
-                                    </td>
-
-                                </tr>
-
-
-                                </tbody>
-
-
-                            </table>
-                        </div>
                     </div>
 
 
@@ -216,7 +54,7 @@
 
                                 <div class="ui two column grid  middle aligned">
                                     <div class="column">
-                                        <h2 class="ui header ">访客记录</h2>
+                                        <h2 class="ui header ">用户统计</h2>
                                         <button type="button" class="ui button basic mini">
                                             刷新&nbsp;&nbsp;&nbsp; <a href=""><i class="refresh icon"></i></a>
                                         </button>
@@ -235,156 +73,50 @@
 
 
                             </div>
-                            <table class="ui  table attached segment-border-none"
-                                   style="text-align: center !important;">
-                                <thead>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>IP</th>
-                                    <th>地区</th>
-                                    <th>浏览器</th>
-                                    <th>系统</th>
 
-                                    <th>访问时间</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>四川省成都市</td>
-                                    <td>Chrome</td>
-                                    <td>windows</td>
-                                    <td>2019-12-7</td>
-                                </tr>
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th colspan="10">
-                                        每页显示数据量
-                                        <select name="gender" class="ui dropdown" id="select">
-                                            <option value="male">10条</option>
-                                            <option value="female">30条</option>
-                                        </select>
-                                        <div class="ui right floated pagination menu">
-                                            <a class="icon item">
-                                                <i class="left chevron icon"></i>
-                                            </a>
-                                            <a class="item">上一页</a>
-                                            <a class="item">下一页</a>
-
-                                            <a class="icon item">
-                                                <i class="right chevron icon"></i>
-                                            </a>
-                                        </div>
-                                    </th>
-                                </tr>
-                                </tfoot>
-                            </table>
+                            <div class="visitorList" th:fragment="visitorList">
+                                <table class="ui  table attached segment-border-none"
+                                       style="text-align: center !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>IP</th>
+                                        <th>地区</th>
+                                        <th>浏览器</th>
+                                        <th>系统</th>
+                                        <th>访问时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="visitor,itemStat:${visitorPageInfo.getList()}">
+                                        <td th:text="${itemStat.count}">1</td>
+                                        <td th:text="${visitor.ip}">127.0.0.1</td>
+                                        <td th:if="visitor.black==0" th:text="${visitor.ip}" style="background-color: black;color: white">127.0.0.1</td>
+                                        <td th:text="${visitor.city}">四川省成都市</td>
+                                        <td th:text="${visitor.browsetype}">Chrome</td>
+                                        <td th:text="${visitor.ostype}">windows</td>
+                                        <td th:text="${#dates.format(visitor.time,'yyyy-MM-dd HH:mm:ss')}">2019-12-7
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${visitorPageInfo.getList().size()==0}">
+                                        <td colspan="6">
+                                            没有符合条件的记录
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr th:if="${visitorPageInfo.getList().size()>10}">
+                                        <th colspan="10">
+                                            每页显示数据量
+                                            <select name="gender" class="ui dropdown" id="select">
+                                                <option value="male">10条</option>
+                                                <option value="female">30条</option>
+                                            </select>
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -394,4 +126,51 @@
 </div>
 </body>
 <th:block th:replace="_fragments::adminscript"></th:block>
+
+
+<script type="text/javascript">
+    //日期重置
+    $("#reSet").click(function () {
+        $("#startTime").val("");
+        $("#endTime").val("");
+    });
+
+
+    function searchVisitorByArgs(args) {
+        $.ajax({
+            url: "/admin/getVisitorByArgs",
+            data: {args: args},
+            type: 'GET',
+            success: function (data) {
+                $(".visitorList").html(data);
+            }
+        });
+    }
+
+
+    $("#searchLogByTime").click(function () {
+        var startTime = $("#startTime").val();
+        var endTime = $("#endTime").val();
+        $.ajax({
+            url: "/admin/getVisitorByTime",
+            data: {startTime: startTime, endTime: endTime},
+            type: "GET",
+            success: function (data) {
+                $(".visitorList").html(data);
+            },
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        })
+    });
+
+
+    $("#reSetTime").click(function () {
+        $("#startTime").val("");
+        $("#endTime").val("");
+    });
+
+
+</script>
 </html>

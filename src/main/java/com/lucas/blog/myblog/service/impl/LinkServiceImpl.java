@@ -41,6 +41,7 @@ public class LinkServiceImpl implements LinkService {
 	public PageInfo<Link> getLinkByPage(Integer startPage, Integer pageSize) {
 		PageHelper.startPage(0, 20);
 		Example example = new Example(Article.class);
+		example.setOrderByClause("addTime DESC");
 		PageInfo<Link> pageInfo = new PageInfo<>(linkMapper.selectByExample(example));
 		return pageInfo;
 	}
@@ -56,7 +57,7 @@ public class LinkServiceImpl implements LinkService {
 	@Override
 	public Integer getLinkCountNotCheck() {
 		Example example = new Example(Link.class);
-		example.createCriteria().andEqualTo("isAgree", 0);
+		example.createCriteria().andEqualTo("isagree", 0);
 		return linkMapper.selectCountByExample(example);
 	}
 
@@ -71,7 +72,7 @@ public class LinkServiceImpl implements LinkService {
 	@Override
 	public Integer getLinkCountChecked() {
 		Example example = new Example(Link.class);
-		example.createCriteria().andEqualTo("isAgree", 1);
+		example.createCriteria().andEqualTo("isagree", 1);
 		return linkMapper.selectCountByExample(example);
 	}
 
@@ -96,15 +97,15 @@ public class LinkServiceImpl implements LinkService {
 	 * @date: 2019/9/25 18:07
 	 * @param: 友链的状态 0 没有被验证通过  1验证通过
 	 * @return: List<Link>
-	 */
+	 *//*
 	@Override
 	public List<Link> getLinksListCheckedOrNot(Integer status) {
 		Example example = new Example(Link.class);
-		example.createCriteria().andEqualTo("isAgree", status);
+		example.createCriteria().andEqualTo("isagree", status);
 		return linkMapper.selectByExample(example);
 	}
 
-
+*/
 	/**
 	 * Description:   验证友链通过
 	 *
@@ -135,6 +136,7 @@ public class LinkServiceImpl implements LinkService {
 	public Integer deleteLink(Integer id) {
 		Example example = new Example(Link.class);
 		example.createCriteria().andEqualTo("id", id);
+
 		return linkMapper.deleteByExample(example);
 	}
 

@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Microsoft yahei", Arial;
+    background: #eeeeee;
+}
+.box{
+    width: 1150px;
+    height: 500px;
+    margin: 50px auto;
+}
+.box h3{
+    text-align: center;
+    line-height: 50px;
+}
+.box ul li{
+    float: left;
+    width: 190px;
+    height: 190px;
+    background: #979797;
+    border: solid 10px #979797;
+    margin: 0 20px 20px 0;
+    list-style: none;
+    position: relative;
+    overflow: hidden;
+}
+.box ul li .cover a{
+    width: 30px;
+    height: 30px;
+    background: #ffffff;
+    display: block;
+    border-radius: 50%;
+    line-height: 30px;
+    margin: 30px auto;
+
+}
+.box ul li .cover a i{
+    color: red;
+}
+/* ���ֲ� */
+.box ul li .cover{
+    width: 190px;
+    height: 190px;
+    background: rgba(255,39,42,0.7);
+    position: absolute;
+    left: 0;
+    top: 0;
+    text-align: center;
+    color: #ffffff;
+    transform-origin: right bottom;
+    transform: rotate(90deg);
+    transition: all 0.35s;
+}
+.box ul li .cover p{
+    margin-top: 10px;
+    font-size: 14px;
+}
+.box ul li:hover .cover{
+    transform: rotate(0deg);
+}

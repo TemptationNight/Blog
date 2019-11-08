@@ -19,7 +19,7 @@ public interface LinkService {
 	public Integer getLinkCountNotCheck();
 	public Integer getLinkCountChecked();
 	public Integer getCount();
-	public List<Link> getLinksListCheckedOrNot(Integer status);
+	/*public List<Link> getLinksListCheckedOrNot(Integer status);*/
 	public Integer setLinkChecked(Integer id);
 
 

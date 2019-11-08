@@ -1,7 +1,5 @@
 package com.lucas.blog.myblog.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
@@ -41,7 +39,6 @@ public class Website implements Serializable {
     /**
      * 最后更新时间
      */
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
     @Column(name = "endUpdateTime")
     private Date endupdatetime;
 
@@ -51,21 +48,7 @@ public class Website implements Serializable {
     @Column(name = "browseNum")
     private Integer browsenum;
 
-
-    public Website(){}
-
-
-	public Website(Integer articlenum, Integer commmentsnum, Integer categorynum, Integer keywordnum, Integer linksnum, Date endupdatetime, Integer browsenum) {
-		this.articlenum = articlenum;
-		this.commmentsnum = commmentsnum;
-		this.categorynum = categorynum;
-		this.keywordnum = keywordnum;
-		this.linksnum = linksnum;
-		this.endupdatetime = endupdatetime;
-		this.browsenum = browsenum;
-	}
-
-	/**
+    /**
      * 获取网站文章数量
      *
      * @return articleNum - 网站文章数量
@@ -190,4 +173,20 @@ public class Website implements Serializable {
     public void setBrowsenum(Integer browsenum) {
         this.browsenum = browsenum;
     }
+
+
+	public Website(Integer articlenum, Integer commmentsnum, Integer categorynum, Integer keywordnum, Integer linksnum, Date endupdatetime, Integer browsenum) {
+		this.articlenum = articlenum;
+		this.commmentsnum = commmentsnum;
+		this.categorynum = categorynum;
+		this.keywordnum = keywordnum;
+		this.linksnum = linksnum;
+		this.endupdatetime = endupdatetime;
+		this.browsenum = browsenum;
+	}
+
+
+	public Website() {
+		super();
+	}
 }
