@@ -26,10 +26,9 @@ import java.util.List;
 public interface VisitorIpMapper extends Mapper<Visitor>{
 	@Select("select * from visitor group by ip")
 	List<Visitor> getVisitorGroupByIp();
-
 	@Select("select * from visitor where black=0 group by ip")
 	List<Visitor> getBlackVisitorIp();
-
-
 }
+
+
 
