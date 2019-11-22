@@ -42,9 +42,25 @@ public class Visitor implements Serializable{
     @Column(name = "osType")
     private String ostype;
 
+
+	/**
+	 * 是否为黑名单   0否  1是
+	 */
     private Integer black;
 
-	public Visitor(Date time, String ip, String city, String url, String browsetype, String ostype, int black) {
+
+	public Integer getVisitCount() {
+		return visitCount;
+	}
+
+	public void setVisitCount(Integer visitCount) {
+		this.visitCount = visitCount;
+	}
+
+	@Column(name = "visitCount")
+    private Integer visitCount;
+
+	public Visitor(Date time, String ip, String city, String url, String browsetype, String ostype, int black,Integer visitCount) {
 		this.time=time;
 		this.ip=ip;
 		this.city=city;
@@ -52,6 +68,7 @@ public class Visitor implements Serializable{
 		this.browsetype=browsetype;
 		this.ostype=ostype;
 		this.black=black;
+		this.visitCount=visitCount;
 	}
 
 	/**

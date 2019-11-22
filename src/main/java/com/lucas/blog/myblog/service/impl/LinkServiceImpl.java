@@ -3,11 +3,13 @@ package com.lucas.blog.myblog.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lucas.blog.myblog.entity.Article;
+import com.lucas.blog.myblog.entity.Category;
 import com.lucas.blog.myblog.entity.Link;
 import com.lucas.blog.myblog.mapper.LinkMapper;
 import com.lucas.blog.myblog.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
@@ -29,31 +31,14 @@ public class LinkServiceImpl implements LinkService {
 	@Autowired
 	private LinkMapper linkMapper;
 
-	/**
-	 * Description:  获取所有的友链
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/24 12:36
-	 * @param:m
-	 * @return: List<Link>
-	 */
+	//获取所有的友链
 	@Override
-	public PageInfo<Link> getLinkByPage(Integer startPage, Integer pageSize) {
-		PageHelper.startPage(0, 20);
-		Example example = new Example(Article.class);
-		example.setOrderByClause("addTime DESC");
-		PageInfo<Link> pageInfo = new PageInfo<>(linkMapper.selectByExample(example));
-		return pageInfo;
+	public List<Link> getLinkList() {
+		return linkMapper.selectAll();
 	}
 
-	/**
-	 * Description:  获取未验证的友链的个数
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/24 12:36
-	 * @param:
-	 * @return: Integer
-	 */
+
+	//获取未验证的友链的个数
 	@Override
 	public Integer getLinkCountNotCheck() {
 		Example example = new Example(Link.class);
@@ -61,14 +46,9 @@ public class LinkServiceImpl implements LinkService {
 		return linkMapper.selectCountByExample(example);
 	}
 
-	/**
-	 * Description:     获取已经验证的友链的个数
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/24 12:36
-	 * @param:
-	 * @return: Integer
-	 */
+
+
+	//获取已经验证的友链的个数
 	@Override
 	public Integer getLinkCountChecked() {
 		Example example = new Example(Link.class);
@@ -76,44 +56,18 @@ public class LinkServiceImpl implements LinkService {
 		return linkMapper.selectCountByExample(example);
 	}
 
-	/**
-	 * Description:  获取友链的总数目
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/25 18:10
-	 * @param:
-	 * @return: Integer
-	 */
+
+	//获取友链的总数目
 	@Override
 	public Integer getCount() {
 		Example example = new Example(Link.class);
 		return linkMapper.selectCountByExample(example);
 	}
 
-	/**
-	 * Description:   获取已经通过验证或没有通过验证的友链
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/25 18:07
-	 * @param: 友链的状态 0 没有被验证通过  1验证通过
-	 * @return: List<Link>
-	 *//*
-	@Override
-	public List<Link> getLinksListCheckedOrNot(Integer status) {
-		Example example = new Example(Link.class);
-		example.createCriteria().andEqualTo("isagree", status);
-		return linkMapper.selectByExample(example);
-	}
 
-*/
-	/**
-	 * Description:   验证友链通过
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/25 20:15
-	 * @param:
-	 * @return: Integer
-	 */
+
+	//验证友链通过
+	@Transactional
 	@Override
 	public Integer setLinkChecked(Integer id) {
 		Example example = new Example(Link.class);
@@ -124,14 +78,9 @@ public class LinkServiceImpl implements LinkService {
 	}
 
 
-	/**
-	 * Description:    删除友链
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/25 20:40
-	 * @param: 友链id
-	 * @return: Integer
-	 */
+
+	//删除友链
+	@Transactional
 	@Override
 	public Integer deleteLink(Integer id) {
 		Example example = new Example(Link.class);
@@ -140,53 +89,48 @@ public class LinkServiceImpl implements LinkService {
 		return linkMapper.deleteByExample(example);
 	}
 
-	/**
-	 * Description:   获取友链点击量
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/25 21:21
-	 * @param:
-	 * @return: Integer
-	 */
+
+	/*//获取友链点击量
 	@Override
 	public Integer getClickNum(Integer id) {
 		Example example = new Example(Link.class);
 		example.createCriteria().andEqualTo("id", id);
 		Link link = linkMapper.selectByPrimaryKey(example);
 		return link.getClicknum();
-	}
+	}*/
 
-	/**
-	 * Description:  友链点击量+1
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/25 21:21
-	 * @param:
-	 * @return: Integer
-	 */
+
+	//友链点击量+1
+	@Transactional
 	@Override
 	public Integer clickNumAddOne(Integer id) {
 		Example example = new Example(Link.class);
 		example.createCriteria().andEqualTo("id", id);
-		Link link = linkMapper.selectByPrimaryKey(example);
+		Link link = linkMapper.selectOneByExample(example);
+		System.out.println(link.getLinkname());
 		Integer clickNum = link.getClicknum() + 1;
 		Link link1 = new Link();
 		link1.setClicknum(clickNum);
+		System.out.println(link1.getLinkname());
 		return linkMapper.updateByExampleSelective(link1, example);
 	}
 
-	/**
-	 * Description:   添加友链
-	 *
-	 * @author: Lucas
-	 * @date: 2019/9/27 14:13
-	 * @param:
-	 * @return: Integer
-	 */
+
+	// 添加友链
+	@Transactional
 	@Override
 	public Integer addLink(String url, String name) {
 		Link link = new Link(url,name,0,0,new Date());
 		return linkMapper.insert(link);
+	}
+
+	//搜索友链
+	@Override
+	public List<Link> getLinkByArgs(String args) {
+		Example example=new Example(Link.class);
+		example.createCriteria().orLike("linkname","%"+args+"%");
+		List<Link> links = linkMapper.selectByExample(example);
+		return links;
 	}
 
 

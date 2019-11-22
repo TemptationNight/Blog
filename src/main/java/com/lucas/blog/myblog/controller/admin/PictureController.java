@@ -9,6 +9,8 @@ package com.lucas.blog.myblog.controller.admin;/**
  */
 
 
+import com.lucas.blog.myblog.aop.ActionType;
+import com.lucas.blog.myblog.aop.SystemLog;
 import com.lucas.blog.myblog.entity.Category;
 import com.lucas.blog.myblog.entity.Picture;
 import com.lucas.blog.myblog.service.CategoryService;
@@ -70,6 +72,7 @@ public class PictureController {
 
 
 
+	@SystemLog(description = "添加图片:",actionType = ActionType.INSERT)
 	@PostMapping("/uploadFile")
 	public String uploadFile(@RequestParam("files") MultipartFile[] files) {
 		//文件不为空
@@ -102,6 +105,7 @@ public class PictureController {
 	}
 
 
+	@SystemLog(description = "删除图片:",actionType = ActionType.DELETE)
 	@GetMapping("/picture/{id}/deleteFile")
 	public String deleteFile(@PathVariable Integer id) {
 		if (id != null) {

@@ -34,6 +34,9 @@ public class Link implements Serializable{
     @Column(name = "addTime")
     private Date addtime;
 
+	/**
+	 * 点击量
+	 */
     @Column(name = "clickNum")
     private Integer clicknum;
 

@@ -1,12 +1,4 @@
-package com.lucas.blog.myblog.aop;/**
- * @ProjectName: myblog
- * @Package: com.lucas.blog.myblog.aop
- * @ClassName: SystenLogAspect
- * @Author: Heyuanhui
- * @Description: ${description}
- * @Date: 2019/10/26 21:52
- * @Version: 1.0
- */
+package com.lucas.blog.myblog.aop;
 
 import com.lucas.blog.myblog.entity.Log;
 import com.lucas.blog.myblog.service.LogService;
@@ -43,7 +35,7 @@ public class SystenLogAspect {
 	@Autowired
 	private LogService logServiceImpl;
 
-	// Service层切点
+	// Controller层切点
 	@Pointcut("@annotation(com.lucas.blog.myblog.aop.SystemLog)")
 	public void serviceAspect() {
 	}
@@ -54,30 +46,17 @@ public class SystenLogAspect {
 		try {
 			// 数据库日志
 			Log log = new Log();
-
 			// 获取日志描述信息
 			log.setUsertype(getUserType(joinPoint));
-			System.out.println(getActionType(joinPoint));
-
-			log.setArgs(joinPoint.getArgs()[0].toString());
-			System.out.println(joinPoint.getArgs()[0].toString());
-
-
+			String args=joinPoint.getArgs().toString();
+			log.setArgs(args);
 			log.setDescription(getDescription(joinPoint));
-			System.out.println(getDescription(joinPoint));
-
-
 			log.setTime(new Date());
 			log.setActionType(String.valueOf(getActionType(joinPoint)));
-			System.out.println(String.valueOf(getActionType(joinPoint)));
-
-
 			log.setIp(UserAgentUtils.getIp(request));
-			System.out.println(UserAgentUtils.getIp(request));
 			if (!log.getArgs().equals("none")) {
 				logServiceImpl.insertLog(log);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

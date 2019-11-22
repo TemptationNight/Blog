@@ -6,31 +6,16 @@
 <head th:replace="_fragments::adminHead(~{::title})">
     <title>博客分类</title>
 </head>
-
-
 <body style="background: white">
 <div id="contextWrap">
     <!--左侧菜单栏-->
-    <div th:replace="_fragments::leftmenu"
-         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
-         style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey">
-
-    </div>
-
+    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
     <!--右侧隐藏小菜单-->
-    <div th:replace="_fragments::rightmenu" class="ui right sidebar">
-
-    </div>
-
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
     <!--中间部分-->
     <div class="pusher">
-
         <!--头部导航栏-->
-        <div th:replace="_fragments::topmenu" class="navslide navwrap ">
-
-        </div>
-
-
+        <div th:replace="_fragments::topmenu" class="navslide navwrap "></div>
         <!--正文内容-->
         <div class="mainWrap navslide">
             <div class="ui segment  segment-border-none">
@@ -52,7 +37,7 @@
                                 <input name="type_name" id="newType" type="text" placeholder="类别名称"/>
                                 <div id="addType" class="ui button">增加</div>
                             </form>
-                            <table class="ui  table left aligned" style=" border:0;background: #eaeaea">
+                            <table class="ui  table left aligned" style=" border:0;">
                                 <thead>
                                 <tr>
                                     <th>博客分类</th>
@@ -60,8 +45,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="type:${pageInfo.getList()}">
-
+                                <tr th:each="type:${list}">
                                     <td th:text="${type.categoryname}">1</td>
                                     <td>
                                         <div class="ui label teal"
@@ -69,7 +53,6 @@
                                         </div>
                                     </td>
                                 </tr>
-
                                 </tbody>
                             </table>
                         </div>
@@ -81,81 +64,68 @@
                                 <div class="ui two column grid  middle aligned">
                                     <div class="column">
                                         <h2 class="ui header ">博客类别</h2>
-                                        <button id="fresh" type="button" class="ui button basic mini">
+                                        <button id="fresh" type="button" class="ui button basic small">
                                             刷新&nbsp;&nbsp;&nbsp; <a href=""><i class="refresh icon"></i></a>
                                         </button>
                                     </div>
                                     <div class="right aligned column">
                                         <div class="ui  action input ">
-                                            <input type="text" placeholder="Search...">
-                                            <button class="ui icon button">
+                                            <input type="text" placeholder="Search..." class="searchArgs">
+                                            <button class="ui icon button" th:onclick="search()">
                                                 <i class="search icon"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
-                            <table class="ui  attached red table middle aligned segment-border-none" frame="void"
-                                   rules="none" style="text-align: center !important;">
-                                <thead>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>类别</th>
-                                    <th>数量</th>
-                                    <th>发表时间</th>
-                                    <th>操做</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="type,iterStat:${pageInfo.getList()}">
-                                    <td th:text="${iterStat.count}">1</td>
-                                    <td th:id="${type.id}" th:text="${type.categoryname}">java</td>
-                                    <td th:text="${type.articlenum}">11</td>
-                                    <td th:text="${type.addtime}">2019-09-01</td>
-                                    <td>
-                                        <button th:onclick="'javascript:updateType('+${type.id}+');'"
-                                                class="ui button teal mini editType"><i class="edit icon"></i>编辑
-                                        </button>
-                                        <a href="#" th:href="@{/admin/delete/{id}/category(id=${type.id})}"
-                                           class="ui button red mini"><i class="trash icon"></i>删除
-                                        </a>
-                                    </td>
-                                </tr>
-
-                                </tbody>
-                                <tfoot>
-                                <tr th:if="${pageInfo.getList().size()>=10}">
-                                    <th colspan="10">
-                                        每页显示数据量
-                                        <select name="gender" class="ui dropdown" id="select">
-                                            <option value="male">10条</option>
-                                            <option value="female">30条</option>
-                                        </select>
-                                        <!-- <div class="ui right floated pagination menu">
-                                             <a class="icon item">
-                                                 <i class="left chevron icon"></i>
-                                             </a>
-
-                                             <a th:href="@{admin/categorys/(startPage=${ pageInfo.getPrePage()})}"
-                                                class="item">上一页</a>
-                                             <a th:href="@{admin/categorys/(startPage=${pageInfo.getNextPage()})}"
-                                                class="item">下一页</a>
-                                             <a class="icon item">
-                                                 <i class="right chevron icon"></i>
-                                             </a>
-                                         </div>-->
-                                    </th>
-                                </tr>
-                                </tfoot>
-                            </table>
+                            <div class="typeList" th:fragment="typeList">
+                                <table class="ui  attached red table middle aligned segment-border-none" frame="void"
+                                       rules="none" style="text-align: center !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>类别</th>
+                                        <th>数量</th>
+                                        <th>发表时间</th>
+                                        <th>操做</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="type,iterStat:${list}">
+                                        <td th:text="${iterStat.count}">1</td>
+                                        <td th:id="${type.id}" th:text="${type.categoryname}">java</td>
+                                        <td th:text="${type.articlenum}">11</td>
+                                        <td th:text="${type.addtime}">2019-09-01</td>
+                                        <td>
+                                            <button th:onclick="'javascript:updateType('+${type.id}+');'"
+                                                    class="ui button teal mini editType"><i class="edit icon"></i>编辑
+                                            </button>
+                                            <a href="#" th:href="@{/admin/delete/{id}/category(id=${type.id})}"
+                                               class="ui button red mini"><i class="trash icon"></i>删除
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="10" th:if="${list.size()==0}">
+                                            暂无分类
+                                        </th>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th colspan="10" th:if="${list.size()>=1}">
+                                            总共[[${list.size()}]]条记录
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!--弹出层-->
         <div class="ui modal small">
             <i class="close icon"></i>
             <div class="header">
@@ -184,18 +154,10 @@
         </div>
     </div>
 </div>
-
-
 </body>
-
-
 <th:block th:replace="_fragments::adminscript">
 </th:block>
-
-
 <script type="text/javascript">
-
-
     //添加一个类别
     $("#addType").click(function () {
         var data = $("#newType").val();
@@ -215,17 +177,15 @@
         });
     });
 
-
     //编辑类别名称
     var ID = "";
-
     function updateType(id) {
         ID = id;
     }
 
+    //修改类别
     $("#updateType").click(function () {
         var data = $("#editType").val();
-        alert("ID=" + ID + "data=" + data);
         $.ajax({
             url: "/admin//update/category",
             data: {name: data, id: ID},
@@ -233,18 +193,11 @@
             success: function () {
                 window.location.reload();
             },
-
-
             error: function () {
-                console.log(e.status);
-                console.log(e.responseText);
-
+                alert("错误");
             }
-
-
         });
     });
-
 
     //点击刷新数据
     $("#fresh").click(function () {
@@ -255,31 +208,30 @@
         });
     });
 
-
     //弹出层
     $(".editType").click(function () {
         $('.modal').modal('show')
         ;
     });
 
-
-    //表单校验
-    $('.ui.input')
-        .form({
-            name: {
-                identifier: 'type_name',
-                rules: [
-                    {
-                        type: 'empty',
-                        prompt: 'Please enter your name'
-                    }
-                ]
-            }
-
-        })
-    ;
-
+    //搜索数据
+    function search() {
+        var args = $(".searchArgs").val();
+        if(args===null){
+            alert("请输入");
+        }else {
+            $.ajax({
+                url:"/admin/searchTypesByArgs",
+                data:{args:args},
+                type:"GET",
+                success:function (data) {
+                    $(".typeList").html(data);
+                },
+                error:function () {
+                    alert("错误");
+                }
+            });
+        }
+    }
 </script>
-
-
 </html>

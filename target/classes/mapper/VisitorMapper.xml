@@ -14,4 +14,7 @@
     <result column="osType" jdbcType="VARCHAR" property="ostype" />
     <result column="black" jdbcType="INTEGER" property="black" />
   </resultMap>
+
+
+
 </mapper>

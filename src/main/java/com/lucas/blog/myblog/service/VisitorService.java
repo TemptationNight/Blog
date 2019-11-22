@@ -2,6 +2,8 @@ package com.lucas.blog.myblog.service;
 
 import com.github.pagehelper.PageInfo;
 import com.lucas.blog.myblog.entity.Visitor;
+import org.apache.ibatis.annotations.Param;
+
 
 import java.util.Date;
 import java.util.List;
@@ -30,8 +32,30 @@ public interface VisitorService {
 
 	Integer getUserCount();
 
-	public List<Visitor> getVisitorGroupByIp();
+	List<Visitor> getVisitorGroupByIp(Integer startPage,Integer pageSize);
 
 	List<Visitor> getBlackVisitorIp();
 
+	List<Visitor> getBlackByArgs(String args);
+
+	List<Visitor> getStatisticByArgs(String args,Integer startPage,Integer pageSize);
+
+	Integer addBlack(String ip);
+
+	Integer outBlack(String ip);
+
+	List<Visitor> getVisitorByIp(String ip);
+
+	Integer getIpCount();
+
+	Integer getCountByArgs(String args);
+	Integer getCountByTime(Date startTime, Date endTime);
+
+	Integer getIpCountByArgs(String args);
+
+	Integer getBlackIpCount();
+
+	/*Integer getCountByArgs(String args);*/
+
+	//getVisitorGroupByIpgetStatisticByArgs
 }

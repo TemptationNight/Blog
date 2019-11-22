@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ProjectName: myblog
@@ -34,12 +35,12 @@ public class CategoryControllerAdmin {
 
 	@GetMapping("/categorys")
 	public String categorys(Model model, Integer startPage, Integer pageSize) {
-		PageInfo<Category> pageInfo = categoryServiceImpl.getCategoryPage(startPage, pageSize);
-		model.addAttribute("pageInfo", pageInfo);
-		System.out.println("请求");
+		List<Category> list = categoryServiceImpl.getCategoryList();
+		Integer typeCount = categoryServiceImpl.getCategoryCount();
+		model.addAttribute("typeCount", typeCount);
+		model.addAttribute("list", list);
 		return "admin/types";
 	}
-
 
 
 	@SystemLog(description = "修改类别：", actionType = ActionType.UPDATE)
@@ -55,7 +56,7 @@ public class CategoryControllerAdmin {
 	}
 
 
-	@SystemLog(description = "删除类别:",actionType = ActionType.DELETE)
+	@SystemLog(description = "删除类别:", actionType = ActionType.DELETE)
 	@GetMapping("/delete/{id}/category")
 	public String deleteCategory(@PathVariable Integer id) {
 		//删除类下面的文章再删除类   逻辑交给service层实现
@@ -79,4 +80,14 @@ public class CategoryControllerAdmin {
 		}
 		return "redirect:/admin/categorys";
 	}
+
+
+	@GetMapping("/searchTypesByArgs")
+	public String searchByArgs(String args,Model model) {
+		List<Category> list = categoryServiceImpl.getTypeByArgs(args);
+		model.addAttribute("list",list);
+		return "admin/types::typeList";
+	}
+
+
 }

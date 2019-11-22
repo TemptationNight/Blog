@@ -1,14 +1,12 @@
 package com.lucas.blog.myblog.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.lucas.blog.myblog.entity.Article;
 import com.lucas.blog.myblog.entity.Category;
+
 import com.lucas.blog.myblog.exception.NotFoundException;
 import com.lucas.blog.myblog.mapper.CategoryMapper;
 import com.lucas.blog.myblog.service.CategoryService;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -34,14 +32,12 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryMapper categoryMapper;
 
 
-
 	/**
 	 * @Method
 	 * @Author Lenovo
-	 * @Version  1.0
-	 * @Description   添加一个类别
-
-	 * @Return   Integer
+	 * @Version 1.0
+	 * @Description 添加一个类别
+	 * @Return Integer
 	 * @Exception
 	 * @Date 2019/9/17 9:27
 	 */
@@ -54,9 +50,9 @@ public class CategoryServiceImpl implements CategoryService {
 	/**
 	 * @Method
 	 * @Author Lenovo
-	 * @Version  1.0
-	 * @Description    删除一个类
-	 * @Return   Integer
+	 * @Version 1.0
+	 * @Description 删除一个类
+	 * @Return Integer
 	 * @Exception
 	 * @Date 2019/9/17 9:28
 	 */
@@ -65,12 +61,11 @@ public class CategoryServiceImpl implements CategoryService {
 	public Integer deleteCategory(Integer id) {
 		Example example = new Example(Category.class);
 		example.createCriteria().andCondition("id=", id);
-
 		Category category = categoryMapper.selectOneByExample(example);
-		if(category.getArticlenum()!=null){
+		if (category.getArticlenum() != null) {
 			//先要删除该类下的文章
-			Example example1=new Example(Article.class);
-			example1.createCriteria().andCondition("categoryid=",category.getId());
+			Example example1 = new Example(Article.class);
+			example1.createCriteria().andCondition("categoryid=", category.getId());
 		}
 		return categoryMapper.deleteByExample(example);
 	}
@@ -79,10 +74,9 @@ public class CategoryServiceImpl implements CategoryService {
 	/**
 	 * @Method
 	 * @Author Lenovo
-	 * @Version  1.0
-	 * @Description  修改一个类别
-
-	 * @Return  Integer
+	 * @Version 1.0
+	 * @Description 修改一个类别
+	 * @Return Integer
 	 * @Exception
 	 * @Date 2019/9/17 9:29
 	 */
@@ -90,21 +84,18 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public Integer updateCategory(Integer id, Category category) {
 		Category c = categoryMapper.selectByPrimaryKey(id);
-
 		if (c == null) {
 			throw new NotFoundException("没有找到该类");
 		}
 		c.setCategoryname(category.getCategoryname());
-		return  categoryMapper.updateByPrimaryKeySelective(c);
+		return categoryMapper.updateByPrimaryKeySelective(c);
 	}
-
 
 	/**
 	 * @Method
 	 * @Author Lenovo
-	 * @Version  1.0
-	 * @Description      根据id获取一个类别
-
+	 * @Version 1.0
+	 * @Description 根据id获取一个类别
 	 * @Return
 	 * @Exception
 	 * @Date 2019/9/17 9:29
@@ -119,7 +110,6 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public List<Category> getCategoryList() {
-
 		return categoryMapper.selectAll();
 	}
 
@@ -127,43 +117,42 @@ public class CategoryServiceImpl implements CategoryService {
 	/**
 	 * @Method
 	 * @Author Lenovo
-	 * @Version  1.0
+	 * @Version 1.0
 	 * @Description 根据名称获取一个类别
-
 	 * @Return
 	 * @Exception
 	 * @Date 2019/9/17 9:29
 	 */
 	@Override
-	public Category getCategoryByName(String name ) {
-		Example example=new Example(Category.class);
-		example.createCriteria().andCondition("categoryName=",name);
-		 return categoryMapper.selectOneByExample(example);
+	public Category getCategoryByName(String name) {
+		Example example = new Example(Category.class);
+		example.createCriteria().andCondition("categoryName=", name);
+		return categoryMapper.selectOneByExample(example);
 
 	}
 
 
 	/**
-	 * @Method
-	 * @Author Lenovo
-	 * @Version  1.0
-	 * @Description          获取分页信息
-
-	 * @Return
-	 * @Exception
-	 * @Date 2019/9/17 9:30
+	 * Description:   获取记录数
+	 *
+	 * @author: Lucas
+	 * @date: 2019/11/11 15:45
+	 * @param:
+	 * @return:
 	 */
-	@Transactional
 	@Override
-	public PageInfo<Category> getCategoryPage(Integer startPage, Integer pageSize) {
-		PageHelper.startPage(0, 20);
+	public Integer getCategoryCount() {
 		Example example = new Example(Category.class);
-		example.setOrderByClause("addTime DESC");
-		PageInfo<Category> pageInfo = new PageInfo<>(categoryMapper.selectByExample(example));
-		return  pageInfo;
+		return categoryMapper.selectCountByExample(example);
 	}
 
-
+	@Override
+	public List<Category> getTypeByArgs(String args) {
+		Example example = new Example(Category.class);
+		example.createCriteria().orLike("categoryname", "%" + args + "%");
+		List<Category> categories = categoryMapper.selectByExample(example);
+		return categories;
+	}
 
 
 }

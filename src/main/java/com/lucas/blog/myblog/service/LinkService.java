@@ -1,6 +1,7 @@
 package com.lucas.blog.myblog.service;
 
 import com.github.pagehelper.PageInfo;
+import com.lucas.blog.myblog.entity.Category;
 import com.lucas.blog.myblog.entity.Link;
 
 import java.util.List;
@@ -15,20 +16,22 @@ import java.util.List;
  * @Version: 1.0
  */
 public interface LinkService {
-	public PageInfo<Link> getLinkByPage(Integer startPage,Integer pageSize);
-	public Integer getLinkCountNotCheck();
-	public Integer getLinkCountChecked();
-	public Integer getCount();
-	/*public List<Link> getLinksListCheckedOrNot(Integer status);*/
-	public Integer setLinkChecked(Integer id);
+	List<Link> getLinkList();
 
+	Integer getLinkCountNotCheck();
 
-	public  Integer deleteLink(Integer id);
+	Integer getLinkCountChecked();
 
+	Integer getCount();
 
-	public Integer getClickNum(Integer id);
-	public Integer clickNumAddOne(Integer id);
+	Integer setLinkChecked(Integer id);
 
-	public Integer addLink(String url,String name);
+	Integer deleteLink(Integer id);
+
+	Integer clickNumAddOne(Integer id);
+
+	Integer addLink(String url, String name);
+
+	List<Link> getLinkByArgs(String args);
 
 }

@@ -32,6 +32,11 @@ public interface LogService {
 	public PageInfo<Log>  getLogByTime(Date statTime, Date endTime,Integer startPage, Integer pageSize);
 
 
+	Integer getLogCount();
+
+
+	Integer getLogCountByArgs(String userType,String args);
+	Integer getLogByTime(Date startTime,Date endTime);
 
 
 

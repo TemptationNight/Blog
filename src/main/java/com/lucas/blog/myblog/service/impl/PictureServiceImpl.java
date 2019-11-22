@@ -13,6 +13,7 @@ import com.lucas.blog.myblog.mapper.PictureMapper;
 import com.lucas.blog.myblog.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class PictureServiceImpl  implements PictureService{
 	 * @param:     图片实体
 	 * @return:     Integer
 	 */
+	@Transactional
 	@Override
 	public Integer addPicture(Picture picture) {
 		return  pictureMapper.insert(picture);
@@ -81,6 +83,7 @@ public class PictureServiceImpl  implements PictureService{
 	 * @param:     id
 	 * @return:  Integer
 	 */
+	@Transactional
 	@Override
 	public Integer deletePicture(Integer id) {
 		Example example=new Example(Picture.class);

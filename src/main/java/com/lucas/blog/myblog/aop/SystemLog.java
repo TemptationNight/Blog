@@ -12,7 +12,6 @@ import java.lang.annotation.*;
  * @Version: 1.0
  */
 
-
 @Documented
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

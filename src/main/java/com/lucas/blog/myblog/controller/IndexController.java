@@ -2,6 +2,7 @@ package com.lucas.blog.myblog.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @ProjectName: myblog
@@ -18,12 +19,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
+@RequestMapping("/customer")
 public class IndexController {
-
-
-
 	@GetMapping("/index")
 	public String  index(){
+		System.out.println("index");
 		return "index";
 	}
 }
+
+
+
+

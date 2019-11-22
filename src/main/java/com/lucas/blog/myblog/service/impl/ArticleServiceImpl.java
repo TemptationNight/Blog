@@ -30,13 +30,9 @@ public class ArticleServiceImpl implements ArticleService {
 	@Autowired
 	private ArticleMapper articleMapper;
 
-	/**
-	 * Description:         获取文章分页信息
-	 * @author: Lucas
-	 * @date: 2019/9/23 21:34
-	 * @param:
-	 * @return: pageInfo
-	 */
+
+
+	//获取文章分页
 	@Override
 	public PageInfo<Article> getArticleByPage(Integer startPage, Integer pageSize) {
 		PageHelper.startPage(0, 20);
@@ -45,27 +41,19 @@ public class ArticleServiceImpl implements ArticleService {
 		return  pageInfo;
 	}
 
-	/**
-	 * Description:   添加文章
-	 * @author: Lucas
-	 * @date: 2019/9/23 21:34
-	 * @param:
-	 * @return: Integer
-	 */
+	//发布文章
 	@Transactional
 	@Override
 	public Integer addArticle(Article article) {
+		System.out.println("======================================================");
+		System.out.println(article.toString());
 		return articleMapper.insert(article);
 	}
 
 
-	/**
-	 * Description:       删除一个文章
-	 * @author: Lucas
-	 * @date: 2019/9/23 21:34
-	 * @param:
-	 * @return: Integer
-	 */
+
+
+	//根据id删除一个文章
 	@Transactional
 	@Override
 	public Integer deleteArticle(Integer id) {
@@ -74,25 +62,15 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.deleteByExample(example);
 	}
 
-	/**
-	 * Description:       获取所有所有文章信息
-	 * @author: Lucas
-	 * @date: 2019/9/23 21:39
-	 * @param:
-	 * @return:      List<Article>
-	 */
+
+	//获取所有的文章
 	@Override
 	public List<Article> articleList() {
 		return articleMapper.selectAll();
 	}
 
-	/**
-	 * Description:     修改文章
-	 * @author: Lucas
-	 * @date: 2019/9/23 21:39
-	 * @param:
-	 * @return:      Integer
-	 */
+
+	//修改文章
 	@Transactional
 	@Override
 	public Integer updateArticle(Integer id, Article article) {
@@ -109,13 +87,9 @@ public class ArticleServiceImpl implements ArticleService {
 		return  articleMapper.updateByPrimaryKey(a);
 	}
 
-	/**
-	 * Description:  文章下架  文章下架
-	 * @author: Lucas
-	 * @date: 2019/9/23 21:39
-	 * @param:   文章id  文章发布状态    0 下架   1 上架
-	 * @return: Integer
-	 */
+
+
+	//文章上架  文章下架
 	@Transactional
 	@Override
 	public Integer upOrDownShilft(Integer id,Integer status) {
@@ -128,13 +102,8 @@ public class ArticleServiceImpl implements ArticleService {
 
 
 
-	/**
-	 * Description:      文章加推荐  文章取推荐
-	 * @author: Lucas
-	 * @date: 2019/9/25 15:56
-	 * @param:     文章id    文章的推荐状态  0 取消推荐     1 添加推荐
-	 * @return:  Integer
-	 */
+
+	//文章加推荐  取推荐
 	@Override
 	public Integer downOrUpRecommend(Integer id, Integer status) {
 		System.out.println("id="+id);
@@ -146,7 +115,12 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 
-
+	//获取文章的记录数
+	@Override
+	public Integer getArticleCount() {
+		Example example=new Example(Article.class);
+		return articleMapper.selectCountByExample(example);
+	}
 
 
 }

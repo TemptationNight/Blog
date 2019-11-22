@@ -8,6 +8,7 @@ import com.lucas.blog.myblog.mapper.LogMapper;
 import com.lucas.blog.myblog.service.LogService;
 import com.lucas.blog.myblog.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
@@ -66,7 +67,6 @@ public class LogServiceImpl implements LogService {
 
 	@Override
 	public PageInfo<Log> getLogByPageAdministrator(Integer startPage, Integer pageSize,String userType,String desc) {
-
 		PageHelper.startPage(startPage, pageSize);
 		Example example = new Example(Log.class);
 		//描述信息为空，则直接进行按照身份查询
@@ -81,8 +81,6 @@ public class LogServiceImpl implements LogService {
 	}
 
 
-
-	//其实上述2个方法可以合并成一个方法  但是为了保证代码的可读性和   清晰的功能划分 因此我将其拆成了2个方法
 
 
 	/**
@@ -136,9 +134,32 @@ public class LogServiceImpl implements LogService {
 		return pageInfo;
 	}
 
+	/**
+	 * Description:  返回日志记录总数
+	 * @author: Lucas
+	 * @date: 2019/11/11 15:40
+	 * @param:
+	 * @return:
+	 */
+	@Override
+	public Integer getLogCount() {
+		Example example=new Example(Log.class);
+		return logMapper.selectCountByExample(example);
+	}
 
+	//返回满足条件的日志记录数
 
+	@Override
+	public Integer getLogCountByArgs(String userType,String args) {
+		System.out.println(userType+""+args);
+		return logMapper.getCountByargs(userType,"%"+args+"%");
+	}
 
+	//返回满足时间条件的日志记录数
+	@Override
+	public Integer getLogByTime(Date startTime, Date endTime) {
+		return logMapper.getCountByTime(startTime,endTime);
+	}
 
 
 }

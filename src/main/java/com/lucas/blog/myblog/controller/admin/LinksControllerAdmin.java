@@ -34,41 +34,17 @@ public class LinksControllerAdmin {
 	//分页获取友链
 	@GetMapping("/links")
 	public String getLinks(Model model, Integer startPage, Integer pageSize) {
-		PageInfo<Link> pageInfo = linkServiceImpl.getLinkByPage(startPage, pageSize);
-
-
+		//PageInfo<Link> pageInfo = linkServiceImpl.getLinkByPage(startPage, pageSize);
+		List<Link> list=linkServiceImpl.getLinkList();
 		int linkCount = linkServiceImpl.getCount();
 		int linkNotChecked = linkServiceImpl.getLinkCountNotCheck();
 		int linkIsChecked = linkServiceImpl.getLinkCountChecked();
 		model.addAttribute("linkCount",linkCount).addAttribute("linkNotChecked",linkNotChecked).addAttribute("linkIsChecked",linkIsChecked);
-		model.addAttribute("linkPageInfo", pageInfo);
+		model.addAttribute("list", list);
+
 		return "admin/links";
 	}
 
-
-/*
-
-	//获取所有未处理的友链
-	@GetMapping("/unreadLinks")
-	public String unreadLinks(Model model){
-		List<Link> checkedNot = linkServiceImpl.getLinksListCheckedOrNot(0);
-		model.addAttribute("notCheck",checkedNot);
-		return "admin/unread_links";
-	}
-*/
-
-
-
-
-
-/*
-	//获取所有已经通过验证的友链
-	@GetMapping("/getLinksListChecked")
-	public String getLinksListChecked(Model model){
-		List<Link> checked = linkServiceImpl.getLinksListCheckedOrNot(1);
-		model.addAttribute("checked",checked);
-		return "redirect:/admin/links";
-	}*/
 
 
 	//删除友链
@@ -97,4 +73,21 @@ public class LinksControllerAdmin {
 	}
 
 
+	@GetMapping("/searchLinkByArgs")
+	public String searchByArgs(String args,Model model){
+		List<Link> list = linkServiceImpl.getLinkByArgs(args);
+		model.addAttribute("list", list);
+		return "admin/links::linkList";
+	}
+
+
+
+	@PostMapping("/clickAddOne")
+	public String clickAddOne(Integer id,Model model){
+		Integer integer = linkServiceImpl.clickNumAddOne(id);
+		System.out.println("integer="+integer);
+		List<Link> list=linkServiceImpl.getLinkList();
+		model.addAttribute("list", list);
+		return "admin/links::linkList";
+	}
 }

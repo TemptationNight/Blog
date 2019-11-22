@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragments::adminHead(~{::title})">
     <title>友情连接</title>
 </head>
 
-
 <body>
 <div id="contextWrap">
     <!--左侧菜单栏-->
-    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey">
-    </div>
+    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
     <!--右侧隐藏小菜单-->
-    <div th:replace="_fragments::rightmenu" class="ui right sidebar">
-    </div>
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
     <!--中间部分-->
     <div class="pusher">
         <!--头部导航栏-->
-        <div th:replace="_fragments::topmenu" class="navslide navwrap ">
-
-        </div>
+        <div th:replace="_fragments::topmenu" class="navslide navwrap "></div>
         <!--正文内容-->
         <div class="mainWrap navslide">
-          <!--  <div class="ui segment " style="background-color: #eaeaea">-->
-                <div class="ui segment " >
+            <!--  <div class="ui segment " style="background-color: #eaeaea">-->
+            <div class="ui segment segment-border-none">
                 <div class="ui grid">
                     <div class="ui four wide tab column">
                         <div class="ui segment teal center aligned  segment-border-none">
@@ -49,7 +43,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <i class="user icon large" ></i>
+                                        <i class="user icon large"></i>
                                         已审核
                                     </td>
                                     <td>
@@ -77,19 +71,19 @@
                                 <tbody>
                                 <tr>
                                     <td>
-                                        <div class="ui right labeled input mini">
-                                            <div class="ui label mini teal">
+                                        <div class="ui right labeled input small">
+                                            <div class="ui label small teal">
                                                 地址：
                                             </div>
                                             <input class="linkUrl" type="text" placeholder="连接地址">
                                         </div>
-                                        <div class="ui labeled input mini">
+                                        <div class="ui labeled input small">
                                             <div class="ui label teal">
                                                 名称：
                                             </div>
                                             <input class="linkName" type="text" placeholder="连接名称">
                                         </div>
-                                        <button id="addLink" class="ui icon button mini teal">
+                                        <button id="addLink" class="ui icon button small teal">
                                             提交
                                         </button>
                                     </td>
@@ -110,80 +104,80 @@
                                     </div>
                                     <div class="right aligned column">
                                         <div class="ui  action input ">
-                                            <input type="text" placeholder="Search...">
-                                            <button class="ui icon button">
+                                            <input type="text" placeholder="Search..." class="searchArgs">
+                                            <button class="ui icon button" th:onclick="search()">
                                                 <i class="search icon"></i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <table class="ui  attached red table middle aligned segment-border-hidden"
-                                   style="text-align: center !important;">
-                                <thead>
-                                <tr>
-                                    <th>序号</th>
-                                    <th>名称</th>
-                                    <th>点击数</th>
-                                    <th>状态</th>
-                                    <th>发表时间</th>
-                                    <th>操做</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr th:each="link,itemStat:${linkPageInfo.getList()}">
-                                    <td th:text="${itemStat.count}">1</td>
-                                    <td>
-                                        <a th:text="${link.linkname}" href="#" th:href="@{${link.linkurl}}" th:target="_blank">杨青个人博客</a>
-                                    </td>
-                                    <td th:text="${link.clicknum}">671</td>
-                                    <td>
-                                        <div class="ui label orange middle aligned" th:if="${link.isagree eq 1}">已审核</div>
-                                        <div class="ui label black middle aligned" th:if="${link.isagree eq 0}">未审核</div>
-                                    </td>
-                                    <td th:text="${#dates.format(link.addtime,'yyyy-MM-dd HH:mm:ss')}">2019-09-01</td>
-                                    <td>
-                                        <a th:if="${link.isagree eq 1}" href="" th:href="@{/admin/delete/{id}/link(id=${link.id})}">
-                                            <div class="ui label  red">
-                                                <i class="trash icon">删除</i>
+                            <div class="linkList" th:fragment="linkList">
+                                <table class="ui  attached red table middle aligned segment-border-hidden"
+                                       style="text-align: center !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>名称</th>
+                                        <th>点击数</th>
+                                        <th>状态</th>
+                                        <th>发表时间</th>
+                                        <th>操做</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="link,itemStat:${list}">
+                                        <td  th:text="${itemStat.count}">1</td>
+                                        <td>
+                                            <a href="javascript:void(0)"
+                                               style="font-family: 微软雅黑;font-size: small !important;"
+                                               th:text="${link.linkname}"
+                                               th:target="_blank"
+                                               th:onclick="clickNumAddOne([[${link.id}]],[[${link.linkurl}]]);">杨青个人博客</a>
+                                        </td>
+                                        <td th:text="${link.clicknum}">671</td>
+                                        <td>
+                                            <div class="ui label teal small aligned" th:if="${link.isagree eq 1}">已审核
                                             </div>
-                                        </a>
-                                        <a th:if="${link.isagree eq 0}" th:href="@{/admin/setLinkChecked/{id}/link(id=${link.id})}">
-                                            <div class="ui label  teal">
-                                                <i class="checked icon">通过审核</i>
+                                            <div class="ui label black small aligned" th:if="${link.isagree eq 0}">未审核
                                             </div>
-                                        </a>
-                                        <a th:if="${link.isagree eq 0}" th:href="@{/admin/delete/{id}/link(id=${link.id})}">
-                                            <div class="ui label  blue">
-                                                <i class="thumbs down icon">忽略</i>
-                                            </div>
-                                        </a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                                <tfoot>
-                                <tr th:if="${linkCount>=10}">
-                                    <th colspan="10" >
-                                        每页显示数据量
-                                        <select name="gender" class="ui dropdown" id="select">
-                                            <option value="male">10条</option>
-                                            <option value="female">30条</option>
-                                        </select>
-                                        <div class="ui right floated pagination menu">
-                                            <a class="icon item">
-                                                <i class="left chevron icon"></i>
+                                        </td>
+                                        <td th:text="${#dates.format(link.addtime,'yyyy-MM-dd HH:mm:ss')}">2019-09-01
+                                        </td>
+                                        <td>
+                                            <a th:if="${link.isagree eq 1}" href=""
+                                               th:href="@{/admin/delete/{id}/link(id=${link.id})}">
+                                                <div class="ui label small  red">
+                                                    <i class="trash icon"></i>删除
+                                                </div>
                                             </a>
-                                            <a class="item">上一页</a>
-                                            <a class="item">下一页</a>
-
-                                            <a class="icon item">
-                                                <i class="right chevron icon"></i>
+                                            <a th:if="${link.isagree eq 0}"
+                                               th:href="@{/admin/setLinkChecked/{id}/link(id=${link.id})}">
+                                                <div class="ui label small teal">
+                                                    <i class="checked icon">通过审核</i>
+                                                </div>
                                             </a>
-                                        </div>
-                                    </th>
-                                </tr>
-                                </tfoot>
-                            </table>
+                                            <a th:if="${link.isagree eq 0}"
+                                               th:href="@{/admin/delete/{id}/link(id=${link.id})}">
+                                                <div class="ui label small  blue">
+                                                    <i class="thumbs down icon">忽略</i>
+                                                </div>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th colspan="10" th:if="${list.size()==0}">
+                                            暂无友链
+                                        </th>
+                                        <th colspan="10" th:if="${list.size()>0}">
+                                            总共[[${list.size()}]]条友链
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -194,24 +188,61 @@
 </body>
 <th:block th:replace="_fragments::adminscript"></th:block>
 <script type="text/javascript">
+    //添加友链
     $("#addLink").click(function () {
         var linkUrl = $(".linkUrl").val();
         var linkName = $(".linkName").val();
-        alert(linkName +""+ linkUrl);
+        if(linkUrl===null||linkName===null){
+            alert("请正确输入信息");
+        }else {
+            $.ajax({
+                url: "/admin/addLink",
+                data: {linkUrl: linkUrl, linkName: linkName}, //参数值
+                type: "POST",    //请求方式
+                success: function () {
+                    alert("添加成功");
+                    window.location.reload();
+                },
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }
+    });
+    //搜索友链
+    function search() {
+        var args = $(".searchArgs").val();
+        if(args===null){
+            alert("输入不能为空");
+        }else {
+            $.ajax({
+                url: "/admin/searchLinkByArgs",
+                data: {args: args},
+                type: "GET",
+                success: function (data) {
+                    $(".linkList").html(data);
+                },
+                error: function () {
+                    alert("错误");
+                }
+            });
+        }
+    }
+    //点击量+1
+    function clickNumAddOne(id,url) {
         $.ajax({
-            url: "/admin/addLink",
-            data: {linkUrl: linkUrl, linkName: linkName}, //参数值
-            type: "POST",    //请求方式
-            success: function () {
-                alert("添加成功");
-                window.location.reload();
+            url: "/admin/clickAddOne",
+            data: {id: id},
+            type: "POST",
+            success: function (data) {
+                window.open(url);
+                $(".linkList").html(data);
             },
-            //请求失败，包含具体的错误信息
-            error: function (e) {
-                console.log(e.status);
-                console.log(e.responseText);
+            error: function () {
+                alert("错误");
             }
         });
-    });
+    }
 </script>
 </html>

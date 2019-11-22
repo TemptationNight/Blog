@@ -2,6 +2,7 @@ package com.lucas.blog.myblog.service;
 
 import com.github.pagehelper.PageInfo;
 import com.lucas.blog.myblog.entity.Category;
+import com.lucas.blog.myblog.entity.Link;
 
 import java.util.List;
 
@@ -25,7 +26,9 @@ public interface CategoryService {
 
 	Category getCategoryById(Integer id);
 
-	public List<Category> getCategoryList();
+	List<Category> getCategoryList();
 	Category getCategoryByName(String name);
-	PageInfo<Category> getCategoryPage(Integer startPage, Integer pageSize);
+	//List<Category> getCategoryList(Integer startPage, Integer pageSize);
+	Integer getCategoryCount();
+	List<Category> getTypeByArgs(String args);
 }
