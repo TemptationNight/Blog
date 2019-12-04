@@ -34,6 +34,16 @@ public class AdminController {
 		Admin adminer = adminServiceImpl.login(password);
 		return adminer == null ? "login" : "admin/index";
 	}
+
+
+
+	@RequestMapping("/searchBlog")
+	public String searchBlog(){
+
+		return "search_blog";
+	}
+
+
 }
 
 

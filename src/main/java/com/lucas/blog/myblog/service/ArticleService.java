@@ -2,9 +2,9 @@ package com.lucas.blog.myblog.service;
 
 import com.github.pagehelper.PageInfo;
 import com.lucas.blog.myblog.entity.Article;
-import com.lucas.blog.myblog.entity.Category;
-
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @ProjectName: myblog
@@ -31,4 +31,46 @@ public interface ArticleService {
 	Integer downOrUpRecommend(Integer id, Integer status);
 
 	Integer getArticleCount();
+
+	Article getArticleById(Integer id);
+
+
+
+	List<Article> getArticleTenByTime(); //最新文章
+	Set<Article> getArticleByTop();      //置顶文章
+	Set<Article> getArticleByRecommend();  //推荐文章
+
+	List<Article> getArticleByBrowsers();  //点击排行
+
+
+
+	HashSet<String> getKeywords(); //关键字
+
+
+	//博客的浏览量+1
+	Integer addBrowsersOne(Integer id);
+
+	//文章的点赞量+1
+	Integer addAgreeOne(Integer id);
+
+
+
+	//根据type获取文章
+
+	List<Article> getArticleByTypeName(String  typeName);
+
+	//根据标签获取文章
+
+
+	List<Article> getArticleByKeyWords(String keyWords);
+
+
+	List<Article> getAll();
+
+
+
+
+
+
+
 }

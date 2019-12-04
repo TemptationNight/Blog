@@ -86,6 +86,13 @@ public class Article implements Serializable{
 
 
 	/**
+	 * 摘要
+	 */
+	@Column(name = "summary")
+    private String  summary;
+
+
+	/**
 	 * 是否原创  1是  0 否
 	 */
 	@Column(name = "isYuanChuang")
@@ -114,7 +121,7 @@ public class Article implements Serializable{
 	}
 
 
-	public Article(String title, Integer categoryid, String author, Date addtime, Integer agreenum, Integer browsenum, Integer commentnum, String keyword, Integer status, Integer isrecommend, Integer istop, String images, String content, Integer isYuanChuang, Integer isDiscuss, String categoryName) {
+	public Article(String title, Integer categoryid, String author, Date addtime, Integer agreenum, Integer browsenum, Integer commentnum, String keyword, Integer status, Integer isrecommend, Integer istop, String images, String content, Integer isYuanChuang, Integer isDiscuss, String categoryName,String summary) {
 		this.title = title;
 		this.categoryid = categoryid;
 		this.author = author;
@@ -131,6 +138,7 @@ public class Article implements Serializable{
 		this.isYuanChuang = isYuanChuang;
 		this.isDiscuss = isDiscuss;
 		this.categoryName = categoryName;
+		this.summary=summary;
 	}
 
 
@@ -139,6 +147,13 @@ public class Article implements Serializable{
 
 
 
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
 
 	public Integer getId() {
 		return id;

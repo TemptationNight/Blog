@@ -177,24 +177,33 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                    <td>
+                                        <h4>关键字：</h4>
+                                    <td>
+                                    <td>
+                                        <div class="ui fluid icon input">
+                                            <input type="text" placeholder="博客关键字(多个之间以;分隔开)" id="keyWord">
+                                        </div>
+                                    </td>
+                                </tr>
+                                    <tr>
                                         <td>
-                                            <h4>关键字：</h4>
+                                            <h4>摘要：</h4>
                                         <td>
                                         <td>
-                                            <div class="ui fluid icon input">
-                                                <input type="text" placeholder="博客关键字(多个之间以;分隔开)" id="keyWord">
+                                        <div class="ui form">
+                                            <div class="field">
+                                                <textarea  id="summery-textarea"></textarea>
                                             </div>
+                                        </div>
                                         </td>
                                     </tr>
+
+
                                 </table>
                                 <br>
                                 <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
+
                                 <div id="md-content">
                                     <textarea style="display:none" class="blogText">
 
@@ -315,12 +324,12 @@
         var title = $("#title").val();
         var typeName = $('.typeList').dropdown('get text');
         var yuanChuang = $('.yuanChuangList').dropdown('get text');
+        var summary=$("#summery-textarea").val();
         if (yuanChuang === "是") {
             yuanChuang = "1";
         } else {
             yuanChuang = "0";
         }
-        alert(yuanChuang);
         var keyWord = $("#keyWord").val();
         var blogText = $(".blogText").val();
         var firstPictureUrl = $("#headPicture")[0].src;
@@ -358,7 +367,8 @@
                 content: blogText,
                 isDiscuss: isDiscuss,
                 isYuanChuang: 1,
-                typename: typeName
+                typename: typeName,
+                summary :summary
             },
             success: function (data) {
                 window.location.reload();

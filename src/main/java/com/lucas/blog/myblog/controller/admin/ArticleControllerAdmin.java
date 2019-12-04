@@ -119,6 +119,7 @@ public class ArticleControllerAdmin {
 	}
 
 
+	//发布博客
 	@PostMapping("/upBlog")
 	public String upBlog(Article article, @RequestParam("typename") String typename, Model model) {
 		Category category = categoryServiceImpl.getCategoryByName(typename);
@@ -134,10 +135,8 @@ public class ArticleControllerAdmin {
 		ar.setIsDiscuss(article.getIsDiscuss());
 		ar.setKeyword(article.getKeyword());
 		ar.setIsYuanChuang(article.getIsYuanChuang());
-
-
+		ar.setSummary(article.getSummary());
 		Integer i = articleServiceImpl.addArticle(ar);
-
 		return "admin/write_blog";
 	}
 }

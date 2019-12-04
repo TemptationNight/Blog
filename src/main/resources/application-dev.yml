@@ -1,9 +1,9 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+      url: jdbc:mysql://192.168.216.135:3306/myblog?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
       username: root
-      password: hyh971127
+      password: hyh123456
       initial-size: 1
       min-idle: 1
       max-active: 20
@@ -16,7 +16,7 @@ spring:
     proxy-target-class: true
   redis:
     database: 0
-    host: 127.0.0.1      #Redis服务器地址
+    host: 192.168.216.135      #Redis服务器地址
     port: 6379       #Redis服务器连接端口
     password:          #Redis服务器连接密码（默认为空）
     jedis:

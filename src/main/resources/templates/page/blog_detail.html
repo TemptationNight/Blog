@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::pageHead(~{::title})">
+    <title>博客详情页</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:replace="_fragments::pageHeader" class="header-navigation"></header>
+<article style="position: relative;">
+    <h1 class="t_nav">
+        <span>您现在的位置是：
+        <a href="http://more.yangqq.com/">首页</a>&nbsp;&gt;&nbsp;
+        <a href="" th:text="${articleType}">学无止境</a>&nbsp;&gt;&nbsp;
+        <a href="" th:text="${articleName}">目录2</a>
+    </span>
+        <a href="" class="n1">网站首页</a><a href="javascript:void(0)" class="n2" th:text="${articleType}"></a>
+    </h1>
+    <main>
+        <div class="infosbox">
+            <div class="newsview">
+                <h3 class="news_title" th:text="${article.title}"></h3>
+                <div class="bloginfo">
+                    <ul>
+                        <li class="author" th:text="${article.author}"></li>
+                        <li class="lmname">
+                            <i class="ui icon list"></i>
+                            <span th:text="${article.categoryName}"></span>
+                        </li>
+                        <li class="timer">
+                            <i class="ui icon calendar"></i>
+                            <span th:text="${#dates.format(article.addtime,'yyyy-MM-dd:HH:mm:ss')}"></span>
+                        </li>
+                        <li class="view">
+                            <i class="ui icon eye"></i>
+                            <span th:text="${article.browsenum}"></span>
+                        </li>
+                        <li class="like">
+                            <i class="ui icon like"></i>
+                            <span th:text="${article.agreenum}"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tags"></div>
+                <div class="news_about">
+                    <strong>简介</strong>
+                    <span th:text="${article.summary}"></span>
+                </div>
+
+                <div class="news_con" th:utext="${article.content}"></div>
+
+
+            </div>
+            <div class="share">
+                <div class="agree" th:fragment="agree">
+                    <p class="diggit">
+                        <a href="javascript:void(0)" th:onclick="addAgreeOne([[${article.id}]])">
+                            很赞哦！ (<b id="diggnum" th:text="${article.agreenum}">30</b>)
+                        </a>
+                    </p>
+                </div>
+                <p class="dasbox">
+                    <a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏本站</a>
+                </p>
+                <div class="hide_box">
+                </div>
+                <div class="shang_box">
+                    <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">关闭</a>
+                    <div class="shang_tit">
+                        <p>感谢您的支持，我会继续努力的!</p>
+                    </div>
+                    <div class="shang_payimg">
+                        <img src="" th:src="@{/images/alipayimg.jpg}" alt="扫码支持" title="扫一扫">
+                    </div>
+                    <div class="pay_explain">扫码打赏，你说多少就多少</div>
+                    <div class="shang_payselect">
+                        <div class=" pay_item checked" data-id="alipay">
+                            <span class="radiobox"></span>
+                            <span class="pay_logo">
+                                <img src="" th:src="@{/images/alipay.jpg}" alt="支付宝">
+                            </span>
+                        </div>
+                        <div class="pay_item" data-id="weipay">
+                            <span class="radiobox"></span>
+                            <span class="pay_logo">
+                                <img src="" th:src="@{/images/wechat.jpg}" alt="微信">
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="nextinfo">
+                <p>上一篇：<a href="">返回列表</a></p>
+                <p>下一篇：<a href="">sql优化</a></p>
+            </div>
+            <div class="otherlink">
+                <h2>相关文章</h2>
+                <ul>
+                    <li><a href="" title="最后的午餐">最后的午餐</a></li>
+                    <li><a href="" title="Just One Last Dance">Just One Last
+                        Dance</a></li>
+                    <li><a href="">sql优化</a></li>
+                </ul>
+            </div>
+            <div class="news_pl">
+                <h2>文章评论</h2>
+                <ul>
+                    <div class="gbko">
+                        <form action="http://more.yangqq.com/e/pl/doaction.php" method="post" name="saypl" id="saypl"
+                              onsubmit="return CheckPl(document.saypl)">
+                            <div id="plpost">
+                                <p class="saying">
+                                    <span>
+                                       共有2条评论
+                                    </span>
+                                    来说两句吧...
+                                </p>
+                                <p class="yname">
+                                    <span>用户名:</span>
+                                    <input name="username" type="text" class="inputText" id="username" value=""
+                                           size="16">
+                                </p>
+                                <p class="yzm">
+                                    <span>验证码:</span>
+                                    <input name="key" type="text" class="inputText" size="16">
+                                    <img src="" align="absmiddle" name="plKeyImg" id="plKeyImg"
+                                         onclick="plKeyImg.src=&#39;/e/ShowKey/?v=pl&amp;t=&#39;+Math.random()"
+                                         title="看不清楚,点击刷新">
+                                </p>
+                                <input name="nomember" type="hidden" id="nomember" value="1" checked="checked">
+                                <textarea name="saytext" rows="6" id="saytext">
+                                </textarea>
+                                <input name="imageField" type="submit" value="提交">
+                                <input name="id" type="hidden" id="id" value="14">
+                                <input name="classid" type="hidden" id="classid" value="3">
+                                <input name="enews" type="hidden" id="enews" value="AddPl">
+                                <input name="repid" type="hidden" id="repid" value="0">
+                                <input type="hidden" name="ecmsfrom" value="/study/2/14.html">
+                            </div>
+                        </form>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <aside class="sidebar">
+        <th:block th:replace="_fragments::pageRight"></th:block>
+
+    </aside>
+
+</article>
+
+
+<footer>
+    <p>Design by
+        <a href="javascript:void(0)" target="_blank">何袁辉个人博客</a>
+        <a href="javascript:void(0)">蜀ICP备11002373号-1</a>
+    </p>
+</footer>
+
+
+</body>
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+        $(".pay_item").click(function () {
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid = $(this).attr('data-id');
+            $(".shang_payimg img").attr("src", "/skin/more/images/" + dataid + "img.jpg");
+            $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
+        });
+    });
+
+    function dashangToggle() {
+        $(".hide_box").fadeToggle();
+        $(".shang_box").fadeToggle();
+    }
+
+    function CheckPl(obj) {
+        if (obj.saytext.value == "") {
+            alert("您没什么话要说吗？");
+            obj.saytext.focus();
+            return false;
+        }
+        return true;
+    }
+
+
+    //点赞数+1
+    function addAgreeOne(id) {
+        var url = "/page/addAgreeOne";
+        $.ajax({
+            url: url,
+            data: {id: id},
+            type: 'PUT',
+            success: function (data) {
+                $(".agree").html(data);
+            }
+        })
+
+    }
+
+
+</script>
+
+</html>

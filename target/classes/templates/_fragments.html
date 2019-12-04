@@ -8,7 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link href="../static/lib/ionicons/css/ionicons.min.css" rel="stylesheet" th:href="@{lib/ionicons/css/ionicons.min.css}"/>
+    <link href="../static/lib/ionicons/css/ionicons.min.css" rel="stylesheet"
+          th:href="@{lib/ionicons/css/ionicons.min.css}"/>
     <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{lib/prism/prism.css}">
     <link rel="stylesheet" href="../static/css/myself.css" th:href="@{css/myself.css}">
     <link rel="stylesheet" href="../static/css/typo.css" th:href="@{css/typo.css}">
@@ -22,21 +23,44 @@
     <title th:replace="${title}">博客详情</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link th:href="@{../lib/chartist/chartist.min.css}" href="../../static/lib/chartist/chartist.min.css" rel="stylesheet"/>
+    <link th:href="@{../lib/chartist/chartist.min.css}" href="../../static/lib/chartist/chartist.min.css"
+          rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link th:href="@{../}" rel="stylesheet" href="../../static/css/myself.css">
     <script th:src="@{../js/jquery-1.9.1.min.js}" src="../../static/js/jquery-1.9.1.min.js"></script>
     <link th:href="@{../css/typo.css}" rel="stylesheet" href="../../static/css/typo.css">    <!--排版-->
     <link th:href="@{../lib/prism/prism.css}" rel="stylesheet" href="../../static/lib/prism/prism.css">  <!--代码高亮-->
-    <link th:href="@{../lib/ionicons/css/ionicons.min.css}" href="../../static/lib/ionicons/css/ionicons.min.css" rel="stylesheet"/>
-    <link  th:href="@{../lib/editmd/css/editormd.min.css}" rel="stylesheet" href="../../static/lib/editmd/css/editormd.min.css">
+    <link th:href="@{../lib/ionicons/css/ionicons.min.css}" href="../../static/lib/ionicons/css/ionicons.min.css"
+          rel="stylesheet"/>
+    <link th:href="@{../lib/editmd/css/editormd.min.css}" rel="stylesheet"
+          href="../../static/lib/editmd/css/editormd.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css" th:href="@{../lib/fileUp/css/index.css}"/>
     <link th:href="@{../css/main.css}" href="../../static/css/main.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="css/normalize.css" th:href="@{../lib/fileUp/css/normalize.css}"/>
     <link rel="stylesheet" href="" th:href="@{../css/menu.css}">
     <link rel="stylesheet" href="" th:href="@{../css/myself.css}">
-    <link href="dist/styles.imageuploader.css" th:href="@{../lib/fileUp/dist/styles.imageuploader.css}" rel="stylesheet" type="text/css">
+    <link href="dist/styles.imageuploader.css" th:href="@{../lib/fileUp/dist/styles.imageuploader.css}" rel="stylesheet"
+          type="text/css">
+</head>
+<head th:fragment="pageHead(title)">
+    <meta charset="UTF-8">
+    <!--  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>个人博客</title>
+      <meta name="keywords" content="个人博客,个人博客">
+      <meta name="description" content="个人博客网站简介">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/hc-sticky.js}"></script>
+    <script th:src="@{/js/nav.js}"></script>
+    <script th:src="@{/js/scrollReveal.js}"></script>
+    <script th:src="@{/js/page.js}"></script>
+    <!--代码高亮-->
+    <link rel="stylesheet" th:href="@{/lib/prism/prism.css}">
+    <script th:src="@{/lib/prism/prism.js}"></script>
+
 </head>
 <body>
 <nav th:fragment="menu(n)" class="ui inverted attached segment  m-padded-tb-mini stackable m-shadow-small">
@@ -69,7 +93,8 @@
     <a href="#" class="ui black icon button m-top-right m-mobile-show" id="mobile-button">
         <i class="sidebar icon "></i>
     </a>
-    <a th:href="@{login.html}" href="#" class="item  m-mobile-hide mobole-item" th:classappend="${n==5} ?'active'"><i class="ui  info icon"></i>登录</a>
+    <a th:href="@{login.html}" href="#" class="item  m-mobile-hide mobole-item" th:classappend="${n==5} ?'active'"><i
+            class="ui  info icon"></i>登录</a>
 </nav>
 <footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-massive">
     <div class="ui container  center aligned">
@@ -112,10 +137,12 @@
     <script type="text/javascript" src="../static/js/mouse.js" th:src="@{js/mouse.js}"></script>
     <script src="../static/lib/prism/prism.js" th:src="@{lib/prism/prism.js}"></script> &lt;!&ndash;代码高亮&ndash;&gt;
     <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{lib/tocbot/tocbot.min.js}"></script> &lt;!&ndash;目录生成&ndash;&gt;
-    <script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script> &lt;!&ndash;背景特效&ndash;&gt;
+    <script type="text/javascript" color="0,0,255" opacity='0.7' zIndex="-2" count="200"
+            src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script> &lt;!&ndash;背景特效&ndash;&gt;
     <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{lib/qrcode/qrcode.min.js}"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script> &lt;!&ndash;平滑滚动&ndash;&gt;
-    <script src="../static/lib/waypoint/jquery.waypoints.min.js" th:src="@{lib/waypoint/jquery.waypoints.min.js}"></script>
+    <script src="../static/lib/waypoint/jquery.waypoints.min.js"
+            th:src="@{lib/waypoint/jquery.waypoints.min.js}"></script>
     <script>
 
 
@@ -201,13 +228,16 @@
 <th:block th:fragment="adminscript">
     <script src="../../static/js/jquery-1.9.1.min.js" th:src="@{../js/jquery-1.9.1.min.js}"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-    <script src="../../static/lib/nicescrool/jquery.nicescroll.min.js" th:src="@{../lib/nicescrool/jquery.nicescroll.min.js}"></script>
+    <script src="../../static/lib/nicescrool/jquery.nicescroll.min.js"
+            th:src="@{../lib/nicescrool/jquery.nicescroll.min.js}"></script>
     <script src="../../static/lib/cookie/js.cookie.js" th:src="@{../lib/cookie/js.cookie.js}"></script>
     <script src="../../static/js/main.js" th:src="@{../js/main.js}"></script>
-    <script src="../../static/js/customjs/custom-chart.js" th:src="@{../js/customjs/custom-chart.js}"></script>-->
+    <script src="../../static/js/customjs/custom-chart.js" th:src="@{../js/customjs/custom-chart.js}"></script>
+    -->
     <script src="../../static/lib/editmd/editormd.min.js" th:src="@{../lib/editmd/editormd.min.js}"></script>
     <script src="../../static/lib/prism/prism.js" th:src="@{../lib/prism/prism.js}"></script>
-    <script src="dist/jquery.imageuploader.js" th:src="@{../lib/fileUp/dist/jquery.imageuploader.js}" type="text/javascript"></script>
+    <script src="dist/jquery.imageuploader.js" th:src="@{../lib/fileUp/dist/jquery.imageuploader.js}"
+            type="text/javascript"></script>
     <script src="dist/jquery..js" th:src="@{../lib/fileUp/dist/index.js}" type="text/javascript"></script>
 </th:block>
 <div th:fragment="topmenu">
@@ -296,11 +326,12 @@
         </div>
     </div>
 </div>
-<div th:fragment="leftmenu" >
+<div th:fragment="leftmenu">
     <div class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
          style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey">
         <a class="item logo" href="blogs.html">
-            <img th:src="@{../images/logo.png}" alt="stagblogo"/><img th:src="@{../images/thumblogo.png}" alt="stagblogo" class="displaynone"/>
+            <img th:src="@{../images/logo.png}" alt="stagblogo"/><img th:src="@{../images/thumblogo.png}"
+                                                                      alt="stagblogo" class="displaynone"/>
         </a>
         <div class="ui accordion inverted">
 
@@ -308,7 +339,7 @@
                 <i class="ion-speedometer titleIcon icon"></i> 主页 <i class="dropdown icon"></i>
             </a>
             <div class="content">
-                <a style="font-size: medium !important;"  class="item" href="blogs.html" th:href="@{/admin/index}">
+                <a style="font-size: medium !important;" class="item" href="blogs.html" th:href="@{/admin/index}">
                     返回首页
                 </a>
             </div>
@@ -319,7 +350,7 @@
                 <i class="dropdown icon"></i> 博客模块
             </div>
             <div class="content">
-                <a style="font-size: medium!important;"  class="item" href="inbox.html" th:href="@{/admin/articles}">
+                <a style="font-size: medium!important;" class="item" href="inbox.html" th:href="@{/admin/articles}">
                     博客管理
                 </a>
 
@@ -327,10 +358,10 @@
                     写博客
                 </a>
 
-                <a style="font-size: medium!important;"  class="item" href="filter.html">
+                <a style="font-size: medium!important;" class="item" href="filter.html">
                     查询博客
                 </a>
-                <a style="font-size: medium!important;"  class="item" href="todo.html" th:href="@{/admin/categorys}">
+                <a style="font-size: medium!important;" class="item" href="todo.html" th:href="@{/admin/categorys}">
                     博客类别
                 </a>
             </div>
@@ -356,7 +387,8 @@
                 <i class="dropdown icon"></i>访客模块
             </div>
             <div class="content">
-                <a style="font-size: medium!important;" class="item" href="breadcrumb.html"  th:href="@{/admin/visitors}">
+                <a style="font-size: medium!important;" class="item" href="breadcrumb.html"
+                   th:href="@{/admin/visitors}">
                     访客记录
                 </a>
                 <a style="font-size: medium!important;" class="item" href="button.html" th:href="@{/admin/visitors}">
@@ -408,7 +440,8 @@
                 <i class="dropdown icon"></i> 分类管理
             </div>
             <div class="content">
-                <a style="font-size: medium!important;" class="item" href="formelements.html" th:href="@{/admin/categorys}">
+                <a style="font-size: medium!important;" class="item" href="formelements.html"
+                   th:href="@{/admin/categorys}">
                     分类信息
                 </a>
             </div>
@@ -930,8 +963,12 @@
         </div>
     </div>
 </div>
-<!--中甲小菜单区域  用于访客统计的三个页面  现在没用了-->
+
+<!--
+
+中甲小菜单区域  用于访客统计的三个页面  现在没用了
 <div th:fragment="visitormenu" class="ui four wide tab column" style="background: #eaeaea">
+
     <div class="ui segment teal center aligned segment-border-none">
         <a class="ui teal  label big fluid">访客记录</a>
         <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
@@ -1074,7 +1111,7 @@
                     <a href="javascript:void(0)"
                        th:onclick="searchVisitorByArgs([['Android']]);">
 
-                    <i class="tag right icon large  black "></i>
+                        <i class="tag right icon large  black "></i>
                         Android
                     </a>
                 </td>
@@ -1088,6 +1125,209 @@
         </table>
     </div>
 </div>
+-->
+
+<th:block th:fragment="pageRight">
+    <div class="zhuanti">
+        <h2 class="hometitle">置顶文章</h2>
+        <ul>
+            <li th:each="articleTop:${articleByTop}">
+                <i>
+                    <img src="" th:src="@{${articleTop.images}}">
+                </i>
+                <p><strong th:text="${articleTop.title}">Just One Last Dance</strong>
+                    <span>
+                        <a href="" th:href="@{/page/{id}/blogDetail(id=${articleTop.id})}"
+                        >阅读
+                        </a>
+                    </span>
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="tuijian">
+        <h2 class="hometitle">推荐文章</h2>
+        <ul class="tjpic">
+            <i>
+                <img src="" th:src="@{${recommendTop.images}}">
+            </i>
+            <p>
+                <a href="" th:text="${recommendTop.title}" th:href="@{/page/{id}/blogDetail(id=${recommendTop.id})}">Just
+                    One
+                    Last Dance
+                </a>
+            </p>
+        </ul>
+        <ul class="sidenews" th:each="blog:${articleByRecommend}">
+            <li>
+                <i>
+                    <img src="" th:src="@{${blog.images}}">
+                </i>
+                <p>
+                    <a href="" th:text="${blog.summary}" th:href="@{/page/{id}/blogDetail(id=${recommendTop.id})}"></a>
+                </p>
+                <span th:text="${#dates.format(blog.addtime,'yyyy-MM-dd')}">[2018-07-15]</span>
+            </li>
+        </ul>
+    </div>
+    <div class="tuijian">
+        <h2 class="hometitle">点击排行</h2>
+        <ul class="tjpic">
+            <i>
+                <img src="" th:src="@{${browseTop.images}}">
+            </i>
+            <p>
+                <a href="" th:href="@{/page/{id}/blogDetail(id=${browseTop.id})}"
+                   th:text="${browseTop.title}">
+                </a>
+            </p>
+        </ul>
+        <ul class="sidenews" th:each="blogB:${articleByBrowsers}">
+            <li>
+                <i>
+                    <img src="" th:src="@{${blogB.images}}">
+                </i>
+                <p>
+                    <a href="" th:href="@{/page/{id}/blogDetail(id=${blogB.id})}" target="_blank"
+                       th:text="${blogB.summary}"></a>
+                </p>
+                <span th:text="${#dates.format(blogB.addtime,'yyyy-MM-dd')}">[2018-07-15]</span>
+            </li>
+
+        </ul>
+
+    </div>
+    <div class="cloud">
+        <h2 class="hometitle">标签云</h2>
+        <ul>
+            <a href="" style="line-height: normal" th:each="blogKey:${keywords}"
+               th:text="${blogKey}">设计</a>
+        </ul>
+    </div>
+    <div class="cloud">
+        <h2 class="hometitle">分类</h2>
+        <ul>
+            <a href="" style="line-height: normal" th:each="type:${typeList}"
+               th:text="${type.categoryname}">设计</a>
+        </ul>
+    </div>
+    <div class="cloud">
+        <h2 class="hometitle">友情链接</h2>
+        <ul>
+            <a href="" target="_blank" style="line-height: normal" th:each="link:${linkList}" th:text="${link.linkname}"
+               th:href="${link.linkurl}">设计</a>
+        </ul>
+    </div>
+    <div class="guanzhu">
+        <h2 class="hometitle">关注我们 么么哒！</h2>
+        <ul>
+            <li class="sina"><a href="http://more.yangqq.com/" target="_blank"><span>新浪微博</span>何袁辉博客</a></li>
+            <li class="tencent"><a href="http://more.yangqq.com/" target="_blank"><span>腾讯微博</span>何袁辉博客</a></li>
+            <li class="qq"><a href="http://more.yangqq.com/" target="_blank"><span>QQ号</span>742567489</a></li>
+            <li class="email"><a href="http://more.yangqq.com/" target="_blank"><span>邮箱帐号</span>742567489@qq.com</a>
+            </li>
+            <li class="wxgzh"><a href="http://more.yangqq.com/" target="_blank"><span>微信号</span>18784903957</a></li>
+            <li class="wx"><img th:src="@{/images/weichart.png}"></li>
+        </ul>
+    </div>
+</th:block>
+
+<header th:fragment="pageHeader" class="header-navigation">
+    <nav>
+        <div class="logo"><a href="http://more.yangqq.com/">何袁辉个人博客</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+            <li><a href="" th:href="@{/page/index}" id="selected">网站首页</a></li>
+            <li class="menu"><a href="javascript:void(0)">学无止境</a>
+                <ul class="sub" style="background-color: black">
+                    <li><a href="javascript:void(0)" style="color: white" onclick="getBlogByType()">操作系统</a></li>
+                    <li><a href="javascript:void(0)" style="color: white"
+                           th:onclick="getBlogByType([['计算机网络']]);">计算机网络</a></li>
+                    <li><a href="javascript:void(0)" style="color: white"
+                           th:onclick="getBlogByType([['数据结构']]);">数据结构</a></li>
+                    <li><a href="javascript:void(0)" style="color: white"
+                           th:onclick="getBlogByType([['计算机原理']]);">计算机原理</a></li>
+                </ul>
+                <span></span></li>
+            <li class="menu"><a href="javascript:void(0)" target="_blank">开发技能</a>
+                <ul class="sub" style="background-color: black">
+                    <li><a href="javascript:void(0)" style="color: white"
+                           th:onclick="getBlogByType([['JAVA']]);">JAVA知识</a></li>
+                    <li><a href="javascript:void(0)" style="color: white" th:onclick="getBlogByType([['JVM']]);">JVM</a>
+                    </li>
+                    <li><a href="javascript:void(0)" style="color: white"
+                           th:onclick="getBlogByType([['LINUX']]);">LINUX</a></li>
+                    <li><a href="javascript:void(0)" style="color: white" th:onclick="getBlogByType([['数据库']]);">数据库</a>
+                    </li>
+                    <li><a href="javascript:void(0)" style="color: white" th:onclick="getBlogByType([['面试']]);">面试分享</a>
+                    </li>
+                </ul>
+                <span></span></li>
+            <li><a href="" th:href="@{/page/share_life}">生活点滴</a></li>
+            <li><a href="" th:href="@{/page/other}">杂谈</a></li>
+            <li><a href="" th:href="@{/page/about}">关于我</a></li>
+            <li><a href="" th:href="@{/page/timeLine}">时间轴</a></li>
+            <li><a href="" th:href="@{/page/message}">留言</a></li>
+        </ul>
+
+
+        <div class="searchbox">
+            <div id="search_bar" class="search_bar">
+                <form id="searchform" action="http://more.yangqq.com/e/search/index.php" method="post"
+                      name="searchform">
+                    <input class="input" placeholder="想搜点什么呢.." type="text" name="keyboard" id="keyboard">
+                    <input type="hidden" name="show" value="title">
+                    <input type="hidden" name="tempid" value="1">
+                    <input type="hidden" name="tbname" value="news">
+                    <input type="hidden" name="Submit" value="搜索">
+                    <p class="search_ico"><span></span></p>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<th:block th:fragment="articleInfo">
+    <div th:if="${articleList.size()!=0}" th:each="article:${articleList}" class="blogs"
+         data-scroll-reveal="enter bottom over 1s" data-scroll-reveal-id="2"
+         style="-webkit-transform: translatey(24px);transform: translatey(24px);opacity: 0;-webkit-transition: -webkit-transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;transition: transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;"
+         data-scroll-reveal-initialized="true">
+        <h3 class="blogtitle"><a href="http://more.yangqq.com/study/2/18.html"
+                                 th:href="@{/page/{id}/blogDetail(id=${article.id})}" target="_blank"
+                                 th:text="${article.title}">最后的午餐</a></h3>
+        <span class="blogpic"><a href="http://more.yangqq.com/study/2/18.html" title="最后的午餐"><img src=""
+                                                                                                  th:src="@{${article.images}}"
+                                                                                                  alt="最后的午餐"></a></span>
+        <p class="blogtext" th:text="${article.summary}"></p>
+        <div class="bloginfo">
+            <ul>
+                <li class="author" th:text="${article.author}"></li>
+                <li class="lmname"><a href="http://more.yangqq.com/study/2/" target="_blank"><i
+                        class="ui icon list"></i><span th:text="${article.categoryName}"></span></a></li>
+                <li class="timer"><i class="ui icon  calendar"></i><span
+                        th:text="${#dates.format(article.addtime,'yyyy-MM-dd')}"></span></li>
+                <li class="view"><i class="ui icon eye"></i><span th:text="${article.browsenum}">48</span>已阅读</li>
+                <li class="like"><i class="ui icon like"></i><span th:text="${article.agreenum}"></span></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div th:if="${articleList.size()==0}" class="blogs" data-scroll-reveal="enter bottom over 1s"
+         data-scroll-reveal-id="1"
+         style="-webkit-transform: translatey(0);transform: translatey(0);opacity: 1;-webkit-transition: -webkit-transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;transition: transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;"
+         data-scroll-reveal-initialized="true">
+        <h3 class="blogtitle"><a href="http://more.yangqq.com/study/2/18.html" target="_blank">对不起，暂无数据！！！</a>
+        </h3>
+
+    </div>
+
+
+</th:block>
+
 </body>
+
+
 </html>
 
