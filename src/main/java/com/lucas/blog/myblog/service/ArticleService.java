@@ -56,13 +56,14 @@ public interface ArticleService {
 
 
 	//根据type获取文章
-
 	List<Article> getArticleByTypeName(String  typeName);
 
 	//根据标签获取文章
-
-
 	List<Article> getArticleByKeyWords(String keyWords);
+
+
+	//全局搜索文章
+	List<Article> searchBlog(String search);
 
 
 	List<Article> getAll();

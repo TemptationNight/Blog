@@ -7,6 +7,7 @@ import com.lucas.blog.myblog.entity.Category;
 import com.lucas.blog.myblog.exception.NotFoundException;
 import com.lucas.blog.myblog.mapper.ArticleMapper;
 import com.lucas.blog.myblog.service.ArticleService;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -148,7 +149,6 @@ public class ArticleServiceImpl implements ArticleService {
 		Example example = new Example(Article.class);
 		example.createCriteria().andEqualTo("isrecommend", 1);
 		List<Article> articles = articleMapper.selectByExample(example);
-
 		//只取随机三篇推荐文章
 		Set set = new LinkedHashSet(4);
 		Random random = new Random();
@@ -185,7 +185,8 @@ public class ArticleServiceImpl implements ArticleService {
 		String keyword = "";
 		for (Article article : articles) {
 			keyword = article.getKeyword();
-			split = keyword.split(";");
+			//按中文和英文分号（；;）将多个标签划分
+			split = keyword.split("[;\\；]");
 			for (int i = 0; i < split.length; i++) {
 				set.add(split[i]);
 			}
@@ -228,6 +229,17 @@ public class ArticleServiceImpl implements ArticleService {
 		Example example=new Example(Article.class);
 		example.createCriteria().andLike("keyword","%"+keyWords+"%");
 		return articleMapper.selectByExample(example);
+	}
+
+	@Override
+	public List<Article> searchBlog(String search) {
+		Example example=new Example(Article.class);
+		example.createCriteria()
+				.orLike("title" , "%"+search + "%")
+				.orLike("categoryName" , "%"+search + "%")
+				.orLike("keyword" , "%"+search + "%");
+		List<Article> articles = articleMapper.selectByExample(example);
+		return articles;
 	}
 
 	//获取所有的文章

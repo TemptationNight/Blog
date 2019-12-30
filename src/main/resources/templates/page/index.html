@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
 </head>
 
-<body>
+<body style="background-color: #F5F5F5 !important;">
 <header th:replace="_fragments::pageHeader" class="header-navigation">
 
 </header>
@@ -73,22 +73,25 @@
         <th:block th:replace="_fragments::pageRight"></th:block>
     </aside>
 </article>
+
 <footer>
+
     <p>Design by <a href="javascript:void(0)" target="_blank">何袁辉个人博客</a> <a href="javascript:void(0)">蜀ICP备11002373号-1</a></p>
 </footer>
 <a href="" class="cd-top">Top </a>
 
 
-<script type="javascript">
+<script type="text/javascript">
 
     //头部导航上的根据类型获取文章
-    function getBlogByTypeName(type) {
-        alert("加载");
+    function getBlogByType(type) {
+        alert(type)
         $.ajax({
             url: "/page/learnMore",
             data: {typeName: type},
             type: "GET",
             success: function (data) {
+
             },
             error: function () {
                 alert("错误");
@@ -97,22 +100,17 @@
 
     }
 
-    /*//浏览数+1
-    function addAgreeOne(id) {
-        alert(id);
-        alert("浏览");
-        var url = "/page/addBrowsersOne";
-        $.ajax({
-            url: url,
-            data: {id: id},
-            type: 'PUT',
-            success: function (data) {
-                $("#addBrowsers").html(data);
-            }
-        })
-*/
+
+
+
+
+
 
 
 </script>
+
+<script th:src="@{/js/back_special.js}"></script>
+<script th:src="@{/js/mouse.js}"></script>
+
 </body>
 </html>

@@ -33,15 +33,16 @@ $(document).ready(function () {
 
 
   /*
-  
-  search
+
+
+  真正的search表单提交
   
   */
     $('.search_ico').click(function () {
         $('.search_bar').toggleClass('search_open');
         if ($('#keyboard').val().length > 2) {
-            $('#keyboard').val('');
             $('#searchform').submit();
+            $('#keyboard').val('');       //这一行的意思是将输入的数据置为  ''
         } else {
             return false;
         }

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
 </head>
 
-<body>
+<body style="background-color: #F5F5F5 !important;">
 <header th:replace="_fragments::pageHeader" class="header-navigation"></header>
 <div class="pagebg">
     <img src="" th:src="@{/images/212b0df457fd9db23b6f0f846905ef6a.jpg}" alt="时间轴">
@@ -34,12 +34,15 @@
         <script src="../../static/js/page2.js" th:src="@{/js/page2.js}"></script>
     </div>
 </div>
+
 <footer>
-    <p>Design by <a href="http://www.yangqq.com/" target="_blank">何袁辉个人博客</a> <a href="http://more.yangqq.com/">蜀ICP备11002373号-1</a>
+    <p>Design by <a href="" target="_blank">何袁辉个人博客</a> <a href="http://more.yangqq.com/">蜀ICP备11002373号-1</a>
     </p>
 </footer>
 <a href="http://more.yangqq.com/time/#" class="cd-top">Top</a>
 
+<script th:src="@{/js/back_special.js}"></script>
+<script th:src="@{/js/mouse.js}"></script>
 
 </body>
 </html>

@@ -54,6 +54,7 @@ public class IndexController {
 		return "page/index";
 	}
 
+
 	//到关于我界面
 	@GetMapping("/about")
 	public String toAbout() {
@@ -64,20 +65,20 @@ public class IndexController {
 	//到图片展示界面
 	@GetMapping("/images")
 	public String show_images() {
-
 		return "page/show_image";
 	}
 
 
 	//到学无止境展示界面
 	@GetMapping("/learnMore")
-	public String learn_more(Model model, String typeName) {
-		typeName = "数据结构";
+	public String learn_more(Model model, String args) {
 		//加载右侧边栏
 		getRightInfo(model);
-		//根据typeId获取文章
-		List<Article> articleByTypeName = articleServiceImpl.getArticleByTypeName(typeName);
-		model.addAttribute("articleList", articleByTypeName).addAttribute("typeName", typeName);
+		//根据typeName获取文章
+		List<Article> articleByTypeName = articleServiceImpl.getArticleByTypeName(args);
+		System.out.println(articleByTypeName);
+		model.addAttribute("articleList", articleByTypeName)
+				.addAttribute("typeName", args);
 		return "page/learn_more";
 	}
 
@@ -130,6 +131,48 @@ public class IndexController {
 		model.addAttribute("articleList", blogList);
 		return "page/other";
 	}
+
+
+
+
+
+	//根据分类获取文章
+	@GetMapping("/{typeName}/getBlogTypeName")
+	public String getBlogByType(@PathVariable String typeName,Model model){
+		List<Article> blogList = articleServiceImpl.getArticleByTypeName(typeName);
+		model.addAttribute("articleList",blogList);
+		getRightInfo(model);
+		return "page/learn_more" ;
+	}
+
+
+
+
+	//根据标签获取文章
+	@GetMapping("/{keyword}/getBlogKeyWord")
+	public String getBlogByKeyWorks(@PathVariable String keyword,Model model){
+		List<Article> blogList = articleServiceImpl.getArticleByKeyWords(keyword);
+		model.addAttribute("articleList",blogList);
+		getRightInfo(model);
+		return "page/learn_more" ;
+	}
+
+
+
+	//根据关键字全局搜索文章
+	@GetMapping("/searchBLog")
+	public String searchBlogs(@RequestParam("args") String args,Model model){
+		List<Article> blogList = articleServiceImpl.searchBlog(args);
+		model.addAttribute("articleList",blogList);
+		getRightInfo(model);
+		return "page/learn_more" ;
+	}
+
+
+
+
+
+
 
 
 	//获取右边侧边栏的信息

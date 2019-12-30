@@ -5,7 +5,7 @@
     <title>博客详情页</title>
     <meta charset="UTF-8">
 </head>
-<body>
+<body style="background-color: #F5F5F5 !important;">
 <header th:replace="_fragments::pageHeader" class="header-navigation"></header>
 <article style="position: relative;">
     <h1 class="t_nav">
@@ -41,7 +41,9 @@
                         </li>
                     </ul>
                 </div>
-                <div class="tags"></div>
+              <!--  <div class="tags"></div>-->
+                <div class="tags"><a th:href="@{/page/learnMore(args=${article.categoryName})}" href="/e/tags/?tagname=%C9%E8%BC%C6&tempid=9"  th:text="${article.categoryName}">设计</a></div>
+
                 <div class="news_about">
                     <strong>简介</strong>
                     <span th:text="${article.summary}"></span>
@@ -206,5 +208,8 @@
 
 
 </script>
+
+<script th:src="@{/js/back_special.js}"></script>
+<script th:src="@{/js/mouse.js}"></script>
 
 </html>

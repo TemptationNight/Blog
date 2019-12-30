@@ -45,11 +45,6 @@
 </head>
 <head th:fragment="pageHead(title)">
     <meta charset="UTF-8">
-    <!--  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>个人博客</title>
-      <meta name="keywords" content="个人博客,个人博客">
-      <meta name="description" content="个人博客网站简介">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <script th:src="@{/js/jquery.min.js}"></script>
@@ -60,6 +55,14 @@
     <!--代码高亮-->
     <link rel="stylesheet" th:href="@{/lib/prism/prism.css}">
     <script th:src="@{/lib/prism/prism.js}"></script>
+    <!--背景特效-->
+    <script th:src="@{/js/back_special.js}"></script>
+    <!--鼠标点击特效-->
+    <script th:src="@{/js/mouse.js}"></script>
+
+
+    <link rel="stylesheet" th:href="@{/css/myself.css}">
+
 
 </head>
 <body>
@@ -1200,17 +1203,21 @@
     <div class="cloud">
         <h2 class="hometitle">标签云</h2>
         <ul>
-            <a href="" style="line-height: normal" th:each="blogKey:${keywords}"
-               th:text="${blogKey}">设计</a>
+            <a href="javascript:void(0)"
+               style="line-height: normal" th:each="blogKey:${keywords}"
+               th:text="${blogKey}" th:href="@{/page/{keyword}/getBlogKeyWord(keyword=${blogKey})}">设计</a>
         </ul>
     </div>
     <div class="cloud">
         <h2 class="hometitle">分类</h2>
         <ul>
-            <a href="" style="line-height: normal" th:each="type:${typeList}"
-               th:text="${type.categoryname}">设计</a>
+            <a href="javascript:void(0)"
+               style="line-height: normal" th:each="type:${typeList}"
+               th:text="${type.categoryname}"
+               th:href="@{/page/{typeName}/getBlogTypeName(typeName=${type.categoryname})}">设计</a>
         </ul>
     </div>
+
     <div class="cloud">
         <h2 class="hometitle">友情链接</h2>
         <ul>
@@ -1233,34 +1240,27 @@
 </th:block>
 
 <header th:fragment="pageHeader" class="header-navigation">
+    <div class="test"></div>
     <nav>
-        <div class="logo"><a href="http://more.yangqq.com/">何袁辉个人博客</a></div>
+        <div class="logo"><a href="" th:href="@{/page/index}"  style="color: #959595">何袁辉个人博客|</a></div>
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
             <li><a href="" th:href="@{/page/index}" id="selected">网站首页</a></li>
             <li class="menu"><a href="javascript:void(0)">学无止境</a>
                 <ul class="sub" style="background-color: black">
-                    <li><a href="javascript:void(0)" style="color: white" onclick="getBlogByType()">操作系统</a></li>
-                    <li><a href="javascript:void(0)" style="color: white"
-                           th:onclick="getBlogByType([['计算机网络']]);">计算机网络</a></li>
-                    <li><a href="javascript:void(0)" style="color: white"
-                           th:onclick="getBlogByType([['数据结构']]);">数据结构</a></li>
-                    <li><a href="javascript:void(0)" style="color: white"
-                           th:onclick="getBlogByType([['计算机原理']]);">计算机原理</a></li>
+                    <li><a th:href="@{/page/learnMore(args='操作系统')}" style="color: white">操作系统</a></li>
+                    <li><a th:href="@{/page/learnMore(args='数据结构')}" style="color: white">计算机网络</a></li>
+                    <li><a th:href="@{/page/learnMore(args='计算机网络')}" style="color: white">数据结构</a></li>
+                    <li><a th:href="@{/page/learnMore(args='计算机原理')}" style="color: white">计算机原理</a></li>
                 </ul>
                 <span></span></li>
-            <li class="menu"><a href="javascript:void(0)" target="_blank">开发技能</a>
+            <li class="menu"><a href="javascript:void(0)">开发技能</a>
                 <ul class="sub" style="background-color: black">
-                    <li><a href="javascript:void(0)" style="color: white"
-                           th:onclick="getBlogByType([['JAVA']]);">JAVA知识</a></li>
-                    <li><a href="javascript:void(0)" style="color: white" th:onclick="getBlogByType([['JVM']]);">JVM</a>
-                    </li>
-                    <li><a href="javascript:void(0)" style="color: white"
-                           th:onclick="getBlogByType([['LINUX']]);">LINUX</a></li>
-                    <li><a href="javascript:void(0)" style="color: white" th:onclick="getBlogByType([['数据库']]);">数据库</a>
-                    </li>
-                    <li><a href="javascript:void(0)" style="color: white" th:onclick="getBlogByType([['面试']]);">面试分享</a>
-                    </li>
+                    <li><a th:href="@{/page/learnMore(args='JAVA')}" style="color: white">JAVA知识</a></li>
+                    <li><a th:href="@{/page/learnMore(args='JVM')}" style="color: white">JVM</a></li>
+                    <li><a th:href="@{/page/learnMore(args='LINUX')}" style="color: white">LINUX</a></li>
+                    <li><a th:href="@{/page/learnMore(args='数据库')}" style="color: white">数据库</a></li>
+                    <li><a th:href="@{/page/learnMore(args='面试')}" style="color: white">面试分享</a></li>
                 </ul>
                 <span></span></li>
             <li><a href="" th:href="@{/page/share_life}">生活点滴</a></li>
@@ -1273,13 +1273,8 @@
 
         <div class="searchbox">
             <div id="search_bar" class="search_bar">
-                <form id="searchform" action="http://more.yangqq.com/e/search/index.php" method="post"
-                      name="searchform">
-                    <input class="input" placeholder="想搜点什么呢.." type="text" name="keyboard" id="keyboard">
-                    <input type="hidden" name="show" value="title">
-                    <input type="hidden" name="tempid" value="1">
-                    <input type="hidden" name="tbname" value="news">
-                    <input type="hidden" name="Submit" value="搜索">
+                <form id="searchform" action="" th:action="@{/page/searchBLog}" method="GET" name="searchform">
+                    <input class="input" placeholder="想搜点什么呢.." type="text" name="args" id="keyboard">
                     <p class="search_ico"><span></span></p>
                 </form>
             </div>
@@ -1289,23 +1284,30 @@
 
 
 <th:block th:fragment="articleInfo">
-    <div th:if="${articleList.size()!=0}" th:each="article:${articleList}" class="blogs"
-         data-scroll-reveal="enter bottom over 1s" data-scroll-reveal-id="2"
-         style="-webkit-transform: translatey(24px);transform: translatey(24px);opacity: 0;-webkit-transition: -webkit-transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;transition: transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;"
-         data-scroll-reveal-initialized="true">
-        <h3 class="blogtitle"><a href="http://more.yangqq.com/study/2/18.html"
-                                 th:href="@{/page/{id}/blogDetail(id=${article.id})}" target="_blank"
-                                 th:text="${article.title}">最后的午餐</a></h3>
-        <span class="blogpic"><a href="http://more.yangqq.com/study/2/18.html" title="最后的午餐"><img src=""
-                                                                                                  th:src="@{${article.images}}"
-                                                                                                  alt="最后的午餐"></a></span>
+    <div th:if="${articleList.size()!=0}" th:each="article:${articleList}" class="blogs">
+        <h3 class="blogtitle">
+            <a href=""
+               th:href="@{/page/{id}/blogDetail(id=${article.id})}" target="_blank"
+               th:text="${article.title}"></a></h3>
+        <span class="blogpic"><a th:href="@{/page/{id}/blogDetail(id=${article.id})}" title=""><img src=""
+                                                                                                    th:src="@{${article.images}}"
+                                                                                                    alt=""></a></span>
         <p class="blogtext" th:text="${article.summary}"></p>
         <div class="bloginfo">
             <ul>
-                <li class="author" th:text="${article.author}"></li>
-                <li class="lmname"><a href="http://more.yangqq.com/study/2/" target="_blank"><i
-                        class="ui icon list"></i><span th:text="${article.categoryName}"></span></a></li>
-                <li class="timer"><i class="ui icon  calendar"></i><span
+                <li class="author" th:text="${article.author}">
+
+                </li>
+                <li class="lmname"><a href="" th:href="@{/page/{id}/blogDetail(id=${article.id})}" target="_blank">
+                    <i
+                        class="ui icon list"></i>
+                    <span th:text="${article.categoryName}">
+
+                </span></a>
+                </li>
+                <li class="timer"><i class="ui icon  calendar">
+
+                </i><span
                         th:text="${#dates.format(article.addtime,'yyyy-MM-dd')}"></span></li>
                 <li class="view"><i class="ui icon eye"></i><span th:text="${article.browsenum}">48</span>已阅读</li>
                 <li class="like"><i class="ui icon like"></i><span th:text="${article.agreenum}"></span></li>

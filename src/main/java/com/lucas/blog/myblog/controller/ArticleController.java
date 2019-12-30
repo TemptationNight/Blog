@@ -69,26 +69,39 @@ public class ArticleController {
 	}
 
 
+
+
 	//根据分类局部刷新文章
-	public String getBlogByType(String tyepaName,Model model){
-		List<Article> blogList = articleServiceImpl.getArticleByTypeName(tyepaName);
-		model.addAttribute("blogList",blogList);
+	@GetMapping("/refreshByBlogType")
+	public String getBlogByType( String typeName,Model model){
+		System.out.println(typeName);
+		List<Article> blogList = articleServiceImpl.getArticleByTypeName(typeName);
+		model.addAttribute("articleList",blogList);
 		return "page/learn_more::blogArea";
 	}
 
 
 
 
-	//根据关键字局部刷新文章
-	public String getBlogByKeyWorks(String keyword,Model model){
-		List<Article> blogList = articleServiceImpl.getArticleByKeyWords(keyword);
-		model.addAttribute("blogList",blogList);
+	//根据标签局部刷新文章
+	@GetMapping("/refreshByKeyWord")
+	public String getBlogByKeyWorks( String keyWord,Model model){
+		System.out.println(keyWord);
+		List<Article> blogList = articleServiceImpl.getArticleByKeyWords(keyWord);
+		model.addAttribute("articleList",blogList);
 		return "page/learn_more::blogArea";
 	}
 
 
 
-	//根据关键字全局搜索
+	//根据关键字全局搜索局部刷新文章
+	@GetMapping("/refreshSearchBLog")
+	public String searchBlogs(String args,Model model){
+		List<Article> blogList = articleServiceImpl.searchBlog(args);
+		model.addAttribute("articleList",blogList);
+		return "page/learn_more::blogArea";
+	}
+
 
 
 
