@@ -1,7 +1,11 @@
 package com.lucas.blog.myblog.entity;
 
-import javax.persistence.*;
+
 import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.*;
+
 
 @Table(name = "admin")
 public class Admin  implements Serializable{
@@ -24,13 +28,25 @@ public class Admin  implements Serializable{
      */
     private String email;
 
-    /**
-     * 是否有权限  0否  1是
-     */
-    @Column(name = "isPermission")
-    private Integer ispermission;
 
-    /**
+
+	/**
+	 * 该用户的角色（可能不只一个）
+	 */
+    @Column(name="roleId")
+    private Integer roleId;
+
+	public Integer getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+
+
+
+	/**
      * @return id
      */
     public Integer getId() {
@@ -98,30 +114,15 @@ public class Admin  implements Serializable{
         this.email = email;
     }
 
-    /**
-     * 获取是否有权限  0否  1是
-     *
-     * @return isPermission - 是否有权限  0否  1是
-     */
-    public Integer getIspermission() {
-        return ispermission;
-    }
-
-    /**
-     * 设置是否有权限  0否  1是
-     *
-     * @param ispermission 是否有权限  0否  1是
-     */
-    public void setIspermission(Integer ispermission) {
-        this.ispermission = ispermission;
-    }
 
 
-	public Admin(String username, String password, String email, Integer ispermission) {
+
+
+	public Admin(String username, String password, String email,Integer  roleId) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.ispermission = ispermission;
+		this.roleId=roleId;
 	}
 
 

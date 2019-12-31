@@ -271,7 +271,7 @@ public class UserAgentUtils {
 		String filePath = path1 + FILE_PATH;
 
 
-		System.out.println(filePath);
+
 
 		File database = new File(filePath);
 		// 读取数据库内容

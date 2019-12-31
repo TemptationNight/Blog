@@ -61,7 +61,7 @@ public class VisitAspect {
 			Date date = new Date();
 			Visitor visitor1 = new Visitor(date, ip, city, url, browser, os, 1);
 			//将访客信息写入数据库
-			System.out.println("visitor="+visitor);
+
 			Integer i = visitorServiceImpl.insertVisitor(visitor1);
 		}
 		if(visitor!=null&&visitor.getBlack()==0){

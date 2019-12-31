@@ -15,4 +15,8 @@ import com.lucas.blog.myblog.entity.Admin;
 public interface AdminService {
 
 	public Admin login(String username);
+
+
+
+
 }

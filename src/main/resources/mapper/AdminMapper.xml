@@ -9,6 +9,7 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="isPermission" jdbcType="INTEGER" property="ispermission" />
+    <result column="role" jdbcType="VARCHAR" property="role" />
   </resultMap>
 </mapper>
+

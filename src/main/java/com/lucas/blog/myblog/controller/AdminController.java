@@ -27,21 +27,21 @@ public class AdminController {
 	@Autowired
 	private AdminService adminServiceImpl;
 
-	@ResponseBody
+	/*@ResponseBody
 	@GetMapping("/login")
 	public String login(@RequestParam String username, @RequestParam String password) {
 
 		Admin adminer = adminServiceImpl.login(password);
 		return adminer == null ? "login" : "admin/index";
-	}
+	}*/
 
 
 
-	@RequestMapping("/searchBlog")
+	/*@RequestMapping("/searchBlog")
 	public String searchBlog(){
 
 		return "search_blog";
-	}
+	}*/
 
 
 }
