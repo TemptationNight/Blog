@@ -19,6 +19,7 @@
     <main>
         <div class="infosbox">
             <div class="newsview">
+
                 <h3 class="news_title" th:text="${article.title}"></h3>
                 <div class="bloginfo">
                     <ul>
@@ -41,17 +42,14 @@
                         </li>
                     </ul>
                 </div>
-              <!--  <div class="tags"></div>-->
-                <div class="tags"><a th:href="@{/page/learnMore(args=${article.categoryName})}" href="/e/tags/?tagname=%C9%E8%BC%C6&tempid=9"  th:text="${article.categoryName}">设计</a></div>
-
+                <div class="tags"><a th:href="@{/page/learnMore(args=${article.categoryName})}"
+                                     href="/e/tags/?tagname=%C9%E8%BC%C6&tempid=9"
+                                     th:text="${article.categoryName}">设计</a></div>
                 <div class="news_about">
                     <strong>简介</strong>
                     <span th:text="${article.summary}"></span>
                 </div>
-
                 <div class="news_con" th:utext="${article.content}"></div>
-
-
             </div>
             <div class="share">
                 <div class="agree" th:fragment="agree">
@@ -89,85 +87,155 @@
                             </span>
                         </div>
                     </div>
-
                 </div>
             </div>
+            <div class="news_pl">
+                <h2>相邻文章</h2>
+            </div>
             <div class="nextinfo">
-                <p>上一篇：<a href="">返回列表</a></p>
-                <p>下一篇：<a href="">sql优化</a></p>
+                <p>上一篇：
+                    <a th:if="${preOne==null}" href="javascript:void(0)">无</a>
+                    <a th:if="${preOne!=null}" th:href="@{/page/{id}/blogDetail(id=${preOne.id})}"
+                       th:text="${preOne.title}">上一篇文章</a>
+                </p>
+                <p>下一篇：
+                    <a th:if="${nextOne==null}" href="javascript:void(0)">无</a>
+                    <a th:if="${nextOne!=null}" th:href="@{/page/{id}/blogDetail(id=${nextOne.id})}"
+                       th:text="${nextOne.title}">下一篇文章</a>
+                </p>
             </div>
             <div class="otherlink">
                 <h2>相关文章</h2>
-                <ul>
-                    <li><a href="" title="最后的午餐">最后的午餐</a></li>
-                    <li><a href="" title="Just One Last Dance">Just One Last
-                        Dance</a></li>
-                    <li><a href="">sql优化</a></li>
-                </ul>
+                <div class="tuijian">
+                    <ul class="sidenews">
+                        <li th:if="${likeArticles.size()!=0}" th:each="blog:${likeArticles}">
+                            <i>
+                                <img src="" th:src="@{${blog.images}}">
+                            </i>
+                            <p>
+                                <a href="" th:href="@{/page/{id}/blogDetail(id=${blog.id})}"
+                                   th:text="${blog.summary}"></a>
+                            </p>
+
+                        </li>
+
+                        <li th:if="${likeArticles.size()==0}">
+                            <h3>暂无相关文章</h3>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="news_pl">
-                <h2>文章评论</h2>
-                <ul>
-                    <div class="gbko">
-                        <form action="http://more.yangqq.com/e/pl/doaction.php" method="post" name="saypl" id="saypl"
-                              onsubmit="return CheckPl(document.saypl)">
-                            <div id="plpost">
-                                <p class="saying">
-                                    <span>
-                                       共有2条评论
-                                    </span>
-                                    来说两句吧...
-                                </p>
-                                <p class="yname">
-                                    <span>用户名:</span>
-                                    <input name="username" type="text" class="inputText" id="username" value=""
-                                           size="16">
-                                </p>
-                                <p class="yzm">
-                                    <span>验证码:</span>
-                                    <input name="key" type="text" class="inputText" size="16">
-                                    <img src="" align="absmiddle" name="plKeyImg" id="plKeyImg"
-                                         onclick="plKeyImg.src=&#39;/e/ShowKey/?v=pl&amp;t=&#39;+Math.random()"
-                                         title="看不清楚,点击刷新">
-                                </p>
-                                <input name="nomember" type="hidden" id="nomember" value="1" checked="checked">
-                                <textarea name="saytext" rows="6" id="saytext">
-                                </textarea>
-                                <input name="imageField" type="submit" value="提交">
-                                <input name="id" type="hidden" id="id" value="14">
-                                <input name="classid" type="hidden" id="classid" value="3">
-                                <input name="enews" type="hidden" id="enews" value="AddPl">
-                                <input name="repid" type="hidden" id="repid" value="0">
-                                <input type="hidden" name="ecmsfrom" value="/study/2/14.html">
-                            </div>
-                        </form>
+                <h2>我要评论</h2>
+            </div>
+            <!--留言区域-->
+            <div id="message-container" class="ui bottom attached  segment">
+                <!--评论留言区域-->
+                <div class="ui form" id="message-form">
+                    <div class="required field">
+                        <textarea name="content" id="content" placeholder="请输入评论信息"></textarea>
                     </div>
-                </ul>
+                    <div class="fields">
+                        <div class="required field m-mobile-wide  m-margin-bottom-small">
+                            <div class="ui left icon input ">
+                                <i class="user icon"></i>
+                                <input type="text" name="nickname" id="nickname" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="required field m-mobile-wide  m-margin-bottom-small">
+                            <div class="ui left icon input ">
+
+                                <i class="mail icon"></i>
+                                <input type="text" name="email" id="email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="required field  m-mobile-wide  m-margin-bottom-small">
+                            <button id="comment" type="button" th:onclick="comment_submit()"
+                                    class="ui black button m-mobile-wide"><i
+                                    class="edit icon"></i>发布
+                            </button>
+                        </div>
+
+                        <!--隐藏域：存放当前blog的id  和父级评论Id-->
+                        <input type="hidden" th:value="${article.id}" id="blogId">
+                        <input type="hidden" value="-1" id="parentCommentId" name="parentCommentId">
+                    </div>
+                </div>
+                <!--所有留言显示区域-->
+                <div class="news_pl" id="message-area">
+                    <h2>大家评论</h2>
+                </div>
+                <!--留言显示的区域块-->
+                <div th:fragment="commentList" id="commentList">
+
+
+                    <div class="ui threaded comments">
+
+                        <div class="comment" th:if="${commentList.size()==0}" >
+                            <h3>暂无相关评论</h3>
+                        </div>
+                        <div class="comment" th:if="${commentList.size()!=0}" th:each="comment:${commentList}">
+                            <a class="avatar">
+                               <!-- <img src="'https://i.picsum.photos/id/'+random()+'1014/800/500.jpg'">-->
+
+                                <img th:src="@{https://i.picsum.photos/id/{random}/800/500.jpg(random=${comment.id+1010})}">
+                            </a>
+                            <div class="content">
+                                <a class="author" th:text="${comment.nickname}">Matt</a>
+                                <div class="metadata">
+                                    <span class="date" th:text="${#dates.format(comment.addtime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
+                                </div>
+                                <div class="text" th:text="${comment.content}">
+                                    How artistic!
+                                </div>
+
+                                <!--这里有一个坑一定要注意，data-xxx  xxx一定是【全小写】，如果包含大写的话会失效   -->
+                                <div class="actions">
+                                    <a class="reply" data-commentId="1" data-commentnickname="Matt"
+                                       href="javascript:void(0)"
+                                       th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}"
+                                       onclick="reply(this)">回复</a>
+                                </div>
+                            </div>
+                            <div class="comments" th:each="childComment:${comment.getChildComment()}">
+                                <div class="comment">
+                                    <a class="avatar">
+                                        <img th:src="@{https://i.picsum.photos/id/{random}/800/500.jpg(random=${childComment.id})}">
+                                    </a>
+                                    <div class="content">
+                                        <a class="author" th:text="${childComment.nickname}">Jenny Hess</a>
+                                        <div class="metadata">
+                                            <span class="date"
+                                                  th:text="${#dates.format(childComment.addtime,'yyyy-MM-dd HH:mm')}">Just now</span>
+                                        </div>
+                                        <div class="text" th:text="${childComment.content}">
+                                            Elliot you are always so right :)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
     <aside class="sidebar">
         <th:block th:replace="_fragments::pageRight"></th:block>
-
     </aside>
-
 </article>
-
-
 <footer>
     <p>Design by
         <a href="javascript:void(0)" target="_blank">何袁辉个人博客</a>
         <a href="javascript:void(0)">蜀ICP备11002373号-1</a>
     </p>
 </footer>
-
-
 </body>
+<script type="text/javascript" th:inline="javascript">
 
-
-<script type="text/javascript">
-
-
+    //打赏
     $(function () {
         $(".pay_item").click(function () {
             $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
@@ -180,15 +248,6 @@
     function dashangToggle() {
         $(".hide_box").fadeToggle();
         $(".shang_box").fadeToggle();
-    }
-
-    function CheckPl(obj) {
-        if (obj.saytext.value == "") {
-            alert("您没什么话要说吗？");
-            obj.saytext.focus();
-            return false;
-        }
-        return true;
     }
 
 
@@ -206,6 +265,110 @@
 
     }
 
+
+    //评论表单校验
+    $('.ui.form').form({
+        files: {
+            content: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入评论内容'
+                }]
+            },
+            nickname: {
+                identifier: 'nickname',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入网名'
+                }]
+            },
+            email: {
+                identifier: 'email',
+                rules: [{
+                    type: 'email',
+                    prompt: '请输入邮箱'
+                }]
+            }
+        }
+    });
+
+
+    //提交留言
+    function comment_submit() {
+        //表单校验是否通过
+        var boo = $('.ui.form').form('validate form');
+        if (boo) {
+            postData();
+        } else {
+            alert("校验不通过");
+        }
+    }
+
+    //发送ajax请求
+    function postData() {
+        var articleid = $("#blogId").val();
+        var email = $("#email").val();
+        var nickname = $("#nickname").val();
+        var content = $("#content").val();
+        var parentCommentId = $("#parentCommentId").val();
+        alert(parentCommentId);
+        $.ajax({
+            url: "/page/addComment",
+            data: {
+                articleid: articleid,
+                email: email,
+                nickname: nickname,
+                content: content,
+                parent_commentId: parentCommentId
+            },
+            type: "POST",
+            success: function (data) {          //局部刷新
+
+                /* alert(data);*/
+                $("#commentList").html(data);
+                //滚动到留言区开头   500毫秒
+                /* $(window).scrollTo($("#message-area"), 500);*/
+                clear();
+            },
+            error: function () {
+                alert("出错了");
+            }
+        })
+    }
+
+
+    //将输入域的内容清空
+    function clear() {
+        $("#content").val("");
+        $("#nickname").val("");
+        $("#email").val("");
+        $("#parentCommentId").val(-1);
+        $("[name='content']").attr("placeholder", "请输入评论信息...");
+    }
+
+    //点击回复评论的页面处理逻辑
+    function reply(obj) {
+        //获取父级评论的id
+        var commentId = $(obj).data("commentid");
+        //获取父级评论的nickname
+        var commentnickname = $(obj).data("commentnickname");
+        //将评论输入域placeholder 改变为：@Matt样式
+        $("[name='content']").attr("placeholder", "@" + commentnickname).focus();
+        //设置隐藏域中父级评论的值
+        $("[name='parentCommentId']").val(commentId);
+        // alert($("[name='parentCommentId']").val());
+        //滚动到评论输入域位置
+        $(window).scrollTo($("#message-form"), 500);
+    }
+
+
+    function random() {
+        var max = 1025;
+        var min = 1000;
+        parseInt(Math.random() * (max - min + 1) + min, 10);
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
 
 </script>
 

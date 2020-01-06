@@ -39,14 +39,14 @@
                 <div class="ui segment attached teal box">
                     <section class="container">
                         <section class="boxItem" th:each="picture:${pictures}">
-                            <a th:href="@{/admin/picture/{id}/deleteFile(id=${picture.id})}" th:method="POST"
-                               href=""></a>
-                            <a th:href="@{/admin/picture/{id}/deleteFile(id=${picture.id})}" th:method="POST"
-                               href=""></a>
-                            <a th:href="@{/admin/picture/{id}/deleteFile(id=${picture.id})}" th:method="POST"
-                               href=""></a>
-                            <a th:href="@{/admin/picture/{id}/deleteFile(id=${picture.id})}" th:method="POST"
-                               href=""></a>
+                            <a  th:onclick="deletePicture([[${picture.id}]])"
+                               href="javascript:void(0)"></a>
+                            <a th:onclick="deletePicture([[${picture.id}]])"
+                               href="javascript:void(0)"></a>
+                            <a th:onclick="deletePicture([[${picture.id}]])"
+                               href="javascript:void(0)"></a>
+                            <a th:onclick="deletePicture([[${picture.id}]])"
+                               href="javascript:void(0)"></a>
                             <section class="itemContentBox">
                                 <img th:onclick="'javascript:deletePicture('+${picture.id}+');'" class="picture"
                                      src="https://picsum.photos/200/130?grayscale" alt=""
@@ -71,6 +71,22 @@
         </div>
     </div>
 </div>
+
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有删除权限</h3>
+    <br>
+    <br>
+</div>
+
 </body>
 <th:block th:replace="_fragments::adminscript"></th:block>
 <script type="text/javascript">
@@ -89,12 +105,16 @@
     //删除图片
     function deletePicture(id) {
         $.ajax({
-            url: "/admin/deleteFile",
+            url: "/admin/picture/deleteFile",
             data: {id: id}, //参数值
             type: "POST",    //请求方式
-            success: function () {
-                alert("删除成功");
-                window.location.reload();
+            success: function (data) {
+                if(data==="No Permission"){        //提示没有权限
+                    $('#permission').text("对不起，你没有删除资源权限");
+                    $('.small.modal').modal('show');
+                }else {
+                    window.location.reload();
+                }
             },
             //请求失败，包含具体的错误信息
             error: function (e) {

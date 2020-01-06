@@ -70,6 +70,19 @@ public interface ArticleService {
 
 
 
+	//获取下一篇文章
+	Article getNextOne(Integer id);
+
+
+	//获取上一篇文章
+	Article getPreOne(Integer id);
+
+
+
+	//获取相似文章
+
+	List<Article>  getLikeArticle(String type,String keyWords,String title,Integer id);
+
 
 
 

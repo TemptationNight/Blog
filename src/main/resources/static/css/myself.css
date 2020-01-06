@@ -1,7 +1,9 @@
 
 body{
-    background-color: white !important;
 
+
+    background:url(../../static/images/bj.png) repeat top left scroll;
+    z-index:-2;
 }
 
 

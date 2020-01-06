@@ -1,7 +1,7 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+      url: jdbc:mysql://192.168.216.135:3306/myblog?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
       username: root
       password: hyh971127
       initial-size: 1
@@ -18,6 +18,18 @@ logging:
   file: log/blog-pro.log
 
 
+
+
+
+#配置城市文件路径
+city:
+  path: /classes/GeoLite2-City.mmdb
+
+
+
+#配置图片上传文件路径
+images:
+  path: /classes/static/images
 
 
 

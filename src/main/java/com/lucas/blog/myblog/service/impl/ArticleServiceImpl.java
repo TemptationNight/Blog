@@ -45,7 +45,7 @@ public class ArticleServiceImpl implements ArticleService {
 	@Transactional
 	@Override
 	public Integer addArticle(Article article) {
-		System.out.println(article.toString());
+		System.out.println(article.toString()+"===========================发布文章");
 		return articleMapper.insert(article);
 	}
 
@@ -215,29 +215,34 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.updateByExampleSelective(article, example);
 	}
 
-	//根据typeId获取文章
+	//根据type获取文章
 	@Override
-	public List<Article> getArticleByTypeName(String  typeName) {
-		Example example=new Example(Article.class);
-		example.createCriteria().andLike("categoryName","%"+typeName+"%");
+	public List<Article> getArticleByTypeName(String typeName) {
+
+
+		System.out.println(typeName);
+
+
+		Example example = new Example(Article.class);
+		example.createCriteria().andLike("categoryName", "%" + typeName + "%");
 		return articleMapper.selectByExample(example);
 	}
 
 	//根据标签获取文章
 	@Override
 	public List<Article> getArticleByKeyWords(String keyWords) {
-		Example example=new Example(Article.class);
-		example.createCriteria().andLike("keyword","%"+keyWords+"%");
+		Example example = new Example(Article.class);
+		example.createCriteria().andLike("keyword", "%" + keyWords + "%");
 		return articleMapper.selectByExample(example);
 	}
 
 	@Override
 	public List<Article> searchBlog(String search) {
-		Example example=new Example(Article.class);
+		Example example = new Example(Article.class);
 		example.createCriteria()
-				.orLike("title" , "%"+search + "%")
-				.orLike("categoryName" , "%"+search + "%")
-				.orLike("keyword" , "%"+search + "%");
+				.orLike("title", "%" + search + "%")
+				.orLike("categoryName", "%" + search + "%")
+				.orLike("keyword", "%" + search + "%");
 		List<Article> articles = articleMapper.selectByExample(example);
 		return articles;
 	}
@@ -249,4 +254,64 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 
+	//根据当前文章的id获取下一篇文章
+	@Override
+	public Article getNextOne(Integer id) {
+		Article nextOne = articleMapper.getNextOne(id);
+		return nextOne;
+	}
+
+	//根据当前文章的id获取上一篇文章
+	@Override
+	public Article getPreOne(Integer id) {
+		Article preOne = articleMapper.getPreOne(id);
+		return preOne;
+	}
+
+
+	//获取相关文章
+	@Override
+	public List<Article> getLikeArticle(String type, String keyWords,String title,Integer id) {
+		Example example = new Example(Article.class);
+		Example.Criteria criteria = example.createCriteria();
+
+		//将文章的关键字分割，再对其每一个进行模糊查询
+		String[] split = keyWords.split("[;\\；]");
+		for (String keyWord : split) {
+			criteria.orLike("keyword", "%" + keyWord + "%");
+		}
+		criteria.orLike("title","%"+title+"%")
+				.orLike("categoryName", "%"+type+"%");
+		List<Article> articles = articleMapper.selectByExample(example);
+
+		Article article=null;
+		//再这个集合里面随机取4篇出来加载到首页面上显示
+		if (articles.size() > 5) {              //相关文章大于4篇
+			Set set = new LinkedHashSet(5);
+			int size = articles.size() - 1;
+			Random random = new Random();
+			while (set.size() < 5) {
+				int i = random.nextInt(size);
+				set.add(articles.get(i));
+			}
+			//删除自己本身
+			Iterator<Article> it = set.iterator();
+			while (it.hasNext()) {
+				article=it.next();
+				if(article.getId().equals(id)){
+					it.remove();
+				}
+			}
+			return (List<Article>)set;
+		}else {               //相关文章小于5，也要去掉自己本身
+			Iterator<Article> it=articles.iterator();
+			while(it.hasNext()){
+				article=it.next();
+				if(article.getId().equals(id)){
+					it.remove();
+				}
+			}
+			return articles;
+		}
+	}
 }

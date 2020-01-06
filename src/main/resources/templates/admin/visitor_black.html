@@ -28,7 +28,7 @@
                             <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
                                 <thead>
                                 <tr>
-                                    <th>访客状态</th>
+                                    <th>黑名单</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -209,6 +209,20 @@
         </div>
     </div>
 </div>
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有删除权限</h3>
+    <br>
+    <br>
+</div>
 </body>
 <th:block th:replace="_fragments::adminscript"></th:block>
 
@@ -249,11 +263,16 @@
             url: "/admin/outBlack",
             data: {ip: ip},
             type: "POST",
-            success: function () {
-                window.location.reload();
+            success: function (data) {
+                if(data==="No Permission"){
+                    $('#permission').text("对不起，你没有移除黑名单权限权限");
+                    $('.small.modal').modal('show');
+                }else{
+                    window.location.reload();
+                }
             },
             error: function () {
-                alert("error");
+                alert("出错了");
             }
         });
     }

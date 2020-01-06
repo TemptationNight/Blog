@@ -29,7 +29,7 @@ public class AdminServiceImpl implements AdminService {
 		Example example = new Example(Admin.class);
 		example.createCriteria().andCondition("username=", username);
 		Admin admin = adminMapper.selectOneByExample(example);
-		return  admin;
+		return admin;
 
-}
+	}
 }

@@ -80,6 +80,12 @@
             <version>2.8.1</version>
         </dependency>
 
+        <!--配置常量-->
+        <dependency>
+            <groupId> org.springframework.boot </groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring -->
         <dependency>
@@ -185,6 +191,13 @@
                 <configuration>
                     <fork>true</fork><!-- 如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart -->
                 </configuration>
+            </plugin>
+
+
+            <!--maven 打包插件-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
 

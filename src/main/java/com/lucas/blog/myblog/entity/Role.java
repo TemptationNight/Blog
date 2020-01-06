@@ -41,18 +41,10 @@ public class Role {
 	private String roleName;
 
 
-	/**
-	 * 角色具有的权限集合
-	 */
-	@Column(name="permissionId")
-	private Integer permissionId;
-
-
-	public Role(String roleName, Integer permissionId) {
+	public Role(Integer id,String roleName) {
+		this.id=id;
 		this.roleName = roleName;
-		this.permissionId = permissionId;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -70,11 +62,5 @@ public class Role {
 		this.roleName = roleName;
 	}
 
-	public Integer getPermissionId() {
-		return permissionId;
-	}
 
-	public void setPermissionId(Integer  permissionId) {
-		this.permissionId = permissionId;
-	}
 }

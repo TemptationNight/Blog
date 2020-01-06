@@ -87,6 +87,7 @@ public class ShiroConfig {
 		map.put("/page/**", "anon");
 
 
+
 		//拦截一切
 		map.put("/**", "authc");
 

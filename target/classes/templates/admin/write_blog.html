@@ -292,6 +292,21 @@
         </div>
     </div>
 </div>
+
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有发布博客权限</h3>
+    <br>
+    <br>
+</div>
 </body>
 
 
@@ -371,7 +386,12 @@
                 summary :summary
             },
             success: function (data) {
-                window.location.reload();
+                if(data==="No Permission"){       //提示没有权限
+                    $('#permission').text("对不起，你没有发布文章权限");
+                    $('.small.modal').modal('show');
+                }else{
+                    window.location.reload();
+                }
             },
             error: function () {
                 alert("错误");

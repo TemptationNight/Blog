@@ -30,13 +30,13 @@ public class MyblogApplicationTests {
 
 
 
-		Admin admin=new Admin();
+	/*	Admin admin=new Admin();
 		admin.setUsername("username");
 		//admin.setRole(new HashSet<Role>(12,"admin"));
 		admin.setEmail("742567489@qq.com");
 		admin.setPassword("hyh971127");
 		int insert = adminMapper.insert(admin);
-		System.out.println("insert="+insert);
+		System.out.println("insert="+insert);*/
 
 	}
 

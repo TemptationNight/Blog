@@ -195,10 +195,13 @@
                         cache: false,
                         contentType: false,
                         processData: false,
-                        success:function () {
-                         alert("上传成功");
-
-                            window.location.reload();
+                        success:function (data) {
+                            if(data==="No Permission"){        //提示没有权限
+                                $('#permission').text("对不起，你没有添加资源权限");
+                                $('.small.modal').modal('show');
+                            }else {
+                                window.location.reload();
+                            }
                         },
                         error:function () {
                             alert("上传失败")

@@ -145,20 +145,27 @@
                                         <td th:text="${#dates.format(link.addtime,'yyyy-MM-dd HH:mm:ss')}">2019-09-01
                                         </td>
                                         <td>
-                                            <a th:if="${link.isagree eq 1}" href=""
-                                               th:href="@{/admin/delete/{id}/link(id=${link.id})}">
+                                            <a href="javascript:void(0)" th:if="${link.isagree eq 1}"
+
+
+                                               th:onclick="deleteLink([[${link.id}]],[[0]])"
+
+                                            >
                                                 <div class="ui label small  red">
                                                     <i class="trash icon"></i>删除
                                                 </div>
                                             </a>
-                                            <a th:if="${link.isagree eq 0}"
-                                               th:href="@{/admin/setLinkChecked/{id}/link(id=${link.id})}">
+
+                                            <a href="javascript:void(0)" th:if="${link.isagree eq 0}"
+                                               th:onclick="setLinkChecked([[${link.id}]])">
                                                 <div class="ui label small teal">
                                                     <i class="checked icon">通过审核</i>
                                                 </div>
                                             </a>
-                                            <a th:if="${link.isagree eq 0}"
-                                               th:href="@{/admin/delete/{id}/link(id=${link.id})}">
+
+
+                                            <a href="javascript:void(0)" th:if="${link.isagree eq 0}"
+                                               th:onclick="deleteLink([[${link.id}]],[[1]])">
                                                 <div class="ui label small  blue">
                                                     <i class="thumbs down icon">忽略</i>
                                                 </div>
@@ -185,9 +192,27 @@
         </div>
     </div>
 </div>
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有删除权限</h3>
+    <br>
+    <br>
+</div>
+
+
 </body>
 <th:block th:replace="_fragments::adminscript"></th:block>
 <script type="text/javascript">
+
+
     //添加友链
     $("#addLink").click(function () {
         var linkUrl = $(".linkUrl").val();
@@ -199,9 +224,13 @@
                 url: "/admin/addLink",
                 data: {linkUrl: linkUrl, linkName: linkName}, //参数值
                 type: "POST",    //请求方式
-                success: function () {
-                    alert("添加成功");
-                    window.location.reload();
+                success: function (data) {
+                    if(data==="No Permission"){        //提示没有权限
+                        $('#permission').text("对不起，你没有添加友链权限");
+                        $('.small.modal').modal('show');
+                    }else {
+                        window.location.reload();
+                    }
                 },
                 error: function (e) {
                     console.log(e.status);
@@ -210,6 +239,7 @@
             });
         }
     });
+
     //搜索友链
     function search() {
         var args = $(".searchArgs").val();
@@ -229,6 +259,7 @@
             });
         }
     }
+
     //点击量+1
     function clickNumAddOne(id,url) {
         $.ajax({
@@ -243,6 +274,53 @@
                 alert("错误");
             }
         });
+    }
+
+    //删除友链  忽略友链
+    function deleteLink(id,falg){
+        $.ajax({
+            url:"/admin/delete/link",
+            data:{id:id},
+            type:"POST",
+            success: function (data) {
+                if(data==="No Permission"){        //提示没有权限
+                    if(falg===0){
+                        $('#permission').text("对不起，你没有删除友链权限");
+                        $('.small.modal').modal('show');
+                    }else if(falg===1){
+                        $('#permission').text("对不起，你没有忽略友链权限");
+                        $('.small.modal').modal('show');
+                    }else {
+                        alert("出错了");
+                    }
+                }else {
+                    window.location.reload();
+                }
+            },
+            error:function () {
+                alert("对不起，出错了");
+            }
+        });
+    }
+
+    //友链通过验证
+    function  setLinkChecked(id) {
+        $.ajax({
+            url:"/admin/setLinkChecked/link",
+            data:{id:id},
+            success: function (data) {
+                if(data==="No Permission"){        //提示没有权限
+                    $('#permission').text("对不起，你没有验证友链权限");
+                    $('.small.modal').modal('show');
+                }else {
+                    window.location.reload();
+                }
+            },
+            type:"POST",
+            error:function () {
+                alert("哦嚯，出错了");
+            }
+        })
     }
 </script>
 </html>

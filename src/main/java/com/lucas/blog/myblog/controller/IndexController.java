@@ -133,62 +133,58 @@ public class IndexController {
 	}
 
 
-
-
-
 	//根据分类获取文章
 	@GetMapping("/{typeName}/getBlogTypeName")
-	public String getBlogByType(@PathVariable String typeName,Model model){
+	public String getBlogByType(@PathVariable String typeName, Model model) {
 		List<Article> blogList = articleServiceImpl.getArticleByTypeName(typeName);
-		model.addAttribute("articleList",blogList);
+		model.addAttribute("articleList", blogList);
 		getRightInfo(model);
-		return "page/learn_more" ;
+		return "page/learn_more";
 	}
-
-
 
 
 	//根据标签获取文章
 	@GetMapping("/{keyword}/getBlogKeyWord")
-	public String getBlogByKeyWorks(@PathVariable String keyword,Model model){
+	public String getBlogByKeyWorks(@PathVariable String keyword, Model model) {
 		List<Article> blogList = articleServiceImpl.getArticleByKeyWords(keyword);
-		model.addAttribute("articleList",blogList);
+		model.addAttribute("articleList", blogList);
 		getRightInfo(model);
-		return "page/learn_more" ;
+		return "page/learn_more";
 	}
-
 
 
 	//根据关键字全局搜索文章
 	@GetMapping("/searchBLog")
-	public String searchBlogs(@RequestParam("args") String args,Model model){
+	public String searchBlogs(@RequestParam("args") String args, Model model) {
 		List<Article> blogList = articleServiceImpl.searchBlog(args);
-		model.addAttribute("articleList",blogList);
+		model.addAttribute("articleList", blogList);
 		getRightInfo(model);
-		return "page/learn_more" ;
+		return "page/learn_more";
 	}
-
-
-
-
-
-
 
 
 	//获取右边侧边栏的信息
 	public void getRightInfo(Model model) {
 
-		//获取页面的侧边信息
+
+		List<Article> slowLife = articleServiceImpl.getArticleByTypeName("生活");
+		List<Article> list=new ArrayList<>();
+
+
+		for(int i=0;i<2; i++){
+			list.add(slowLife.get(i));
+		}
+
+		System.out.println("====================="+list.size());
+
+
 		Set<Article> articleByRecommend = articleServiceImpl.getArticleByRecommend();
 		Article recommendTop = articleByRecommend.iterator().next();//获取set集合的第一个元素  并把它放在推荐文章最上面的大框框中
 		articleByRecommend.remove(recommendTop);//删除第一个元素
-
 		Set<Article> articleByTop = articleServiceImpl.getArticleByTop();     //置顶文章随机三篇
-
 		List<Article> articleByBrowsers = articleServiceImpl.getArticleByBrowsers();
 		Article browseTop = articleByBrowsers.get(0); //获取list集合的第一个元素  并把它放在点击量文章最上面的大框框中
 		articleByBrowsers.remove(browseTop); //删除第一个元素
-
 		HashSet<String> keywords = articleServiceImpl.getKeywords();
 		List<Link> linkList = linkServiceImpl.getLinkList();
 		List<Category> typeList = categoryServiceImpl.getCategoryList();
@@ -199,10 +195,9 @@ public class IndexController {
 				.addAttribute("linkList", linkList)
 				.addAttribute("recommendTop", recommendTop)
 				.addAttribute("browseTop", browseTop)
-				.addAttribute("typeList", typeList);
+				.addAttribute("typeList", typeList)
+				.addAttribute("slowLife",list);
 	}
-
-
 }
 
 

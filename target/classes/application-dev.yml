@@ -1,9 +1,9 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://192.168.216.135:3306/myblog?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+      url: jdbc:mysql://106.54.70.166:3306/myblog?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
       username: root
-      password: hyh123456
+      password: hyh971127
       initial-size: 1
       min-idle: 1
       max-active: 20
@@ -16,7 +16,7 @@ spring:
     proxy-target-class: true
   redis:
     database: 0
-    host: 192.168.216.135      #Redis服务器地址
+    host: 106.54.70.166      #Redis服务器地址
     port: 6379       #Redis服务器连接端口
     password:          #Redis服务器连接密码（默认为空）
     jedis:
@@ -42,10 +42,16 @@ logging:
   file: log/blog-dev.log
 
 
+#配置城市文件路径
+city:
+  path: /src/main/resources/GeoLite2-City.mmdb
 
 
 
+#配置图片上传文件路径
 
+image:
+  location: /src/main/resources/static/images/
 
 
 

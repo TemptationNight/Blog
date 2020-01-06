@@ -2,6 +2,7 @@ package com.lucas.blog.myblog.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Table(name = "comment")
@@ -38,23 +39,55 @@ public class Comment implements Serializable{
     @Column(name = "articleId")
     private Integer articleid;
 
-    /**
-     * 回复内容
-     */
-    @Column(name = "answerContent")
-    private String answercontent;
 
-    /**
-     * 回复人
-     */
-    @Column(name = "answerPerson")
-    private String answerperson;
 
-    /**
-     * 回复时间
-     */
-    @Column(name = "answerTime")
-    private Date answertime;
+
+
+
+	/**
+	 * 父级评论id
+	 */
+	@Column(name = "parent_commentId")
+
+	private Integer parent_commentId;
+
+
+
+	/**
+	 * 该评论的子评论集合
+	 */
+	private List<Comment> childComment;
+
+
+
+	public List<Comment> getChildComment() {
+		return childComment;
+	}
+
+	public void setChildComment(List<Comment> childComment) {
+		this.childComment = childComment;
+	}
+
+
+
+
+
+
+
+
+
+	public Integer getParent_commentId() {
+		return parent_commentId;
+	}
+
+	public void setParent_commentId(Integer parent_commentId) {
+		this.parent_commentId = parent_commentId;
+	}
+
+
+
+
+
 
     /**
      * @return id
@@ -160,74 +193,35 @@ public class Comment implements Serializable{
         this.articleid = articleid;
     }
 
-    /**
-     * 获取回复内容
-     *
-     * @return answerContent - 回复内容
-     */
-    public String getAnswercontent() {
-        return answercontent;
-    }
 
-    /**
-     * 设置回复内容
-     *
-     * @param answercontent 回复内容
-     */
-    public void setAnswercontent(String answercontent) {
-        this.answercontent = answercontent;
-    }
-
-    /**
-     * 获取回复人
-     *
-     * @return answerPerson - 回复人
-     */
-    public String getAnswerperson() {
-        return answerperson;
-    }
-
-    /**
-     * 设置回复人
-     *
-     * @param answerperson 回复人
-     */
-    public void setAnswerperson(String answerperson) {
-        this.answerperson = answerperson;
-    }
-
-    /**
-     * 获取回复时间
-     *
-     * @return answerTime - 回复时间
-     */
-    public Date getAnswertime() {
-        return answertime;
-    }
-
-    /**
-     * 设置回复时间
-     *
-     * @param answertime 回复时间
-     */
-    public void setAnswertime(Date answertime) {
-        this.answertime = answertime;
-    }
-
-
-	public Comment(Date addtime, String nickname, String email, String content, Integer articleid, String answercontent, String answerperson, Date answertime) {
+	public Comment(Date addtime, String nickname, String email, String content,
+				   Integer articleid, Integer parent_commentId) {
 		this.addtime = addtime;
 		this.nickname = nickname;
 		this.email = email;
 		this.content = content;
 		this.articleid = articleid;
-		this.answercontent = answercontent;
-		this.answerperson = answerperson;
-		this.answertime = answertime;
+		this.parent_commentId=parent_commentId;
 	}
 
 
 	public Comment() {
 		super();
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Comment{" +
+				"id=" + id +
+				", addtime=" + addtime +
+				", nickname='" + nickname + '\'' +
+				", email='" + email + '\'' +
+				", content='" + content + '\'' +
+				", articleid=" + articleid +
+				", parent_commentId=" + parent_commentId +
+				", childComment=" + childComment +
+				'}';
 	}
 }

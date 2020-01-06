@@ -51,7 +51,6 @@ public class LoginController {
 			return "redirect:/admin/index";
 		} catch (IncorrectCredentialsException ice) {
 			model.addAttribute("msg", "密码不正确");
-			System.out.println("密码不正确");
 			return "/page/login";
 		} catch (UnknownAccountException uae) {
 			model.addAttribute("msg", "账号不存在");

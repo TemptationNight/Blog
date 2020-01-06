@@ -19,5 +19,14 @@ public interface ArticleMapper extends MyMapper<Article> {
 	@Select("select * from article order by browsenum desc LIMIT 4")
 	List<Article> getArticleByBrowsers();
 
+	@Select("select * from article where id = (select MAX( id) from article where id < #{id}) ")
+	Article getPreOne(Integer id);
+
+
+	@Select("select * from article where id = (select  MIN( id)  from article where id > #{id} )")
+	Article getNextOne(Integer id);
+
+
+
 
 }

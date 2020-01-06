@@ -100,7 +100,7 @@
                                             <button th:onclick="'javascript:updateType('+${type.id}+');'"
                                                     class="ui button teal mini editType"><i class="edit icon"></i>编辑
                                             </button>
-                                            <a href="#" th:href="@{/admin/delete/{id}/category(id=${type.id})}"
+                                            <a href="javascript:void(0)" th:onclick="deleteType([[${type.id}]])"
                                                class="ui button red mini"><i class="trash icon"></i>删除
                                             </a>
                                         </td>
@@ -126,7 +126,7 @@
             </div>
         </div>
         <!--弹出层-->
-        <div class="ui modal small">
+        <div id="modal" class="ui  modal small">
             <i class="close icon"></i>
             <div class="header">
                 修改博客
@@ -154,10 +154,26 @@
         </div>
     </div>
 </div>
+
+
+<!--权限不足提示-->
+<div class="ui permission small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有删除权限</h3>
+    <br>
+    <br>
+</div>
 </body>
 <th:block th:replace="_fragments::adminscript">
 </th:block>
 <script type="text/javascript">
+
+
     //添加一个类别
     $("#addType").click(function () {
         var data = $("#newType").val();
@@ -166,8 +182,13 @@
             url: "/admin/addCategory",
             data: {name: data}, //参数值
             type: "POST",    //请求方式
-            success: function () {
-                window.location.reload();
+            success: function (data) {
+                if(data==="No Permission"){
+                    $('#permission').text("对不起，你没有添加类别权限");
+                    $('.permission.small.modal').modal('show');
+                }else{
+                    window.location.reload();
+                }
             },
             //请求失败，包含具体的错误信息
             error: function (e) {
@@ -190,8 +211,13 @@
             url: "/admin//update/category",
             data: {name: data, id: ID},
             type: "POST",
-            success: function () {
-                window.location.reload();
+            success: function (data) {
+                if(data==="No Permission"){
+                    $('#permission').text("对不起，你没有修改权限");
+                    $('.permission').modal('show');
+                }else{
+                    window.location.reload();
+                }
             },
             error: function () {
                 alert("错误");
@@ -201,7 +227,6 @@
 
     //点击刷新数据
     $("#fresh").click(function () {
-        alert("刷新");
         $.ajax({
             url: "/admin/categorys",
             type: "GET"      //请求方式
@@ -210,7 +235,7 @@
 
     //弹出层
     $(".editType").click(function () {
-        $('.modal').modal('show')
+        $('#modal').modal('show')
         ;
     });
 
@@ -233,5 +258,27 @@
             });
         }
     }
+
+    //删除一个类别
+    function deleteType(id) {
+        $.ajax({
+            url:"/admin/delete/category",
+            data:{id:id},
+            type:"POST",
+            success:function(data) {
+                if(data==="No Permission"){       //提示没有权限
+                    $('#permission').text("对不起，你没有删除权限");
+                    $('.permission.small.modal').modal('show');
+                }else{
+                    window.location.reload();
+                }
+            },
+            error:function() {
+                alert("出错了");
+            }
+        })
+
+    }
+
 </script>
 </html>

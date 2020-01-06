@@ -6,6 +6,7 @@ import com.lucas.blog.myblog.aop.ActionType;
 import com.lucas.blog.myblog.aop.SystemLog;
 import com.lucas.blog.myblog.entity.Category;
 import com.lucas.blog.myblog.service.CategoryService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +44,7 @@ public class CategoryControllerAdmin {
 	}
 
 
+	@RequiresRoles(value="root")
 	@SystemLog(description = "修改类别：", actionType = ActionType.UPDATE)
 	@PostMapping("/update/category")
 	public String updateCategory(Integer id, String name) {
@@ -56,15 +58,17 @@ public class CategoryControllerAdmin {
 	}
 
 
+	@RequiresRoles(value="root")
 	@SystemLog(description = "删除类别:", actionType = ActionType.DELETE)
-	@GetMapping("/delete/{id}/category")
-	public String deleteCategory(@PathVariable Integer id) {
+	@PostMapping("/delete/category")
+	public String deleteCategory( Integer id) {
 		//删除类下面的文章再删除类   逻辑交给service层实现
 		Integer i = categoryServiceImpl.deleteCategory(id);
 		return "redirect:/admin/categorys";
 	}
 
 
+	@RequiresRoles(value="root")
 	@SystemLog(description = "添加一个类别:", actionType = ActionType.INSERT)
 	@PostMapping("/addCategory")
 	public String addCategory(@RequestParam("name") String name) {

@@ -16,7 +16,10 @@ import com.lucas.blog.myblog.entity.Picture;
 import com.lucas.blog.myblog.service.CategoryService;
 import com.lucas.blog.myblog.service.PictureService;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -47,7 +50,9 @@ import java.util.Map;
 public class PictureController {
 
 
-	private static final String FILE_PATH = "/src/main/resources/static/images/";
+	//private static  String FILE_PATH="src/main/resources/static/images";
+
+	private static String FILE_PATH = "target/classes/static/images";
 
 
 	@Autowired
@@ -64,15 +69,8 @@ public class PictureController {
 	}
 
 
-
-
-
-
-
-
-
-
-	@SystemLog(description = "添加图片:",actionType = ActionType.INSERT)
+	@RequiresRoles(value = "root")
+	@SystemLog(description = "添加图片:", actionType = ActionType.INSERT)
 	@PostMapping("/uploadFile")
 	public String uploadFile(@RequestParam("files") MultipartFile[] files) {
 		//文件不为空
@@ -105,9 +103,10 @@ public class PictureController {
 	}
 
 
-	@SystemLog(description = "删除图片:",actionType = ActionType.DELETE)
-	@GetMapping("/picture/{id}/deleteFile")
-	public String deleteFile(@PathVariable Integer id) {
+	@RequiresRoles(value = "root")
+	@SystemLog(description = "删除图片:", actionType = ActionType.DELETE)
+	@PostMapping("/picture/deleteFile")
+	public String deleteFile(Integer id) {
 		if (id != null) {
 			Integer integer = pictureServiceImpl.deletePicture(id);
 			System.out.println(integer);
@@ -124,10 +123,6 @@ public class PictureController {
 		}
 		return "/admin/pictureUp";
 	}
-
-
-
-
 
 
 }

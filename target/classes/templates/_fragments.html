@@ -61,6 +61,9 @@
     <script th:src="@{/js/mouse.js}"></script>
 
 
+
+
+    <script th:src="@{/js/semantic.js}"></script>
     <link rel="stylesheet" th:href="@{/css/myself.css}">
 
 
@@ -394,10 +397,10 @@
                    th:href="@{/admin/visitors}">
                     访客记录
                 </a>
-                <a style="font-size: medium!important;" class="item" href="button.html" th:href="@{/admin/visitors}">
+                <a style="font-size: medium!important;" class="item" href="button.html" th:href="@{/admin/visitorStatistic}">
                     访客统计
                 </a>
-                <a style="font-size: medium!important;" class="item" href="divider.html" th:href="@{/admin/visitors}">
+                <a style="font-size: medium!important;" class="item" href="divider.html" th:href="@{/admin/visitorBlack}">
                     黑名单
                 </a>
             </div>
@@ -967,168 +970,7 @@
     </div>
 </div>
 
-<!--
 
-中甲小菜单区域  用于访客统计的三个页面  现在没用了
-<div th:fragment="visitormenu" class="ui four wide tab column" style="background: #eaeaea">
-
-    <div class="ui segment teal center aligned segment-border-none">
-        <a class="ui teal  label big fluid">访客记录</a>
-        <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
-            <thead>
-            <tr>
-                <th>访客状态</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <i class="save icon large"></i>
-                    记录数
-                </td>
-                <td>
-                    <div class="ui label red" th:text="${count}">144</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <i class="user icon large"></i>
-                    用户数
-                </td>
-                <td>
-                    <div class="ui label violet" th:text="${userCount}">4</div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <i class="user times icon large"></i>
-                    黑名单
-                </td>
-                <td>
-                    <div class="ui label olive" th:text="${blackCount}">14</div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="m-padding-none" style="background: #eaeaea">
-            <table class="ui red table left aligned m-font-normal"
-                   style=" border:0; background: #eaeaea">
-                <thead>
-                <tr>
-                    <th>按时间查询</th>
-                </tr>
-                </thead>
-            </table>
-            <div class="ui label grey large">起始时间</div>
-            <div class="ui mini icon input">
-                <input id="startTime" name="startTime" type="date" placeholder="Search log..."
-                       style="font-size:9px !important;">
-            </div>
-            <div class="ui label black large">截至时间</div>
-            <div class="ui mini icon input">
-                <input id="endTime" name="endTime" type="date" placeholder="Search log..."
-                       style="font-size:9px !important;line-height: 16px !important;">
-            </div>
-            <div class="ui left aligned m-margin-lr-normal m-padding-mini">
-                <input id="searchLogByTime" type="submit" class="ui button mini teal "
-                       value="查询">
-                <input id="reSetTime" type="button" class="ui button mini teal " value="重置">
-            </div>
-        </div>
-        <table class="ui  table left aligned m-font-normal" style=" border:0;background: #eaeaea">
-            <thead>
-            <tr>
-                <th>快捷查询</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <a href="javascript:void(0)"
-                       th:onclick="searchVisitorByArgs([['四川']]);">
-                        <i class="tag right icon large black"></i>
-                        四川地区
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="javascript:void(0)"
-                       th:onclick="searchVisitorByArgs([['教育网']]);">
-                        <i class="tag right icon large   black"></i>
-                        教育网
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="javascript:void(0)"
-                       th:onclick="searchVisitorByArgs([['IE']]);">
-                        <i class="tag right icon large  black "></i>
-                        IE
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="javascript:void(0)"
-                       th:onclick="searchVisitorByArgs([['Chrome']]);">
-                        <i class="tag right icon large  black "></i>
-                        Chrome
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="javascript:void(0)"
-                       th:onclick="searchVisitorByArgs([['Windows']]);">
-                        <i class="tag right icon large  black "></i>
-                        Windows
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="javascript:void(0)"
-                       th:onclick="searchVisitorByArgs([['Iphone']]);">
-
-                        <i class="tag right icon large  black "></i>
-                        Iphone
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a href="javascript:void(0)"
-                       th:onclick="searchVisitorByArgs([['Ipad']]);">
-
-                        <i class="tag right icon large  black "></i>
-                        Ipad
-                    </a>
-                </td>
-
-            </tr>
-            <tr>
-                <td>
-                    <a href="javascript:void(0)"
-                       th:onclick="searchVisitorByArgs([['Android']]);">
-
-                        <i class="tag right icon large  black "></i>
-                        Android
-                    </a>
-                </td>
-
-            </tr>
-
-
-            </tbody>
-
-
-        </table>
-    </div>
-</div>
--->
 
 <th:block th:fragment="pageRight">
     <div class="zhuanti">
@@ -1198,7 +1040,6 @@
             </li>
 
         </ul>
-
     </div>
     <div class="cloud">
         <h2 class="hometitle">标签云</h2>
@@ -1242,7 +1083,7 @@
 <header th:fragment="pageHeader" class="header-navigation">
     <div class="test"></div>
     <nav>
-        <div class="logo"><a href="" th:href="@{/page/index}"  style="color: #959595">袁辉个人博客|</a></div>
+        <div class="logo"><a href="" th:href="@{/page/index}"  >@FREEDOM</a></div>
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
             <li><a href="" th:href="@{/page/index}" id="selected">网站首页</a></li>
@@ -1267,7 +1108,8 @@
             <li><a href="" th:href="@{/page/other}">杂谈</a></li>
             <li><a href="" th:href="@{/page/about}">关于我</a></li>
             <li><a href="" th:href="@{/page/timeLine}">时间轴</a></li>
-            <li><a href="" th:href="@{/page/message}">留言</a></li>
+            <li><a href="javascript:void(0)" >留言</a></li>
+            <li><a href="" th:href="@{/page/login}">登录</a></li>
         </ul>
 
 
@@ -1287,7 +1129,7 @@
     <div th:if="${articleList.size()!=0}" th:each="article:${articleList}" class="blogs">
         <h3 class="blogtitle">
             <a href=""
-               th:href="@{/page/{id}/blogDetail(id=${article.id})}" target="_blank"
+               th:href="@{/page/{id}/blogDetail(id=${article.id})}"
                th:text="${article.title}"></a></h3>
         <span class="blogpic"><a th:href="@{/page/{id}/blogDetail(id=${article.id})}" title=""><img src=""
                                                                                                     th:src="@{${article.images}}"
@@ -1320,7 +1162,7 @@
          data-scroll-reveal-id="1"
          style="-webkit-transform: translatey(0);transform: translatey(0);opacity: 1;-webkit-transition: -webkit-transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;transition: transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;"
          data-scroll-reveal-initialized="true">
-        <h3 class="blogtitle"><a href="http://more.yangqq.com/study/2/18.html" target="_blank">对不起，暂无数据！！！</a>
+        <h3 class="blogtitle"><a href="javascript:void(0)" >对不起，暂无数据！！！</a>
         </h3>
 
     </div>

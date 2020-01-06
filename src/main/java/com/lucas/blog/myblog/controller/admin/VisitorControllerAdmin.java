@@ -7,6 +7,7 @@ import com.lucas.blog.myblog.aop.SystemLog;
 import com.lucas.blog.myblog.entity.Visitor;
 import com.lucas.blog.myblog.service.VisitorService;
 import com.lucas.blog.myblog.utils.DateUtils;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -109,6 +110,9 @@ public class VisitorControllerAdmin {
 	@GetMapping("/visitorBlack")
 	public String visitorBlack(Model model){
 		List<Visitor> visitorList=visitorServiceImpl.getBlackVisitorIp();
+		for(Visitor visitor:visitorList){
+			System.out.println(visitor.toString());
+		}
 		int count=visitorServiceImpl.getCount();
 		int blackCount=visitorServiceImpl.getBlackIpCount();
 		int ipCount=visitorServiceImpl.getIpCount();
@@ -128,6 +132,7 @@ public class VisitorControllerAdmin {
 
 
 	//将ip加入黑名单
+	@RequiresRoles(value = "root")
 	@SystemLog(description = "将ip加入黑名单:",actionType = ActionType.UNKNOWN)
 	@PostMapping("/addBlack")
 	public String addBlack(String ip){
@@ -137,6 +142,7 @@ public class VisitorControllerAdmin {
 
 
 	//将ip移除黑名单
+	@RequiresRoles(value = "root")
 	@SystemLog(description = "将ip移除黑名单:",actionType = ActionType.UNKNOWN)
 	@PostMapping("/outBlack")
 	public String outBlack(String ip){

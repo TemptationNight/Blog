@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
 </head>
 
+
 <body style="background-color: #F5F5F5 !important;">
 <header th:replace="_fragments::pageHeader" class="header-navigation">
 
@@ -34,6 +35,7 @@
         <!--banner end-->
         <div class="blank"></div>
         <th:block th:replace="_fragments::articleInfo"></th:block>
+<!--
         <div class="blogs" data-scroll-reveal="enter bottom over 1s" data-scroll-reveal-id="2"
              style="-webkit-transform: translatey(24px);transform: translatey(24px);opacity: 0;-webkit-transition: -webkit-transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;transition: transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;"
              data-scroll-reveal-initialized="true">
@@ -56,18 +58,21 @@
                 </ul>
             </div>
         </div>
+-->
     </main>
     <!--blogsbox end-->
     <aside class="sidebar" style="position: static; left: auto; width: 32%;">
         <div class="toppic">
-            <li><a href="http://more.yangqq.com/life/3.html" title="安静地做一个爱设计的女子" target="_blank"><i><img src=""
-                                                                                                          th:src="@{../images/917d732926d79cc2ae1012831ce51d1e.jpg}"></i>
-                <h2>安逸做一个爱设计的程序人</h2>
-                <span>慢生活</span> </a></li>
-            <li><a href="http://more.yangqq.com/study/1/1.html" title="个人博客，属于我的小世界！" target="_blank"><i><img src=""
-                                                                                                              th:src="@{../images/762f99f369ae786f970477feeb3b9d77.jpg}"></i>
-                <h2>个人博客，属于我的小世界！</h2>
-                <span>慢生活</span> </a></li>
+            <li th:each="blog:${slowLife}">
+                <a th:href="@{/page/{id}/blogDetail(id=${blog.id})}">
+                    <i>
+                        <img src="" th:src="@{${blog.images}}">
+                    </i>
+                    <h2 th:text="${blog.title+' : 闲散生活'}">安逸的做一个爱设计的程序人</h2>
+                    <span>慢生活</span>
+                </a>
+            </li>
+
         </div>
         <!--右边的边栏-->
         <th:block th:replace="_fragments::pageRight"></th:block>
@@ -76,7 +81,8 @@
 
 <footer>
 
-    <p>Design by <a href="javascript:void(0)" target="_blank">何袁辉个人博客</a> <a href="javascript:void(0)">蜀ICP备11002373号-1</a></p>
+    <p>Design by <a href="javascript:void(0)" target="_blank">何袁辉个人博客</a> <a
+            href="javascript:void(0)">蜀ICP备11002373号-1</a></p>
 </footer>
 <a href="" class="cd-top">Top </a>
 
@@ -99,12 +105,6 @@
         })
 
     }
-
-
-
-
-
-
 
 
 </script>

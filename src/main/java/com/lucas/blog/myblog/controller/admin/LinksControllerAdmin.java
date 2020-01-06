@@ -5,6 +5,7 @@ import com.lucas.blog.myblog.aop.ActionType;
 import com.lucas.blog.myblog.aop.SystemLog;
 import com.lucas.blog.myblog.entity.Link;
 import com.lucas.blog.myblog.service.LinkService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,23 +49,29 @@ public class LinksControllerAdmin {
 
 
 	//删除友链
+	@RequiresRoles(value = "root")
 	@SystemLog(description = "删除友链:", actionType = ActionType.DELETE)
-	@GetMapping("/delete/{id}/link")
-	public String deleteLink(@PathVariable Integer id) {
+	@PostMapping("/delete/link")
+	public String deleteLink(Integer id) {
+
+
+		System.out.println("=============="+id);
 		linkServiceImpl.deleteLink(id);
-		return "redirect:/admin/links";
+		return "/admin/links";
 	}
 
 	//友链通过
+	@RequiresRoles(value = "root")
 	@SystemLog(description = "验证通过友链:", actionType = ActionType.INSERT)
-	@GetMapping("/setLinkChecked/{id}/link")
-	public String setLinkChecked(@PathVariable Integer id) {
+	@PostMapping("/setLinkChecked/link")
+	public String setLinkChecked(Integer id) {
 		linkServiceImpl.setLinkChecked(id);
 		return "redirect:/admin/links";
 	}
 
 
 	//添加友链
+	@RequiresRoles(value = "root")
 	@SystemLog(description = "添加友链:", actionType = ActionType.INSERT)
 	@PostMapping("/addLink")
 	public String addLink(@RequestParam String linkUrl, @RequestParam String linkName) {

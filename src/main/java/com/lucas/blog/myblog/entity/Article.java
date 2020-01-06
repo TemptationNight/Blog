@@ -107,6 +107,10 @@ public class Article implements Serializable{
 
 
 
+
+	/**
+	 * 文章所属类别名称
+	 */
 	@Column(name = "categoryName")
 	private String categoryName;
 

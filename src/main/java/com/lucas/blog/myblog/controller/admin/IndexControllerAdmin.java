@@ -43,6 +43,7 @@ public class IndexControllerAdmin {
 	private WebsiteService websiteServiceImpl;
 
 
+
 	@GetMapping("/index")
 	@SystemLog(description="登录",actionType= ActionType.UNKNOWN)
 	public String getWebsiteInfo(Model model){
