@@ -5,6 +5,34 @@
     <title>博客详情页</title>
     <meta charset="UTF-8">
 </head>
+
+
+<style type="text/css">
+
+
+    .shang_payimg {
+        width: 140px;
+        padding: 5px;
+        border: 6px solid #EA5F00;
+        margin: 0 auto;
+        border-radius: 3px;
+        height: 140px;
+    }
+
+    .shang_payimg img {
+        display: block;
+        text-align: center;
+        width: 120px;
+        height: 120px;
+    }
+
+
+
+</style>
+
+
+
+
 <body style="background-color: #F5F5F5 !important;">
 <header th:replace="_fragments::pageHeader" class="header-navigation"></header>
 <article style="position: relative;">
@@ -69,9 +97,20 @@
                     <div class="shang_tit">
                         <p>感谢您的支持，我会继续努力的!</p>
                     </div>
+
+
                     <div class="shang_payimg">
-                        <img src="" th:src="@{/images/alipayimg.jpg}" alt="扫码支持" title="扫一扫">
+                        <img  src="" th:src="@{/images/ali.JPG}" alt="扫码支持" title="扫一扫">
                     </div>
+
+                    <br>
+                    <br>
+
+                    <div   class="shang_payimg">
+                        <img  src="" th:src="@{/images/wei.JPG}" alt="扫码支持" title="扫一扫">
+                    </div>
+
+
                     <div class="pay_explain">扫码打赏，你说多少就多少</div>
                     <div class="shang_payselect">
                         <div class=" pay_item checked" data-id="alipay">
@@ -83,7 +122,7 @@
                         <div class="pay_item" data-id="weipay">
                             <span class="radiobox"></span>
                             <span class="pay_logo">
-                                <img src="" th:src="@{/images/wechat.jpg}" alt="微信">
+                                <img src=""  th:src="@{/images/wechat.jpg}" alt="微信">
                             </span>
                         </div>
                     </div>
@@ -171,12 +210,12 @@
 
                     <div class="ui threaded comments">
 
-                        <div class="comment" th:if="${commentList.size()==0}" >
+                        <div class="comment" th:if="${commentList.size()==0}">
                             <h3>暂无相关评论</h3>
                         </div>
                         <div class="comment" th:if="${commentList.size()!=0}" th:each="comment:${commentList}">
                             <a class="avatar">
-                               <!-- <img src="'https://i.picsum.photos/id/'+random()+'1014/800/500.jpg'">-->
+                                <!-- <img src="'https://i.picsum.photos/id/'+random()+'1014/800/500.jpg'">-->
 
                                 <img th:src="@{https://i.picsum.photos/id/{random}/800/500.jpg(random=${comment.id+1010})}">
                             </a>
@@ -234,16 +273,19 @@
 </footer>
 </body>
 <script type="text/javascript" th:inline="javascript">
-
+/*
     //打赏
     $(function () {
         $(".pay_item").click(function () {
             $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
             var dataid = $(this).attr('data-id');
-            $(".shang_payimg img").attr("src", "/skin/more/images/" + dataid + "img.jpg");
+
+
+            //$(".shang_payimg img").attr("src", "resources/static/images/" + dataid + ".jpg");
+            $(".shang_payimg img").attr("src", "@{/images/alipayimg.jpg}");
             $("#shang_pay_txt").text(dataid == "alipay" ? "支付宝" : "微信");
         });
-    });
+    });*/
 
     function dashangToggle() {
         $(".hide_box").fadeToggle();

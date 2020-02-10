@@ -79,7 +79,7 @@ function EchoReturnedText () {
 
 
 function edoshowkey(showid,vname,baseurl){
-	document.getElementById(showid).innerHTML='<img src="'+baseurl+'e/ShowKey/?v='+vname+'&t='+Math.random()+'" name="'+vname+'KeyImg" id="'+vname+'KeyImg" align="bottom" onclick=edoshowkey("'+showid+'","'+vname+'","'+baseurl+'") title="¿´²»Çå³þ,µã»÷Ë¢ÐÂ">';
+	document.getElementById(showid).innerHTML='<img src="'+baseurl+'e/ShowKey/?v='+vname+'&t='+Math.random()+'" name="'+vname+'KeyImg" id="'+vname+'KeyImg" align="bottom" onclick=edoshowkey("'+showid+'","'+vname+'","'+baseurl+'") title="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½">';
 }
 
 function edozoomimg(o){
