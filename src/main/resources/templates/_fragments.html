@@ -3,7 +3,7 @@
 <!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
 <head th:fragment="head(title)">
     <meta charset="UTF-8">
-    <title th:replace="${title}">博客详情</title>
+    <title th:replace="${title}">动态详情</title>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -20,7 +20,7 @@
 </head>
 <head th:fragment="adminHead(title)">
     <meta charset="UTF-8">
-    <title th:replace="${title}">博客详情</title>
+    <title th:replace="${title}">动态详情</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <link th:href="@{../lib/chartist/chartist.min.css}" href="../../static/lib/chartist/chartist.min.css"
@@ -86,7 +86,7 @@
                     class="ui  clone icon"></i>归档</a>
             <a th:href="@{about.html}" href="#" class="item  m-mobile-hide mobole-item"
                th:classappend="${n==5} ?'active'"><i
-                    class="ui  info icon"></i>关于我</a>
+                    class="ui  info icon"></i>关于我们</a>
             <div class="right item  m-mobile-hide mobole-item">
                 <div class="ui icon input transparent inverted">
                     <input type="text" placeholder="Search">
@@ -113,7 +113,7 @@
                 </div>
             </div>
             <div class="three wide column">
-                <h4 class="ui inverted header  m-text-spaced m-opacity-mini">最新博客</h4>
+                <h4 class="ui inverted header  m-text-spaced m-opacity-mini">最新动态</h4>
                 <div class="ui inverted link list">
                     <a href="#" class="item">用户故事(user story)</a>
                     <a href="#" class="item">关于刻意练习的清单</a>
@@ -129,7 +129,7 @@
             </div>
             <div class="seven wide column">
                 <h4 class="ui inverted header  m-text-spaced m-opacity-mini">Heyuanhui</h4>
-                <p class="m-text-thin m-text-spaced m-opacity-mini">这是我的个人博客，会分享关于编程，写作，思考相关的任何内容，希望可以给来到这的人有所帮助</p>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这是一个充满健康知识的平台，会分享关于运动，健康，生活的任何内容，希望可以给来到这的人有所帮助</p>
             </div>
         </div>
         <div class="ui inverted section divider"><!--分割线--></div>
@@ -353,22 +353,22 @@
             <div style="font-size: medium!important;" class="title item">
                 <i class="ion-ios-lightbulb titleIcon icon"></i>
 
-                <i class="dropdown icon"></i> 博客模块
+                <i class="dropdown icon"></i> 动态模块
             </div>
             <div class="content">
                 <a style="font-size: medium!important;" class="item" href="inbox.html" th:href="@{/admin/articles}">
-                    博客管理
+                    动态管理
                 </a>
 
                 <a style="font-size: medium!important;" class="item" href="chat.html" th:href="@{/admin/writeBlog}">
-                    写博客
+                    写动态
                 </a>
 
                 <a style="font-size: medium!important;" class="item" href="filter.html">
-                    查询博客
+                    查询动态
                 </a>
                 <a style="font-size: medium!important;" class="item" href="todo.html" th:href="@{/admin/categorys}">
-                    博客类别
+                    动态类别
                 </a>
             </div>
             <div style="font-size: medium!important;" class="title item">
@@ -974,7 +974,7 @@
 
 <th:block th:fragment="pageRight">
     <div class="zhuanti">
-        <h2 class="hometitle">置顶文章</h2>
+        <h2 class="hometitle">置顶动态</h2>
         <ul>
             <li th:each="articleTop:${articleByTop}">
                 <i>
@@ -991,7 +991,7 @@
         </ul>
     </div>
     <div class="tuijian">
-        <h2 class="hometitle">推荐文章</h2>
+        <h2 class="hometitle">推荐动态</h2>
         <ul class="tjpic">
             <i>
                 <img src="" th:src="@{${recommendTop.images}}">
@@ -1016,7 +1016,7 @@
         </ul>
     </div>
     <div class="tuijian">
-        <h2 class="hometitle">点击排行</h2>
+        <h2 class="hometitle">动态排行</h2>
         <ul class="tjpic">
             <i>
                 <img src="" th:src="@{${browseTop.images}}">
@@ -1059,22 +1059,22 @@
         </ul>
     </div>
 
-    <div class="cloud">
+    <!--<div class="cloud">
         <h2 class="hometitle">友情链接</h2>
         <ul>
             <a href="" target="_blank" style="line-height: normal" th:each="link:${linkList}" th:text="${link.linkname}"
                th:href="${link.linkurl}">设计</a>
         </ul>
-    </div>
+    </div>-->
     <div class="guanzhu">
         <h2 class="hometitle">关注我们 么么哒！</h2>
         <ul>
-            <li class="sina"><a href="http://more.yangqq.com/" target="_blank"><span>新浪微博</span>何袁辉博客</a></li>
-            <li class="tencent"><a href="http://more.yangqq.com/" target="_blank"><span>腾讯微博</span>何袁辉博客</a></li>
+            <li class="sina"><a href="http://more.yangqq.com/" target="_blank"><span>新浪微博</span>袁非非.com</a></li>
+            <li class="tencent"><a href="http://more.yangqq.com/" target="_blank"><span>腾讯微博</span>袁非非.com</a></li>
             <li class="qq"><a href="http://more.yangqq.com/" target="_blank"><span>QQ号</span>742567489</a></li>
-            <li class="email"><a href="http://more.yangqq.com/" target="_blank"><span>邮箱帐号</span>742567489@qq.com</a>
+            <li class="email"><a href="http://more.yangqq.com/" target="_blank"><span>邮箱帐号</span>hyh_742567@163.com</a>
             </li>
-            <li class="wxgzh"><a href="http://more.yangqq.com/" target="_blank"><span>微信号</span>18784903957</a></li>
+            <li class="wxgzh"><a href="http://more.yangqq.com/" target="_blank"><span>微信号</span>18781287768</a></li>
             <li class="wx"><img th:src="@{/images/weichart.png}"></li>
         </ul>
     </div>
@@ -1083,32 +1083,32 @@
 <header th:fragment="pageHeader" class="header-navigation">
     <div class="test"></div>
     <nav>
-        <div class="logo"><a href="" th:href="@{/page/index}"  >@FREEDOM</a></div>
+        <div class="logo"><a href="" th:href="@{/page/index}"  >@健康运动</a></div>
         <h2 id="mnavh"><span class="navicon"></span></h2>
         <ul id="starlist">
             <li><a href="" th:href="@{/page/index}" id="selected">网站首页</a></li>
-            <li class="menu"><a href="javascript:void(0)">学无止境</a>
+            <li class="menu"><a href="javascript:void(0)">健康生活</a>
                 <ul class="sub" style="background-color: black">
-                    <li><a th:href="@{/page/learnMore(args='操作系统')}" style="color: white">操作系统</a></li>
-                    <li><a th:href="@{/page/learnMore(args='数据结构')}" style="color: white">计算机网络</a></li>
-                    <li><a th:href="@{/page/learnMore(args='计算机网络')}" style="color: white">数据结构</a></li>
-                    <li><a th:href="@{/page/learnMore(args='计算机原理')}" style="color: white">计算机原理</a></li>
+                    <li><a th:href="@{/page/learnMore(args='健康饮食')}" style="color: white">健康饮食</a></li>
+                    <li><a th:href="@{/page/learnMore(args='规律生活')}" style="color: white">规律生活</a></li>
+                    <li><a th:href="@{/page/learnMore(args='心理健康')}" style="color: white">心理健康</a></li>
+                    <li><a th:href="@{/page/learnMore(args='旅行日记')}" style="color: white">旅行日记</a></li>
                 </ul>
                 <span></span></li>
-            <li class="menu"><a href="javascript:void(0)">开发技能</a>
+            <li class="menu"><a href="javascript:void(0)">健康运动</a>
                 <ul class="sub" style="background-color: black">
-                    <li><a th:href="@{/page/learnMore(args='JAVA')}" style="color: white">JAVA知识</a></li>
-                    <li><a th:href="@{/page/learnMore(args='JVM')}" style="color: white">JVM</a></li>
-                    <li><a th:href="@{/page/learnMore(args='LINUX')}" style="color: white">LINUX</a></li>
-                    <li><a th:href="@{/page/learnMore(args='数据库')}" style="color: white">数据库</a></li>
-                    <li><a th:href="@{/page/learnMore(args='面试')}" style="color: white">面试分享</a></li>
+                    <li><a th:href="@{/page/learnMore(args='燃脂运动')}" style="color: white">燃脂运动</a></li>
+                    <li><a th:href="@{/page/learnMore(args='有氧运动')}" style="color: white">有氧运动</a></li>
+                    <li><a th:href="@{/page/learnMore(args='户外运动')}" style="color: white">户外运动</a></li>
+                    <li><a th:href="@{/page/learnMore(args='运动日记')}" style="color: white">运动日记</a></li>
+<!--                    <li><a th:href="@{/page/learnMore(args='面试')}" style="color: white">面试分享</a></li>-->
                 </ul>
                 <span></span></li>
-            <li><a href="" th:href="@{/page/share_life}">生活点滴</a></li>
-            <li><a href="" th:href="@{/page/other}">杂谈</a></li>
-            <li><a href="" th:href="@{/page/about}">关于我</a></li>
-            <li><a href="" th:href="@{/page/timeLine}">时间轴</a></li>
-            <li><a href="javascript:void(0)" >留言</a></li>
+            <li><a href="" th:href="@{/page/share_life}">健康点滴</a></li>
+            <li><a href="" th:href="@{/page/other}">生活趣事</a></li>
+            <li><a href="" th:href="@{/page/about}">关于我们</a></li>
+            <li><a href="" th:href="@{/page/timeLine}">健康时间轴</a></li>
+            <!--<li><a href="javascript:void(0)" >留言</a></li>-->
             <li><a href="" th:href="@{/page/login}">登录</a></li>
         </ul>
 

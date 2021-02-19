@@ -167,8 +167,9 @@ public class IndexController {
 	public void getRightInfo(Model model) {
 
 
-		List<Article> slowLife = articleServiceImpl.getArticleByTypeName("生活");
+		List<Article> slowLife = articleServiceImpl.getArticleByTypeName("旅行日记");
 		List<Article> list=new ArrayList<>();
+
 
 
 		for(int i=0;i<1; i++){
