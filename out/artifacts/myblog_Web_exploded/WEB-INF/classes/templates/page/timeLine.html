@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::pageHead(~{::title})">
+    <title>博客首页</title>
+    <meta charset="UTF-8">
+</head>
+
+<body style="background-color: #F5F5F5 !important;">
+<header th:replace="_fragments::pageHeader" class="header-navigation"></header>
+<div class="pagebg">
+    <img src="" th:src="@{/images/212b0df457fd9db23b6f0f846905ef6a.jpg}" alt="时间轴">
+</div>
+<div class="container">
+    <h1 class="t_nav"><span>时光飞逝，机会就在我们眼前，何时找到了灵感，就要把握机遇，我们需要智慧和勇气去把握机会。</span>
+        <a href="" th:href="@{/page/index}" class="n1">网站首页</a>
+        <a href="javascript:void(0)" class="n2">时间轴</a></h1>
+    <div class="timebox">
+
+        <ul id="list2">
+            <li th:if="${articles.size()!=0}" th:each="blog:${articles}">
+                <span th:text="${#dates.format(blog.addtime,'yyyy-MM-dd')}">
+                    2018-07-16
+                </span>
+                <a href="" th:text="${blog.title}"  th:href="@{/page/{id}/blogDetail(id=${blog.id})}">
+                    标题
+                </a>
+            </li>
+            <li th:if="${articles.size()==0}">
+                <span>暂无数据</span>
+                <a href="javascript:void(0)">暂无数据</a>
+            </li>
+        </ul>
+        <script src="../../static/js/page2.js" th:src="@{/js/page2.js}"></script>
+    </div>
+</div>
+
+<footer>
+    <p>Design by <a href="" target="_blank">何袁辉个人博客</a> <a href="http://more.yangqq.com/">蜀ICP备11002373号-1</a>
+    </p>
+</footer>
+<a href="http://more.yangqq.com/time/#" class="cd-top">Top</a>
+
+<script th:src="@{/js/back_special.js}"></script>
+<script th:src="@{/js/mouse.js}"></script>
+
+</body>
+</html>

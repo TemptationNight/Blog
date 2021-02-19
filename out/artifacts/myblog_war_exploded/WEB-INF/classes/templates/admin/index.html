@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>后台首页</title>
+</head>
+
+<body>
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
+    <!--中间部分-->
+    <div class="pusher">
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="navslide navwrap">
+            <div class="ui menu icon borderless grid" data-color="inverted white">
+                <a class="item labeled openbtn">
+                    <i class="ion-navicon-round big icon"></i>
+                </a>
+                <a class="item labeled expandit" onclick="toggleFullScreen(document.body)">
+                    <i class="ion-arrow-expand big icon"></i>
+                </a>
+                <div class="item ui colhidden">
+                    <div class="ui icon input">
+                        <input type="text" placeholder="Search...">
+                        <i class="search icon"></i>
+                    </div>
+                </div>
+                <div class="right menu colhidden">
+
+                    <div class="ui dropdown item labeled icon">
+                        <i class="bell icon"></i>
+                        <div class="ui red label mini circular">6</div>
+                        <div class="menu">
+                            <div class="header">
+                                People You Might Know
+                            </div>
+                            <div class="item">
+                                <img class="ui avatar image" src="../../static/images/avatar/people/enid.png"
+                                     alt="label-image"/> Janice Robinson
+                            </div>
+                            <div class="item">
+                                <img class="ui avatar image" src="../../static/images/avatar/people/Hershell.png"
+                                     alt="label-image"/> Cynthia May
+                            </div>
+                            <div class="item">
+                                <img class="ui avatar image" src="../../static/images/avatar/people/Rick.png"
+                                     alt="label-image"/> Hugh Carter
+                            </div>
+                            <div class="header">
+                                Your Friends' Friends
+                            </div>
+                            <div class="item">
+                                <img class="ui avatar image" src="../../static/images/avatar/people/Meggie.png"
+                                     alt="label-image"/> Pauline Cain
+                            </div>
+                            <div class="item">
+                                <img class="ui avatar image" src="../../static/images/avatar/people/Glenn.png"
+                                     alt="label-image"/> Marco Beck
+                            </div>
+                            <div class="item">
+                                <img class="ui avatar image" src="../../static/images/avatar/people/Daryl.png"
+                                     alt="label-image"/> Sue Quinn
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui dropdown item">
+                        Heyuanhui <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a class="item"><i class="united kingdom flag"></i>English</a>
+                            <a class="item"><i class="turkey flag"></i>Turkish</a>
+                            <a class="item"><i class="spain flag"></i>Spanish</a>
+                        </div>
+                    </div>
+                    <div class="ui dropdown item">
+                        <img class="ui mini circular image" src="../../static/images/avatar/people/enid.png"
+                             alt="label-image"/>
+                        <div class="menu">
+                            <a class="item" href="mail.html">收件箱</a>
+                            <a class="item" href="profile.html">配置文件</a>
+                            <a class="item" href="settings.html">设置</a>
+                            <div class="ui divider"></div>
+                            <a class="item">帮助?</a>
+                            <a class="item" href="login.html" th:href="@{admin/loginout}">退出</a>
+                        </div>
+                    </div>
+                    <a class="item labeled rightsidebar computer only">
+                        <i class="ion-wrench large icon"></i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <!--正文内容-->
+        <div class="mainWrap navslide">
+            <div class="ui equal width left aligned padded grid stackable fluid">
+                <!--数据报表-->
+                <div class="row">
+                    <div class="sixteen wide tablet four wide computer column">
+                        <div class="ui segments stackable">
+                            <div class="ui segment middle aligned m-padding-tiny">
+                                <div class="ui secondary ">
+                                    <div class="ui two column grid">
+                                        <div class="column middle aligned">
+                                            <h3>网站访问总量</h3>
+                                        </div>
+                                        <div class="column right aligned">
+                                            <a href="#" target="_blank"><h1><i class="globe icon"></i></h1></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui segment center aligned" style="height: 125px !important;">
+                                <div class="ui  left aligned">
+                                    <div class="ui  statistic">
+                                       <div class="value counter" th:text="${websiteInfo.browseNum}">
+
+
+                                            87932
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ui divider"></div>
+                                <div class="ui icon">
+                                    <span style="font-size: 15px !important;">
+                                    刷新&nbsp; &nbsp; &nbsp; &nbsp;
+                                    <a href=""><i class="ui undo  icon"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide tablet four wide computer column">
+                        <div class="ui segments stackable">
+                            <div class="ui segment middle aligned m-padding-tiny">
+                                <div class="ui secondary ">
+                                    <div class="ui two column grid">
+                                        <div class="column middle aligned">
+                                            <h3>今日访问量</h3>
+                                        </div>
+                                        <div class="column right aligned">
+                                            <a href="#" target="_blank"><h1><i class="internet explorer icon"></i></h1>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui segment center aligned" style="height: 125px !important;">
+                                <div class="ui  left aligned">
+                                    <div class="ui  statistic">
+                                        <div class="value counter" th:text="${websiteInfo.visitorToday}">
+                                            3,95
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ui divider"></div>
+                                <div class="ui icon">
+                                    <span style="font-size: 15px !important;">
+                                    刷新&nbsp; &nbsp; &nbsp; &nbsp;
+                                    <a href=""><i class="ui undo  icon"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide tablet four wide computer column">
+                        <div class="ui segments stackable">
+                            <div class="ui segment middle aligned m-padding-tiny">
+                                <div class="ui secondary ">
+                                    <div class="ui two column grid">
+                                        <div class="column middle aligned">
+                                            <h3>文章总数</h3>
+                                        </div>
+                                        <div class="column right aligned">
+                                            <a href="#" target="_blank"><h1><i class="book icon"></i></h1></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui segment center aligned" style="height: 125px !important;">
+                                <div class="ui  left aligned">
+                                    <div class="ui  statistic">
+                                        <div class="value counter" th:text="${websiteInfo.articleNum}">
+                                            2,67
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ui divider"></div>
+                                <div class="ui icon">
+                                    <span style="font-size: 15px !important;">
+                                    刷新&nbsp; &nbsp; &nbsp; &nbsp;
+                                    <a href=""><i class="ui undo  icon"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide tablet four wide computer column">
+                        <div class="ui segments stackable">
+                            <div class="ui segment middle aligned m-padding-tiny">
+                                <div class="ui secondary ">
+                                    <div class="ui two column grid">
+                                        <div class="column middle aligned">
+                                            <h3>留言数量</h3>
+                                        </div>
+                                        <div class="column right aligned">
+                                            <a href="#" target="_blank"><h1><i
+                                                    class="comment alternate outline icon"></i></h1></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui segment center aligned" style="height: 125px !important;">
+                                <div class="ui  left aligned">
+                                    <div class="ui  statistic">
+                                        <div class="value counter" th:text="${websiteInfo.commentNum}">
+                                            3,9522
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ui divider"></div>
+                                <div class="ui icon">
+                                    <span style="font-size: 15px !important;">
+                                    刷新&nbsp; &nbsp; &nbsp; &nbsp;
+                                    <a href=""><i class="ui undo  icon"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sixteen wide tablet four wide computer column">
+                        <div class="ui segments stackable">
+                            <div class="ui segment middle aligned m-padding-tiny">
+                                <div class="ui secondary ">
+                                    <div class="ui two column grid">
+                                        <div class="column middle aligned">
+                                            <h3>分类总数</h3>
+                                        </div>
+                                        <div class="column right aligned">
+                                            <a href="#" target="_blank"><h1><i class="university icon"></i></h1></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui segment center aligned" style="height: 125px !important;">
+                                <div class="ui  left aligned">
+                                    <div class="ui  statistic">
+                                        <div class="value counter" th:text="${websiteInfo.categoryNum}">
+                                            15
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ui divider"></div>
+                                <div class="ui icon">
+                                 <span style="font-size: 15px !important;">
+                                    刷新&nbsp; &nbsp; &nbsp; &nbsp;
+                                    <a href=""><i class="ui undo  icon"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide tablet four wide computer column">
+                        <div class="ui segments stackable">
+                            <div class="ui segment middle aligned m-padding-tiny">
+                                <div class="ui secondary ">
+                                    <div class="ui two column grid">
+                                        <div class="column middle aligned">
+                                            <h3>友链总数</h3>
+                                        </div>
+                                        <div class="column right aligned">
+                                            <a href="#" target="_blank"><h1><i class="linkedin icon"></i></h1></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui segment center aligned" style="height: 125px !important;">
+                                <div class="ui  left aligned">
+
+                                    <div class="ui  statistic">
+                                        <div class="value counter" th:text="${websiteInfo.linkNum}">
+                                            52
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ui divider"></div>
+                                <div class="ui icon">
+                                    <span style="font-size: 15px !important;">
+                                    刷新&nbsp; &nbsp; &nbsp; &nbsp;
+                                    <a href=""><i class="ui undo  icon"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide tablet four wide computer column">
+                        <div class="ui segments stackable">
+                            <div class="ui segment middle aligned m-padding-tiny">
+                                <div class="ui secondary ">
+                                    <div class="ui two column grid">
+                                        <div class="column middle aligned">
+                                            <h3>打赏金额</h3>
+                                        </div>
+                                        <div class="column right aligned">
+                                            <a href="#" target="_blank"><h1><i class="money icon"></i></h1></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui segment center aligned" style="height: 125px !important;">
+                                <div class="ui  ">
+
+                                    <div class="ui  statistic ">
+                                        <div class="value counter " th:text="${websiteInfo.moneyNum}">
+                                            1,952
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="ui divider"></div>
+                                <div class="ui icon">
+                                    <span style="font-size: 15px !important;">
+                                    刷新&nbsp; &nbsp; &nbsp; &nbsp;
+                                    <a href=""><i class="ui undo  icon"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide tablet four wide computer column">
+                        <div class="ui segments stackable">
+                            <div class="ui segment middle aligned m-padding-tiny">
+                                <div class="ui secondary ">
+                                    <div class="ui two column grid">
+                                        <div class="column middle aligned">
+                                            <h3>资源数目</h3>
+                                        </div>
+                                        <div class="column right aligned">
+                                            <a href="#" target="_blank"><h1><i class="money icon"></i></h1></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui segment center aligned" style="height: 125px !important;">
+                                <div class="ui  ">
+                                    <div class="ui  statistic ">
+                                        <div class="value counter " th:text="${websiteInfo.sourceNum}">
+                                            1,952
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui divider"></div>
+                                <div class="ui icon">
+                                    <span style="font-size: 15px !important;">
+                                    刷新&nbsp; &nbsp; &nbsp; &nbsp;
+                                    <a href=""><i class="ui undo  icon"></i></a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sixteen wide tablet eight wide computer column">
+                        <div class="ui segments">
+                            <div class="ui segment">
+                                <h5 class="ui header">网站访问量</h5>
+                            </div>
+                            <div class="ui segment" style="height: 250px !important;">
+                                <div class="ct-chart1 ct-golden-section"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sixteen wide tablet eight wide computer column">
+                        <div class="ui segments">
+                            <div class="ui segment">
+                                <h5 class="ui header">打赏资金</h5>
+                            </div>
+                            <div class="ui segment" style="height: 250px !important;">
+                                <div class="ct-chart2 ct-golden-section"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<th:block th:replace="_fragments::adminscript">
+</th:block>
+
+
+<script type="text/javascript">
+
+
+
+
+/*    window.onload = function(){
+        $.ajax
+        ({
+            cache: false,
+            async: false,
+            type: 'GET',
+            url:"/admin/getCategorys",
+            success: function (){
+                alert("请求");
+            },
+            error:function () {
+                alert("错误");
+            }
+        });
+    }*/
+
+
+</script>
+
+
+</html>

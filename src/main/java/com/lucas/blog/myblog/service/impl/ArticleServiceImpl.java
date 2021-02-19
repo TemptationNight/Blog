@@ -9,6 +9,8 @@ import com.lucas.blog.myblog.mapper.ArticleMapper;
 import com.lucas.blog.myblog.service.ArticleService;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.cache.CacheProperties;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
@@ -207,6 +209,12 @@ public class ArticleServiceImpl implements ArticleService {
 	//文章的点赞量+1
 	@Override
 	public Integer addAgreeOne(Integer id) {
+
+
+		//使用redisTemplate做
+		//将点赞的IP作为key
+
+
 		System.out.println("id=" + id);
 		Example example = new Example(Article.class);
 		example.createCriteria().andEqualTo("id", id);

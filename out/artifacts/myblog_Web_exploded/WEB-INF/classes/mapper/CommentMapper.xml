@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lucas.blog.myblog.mapper.CommentMapper">
+    <resultMap id="BaseResultMap" type="com.lucas.blog.myblog.entity.Comment">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="addTime" jdbcType="TIMESTAMP" property="addtime"/>
+        <result column="nickName" jdbcType="VARCHAR" property="nickname"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="articleId" jdbcType="INTEGER" property="articleid"/>
+        <result column="parent_commentId" jdbcType="INTEGER" property="parent_commentId"/>
+
+    </resultMap>
+</mapper>

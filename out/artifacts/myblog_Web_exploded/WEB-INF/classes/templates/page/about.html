@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>关于我</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="../../static/css/index.css" th:href="@{/css/index.css}"  rel="stylesheet">
+<script src="../../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../../static/js/nav.js" th:src="@{/js/nav.js}"></script>
+    <link href="../../static/css/animate1.css" th:href="@{/css/animate1.css}"  rel="stylesheet">
+
+</head>
+
+
+
+<body style="background-color: #F5F5F5 !important;">
+<header th:replace="_fragments::pageHeader" class="header-navigation">
+</header>
+<div class="pagebg">
+    <img src="" th:src="@{/images/blank.jpg}" alt="关于我">
+</div>
+<div class="container">
+    <h1 class="t_nav"><span>有些人，一旦遇见，便一眼万年；有些心动，一旦开始，便覆水难收。</span>
+        <a href="" th:href="@{/page/index}" class="n1">网站首页</a>
+        <a href="javascript:void(0)" class="n2">关于我</a>
+    </h1>
+    <div class="news_infos">
+        <ul>
+            <p>何袁辉，男，坐标成都，17年进入大学，目前大三，软件工程专业，18年6月份开始系统学习Java，一边学习学校的课程一边自己学习实际开发。到现在有能力从0到1自己做一个简单的博客系统，也算是一种小小的成就吧。喜欢自己学习一些新技术，并把它运用到实际开发中，本博客旨在分享个人的学习经验以及资源共享。</p>
+
+            <p>有很多人问我，为什么要做这样的一个博客。在大二下学期的时候学习了ssm框架，就想着学以致用，做点东西出来，于是就和别人一起做了一个收银点餐系统，功能很简单，也是我大学的第一个比较完整的项目。在大二的暑假又学习了springboot,就想着使用所学的从0到1做出一个属于自己的东西。于是就做了这样一个博客</p>
+
+            <p>本博客所使用的一些技术，前端使用springboot官方推荐的thymeleaf模板引擎进行数据的渲染，页面效果使用bootstrap，响应式设计，完美支持手机端，平板，pc端。后台主要使用springboot+tk.mybatis进行开发，集成了shiro权限控制和redis缓存。前后端数据根据需要合理的采用表单提交和ajax异步交互。</p>
+
+            <p>关于本博客的一些内容，主要以个人的学习心得和分享资源为主，目前来看主要以java为主，至于以后会不会有其他编程语言方面的，尚未可知。还会分享一些个人随笔，记录下生活的点点滴滴</p>
+
+            <p><strong>关于我的博客 &nbsp;</strong></p>
+
+            <p>域 名：www.heyuanhui.com 创建于2019年01月12日&nbsp;</p>
+
+            <p>服务器：阿里云服务器&nbsp;&nbsp;<strong><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=8smrzoqa&amp;productCode=vm" target="_blank"><span style="color:#FF0000;">前往阿里云官网购买&gt;&gt;&nbsp;</span></a></strong></p>
+
+            <p>备案号：蜀ICP备11002373号-1</p>
+
+            <p>程 序：java springBoot 5.x</p>
+        </ul>
+    </div>
+    <div class="sidebar">
+      <!--  <div class="rbox ">-->
+         <!--   <div class="aboutme m20 whitebg">-->
+
+                <div class="avatar1 animated fadeIn">
+                    <h2 class="htitle">关于我</h2>
+                    <p class="avatar"> <img src="" th:src="@{/images/QQ图片20191203155434.gif}"> </p>                </div>
+                <div class="ab_con animated fadeIn">
+                    <p>网名：Temptation.夜</p>
+                    <p>职业：在校大三学生</p>
+                    <p>籍贯：四川省—广元市</p>
+                    <p>邮箱：742567489@qq.com</p>
+                </div>
+            <!--</div>-->
+       <!-- </div>-->
+
+<!--
+        <div class="about">
+            <p class="avatar"> <img src="" th:src="@{/images/QQ图片20191203155434.gif}"> </p>
+            <p class="abname">Temptation.夜 | 何袁辉</p>
+            <p class="abposition">Java开发工程师</p>
+            <p class="abtext">一个95后在校大三学生，从18年到今一直潜心研究Java，一边上课一边做实际开发，本网站主要分享一些个人平时的学习心得以及学习资源，供广大网友参考。 </p>
+        </div>-->
+        <div class="weixin">
+            <h2 class="hometitle">微信关注</h2>
+            <ul>
+                <img src="" th:src="@{/images/weichart.png}">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>Design by <a href="javascript:void(0)" target="_blank">何袁辉个人博客</a> <a href="javascript:void(0)">蜀ICP备11002373号-1</a></p>
+</footer>
+<a href="http://more.yangqq.com/about/#" class="cd-top cd-is-visible">Top</a>
+
+</body></html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>本地图库</title>
+</head>
+<body>
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
+    <!--中间部分-->
+    <div class="pusher">
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="ui attached navslide navwrap"></div>
+        <!--正文内容-->
+        <div class="mainWrap navslide">
+            <div class="ui segment    segment-border-none   ">
+                <!--上传区域-->
+                <div class="ui segment  attached m-margin-tb-none" style="margin-top: 0 !important;">
+                    <section role="main" class="l-main " style="margin-top:15px;margin-bottom:0px;">
+                        <div class="uploader__box js-uploader__box l-center-box     ">
+                            <div class="uploader__box js-uploader__box l-center-box">
+                                <form action="#" method="POST">
+                                    <div class="uploader__contents">
+                                        <label id="fileP" class="button button--secondary" for="fileinput">请选择文件</label>
+                                        <input id="fileinput" class="uploader__file-input" type="file" multiple value="Select Files">
+                                    </div>
+                                    <input id="fileUp" class="button button--big-bottom" type="button" value="Upload Selected Files">
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!--图片区域-->
+                <div class="ui segment attached teal box">
+                    <section class="container">
+                        <section class="boxItem" th:each="picture:${pictures}">
+                            <a  th:onclick="deletePicture([[${picture.id}]])"
+                               href="javascript:void(0)"></a>
+                            <a th:onclick="deletePicture([[${picture.id}]])"
+                               href="javascript:void(0)"></a>
+                            <a th:onclick="deletePicture([[${picture.id}]])"
+                               href="javascript:void(0)"></a>
+                            <a th:onclick="deletePicture([[${picture.id}]])"
+                               href="javascript:void(0)"></a>
+                            <section class="itemContentBox">
+                                <img th:onclick="'javascript:deletePicture('+${picture.id}+');'" class="picture"
+                                     src="https://picsum.photos/200/130?grayscale" alt=""
+                                     th:src="@{../images/{filename}(filename=${picture.name})}">
+                                <section class="itemContent">
+                                    <span>删除</span>
+                                </section>
+                                <section class="itemContent">
+                                    <span>删除</span>
+                                </section>
+                                <section class="itemContent">
+                                    <span>删除</span>
+                                </section>
+                                <section class="itemContent">
+                                    <span>删除</span>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有删除权限</h3>
+    <br>
+    <br>
+</div>
+
+</body>
+<th:block th:replace="_fragments::adminscript"></th:block>
+<script type="text/javascript">
+    //图片上传前端插件
+    (function () {
+        var options = {};
+        $('.js-uploader__box').uploader({
+            'selectButtonCopy': '请选择或拖拽文件',
+            'instructionsCopy': '你可以选择或拖拽多个文件',
+            'submitButtonCopy': '上传',
+            'furtherInstructionsCopy': '你可以选择或拖拽更多的文件',
+            'secondarySelectButtonCopy': '选择更多的文件'
+        });
+    }());
+
+    //删除图片
+    function deletePicture(id) {
+        $.ajax({
+            url: "/admin/picture/deleteFile",
+            data: {id: id}, //参数值
+            type: "POST",    //请求方式
+            success: function (data) {
+                if(data==="No Permission"){        //提示没有权限
+                    $('#permission').text("对不起，你没有删除资源权限");
+                    $('.small.modal').modal('show');
+                }else {
+                    window.location.reload();
+                }
+            },
+            //请求失败，包含具体的错误信息
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    }
+</script>
+
+</html>

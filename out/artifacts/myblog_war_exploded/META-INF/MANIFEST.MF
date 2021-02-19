@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: Lenovo
+Build-Jdk: 10
+Implementation-Title: myblog
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.Heyuanhui.blog
+Main-Class: ${start-class}
+

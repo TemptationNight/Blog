@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>未处理连接</title>
+</head>
+<body style="background: white">
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu"
+         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
+         style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
+    <!--中间部分-->
+    <div class="pusher">
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="navslide navwrap "></div>
+        <!--正文内容-->
+        <div class="mainWrap navslide">
+            <div class="ui segment ">
+                <div class="ui grid">
+                    <!--中甲小菜单区域-->
+                    <div class="ui four wide tab column" style="background: #eaeaea">
+                        <div class="ui segment teal center aligned segment-border-none">
+                            <div class="ui teal  label big fluid">访客记录</div>
+                            <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>黑名单</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <i class="save icon large"></i>
+                                        记录数
+                                    </td>
+                                    <td>
+                                        <div class="ui label red" th:text="${count}">144</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="user icon large"></i>
+                                        用户数
+                                    </td>
+                                    <td>
+                                        <div class="ui label violet" th:text="${ipCount}">4</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="user times icon large"></i>
+                                        黑名单
+                                    </td>
+                                    <td>
+                                        <div class="ui label olive" th:text="${blackCount}">14</div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="ui  table left aligned m-font-normal" style=" border:0;background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>快捷查询</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['四川']]);">
+                                            <i class="tag right icon large black"></i>
+                                            四川地区
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['教育网']]);">
+                                            <i class="tag right icon large   black"></i>
+                                            教育网
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['IE']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            IE
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Chrome']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Chrome
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Windows']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Windows
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Iphone']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Iphone
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Ipad']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Ipad
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Android']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Android
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ui twelve wide column" style="background: #eaeaea">
+                        <!--发布博客头部区域-->
+                        <div class="ui segment red  attached middle aligned  m-padded segment-border-none">
+                            <div class="ui segment  attached rounded  m-padded segment-border-none">
+                                <div class="ui two column grid  middle aligned">
+                                    <div class="column">
+                                        <h2 class="ui header ">黑名单</h2>
+                                        <button type="button" class="ui button basic mini">
+                                            刷新&nbsp;&nbsp;&nbsp; <a href=""><i class="refresh icon"></i></a>
+                                        </button>
+                                    </div>
+                                    <div class="right aligned column">
+                                        <div class="ui  action input ">
+                                            <input class="searchArgs" type="text" placeholder="Search...">
+                                            <button class="ui icon button" th:onclick="search()">
+                                                <i class="search icon"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="blackList" th:fragment="blackList">
+                                <table class="ui  table attached rounded segment-border-none" frame=hsides
+                                       style="text-align: center !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>IP</th>
+                                        <th>地区</th>
+                                        <th>浏览器</th>
+                                        <th>系统</th>
+                                        <th>访问次数</th>
+                                        <th>操做</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="visitor,itemStat:${visitorPageInfo}">
+                                        <td th:text="${itemStat.count}">1</td>
+                                        <td th:text="${visitor.ip}">127.0.0.1</td>
+                                        <td th:text="${visitor.city}">四川省成都市</td>
+                                        <td th:text="${visitor.browsetype}">Chrome</td>
+                                        <td th:text="${visitor.ostype}">windows</td>
+                                        <td th:text="${visitor.visitCount}">378</td>
+                                        <td>
+                                            <div class="ui button teal mini" th:onclick="outBlack([[${visitor.ip}]])">
+                                                <i class="trash icon"></i>
+                                                移出黑名单
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${visitorPageInfo.size()==0}">
+                                        <td colspan="10">
+                                            没有符合条件的记录
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr th:if="${visitorPageInfo.size()>=1}">
+                                        <th colspan="10">
+                                            总共[[${visitorPageInfo.size()}]]条记录
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有删除权限</h3>
+    <br>
+    <br>
+</div>
+</body>
+<th:block th:replace="_fragments::adminscript"></th:block>
+
+<script type="text/javascript">
+
+    //参数化查询
+    function searchVisitorByArgs(args) {
+        $.ajax({
+            url: "/admin/getVisitorBlackByArgs",
+            data: {args: args},
+            type: 'GET',
+            success: function (data) {
+                $(".blackList").html(data);
+            }
+        });
+    }
+
+    //搜索
+    function search() {
+        var args = $(".searchArgs").val();
+        if (args === null) {
+            alert("请输入");
+        } else {
+            $.ajax({
+                url: "/admin/getVisitorBlackByArgs",
+                data: {args: args},
+                type: 'GET',
+                success: function (data) {
+                    $(".blackList").html(data);
+                }
+            });
+        }
+    }
+
+    //移除黑名单
+    function outBlack(ip) {
+        $.ajax({
+            url: "/admin/outBlack",
+            data: {ip: ip},
+            type: "POST",
+            success: function (data) {
+                if(data==="No Permission"){
+                    $('#permission').text("对不起，你没有移除黑名单权限权限");
+                    $('.small.modal').modal('show');
+                }else{
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出错了");
+            }
+        });
+    }
+</script>
+</html>

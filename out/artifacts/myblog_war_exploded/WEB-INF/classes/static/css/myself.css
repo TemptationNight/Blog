@@ -1,0 +1,387 @@
+
+body{
+
+
+    background:url(../../static/images/bj.png) repeat top left scroll;
+    z-index:-2;
+}
+
+
+.test {
+    width: 100%;
+    height: 5px;
+    background:-webkit-linear-gradient(left,red,orange,green,blue,indigo,violet);
+    background:-o-linear-gradient(left,red,orange,green,blue,indigo,violet);
+    background:-moz-linear-gradient(left,red,orange,green,blue,indigo,violet);
+    background:linear-gradient(to right, red,orange,green,blue,indigo,violet);
+}
+
+
+/*-----内边距 padding-----*/
+.m-padded-tb-mini{
+    padding-top: 0.2em !important;     /*一个em代表14个px*/
+    padding-bottom: 0.2em !important;
+}
+
+.m-padding-mini{
+    padding: 0.2em !important;
+}
+
+
+.m-padding-none{
+    padding: 0 !important;
+}
+
+.m-padding-tiny{
+    padding: 0.3em !important;
+}
+
+.m-padded{
+    padding: 1em !important;
+}
+
+.m-padded-tb-tiny{
+    padding-top: 0.3em !important;
+    padding-bottom: 0.3em !important;
+}
+
+.m-padded-tb-small{
+    padding-top: 0.5em !important;
+    padding-bottom: 0.5em !important;
+}
+
+
+.m-padded-tb{
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+}
+
+
+.m-padded-tb-large{
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+}
+
+
+.m-padded-tb-big{
+    padding-top: 3em !important;
+    padding-bottom: 3em !important;
+}
+
+
+.m-padded-tb-huge{
+    padding-top: 4em !important;
+    padding-bottom: 4em !important;
+}
+
+
+.m-padded-tb-massive{
+    padding-top: 5em !important;
+    padding-bottom: 5em !important;
+}
+
+
+.m-padded-lr-response{
+    padding-left: 2em !important;
+    padding-right: 2em !important;
+
+}
+
+.m-padded-left-big{
+    padding-left: 5em !important;
+}
+
+.m-padded-left{
+    padding-left: 4em !important;
+}
+.m-padded-left-small{
+    padding-left: 3em !important;
+}
+.m-padded-left-tiny{
+    padding-left: 2em !important;
+}
+/*-------margin---------*/
+.m-margin-tb-tiny{
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em !important;
+}
+
+.m-margin-tb-none{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+
+.m-margin-top-small{
+    margin-top: 0.5em !important;
+}
+
+
+
+.m-margin-top{
+    margin-top: 1em !important;
+}
+
+.m-margin-lr-none{
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.m-margin-top-large{
+    margin-top: 2em !important;
+}
+
+
+.m-margin-bottom-small{
+    margin-bottom: 0.5em !important;
+}
+
+
+.m-margin-lr-normal{
+    margin-left: 4em !important;
+}
+
+
+
+/*------文本设置------*/
+
+.m-text{
+    font-weight: 300 !important;
+    letter-spacing: 1px !important;
+    line-height: 1.8 ;
+}
+
+
+.m-text-large{
+    font-size: 16px !important;
+}
+
+
+.m-text-normal{
+    font-size: 46px !important;
+}
+
+
+.m-text-thin{      /*字体粗细*/
+    font-weight: 300 !important;
+}
+
+.m-text-spaced{   /*字间距*/
+    letter-spacing: 1px !important;
+}
+
+.m-text-lined{       /*行间距*/
+
+    line-height: 1.8 ;
+}
+
+.m-opacity-mini{     /*透明度*/
+    opacity: 0.8 !important;
+}
+
+.m-opacity-tiny{     /*透明度*/
+    opacity: 0.6 !important;
+}
+
+
+/*-----元素属性设置--------*/
+.m-inline-block {       /*设置行内元素*/
+    display: inline-block !important;
+}
+
+.m-container{
+    max-width: 72em !important;
+    margin:  auto !important;
+}
+
+
+.m-container-large{
+    max-width: 82em !important;
+    margin:  auto !important;
+}
+
+/*-----字体------*/
+.m-black{
+    color:#333 !important;
+}
+.m-font-large{
+    font-size: 15px !important;
+    font-weight: lighter !important;
+}
+
+.m-font-big{
+    font-size: 20px !important;
+}
+
+
+
+.m-font-normal{
+    font-size: 15px !important;
+}
+
+
+.m-font{
+    font-size: 13px !important;
+}
+
+
+
+.segment-border-none{
+    border: none !important;
+}
+
+
+.segment-border-hidden{
+    border: 1px solid white !important;
+}
+
+
+/*-----布局------*/
+.m-top-right{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+.m-mobile-show{                /*宽屏幕隐藏*/
+    display: none !important;
+}
+
+
+.m-shadow-small {
+    -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+
+}
+
+
+.ui.input-mini {
+    position: relative;
+    font-weight: 100 !important;
+    font-style: normal;
+
+
+}
+
+.m-fixed{
+    position: fixed !important;
+    z-index: 10 !important;
+}
+
+.m-right-bottom{
+    bottom: 0 !important;
+    right: 0 !important;
+}
+
+
+tr{
+    border: none !important;
+}
+
+
+
+.picture {
+    float: left;
+    width: 28%;
+    box-sizing: border-box;
+    padding: 10px;
+    min-width: 15px;
+    transition: all 1.5s;
+}
+
+.picture:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#titlePicture:hover{
+    cursor: pointer;
+}
+
+
+.blogTitle:hover{
+    cursor:pointer;
+    color:blue;
+
+}
+/*
+
+.container1 {
+    width: 100%;
+}
+*/
+
+/*
+@media (max-width:768px ) {
+    .picture {
+        float: left;
+        width: 33%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+
+@media (max-width: 515px ) {
+    .picture {
+        float: left;
+        width: 39%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+
+@media (max-width: 465px ) {
+    .picture {
+        float: left;
+        width: 50%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 315px ) {
+    .picture {
+        float: left;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+}
+
+
+*/
+
+
+/*----手机端隐藏-------*/
+@media  (max-width: 768px){   /* 当屏幕小于768px时   */
+    .m-mobile-hide{
+        display: none !important;
+    }
+
+    .m-mobile-show{  /*手机端显示*/
+        display: block !important;
+    }
+    .m-padded-lr-response{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+    }
+
+    .m-padded-lr-clear{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+    }
+
+    .m-mobile-wide{
+        width: 100% !important;
+
+    }
+
+}

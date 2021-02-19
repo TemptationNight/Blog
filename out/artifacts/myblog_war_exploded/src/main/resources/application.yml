@@ -1,0 +1,18 @@
+spring:
+
+  thymeleaf:
+    mode: HTML
+  profiles:
+    active: dev           #指定当前环境  确定配置文件
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
+
+
+    <!--mybatis 的逆向工程-->
     <!-- 引入数据库连接配置 -->
     <properties resource="jdbc.properties"/>
 

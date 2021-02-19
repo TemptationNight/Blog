@@ -1,0 +1,306 @@
+
+body {
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #262626
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, textarea, input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+    box-sizing: border-box;
+    font-family: proxima nova
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block
+}
+
+body {
+    line-height: 1
+}
+
+ol, ul {
+    list-style: none
+}
+
+blockquote, q {
+    quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none
+}
+
+input {
+    font-family: proxima nova
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    /* -moz-user-focus: none;*/
+    -moz-user-select: none
+}
+
+div:active, section:active {
+    -webkit-tap-highlight-color: transparent;
+    -o-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent
+}
+
+.clearfix {
+    zoom: 1
+}
+
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0
+}
+
+h1 {
+    color: #000;
+    text-align: center;
+    margin: 30px auto
+}
+
+h3 {
+    text-align: center;
+    color: #666
+}
+
+.container {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around
+}
+
+.container .boxItem {
+    width: 18%;
+    height: 150px;
+    position: relative;
+    margin: 0 15px 15px 0
+}
+
+.container .boxItem > a {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 10
+}
+
+.container .boxItem > a:first-of-type:hover, .container .boxItem > a:nth-child(2):hover, .container .boxItem > a:nth-child(3):hover, .container .boxItem > a:last-of-type:hover {
+    z-index: 11;
+    -moz-clip-path: none;
+    -webkit-clip-path: none;
+    clip-path: none;
+    clip: auto
+}
+
+.container .boxItem > a:first-of-type {
+    -moz-clip-path: polygon(0 0, 100% 0, 50% 50%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 50% 50%);
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+    clip: rect(0px, 150px, 120px, 0px)
+}
+
+.container .boxItem > a:first-of-type:hover ~ .itemContentBox > img {
+    -moz-transform: rotateX(-90deg);
+    -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg)
+}
+
+.container .boxItem > a:first-of-type:hover ~ .itemContentBox .itemContent:first-of-type {
+    -moz-transform: rotateX(0);
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1
+}
+
+.container .boxItem > a:nth-child(2) {
+    -moz-clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+    -webkit-clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+    clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+    clip: rect(0px, 150px, 150px, 120px)
+}
+
+.container .boxItem > a:nth-child(2):hover ~ .itemContentBox > img {
+    -moz-transform: rotateY(-90deg);
+    -webkit-transform: rotateY(-90deg);
+    transform: rotateY(-90deg)
+}
+
+.container .boxItem > a:nth-child(2):hover ~ .itemContentBox .itemContent:nth-of-type(2) {
+    -moz-transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 1
+}
+
+.container .boxItem > a:nth-child(3) {
+    -moz-clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+    -webkit-clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+    clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+    clip: rect(120px, 150px, 150px, 0px)
+}
+
+.container .boxItem > a:nth-child(3):hover ~ .itemContentBox > img {
+    -moz-transform: rotateX(90deg);
+    -webkit-transform: rotateX(90deg);
+    transform: rotateX(90deg)
+}
+
+.container .boxItem > a:nth-child(3):hover ~ .itemContentBox .itemContent:nth-of-type(3) {
+    -moz-transform: rotateX(0);
+    -webkit-transform: rotateX(0);
+    transform: rotateX(0);
+    opacity: 1
+}
+
+.container .boxItem > a:last-of-type {
+    -moz-clip-path: polygon(0 0, 50% 50%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 50% 50%, 0 100%);
+    clip-path: polygon(0 0, 50% 50%, 0 100%);
+    clip: rect(0px, 30px, 150px, 0px)
+}
+
+.container .boxItem > a:last-of-type:hover ~ .itemContentBox > img {
+    -moz-transform: rotateY(90deg);
+    -webkit-transform: rotateY(90deg);
+    transform: rotateY(90deg)
+}
+
+.container .boxItem > a:last-of-type:hover ~ .itemContentBox .itemContent:last-of-type {
+    -moz-transform: rotateY(0);
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+    opacity: 1
+}
+
+.container .boxItem .itemContentBox {
+    width: 100%;
+    height: 100%;
+    position: absolute
+}
+
+.container .boxItem .itemContentBox > img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+    transition: all .3s linear;
+    transform-origin: center center -75px
+}
+
+.container .boxItem .itemContentBox .itemContent {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #928f8f;
+    text-align: center;
+    transform-style: preserve-3d;
+    transform-origin: center center -75px;
+    color: #fff;
+    transition: all .3s linear;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    opacity: .2
+}
+
+.container .boxItem .itemContentBox .itemContent > span {
+    transform: translateY(60px)
+}
+
+.container .boxItem .itemContentBox .itemContent:first-of-type {
+    transform: rotateX(90deg)
+}
+
+.container .boxItem .itemContentBox .itemContent:nth-of-type(2) {
+    transform: rotateY(90deg)
+}
+
+.container .boxItem .itemContentBox .itemContent:nth-of-type(3) {
+    transform: rotateX(-90deg)
+}
+
+.container .boxItem .itemContentBox .itemContent:last-of-type {
+    transform: rotateY(-90deg)
+}
+
+
+/*
+@media (max-width: 1505px ) {
+    .container .boxItem  {
+        float: left;
+        width: 25%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 1305px ) {
+    .container .boxItem  {
+        float: left;
+        width: 25%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+
+@media (max-width: 705px ) {
+    .container .boxItem  {
+        float: left;
+        width: 30%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+
+@media (max-width: 465px ) {
+    .container .boxItem {
+        float: left;
+        width: 45%;
+        box-sizing: border-box;
+        padding: 10px;
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 315px ) {
+    .container .boxItem  {
+        float: left;
+        width: 50%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+}
+
+*/
+
+
+

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>博客发布</title>
+</head>
+
+<body>
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu"
+         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
+         style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar">
+    </div>
+    <!--中间部分-->
+    <div class="pusher">
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="navslide navwrap">
+
+        </div>
+        <!--正文内容-->
+        <div class="mainWrap navslide">
+            <div class="ui segment ">
+                <div class="ui grid">
+                    <div class="ui four wide tab column" style="background: #eaeaea">
+                        <div class="ui segment teal center aligned segment-border-none">
+                            <a class="ui teal  label big fluid">写博客</a>
+                            <table class="ui red table left aligned" style=" border:0;background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>博客状态</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <i class=" folder open icon large"></i>
+                                        已发表
+                                    </td>
+                                    <td>
+                                        <div class="ui label red">144篇</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="archive icon large"></i>
+                                        草稿箱
+                                    </td>
+                                    <td>
+                                        <div class="ui label violet">4篇</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class=" trash icon large"></i>
+                                        垃圾箱
+                                    </td>
+                                    <td>
+                                        <div class="ui label olive">14篇</div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="ui  table left aligned" style=" border:0;background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>博客分类</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="type:${categoryList}">
+                                    <td th:text="${type.categoryname}">
+                                        <i class="circle icon large teal"></i>
+                                    </td>
+                                    <td>
+                                        <div class="ui label teal"
+                                             th:text="${type.articlenum!=null?type.articlenum+'  篇':'0  篇'}">11篇
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ui twelve wide column" style="background: #eaeaea">
+                        <!--发布博客头部区域-->
+                        <div class="ui segment red  attached middle aligned  segment-border-none">
+                            <div class="ui two column grid  middle aligned">
+                                <div class="column">
+                                    <h2 class="ui header">写博客</h2>
+                                </div>
+                                <div class="right aligned column">
+                                    <div class="ui label  large"><i class="pencil alternate icon"></i>存为草稿</div>
+                                    <a href="javascript:void(0)">
+                                        <div class="ui label red large"><i class="delete icon"></i>&nbsp;&nbsp;删除</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--发布博客区域-->
+                        <div class="ui segment red attached center aligned segment-border-none">
+                            <form class="ui form">
+                                <table id="tbl" border=1 width="93%" frame="void" rules="none">
+                                    <tr>
+                                        <td>
+                                            <h4>首图：</h4>
+                                        <td>
+                                        <td>
+                                            <div id="titlePicture">
+                                                <img id="headPicture" src="https://picsum.photos/200/130?grayscale"
+                                                     alt=""
+                                                     class="ui image"
+                                                     style="width: 30% !important; height: 25% !important;">
+                                            </div>
+                                            <br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>标题：</h4>
+                                        <td>
+                                        <td>
+                                            <div class="ui fluid icon input">
+                                                <input type="text" placeholder="博客标题" id="title">
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <h4>类别：</h4>
+                                        <td>
+                                        <td>
+                                            <div class="ui fluid selection dropdown typeList">
+                                                <i class="dropdown icon"></i>
+                                                <div class="default text">博客类别</div>
+                                                <div class="menu">
+                                                    <div class="ui item" th:each="type,itemStat:${categoryList}">
+                                                        <div class="item " id="type"
+                                                             th:data-value="${itemStat.count}"
+                                                             th:text="${type.categoryname}"
+                                                             th:value="${type.id}">
+                                                            Java
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>是否原创：</h4>
+                                        <td>
+                                        <td>
+                                            <div class="ui fluid selection dropdown yuanChuangList">
+                                                <input type="hidden" name="user">
+                                                <i class="dropdown icon"></i>
+                                                <div class="default text">是否原创</div>
+                                                <div class="menu" id="yuanChuang">
+                                                    <div class="item" data-value="是">
+                                                        是
+                                                    </div>
+                                                    <div class="item" data-value="否">
+                                                        否
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    <td>
+                                        <h4>关键字：</h4>
+                                    <td>
+                                    <td>
+                                        <div class="ui fluid icon input">
+                                            <input type="text" placeholder="博客关键字(多个之间以;分隔开)" id="keyWord">
+                                        </div>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td>
+                                            <h4>摘要：</h4>
+                                        <td>
+                                        <td>
+                                        <div class="ui form">
+                                            <div class="field">
+                                                <textarea  id="summery-textarea"></textarea>
+                                            </div>
+                                        </div>
+                                        </td>
+                                    </tr>
+
+
+                                </table>
+                                <br>
+                                <br>
+
+                                <div id="md-content">
+                                    <textarea style="display:none" class="blogText">
+
+                                    </textarea>
+
+                                </div>
+                                <div class="ui inline fields">
+                                    <div class="field">
+                                        <div class="ui checkbox">
+                                            <input type="checkbox" id="recommend" name="checkbox" checked
+                                                   class="hidden" th:value="推荐">
+                                            <label for="recommend">推荐</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui checkbox">
+                                            <input type="checkbox" name="checkbox" id="appreciation" class="hidden"
+                                                   th:value="置顶">
+                                            <label for="appreciation">置顶</label>
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <div class="ui checkbox">
+                                            <input type="checkbox" name="checkbox" class="hidden" id="comment"
+                                                   th:value="评论">
+                                            <label for="comment">评论</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui container right aligned">
+                                    <button type="button" class="ui button teal" id="giveUp">发布</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--确认弹出层-->
+        <div class="ui modal small" id="sureModal">
+            <i class="close icon"></i>
+            <div class="header">
+                文章发布
+            </div>
+            <div class="content">
+                <div class="ui right labeled left icon input " style="left: 28% !important;">
+                    <i class="tags icon"></i>
+                    <input id="editTitle" type="text" readonly="readonly">
+                    <div class="ui tag label teal">
+                        标题
+                    </div>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="ui positive  labeled  icon button" style="background-color: red">
+                    放弃
+                    <i class="remove icon "></i>
+                </div>
+                <div id="upBlog" class="ui positive  labeled icon button ">
+                    确认
+                    <i class="checkmark icon"></i>
+                </div>
+            </div>
+        </div>
+
+
+        <!--图片弹出层-->
+        <div class="ui modal big  " id="pictureModal">
+            <i class="close icon"></i>
+            <div class="header">
+                选择图片
+            </div>
+            <div class="content">
+                <section class=" container ">
+                    <section class="boxItem " th:each="picture:${pictures}"
+                             style="background-color: whitesmoke !important;width: 30% !important;">
+                        <img class="picture" src="https://picsum.photos/200/130?grayscale" alt=""
+                             th:src="@{../images/{filename}(filename=${picture.name})}"
+                             th:onclick="choosePicture([[${picture.name}]])"
+                             style="width: 100% !important; height: 100% !important;">
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有发布博客权限</h3>
+    <br>
+    <br>
+</div>
+</body>
+
+
+<script type="text/javascript">
+
+
+    //富文本编辑器插件
+    var Editor;
+    $(function () {
+        Editor = editormd("md-content", {
+            width: "100%",
+            height: 500,
+            syncScrolling: "single",
+            path: "/lib/editmd/lib/"   //此路径是富文本编辑器的路径  如果写错了  就会无限加载
+        });
+    });
+
+
+    //确认弹出层  确认发布博客的发布按钮点击
+    $("#giveUp").click(function () {
+        $('#sureModal').modal('show');
+        var title = $("#title").val();
+        $("#editTitle").val(title)
+    });
+
+
+    //发布博客  确认按钮点击 向后台发送ajax请求
+    $("#upBlog").click(function () {
+        //获取需要提交的表单数据
+        var title = $("#title").val();
+        var typeName = $('.typeList').dropdown('get text');
+        var yuanChuang = $('.yuanChuangList').dropdown('get text');
+        var summary=$("#summery-textarea").val();
+        if (yuanChuang === "是") {
+            yuanChuang = "1";
+        } else {
+            yuanChuang = "0";
+        }
+        var keyWord = $("#keyWord").val();
+        var blogText = $(".blogText").val();
+        var firstPictureUrl = $("#headPicture")[0].src;
+        var chk_value = [];//定义一个数组
+        $('input[name="checkbox"]:checked').each(function () {  //遍历每一个名字为interest的复选框，其中选中的执行函数
+            chk_value.push($(this).val());                     //将选中的值添加到数组chk_value中
+        });
+        var isRecommend = "";
+        var isTop = "";
+        var isDiscuss = "";
+        for (var i = 0; i < chk_value.length; i++) {
+            switch (chk_value[i]) {
+                case '评论':
+                    isDiscuss = "1";
+                    break;
+                case '置顶':
+                    isTop = "1";
+                    break;
+                case '推荐':
+                    isRecommend = "1";
+                    break;
+            }
+        }
+
+        //数据提交到后台
+        $.ajax({
+            url: "/admin/upBlog",
+            type: "POST",
+            data: {
+                title: title,
+                keyword: keyWord,
+                isrecommend: isRecommend,
+                istop: isTop,
+                images: firstPictureUrl,
+                content: blogText,
+                isDiscuss: isDiscuss,
+                isYuanChuang: 1,
+                typename: typeName,
+                summary :summary
+            },
+            success: function (data) {
+                if(data==="No Permission"){       //提示没有权限
+                    $('#permission').text("对不起，你没有发布文章权限");
+                    $('.small.modal').modal('show');
+                }else{
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("错误");
+            }
+        });
+    });
+
+    //图片弹出层    获取所有的图片
+    $("#titlePicture").click(function () {
+        $.ajax({
+            url: "/admin/pictureUp",
+            type: "GET",    //请求方式
+            success: function () {
+                $('#pictureModal').modal('show');
+            },
+            error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    });
+
+
+    //选择图片
+    function choosePicture(name) {
+        $('#pictureModal').modal('hide');
+        $("#headPicture").attr("src", "../images/" + name);
+    }
+
+
+</script>
+
+
+<th:block th:replace="_fragments::adminscript"></th:block>
+
+
+</html>

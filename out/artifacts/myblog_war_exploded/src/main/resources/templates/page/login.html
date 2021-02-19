@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Login</title>
+    <link rel="stylesheet" href="" th:href="@{/css/login.css}">
+</head>
+<body>
+
+<h3 th:text="${msg}"></h3>
+
+<div class="lowin">
+    <div class="lowin-brand">
+        <img src="" th:src="@{/images/kodinger.jpg}" alt="logo">
+    </div>
+    <div class="lowin-wrapper">
+        <div class="lowin-box lowin-login">
+            <div class="lowin-box-inner">
+                <form th:action="@{/page/sign_in}" th:method="POST">
+                    <p>Sign in to continue</p>
+                    <div class="lowin-group">
+                        <label>Username</label>
+                        <input type="text"  name="username" class="lowin-input">
+                    </div>
+                    <div class="lowin-group password-group">
+                        <label>Password </label>
+                        <input type="password" name="password"  class="lowin-input">
+                    </div>
+                    <input class="lowin-btn login-btn" type="submit" value="Sign in">
+
+                    </input>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

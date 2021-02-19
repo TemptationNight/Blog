@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::pageHead(~{::title})">
+    <title>博客首页</title>
+    <meta charset="UTF-8">
+</head>
+
+
+<body style="background-color: #F5F5F5 !important;">
+<header th:replace="_fragments::pageHeader" class="header-navigation">
+
+</header>
+<article style="position: relative;">
+    <!--blogsbox begin-->
+    <main>
+        <div class="banner">
+            <div id="banner" class="fader">
+                <li class="slide"><img src="" th:src="@{../images/3f0b6da48a6fd4e626a021ff7bd0d74f.jpg}"></li>
+                <li class="slide"><img src="" th:src="@{../images/762f99f369ae786f970477feeb3b9d77.jpg}"></li>
+                <li class="slide"><img src="" th:src="@{../images/82ad18fca433c2a102319063a17cfc8f.jpg}"></li>
+                <li class="slide"><img src="" th:src="@{../images/banner03.jpg}"></li>
+                <li class="slide"><img src="" th:src="@{../images/banner01.jpg}"></li>
+                <div class="fader_controls">
+                    <div class="page prev" data-target="prev">&#8249;</div>
+                    <div class="page next" data-target="next">&#8250;</div>
+                    <ul class="pager_list">
+                        <li class="page" data-target="0">0</li>
+                        <li class="page" data-target="1">1</li>
+                        <li class="page active" data-target="2">2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--banner end-->
+        <div class="blank"></div>
+        <th:block th:replace="_fragments::articleInfo"></th:block>
+<!--
+        <div class="blogs" data-scroll-reveal="enter bottom over 1s" data-scroll-reveal-id="2"
+             style="-webkit-transform: translatey(24px);transform: translatey(24px);opacity: 0;-webkit-transition: -webkit-transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;transition: transform 1s ease-in-out 0s,  opacity 1s ease-in-out 0s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;"
+             data-scroll-reveal-initialized="true">
+            <h3 class="blogtitle"><a href="http://more.yangqq.com/study/1/6.html"
+                                     target="_blank">6条网页设计配色原则,让你秒变配色高手</a></h3>
+            <span class="bplist"><a href="http://more.yangqq.com/study/1/6.html" title="6条网页设计配色原则,让你秒变配色高手">
+      <li><img src="" th:src="@{../images/2.jpg}"></li>
+      <li><img src="" th:src="@{../images/3.jpg}"></li>
+      <li><img src="" th:src="@{../images/4.jpg}"></li>
+      </a></span>
+            <p class="blogtext">
+                网页设计好不好看,颜色是毋庸置疑要排首位的,所以关于颜色的搭配技巧以及原则,对于每一个要学习web前端设计的新手来说,这都是一个重要的学习过程.在本教程中我们将与你分享... </p>
+            <div class="bloginfo">
+                <ul>
+                    <li class="author"></li>
+                    <li class="lmname"><a href="http://more.yangqq.com/study/1/" target="_blank">目录1</a></li>
+                    <li class="timer">2018-07-15</li>
+                    <li class="view"><span>33</span>已阅读</li>
+                    <li class="like">12</li>
+                </ul>
+            </div>
+        </div>
+-->
+    </main>
+    <!--blogsbox end-->
+    <aside class="sidebar" style="position: static; left: auto; width: 32%;">
+        <div class="toppic">
+            <li th:each="blog:${slowLife}">
+                <a th:href="@{/page/{id}/blogDetail(id=${blog.id})}">
+                    <i>
+                        <img src="" th:src="@{${blog.images}}">
+                    </i>
+                    <h2 th:text="${blog.title+' : 闲散生活'}">安逸的做一个爱设计的程序人</h2>
+                    <span>慢生活</span>
+                </a>
+            </li>
+
+        </div>
+        <!--右边的边栏-->
+        <th:block th:replace="_fragments::pageRight"></th:block>
+    </aside>
+</article>
+
+<footer>
+
+    <p>Design by <a href="javascript:void(0)" target="_blank">何袁辉个人博客</a> <a
+            href="javascript:void(0)">蜀ICP备11002373号-1</a></p>
+</footer>
+<a href="" class="cd-top">Top </a>
+
+
+<script type="text/javascript">
+
+    //头部导航上的根据类型获取文章
+    function getBlogByType(type) {
+        alert(type)
+        $.ajax({
+            url: "/page/learnMore",
+            data: {typeName: type},
+            type: "GET",
+            success: function (data) {
+
+            },
+            error: function () {
+                alert("错误");
+            }
+        })
+
+    }
+
+
+</script>
+
+<script th:src="@{/js/back_special.js}"></script>
+<script th:src="@{/js/mouse.js}"></script>
+
+</body>
+</html>

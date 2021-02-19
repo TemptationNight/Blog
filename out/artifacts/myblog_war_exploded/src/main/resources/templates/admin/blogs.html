@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>博客列表</title>
+</head>
+<body style="background-color: white !important;">
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu"
+         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
+         style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
+    <!--中间部分-->
+    <div class="pusher">
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="navslide navwrap"></div>
+        <!--正文内容-->
+        <div class="mainWrap navslide" style="background-color: white !important;">
+            <div class="ui segment  m-padded segment-border-none">
+                <div class="ui two column grid  middle aligned">
+                    <div class="column">
+                        <h2 class="ui header">博客列表</h2>
+                    </div>
+                    <div class="right aligned column">
+                        <div class="ui  action input ">
+                            <input type="text" placeholder="Search...">
+                            <button class="ui icon button">
+                                <i class="search icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui segment segment-border-none">
+                <table class="ui red table" style="text-align: center !important;">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>标题</th>
+                        <th>类别</th>
+                        <th>标签</th>
+                        <th>浏览量</th>
+                        <th>博主推荐</th>
+                        <th>状态</th>
+                        <th>发表时间</th>
+                        <th>操做</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="blog,iterStat:${articlePageInfo.getList()}">
+                        <td th:text="${iterStat.count}">1</td>
+                        <td th:class="blogTitle" th:text="${blog.title}" th:onclick="blogDetail([[${blog.content}]])">
+                            Docker安装mysql
+                        </td>
+                        <td th:text="${blog.categoryName}">运维</td>
+                        <td th:text="${blog.keyword}">Docker</td>
+                        <td th:text="${blog.browsenum}">357</td>
+                        <td>
+                            <div class="ui label teal" th:if="${blog.isrecommend} eq 1">是</div>
+                            <div class="ui label black" th:if="${blog.isrecommend} eq 0">否</div>
+                        </td>
+                        <td>
+                            <div class="ui label black" th:if="${blog.status} eq 0">已下架</div>
+                            <div class="ui label teal" th:if="${blog.status} eq 1">发布</div>
+                        </td>
+
+                        <td th:text="${#dates.format(blog.addtime,'yyyy-MM-dd:HH:mm:ss')}"> 2019-12-7</td>
+                        <td>
+                            <a href="javascript:void(0)" th:onclick="deleteArticle([[${blog.id}]])">
+                                <div class="ui label  red">
+                                    删除
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)" th:if="${blog.status} eq 1"
+                               th:onclick="downShilft([[${blog.id}]])"
+                            >
+                                <div class="ui label  black">
+                                    下架
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)" th:if="${blog.status} eq 0"
+                               th:onclick="upShilft([[${blog.id}]])"
+                            >
+                                <div class="ui label  teal">
+                                    上架
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)" th:if="${blog.isrecommend} eq 1"
+                               th:onclick="downRecommend([[${blog.id}]])"
+                            >
+                                <div class="ui label  black">
+                                    取推荐
+                                </div>
+                            </a>
+                            <a href="javascript:void(0)" th:if="${blog.isrecommend} eq 0"
+                               th:onclick="upRecommend([[${blog.id}]])"
+                            >
+                                <div class="ui label  teal">
+                                    加推荐
+                                </div>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="10" th:if="${articlePageInfo.getList().size()<=10}">
+                            总共[[${articleCount}]]条记录
+                        </th>
+                        <th colspan="10" th:if="${articlePageInfo.getList().size()>11}">
+                            总共[[${articleCount}]]条记录
+                            每页显示数据量
+                            <div class="ui compact selection dropdown">
+                                <i class="dropdown icon"></i>
+                                <div class="text">10</div>
+                                <div class="menu small">
+                                    <div class="item">10</div>
+                                    <div class="item">20</div>
+                                    <div class="item">30</div>
+                                </div>
+                            </div>
+                            总共[[${articleCount%articlePageInfo.getList().size()==0?articleCount/articlePageInfo.getList().size():articleCount/articlePageInfo.getList().size()+1}]]页
+                            <div class="ui button teal small">首页</div>
+                            <div class="ui button teal small">上一页</div>
+                            <div class="ui button blue small">第&nbsp;&nbsp;[[${articlePageInfo.getPageNum()+1}]]&nbsp;&nbsp;页</div>
+                            <div class="ui button teal small">下一页</div>
+                            <div class="ui button teal small">尾页</div>
+                            跳转到第
+                            <div class="ui input focus small" style="width: 4% !important;">
+                                <input type="text">
+                            </div>
+                            页
+                            <div class="ui button teal small">确定</div>
+                        </th>
+                    </tr>
+                    </tfoot>
+                </table>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--弹出层-->
+<div class="ui longer modal">
+    <i class="close icon"></i>
+    <div class="header">
+        博客详情
+    </div>
+    <div class=" content">
+        <div class="description">
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui button">编辑</div>
+        <div class="ui button">取消</div>
+    </div>
+</div>
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有删除权限</h3>
+    <br>
+    <br>
+</div>
+</body>
+
+
+<th:block th:replace="_fragments::adminscript"></th:block>
+
+
+<script type="text/javascript">
+
+
+    //删除文章
+    function deleteArticle(id) {
+        $.ajax({
+            url: "/admin/delete/article",
+            data: {id: id},
+            type: "POST",
+            success: function (data) {
+                if (data === "No Permission") {
+                    $('#permission').text("对不起，你没有文章删除权限");
+                    $('.small.modal')
+                        .modal('show')
+                    ;
+                } else {
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出错了");
+            }
+        })
+    }
+
+    //文章上架
+    function downShilft(id) {
+        $.ajax({
+            url: "/admin/downShilft/article",
+            data: {id: id},
+            type: "POST",
+            success: function (data) {
+                if (data === "No Permission") {
+                    $('#permission').text("对不起，你没有文章上架权限");
+                    $('.small.modal')
+                        .modal('show')
+                    ;
+                } else {
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出错了");
+            }
+        })
+    }
+
+
+    //文章下架
+    function upShilft(id) {
+        $.ajax({
+            url: "/admin/upShilft/article",
+            data: {id: id},
+            type: "POST",
+            success: function (data) {
+                if (data === "No Permission") {
+                    $('#permission').val("对不起，你没有文章下架权限");
+                    $('.small.modal')
+                        .modal('show')
+                    ;
+                } else {
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出错了");
+            }
+        })
+    }
+
+
+    //文章推荐
+    function downRecommend(id) {
+        $.ajax({
+            url: "/admin/downRecommend/article",
+            data: {id: id},
+            type: "POST",
+            success: function (data) {
+                if (data === "No Permission") {
+                    $('#permission').text("对不起，你没有文章推荐权限");
+                    $('.small.modal')
+                        .modal('show')
+                    ;
+                } else {
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出错了");
+            }
+        })
+    }
+
+    //文章取推荐
+    function upRecommend(id) {
+        $.ajax({
+            url: "/admin/upRecommend/article",
+            data: {id: id},
+            type: "POST",
+            success: function (data) {
+                if (data === "No Permission") {
+                    $('#permission').text("对不起，你没有文章取推荐权限");
+                    $('.small.modal')
+                        .modal('show')
+                    ;
+                } else {
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出错了");
+            }
+        })
+    }
+
+    function blogDetail(data) {
+        $('.longer.modal').modal('show');
+        $(".description").html(data);
+    }
+</script>
+
+</html>

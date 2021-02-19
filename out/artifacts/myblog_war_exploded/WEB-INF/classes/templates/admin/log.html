@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:javascript="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>博客日志</title>
+</head>
+<body style="background-color: white !important;">
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu"
+         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
+         style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
+    <!--中间部分-->
+    <div class="pusher">
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="navslide navwrap"></div>
+        <!--正文内容-->
+        <div class="mainWrap navslide">
+            <div class="ui segment ">
+                <div class="ui grid">
+                    <div class="ui four wide tab column">
+                        <div class="ui segment teal center aligned segment-border-none">
+                            <a class="ui teal  label big fluid">日志记录</a>
+                            <table class="ui red table left aligned m-font-normal"
+                                   style=" border:0; background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>用户类别</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <i class="user icon large"></i>
+                                        普通用户
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="user plus icon large"></i>
+                                        管理员
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="m-padding-none " style="background: #eaeaea">
+                                <table class="ui red table left aligned m-font-normal"
+                                       style=" border:0; background: #eaeaea">
+                                    <thead>
+                                    <tr>
+                                        <th>按时间查询</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <form th:action="@{/admin/logs}" th:method="GET">
+                                    <div class="ui label grey large">起始时间</div>
+                                    <div class="ui mini icon input">
+                                        <input id="startTime" name="startTime" type="date" placeholder="Search log..."
+                                               style="font-size:9px !important;">
+                                    </div>
+                                    <div class="ui label black large">截至时间</div>
+                                    <div class="ui mini icon input">
+                                        <input id="endTime" name="endTime" type="date" placeholder="Search log..."
+                                               style="font-size:9px !important;line-height: 16px !important;">
+                                    </div>
+                                    <div class="ui left aligned m-margin-lr-normal m-padding-mini">
+                                        <input id="searchLogByTime" type="submit" class="ui button mini teal "
+                                               value="查询">
+                                        <input id="reSetTime" type="button" class="ui button mini teal " value="重置">
+                                    </div>
+                                </form>
+                            </div>
+                            <table class="ui  table left aligned m-font-normal" style=" border:0;background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>快捷查询-用户</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['customer']],[['null']]);">
+                                            <i class="user icon large"></i>
+                                            普通用户
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['customer']],[['查看']]);">
+                                            <i class="tag right icon large"></i>
+                                            查看博客
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['customer']],[['关键字']]);">
+                                            <i class="tag right icon large   "></i>
+                                            关键字搜索博客
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['customer']],[['搜索资源']]);">
+                                            <i class="tag right icon large   "></i>
+                                            搜索资源
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table class="ui  table left aligned m-font-normal" style=" border:0;background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>快捷查询-管理员</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['administrator']],[['null']]);">
+                                            <i class="user plus icon large"></i>
+                                            管理员
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['administrator']],[['登录后台']]);">
+                                            <i class="tag right icon large   "></i>
+                                            登录后台
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['administrator']],[['博客']]);">
+                                            <i class="tag right icon large   "></i>
+                                            博客管理
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['administrator']],[['类别']]);">
+                                            <i class="tag right icon large   "></i>
+                                            类别管理
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)"
+                                           th:onclick="searchByUserType([['administrator']],[['友链']]);">
+                                            <i class="tag right icon large   "></i>
+                                            友链管理
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ui twelve wide column">
+                        <!--发布博客头部区域-->
+                        <div class="ui segment   attached  attached middle aligned segment-border-none"
+                             style="background-color: white !important;">
+                            <div class="ui segment  attached  m-padded segment-border-none">
+                                <div class="ui two column grid  middle aligned">
+                                    <div class="column">
+                                        <h2 class="ui header ">日志记录</h2>
+                                        <button type="button" class="ui button basic mini">
+                                            刷新&nbsp;&nbsp;&nbsp; <a href=""><i class="refresh icon"></i></a>
+                                        </button>
+                                    </div>
+                                    <div class="right aligned column">
+                                        <div class="ui  action input ">
+                                            <input type="text" placeholder="Search...">
+                                            <button class="ui icon button">
+                                                <i class="search icon"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div th:fragment="list" class="logList">
+                                <table class="ui  table attached  segment-border-hidden "
+                                       style="text-align: center !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>即时时间</th>
+                                        <th>操作</th>
+                                        <th>访问时间</th>
+                                    </tr>
+                                    <tbody>
+                                    <tr th:each="log:${logInfo.getList()}">
+                                        <td>
+                                            <div class="ui label teal" th:text="${log.distanceNow}"></div>
+                                        </td>
+                                        <td><i class="uer icon"></i>[[${log.usertype}]]&nbsp;&nbsp;<span
+                                                style="color: teal">&#64;[[${log.ip}]]</span> <i class="tag icon"></i>[[${log.description}]]<span
+                                                style="color:teal" th:text="${#strings.abbreviate(log.args,25)}"><!--[[${log.args}]]--></span>
+                                        </td>
+                                        <td th:text="${#dates.format(log.time,'yyyy-MM-dd HH:mm:ss')}"><i
+                                                class="time icon"></i>2019-12-7
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${logInfo.getList().size()==0}">
+                                        <td colspan="10">
+                                            没有符合条件的记录
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr th:if="${logCount>=1}">
+                                        <th colspan="10">
+                                            总共[[${logCount}]]条记录
+                                            每页显示数据量
+                                            <div class="ui compact selection dropdown">
+                                                <i class="dropdown icon"></i>
+                                                <div class="text">10</div>
+                                                <div class="menu small">
+                                                    <div class="item">10</div>
+                                                    <div class="item">20</div>
+                                                    <div class="item">30</div>
+                                                </div>
+                                            </div>
+                                            总共[[${logCount%logInfo.getList().size()==0?logCount/logInfo.getList().size():logCount/logInfo.getList().size()+1}]]页
+                                            <div class="ui button teal small">首页</div>
+                                            <div class="ui button teal small">上一页</div>
+                                            <div class="ui button blue small">第&nbsp;&nbsp;[[${logInfo.getPageNum()+1}]]&nbsp;&nbsp;页</div>
+                                            <div class="ui button teal small">下一页</div>
+                                            <div class="ui button teal small">尾页</div>
+                                            跳转到第
+                                            <div class="ui input focus small" style="width: 4% !important;"
+                                                 th:placeholder="1">
+                                                <input type="text">
+                                            </div>
+                                            页
+                                            <div class="ui button teal small">确定</div>
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<th:block th:replace="_fragments::adminscript"></th:block>
+
+<script type="text/javascript">
+
+    //按时间查询日志
+    $("#searchLogByTime").click(function () {
+        var startTime = $("#startTime").val();
+        var endTime = $("#endTime").val();
+        if (endTime === null || startTime === null) {
+            alert("请正确输入");
+        } else {
+            $.ajax({
+                url: "/admin/searByTime",
+                data: {startTime: startTime, endTime: endTime},
+                type: "GET",
+                success: function () {
+                    $(".logList").html(data);
+                },
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            })
+        }
+
+    });
+
+    //参数化查询日志
+    function searchByUserType(userType, desc) {
+        if (desc === null || userType === null) {
+            alert("请正确输入");
+        } else {
+            $.ajax({
+                url: "/admin/searchByDesc",
+                data: {userType: userType, desc: desc},
+                type: 'GET',
+                success: function (data) {
+                    $(".logList").html(data);
+                }
+            });
+        }
+    }
+
+    //日期重置
+    $("#reSetTime").click(function () {
+        $("#startTime").val("");
+        $("#endTime").val("");
+    });
+</script>
+</html>

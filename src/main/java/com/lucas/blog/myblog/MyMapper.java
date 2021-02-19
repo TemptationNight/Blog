@@ -6,7 +6,7 @@ import tk.mybatis.mapper.common.MySqlMapper;
 
 
 /**
- * 自己的 Mapper
+ * 自己的 Mapper    基础mapper  封装了基础的CRUD操作
  * 特别注意，该接口不能被扫描到，否则会出错
  * @author Heyuanhui
  * @version 1.0.0

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lucas.blog.myblog.mapper.VisitorMapper">
+  <resultMap id="BaseResultMap" type="com.lucas.blog.myblog.entity.Visitor">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="browseType" jdbcType="VARCHAR" property="browsetype" />
+    <result column="osType" jdbcType="VARCHAR" property="ostype" />
+    <result column="black" jdbcType="INTEGER" property="black" />
+  </resultMap>
+
+
+
+</mapper>

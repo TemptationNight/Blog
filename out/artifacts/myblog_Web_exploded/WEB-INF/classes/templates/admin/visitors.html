@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>访客信息</title>
+</head>
+
+
+<body>
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
+    <!--中间部分-->
+    <div class="pusher">
+
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="navslide navwrap"></div>
+        <!--正文内容-->
+        <div class="mainWrap navslide">
+            <div class="ui segment ">
+                <div class="ui grid">
+                    <div class="ui four wide tab column" style="background: #eaeaea">
+                        <div class="ui segment teal center aligned segment-border-none">
+                            <div class="ui teal  label big fluid">访客记录</div>
+                            <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>访客记录</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <i class="save icon large"></i>
+                                        记录数
+                                    </td>
+                                    <td>
+                                        <div class="ui label red" th:text="${count}">144</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="user icon large"></i>
+                                        用户数
+                                    </td>
+                                    <td>
+                                        <div class="ui label violet" th:text="${ipCount}">4</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="user times icon large"></i>
+                                        黑名单
+                                    </td>
+                                    <td>
+                                        <div class="ui label olive" th:text="${blackCount}">14</div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="m-padding-none" style="background: #eaeaea">
+                                <table class="ui red table left aligned m-font-normal"
+                                       style=" border:0; background: #eaeaea">
+                                    <thead>
+                                    <tr>
+                                        <th>按时间查询</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <div class="ui label grey large">起始时间</div>
+                                <div class="ui mini icon input">
+                                    <input id="startTime" name="startTime" type="date" placeholder="Search log..."
+                                           style="font-size:9px !important;">
+                                </div>
+                                <div class="ui label black large">截至时间</div>
+                                <div class="ui mini icon input">
+                                    <input id="endTime" name="endTime" type="date" placeholder="Search log..."
+                                           style="font-size:9px !important;line-height: 16px !important;">
+                                </div>
+                                <div class="ui left aligned m-margin-lr-normal m-padding-mini">
+                                    <input id="searchLogByTime" type="submit" class="ui button mini teal "
+                                           value="查询">
+                                    <input id="reSetTime" type="button" class="ui button mini teal " value="重置">
+                                </div>
+                            </div>
+                            <table class="ui  table left aligned m-font-normal" style=" border:0;background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>快捷查询</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['四川']]);">
+                                            <i class="tag right icon large black"></i>
+                                            四川地区
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['教育网']]);">
+                                            <i class="tag right icon large   black"></i>
+                                            教育网
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['IE']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            IE
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Chrome']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Chrome
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Windows']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Windows
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Iphone']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Iphone
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Ipad']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Ipad
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="javascript:void(0)" th:onclick="searchVisitorByArgs([['Android']]);">
+                                            <i class="tag right icon large  black "></i>
+                                            Android
+                                        </a>
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--数据显示区域-->
+                    <div class="ui twelve wide column" style="background: #eaeaea">
+                        <!--发布博客头部区域-->
+                        <div class="ui segment red  attached middle aligned  segment-border-none">
+                            <div class="ui segment  attached  m-padded segment-border-none">
+                                <div class="ui two column grid  middle aligned">
+                                    <div class="column">
+                                        <h2 class="ui header ">用户统计</h2>
+                                        <button type="button" class="ui button basic mini">
+                                            刷新&nbsp;&nbsp;&nbsp; <a href=""><i class="refresh icon"></i></a>
+                                        </button>
+                                    </div>
+                                    <div class="right aligned column">
+                                        <div class="ui  action input ">
+                                            <input class="searchArgs" type="text" placeholder="Search...">
+                                            <button class="ui icon button"  th:onclick="search()">
+                                                <i class="search icon"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="visitorList" th:fragment="visitorList">
+                                <table class="ui  table attached segment-border-none"
+                                       style="text-align: center !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>IP</th>
+                                        <th>地区</th>
+                                        <th>浏览器</th>
+                                        <th>系统</th>
+                                        <th>访问时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="visitor,itemStat:${visitorPageInfo.getList()}">
+                                        <td th:text="${itemStat.count}">1</td>
+                                        <td th:text="${visitor.ip}" th:if="${visitor.black}==0"
+                                            style="background-color: #eaeaea;">127.0.0.1
+                                        </td>
+                                        <td th:if="${visitor.black}==1" th:text="${visitor.ip}">127.0.0.1</td>
+                                        <td th:text="${visitor.city}">四川省成都市</td>
+                                        <td th:text="${visitor.browsetype}">Chrome</td>
+                                        <td th:text="${visitor.ostype}">windows</td>
+                                        <td th:text="${#dates.format(visitor.time,'yyyy-MM-dd HH:mm:ss')}">2019-12-7
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${visitorPageInfo.getList().size()==0}">
+                                        <td colspan="6">
+                                            没有符合条件的记录
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr th:if="${visitorPageInfo.getList().size()>1}">
+                                        <th colspan="10">
+                                            总共[[${count}]]条记录
+                                            每页显示数据量
+                                            <div class="ui compact selection dropdown">
+                                                <i class="dropdown icon"></i>
+                                                <div class="text">10</div>
+                                                <div class="menu">
+                                                    <div class="item">10</div>
+                                                    <div class="item">20</div>
+                                                    <div class="item">30</div>
+                                                </div>
+                                            </div>
+                                            总共[[${count%visitorPageInfo.getList().size() == 0?count/visitorPageInfo.getList().size():(count/visitorPageInfo.getList().size()+1)}]]页
+                                            <div class="ui button teal small">首页</div>
+                                            <div class="ui button teal small">上一页</div>
+                                            <div class="ui button blue small">第&nbsp;&nbsp;[[${visitorPageInfo.getPageNum()+1}]]&nbsp;&nbsp;页</div>
+                                            <div class="ui button teal small">下一页</div>
+                                            <div class="ui button teal small">尾页</div>
+                                            跳转到第
+                                            <div class="ui input focus small" style="width: 4% !important;">
+                                                <input type="text">
+                                            </div>
+                                            页
+                                            <div class="ui button teal small">确定</div>
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<th:block th:replace="_fragments::adminscript"></th:block>
+<script type="text/javascript">
+    //日期重置
+    $("#reSet").click(function () {
+        $("#startTime").val("");
+        $("#endTime").val("");
+    });
+
+    //参数化查询
+    function searchVisitorByArgs(args) {
+        $.ajax({
+            url: "/admin/getVisitorByArgs",
+            data: {args: args},
+            type: 'GET',
+            success: function (data) {
+                $(".visitorList").html(data);
+            }
+        });
+    }
+
+    //搜索
+    function search() {
+        var args=$(".searchArgs").val();
+        if(args===null){
+            alert("请输入");
+        }else {
+            $.ajax({
+                url: "/admin/getVisitorByArgs",
+                data: {args: args},
+                type: 'GET',
+                success: function (data) {
+                    $(".visitorList").html(data);
+                }
+            });
+        }
+    }
+
+    //按日期查询
+    $("#searchLogByTime").click(function () {
+        var startTime = $("#startTime").val();
+        var endTime = $("#endTime").val();
+        if(startTime===null||endTime===null){
+            alert("请输入日期");
+        }else {
+            $.ajax({
+                url: "/admin/getVisitorByTime",
+                data: {startTime: startTime, endTime: endTime},
+                type: "GET",
+                success: function (data) {
+                    $(".visitorList").html(data);
+                },
+                error: function (e) {
+                    alert("错误");
+                }
+            })
+        }
+    });
+
+    //日期重置
+    $("#reSetTime").click(function () {
+        $("#startTime").val("");
+        $("#endTime").val("");
+    });
+</script>
+</html>

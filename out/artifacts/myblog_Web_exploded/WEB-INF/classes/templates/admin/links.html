@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection -->      <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments::adminHead(~{::title})">
+    <title>友情连接</title>
+</head>
+
+<body>
+<div id="contextWrap">
+    <!--左侧菜单栏-->
+    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <!--右侧隐藏小菜单-->
+    <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
+    <!--中间部分-->
+    <div class="pusher">
+        <!--头部导航栏-->
+        <div th:replace="_fragments::topmenu" class="navslide navwrap "></div>
+        <!--正文内容-->
+        <div class="mainWrap navslide">
+            <!--  <div class="ui segment " style="background-color: #eaeaea">-->
+            <div class="ui segment segment-border-none">
+                <div class="ui grid">
+                    <div class="ui four wide tab column">
+                        <div class="ui segment teal center aligned  segment-border-none">
+                            <a class="ui teal  label big fluid">友情连接</a>
+                            <table class="ui red table left aligned   " style=" border:0;">
+                                <thead>
+                                <tr>
+                                    <th>连接状态</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <i class="save icon large"></i>
+                                        总共
+                                    </td>
+                                    <td>
+                                        <div class="ui label red" th:text="${linkCount}">144</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="user icon large"></i>
+                                        已审核
+                                    </td>
+                                    <td>
+                                        <div class="ui label violet" th:text="${linkIsChecked}">4</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="user times icon large"></i>
+                                        未审核
+                                    </td>
+                                    <td>
+                                        <div class="ui label olive" th:text="${linkNotChecked}">14</div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="ui divider"></div>
+                            <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
+                                <thead>
+                                <tr>
+                                    <th>添加友链</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="ui right labeled input small">
+                                            <div class="ui label small teal">
+                                                地址：
+                                            </div>
+                                            <input class="linkUrl" type="text" placeholder="连接地址">
+                                        </div>
+                                        <div class="ui labeled input small">
+                                            <div class="ui label teal">
+                                                名称：
+                                            </div>
+                                            <input class="linkName" type="text" placeholder="连接名称">
+                                        </div>
+                                        <button id="addLink" class="ui icon button small teal">
+                                            提交
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ui twelve wide column">
+                        <div class="ui segment red  attached middle aligned  segment-border-none">
+                            <div class="ui segment  attached   m-padded segment-border-hidden segment-border-none">
+                                <div class="ui two column grid  middle aligned">
+                                    <div class="column">
+                                        <h2 class="ui header ">友情连接</h2>
+                                        <button type="button" class="ui button basic mini">
+                                            刷新&nbsp;&nbsp;&nbsp; <a href=""><i class="refresh icon"></i></a>
+                                        </button>
+                                    </div>
+                                    <div class="right aligned column">
+                                        <div class="ui  action input ">
+                                            <input type="text" placeholder="Search..." class="searchArgs">
+                                            <button class="ui icon button" th:onclick="search()">
+                                                <i class="search icon"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="linkList" th:fragment="linkList">
+                                <table class="ui  attached red table middle aligned segment-border-hidden"
+                                       style="text-align: center !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>名称</th>
+                                        <th>点击数</th>
+                                        <th>状态</th>
+                                        <th>发表时间</th>
+                                        <th>操做</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="link,itemStat:${list}">
+                                        <td  th:text="${itemStat.count}">1</td>
+                                        <td>
+                                            <a href="javascript:void(0)"
+                                               style="font-family: 微软雅黑;font-size: small !important;"
+                                               th:text="${link.linkname}"
+                                               th:target="_blank"
+                                               th:onclick="clickNumAddOne([[${link.id}]],[[${link.linkurl}]]);">杨青个人博客</a>
+                                        </td>
+                                        <td th:text="${link.clicknum}">671</td>
+                                        <td>
+                                            <div class="ui label teal small aligned" th:if="${link.isagree eq 1}">已审核
+                                            </div>
+                                            <div class="ui label black small aligned" th:if="${link.isagree eq 0}">未审核
+                                            </div>
+                                        </td>
+                                        <td th:text="${#dates.format(link.addtime,'yyyy-MM-dd HH:mm:ss')}">2019-09-01
+                                        </td>
+                                        <td>
+                                            <a href="javascript:void(0)" th:if="${link.isagree eq 1}"
+
+
+                                               th:onclick="deleteLink([[${link.id}]],[[0]])"
+
+                                            >
+                                                <div class="ui label small  red">
+                                                    <i class="trash icon"></i>删除
+                                                </div>
+                                            </a>
+
+                                            <a href="javascript:void(0)" th:if="${link.isagree eq 0}"
+                                               th:onclick="setLinkChecked([[${link.id}]])">
+                                                <div class="ui label small teal">
+                                                    <i class="checked icon">通过审核</i>
+                                                </div>
+                                            </a>
+
+
+                                            <a href="javascript:void(0)" th:if="${link.isagree eq 0}"
+                                               th:onclick="deleteLink([[${link.id}]],[[1]])">
+                                                <div class="ui label small  blue">
+                                                    <i class="thumbs down icon">忽略</i>
+                                                </div>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr>
+                                        <th colspan="10" th:if="${list.size()==0}">
+                                            暂无友链
+                                        </th>
+                                        <th colspan="10" th:if="${list.size()>0}">
+                                            总共[[${list.size()}]]条友链
+                                        </th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--权限不足提示-->
+<div class="ui small modal">
+    <i class="close icon"></i>
+    <br>
+    <br>
+    <h3>权限不足</h3>
+    <br>
+    <br>
+    <h3 id="permission">对不起，你没有删除权限</h3>
+    <br>
+    <br>
+</div>
+
+
+</body>
+<th:block th:replace="_fragments::adminscript"></th:block>
+<script type="text/javascript">
+
+
+    //添加友链
+    $("#addLink").click(function () {
+        var linkUrl = $(".linkUrl").val();
+        var linkName = $(".linkName").val();
+        if(linkUrl===null||linkName===null){
+            alert("请正确输入信息");
+        }else {
+            $.ajax({
+                url: "/admin/addLink",
+                data: {linkUrl: linkUrl, linkName: linkName}, //参数值
+                type: "POST",    //请求方式
+                success: function (data) {
+                    if(data==="No Permission"){        //提示没有权限
+                        $('#permission').text("对不起，你没有添加友链权限");
+                        $('.small.modal').modal('show');
+                    }else {
+                        window.location.reload();
+                    }
+                },
+                error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        }
+    });
+
+    //搜索友链
+    function search() {
+        var args = $(".searchArgs").val();
+        if(args===null){
+            alert("输入不能为空");
+        }else {
+            $.ajax({
+                url: "/admin/searchLinkByArgs",
+                data: {args: args},
+                type: "GET",
+                success: function (data) {
+                    $(".linkList").html(data);
+                },
+                error: function () {
+                    alert("错误");
+                }
+            });
+        }
+    }
+
+    //点击量+1
+    function clickNumAddOne(id,url) {
+        $.ajax({
+            url: "/admin/clickAddOne",
+            data: {id: id},
+            type: "POST",
+            success: function (data) {
+                window.open(url);
+                $(".linkList").html(data);
+            },
+            error: function () {
+                alert("错误");
+            }
+        });
+    }
+
+    //删除友链  忽略友链
+    function deleteLink(id,falg){
+        $.ajax({
+            url:"/admin/delete/link",
+            data:{id:id},
+            type:"POST",
+            success: function (data) {
+                if(data==="No Permission"){        //提示没有权限
+                    if(falg===0){
+                        $('#permission').text("对不起，你没有删除友链权限");
+                        $('.small.modal').modal('show');
+                    }else if(falg===1){
+                        $('#permission').text("对不起，你没有忽略友链权限");
+                        $('.small.modal').modal('show');
+                    }else {
+                        alert("出错了");
+                    }
+                }else {
+                    window.location.reload();
+                }
+            },
+            error:function () {
+                alert("对不起，出错了");
+            }
+        });
+    }
+
+    //友链通过验证
+    function  setLinkChecked(id) {
+        $.ajax({
+            url:"/admin/setLinkChecked/link",
+            data:{id:id},
+            success: function (data) {
+                if(data==="No Permission"){        //提示没有权限
+                    $('#permission').text("对不起，你没有验证友链权限");
+                    $('.small.modal').modal('show');
+                }else {
+                    window.location.reload();
+                }
+            },
+            type:"POST",
+            error:function () {
+                alert("哦嚯，出错了");
+            }
+        })
+    }
+</script>
+</html>
