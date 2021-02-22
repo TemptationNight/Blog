@@ -19,7 +19,7 @@
 
 
 
-<header class="header-navigation">
+<!--<header class="header-navigation">
     <div class="test"></div>
     <nav>
         <div class="logo"><a th:href="@{/page/index}" style="color: #959595">@健康运动 |</a></div>
@@ -40,9 +40,9 @@
                     <li><a th:href="@{/page/learnMore(args='有氧运动')}" style="color: white">有氧运动</a></li>
                        <li><a th:href="@{/page/learnMore(args='户外运动')}" style="color: white">户外运动</a></li>
                     <li><a th:href="@{/page/learnMore(args='运动日记')}" style="color: white">运动日记</a></li>
-<!--
+&lt;!&ndash;
                     <li><a th:href="@{/page/learnMore(args='面试')}" style="color: white">面试分享</a></li>
--->
+&ndash;&gt;
                 </ul>
                 <span></span></li>
             <li><a href="" th:href="@{/page/share_life}">生活点滴</a></li>
@@ -62,8 +62,9 @@
             </div>
         </div>
     </nav>
+</header>-->
+<header th:replace="_fragments::pageHeader" class="header-navigation">
 </header>
-
 <div class="pagebg">
     <img src="" th:src="@{/images/585a09b39a7ff839cbc62338d3d89521.jpg}">
 </div>

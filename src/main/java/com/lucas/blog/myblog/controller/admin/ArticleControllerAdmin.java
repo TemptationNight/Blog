@@ -56,7 +56,7 @@ public class ArticleControllerAdmin {
 
 
 	@RequiresRoles(value={"root"})
-	@SystemLog(description = "删除博客:", actionType = ActionType.DELETE)
+	@SystemLog(description = "删除动态:", actionType = ActionType.DELETE)
 	@PostMapping("/delete/article")
 	public String deleteArticle( Integer id) {
 		int i = articleServiceImpl.deleteArticle(id);
@@ -65,7 +65,7 @@ public class ArticleControllerAdmin {
 
 
 	@RequiresRoles(value={"root"})
-	@SystemLog(description = "将博客下架:", actionType = ActionType.UNKNOWN)
+	@SystemLog(description = "将动态隐藏:", actionType = ActionType.UNKNOWN)
 	@PostMapping("/downShilft/article")
 	public String downShilft( Integer id) {
 		Integer i = articleServiceImpl.upOrDownShilft(id, 0);
@@ -74,7 +74,7 @@ public class ArticleControllerAdmin {
 
 
 	@RequiresRoles(value={"root"})
-	@SystemLog(description = "将博客上架:", actionType = ActionType.UNKNOWN)
+	@SystemLog(description = "将动态发布上架:", actionType = ActionType.UNKNOWN)
 	@PostMapping("/upShilft/article")
 	public String upShilft( Integer id) {
 		Integer i = articleServiceImpl.upOrDownShilft(id, 1);
@@ -82,7 +82,7 @@ public class ArticleControllerAdmin {
 	}
 
 	@RequiresRoles(value={"root"})
-	@SystemLog(description = "将博客推荐:", actionType = ActionType.UNKNOWN)
+	@SystemLog(description = "将动态推荐:", actionType = ActionType.UNKNOWN)
 	@PostMapping("/upRecommend/article")
 	public String upRecommend( Integer id) {
 		Integer i = articleServiceImpl.downOrUpRecommend(id, 1);
@@ -91,7 +91,7 @@ public class ArticleControllerAdmin {
 
 
 	@RequiresRoles(value={"root"})
-	@SystemLog(description = "将博客取推荐:", actionType = ActionType.UNKNOWN)
+	@SystemLog(description = "将动态取推荐:", actionType = ActionType.UNKNOWN)
 	@PostMapping("/downRecommend/article")
 	public String downRecommend( Integer id) {
 
@@ -124,7 +124,7 @@ public class ArticleControllerAdmin {
 
 
 	//发布博客
-	@SystemLog(description = "添加一个博客:", actionType = ActionType.INSERT)
+	@SystemLog(description = "添加一个动态:", actionType = ActionType.INSERT)
 	@RequiresRoles(value = "root")
 	@PostMapping("/upBlog")
 	public String upBlog(Article article, @RequestParam("typename") String typename, Model model) {

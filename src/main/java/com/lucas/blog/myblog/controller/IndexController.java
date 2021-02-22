@@ -46,11 +46,25 @@ public class IndexController {
 	//到主页
 	@GetMapping("/index")
 	public String index(Model model) {
+
+		System.out.println("woemdbecdvcyvdcvdycvwom我们的相遇都是缘分");
+
+
+
+
 		//获取页面正文所需的文章信息
 		List<Article> articleTenByTime = articleServiceImpl.getArticleTenByTime();
+		System.out.println("1111111");
 		//获取侧边栏信息
 		getRightInfo(model);
+
 		model.addAttribute("articleList", articleTenByTime);
+
+
+/*
+		for(int i=0;i<articleTenByTime.size();i++){
+			System.out.println(articleTenByTime.get(i).getTitle());
+		}*/
 		return "page/index";
 	}
 
@@ -76,7 +90,9 @@ public class IndexController {
 		getRightInfo(model);
 		//根据typeName获取文章
 		List<Article> articleByTypeName = articleServiceImpl.getArticleByTypeName(args);
-		System.out.println(articleByTypeName);
+		System.out.println(articleByTypeName+"==============");
+		//
+		// System.out.println("jiankangdiandi  osjcidchudbcudbcudb黑啊保持v的v从");
 		model.addAttribute("articleList", articleByTypeName)
 				.addAttribute("typeName", args);
 		return "page/learn_more";
@@ -101,7 +117,7 @@ public class IndexController {
 	//到技术分享界面
 	@GetMapping("/tech_share")
 	public String tech_share(Model model, String typeName) {
-		typeName = "数据结构";
+		typeName = "燃脂运动";
 		//加载右侧边栏
 		getRightInfo(model);
 		//根据typeId获取文章
@@ -111,21 +127,22 @@ public class IndexController {
 	}
 
 
-	//慢生活页面
+	//健康点滴页面
 	@GetMapping("/share_life")
 	public String show_life(Model model) {
-		String typeName = "生活";
+		String typeName = "健康点滴";
 		getRightInfo(model);
 		List<Article> blogList = articleServiceImpl.getArticleByTypeName(typeName);
 		model.addAttribute("articleList", blogList);
+		System.out.println("share life ");
 		return "page/slow_life";
 	}
 
-	//杂谈页面
+	//生活趣事页面
 	@GetMapping("/other")
 	public String other(Model model) {
 		//加载侧边栏
-		String typeName = "杂谈";
+		String typeName = "生活趣事";
 		getRightInfo(model);
 		List<Article> blogList = articleServiceImpl.getArticleByTypeName(typeName);
 		model.addAttribute("articleList", blogList);
@@ -174,6 +191,7 @@ public class IndexController {
 
 		for(int i=0;i<1; i++){
 			list.add(slowLife.get(i));
+			System.out.println("我们的");
 		}
 
 		System.out.println("====================="+list.size());
@@ -181,7 +199,7 @@ public class IndexController {
 
 		Set<Article> articleByRecommend = articleServiceImpl.getArticleByRecommend();
 		Article recommendTop = articleByRecommend.iterator().next();//获取set集合的第一个元素  并把它放在推荐文章最上面的大框框中
-		articleByRecommend.remove(recommendTop);//删除第一个元素
+		articleByRecommend.remove(recommendTop);//删除第一个articleByRecomme元素
 		Set<Article> articleByTop = articleServiceImpl.getArticleByTop();     //置顶文章随机三篇
 		List<Article> articleByBrowsers = articleServiceImpl.getArticleByBrowsers();
 		Article browseTop = articleByBrowsers.get(0); //获取list集合的第一个元素  并把它放在点击量文章最上面的大框框中

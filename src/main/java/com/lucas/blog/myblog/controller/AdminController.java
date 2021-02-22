@@ -44,6 +44,13 @@ public class AdminController {
 	}*/
 
 
+
+	//注册
+	public static  String reg(String username,String password){
+		return null;
+	}
+
+
 }
 
 
