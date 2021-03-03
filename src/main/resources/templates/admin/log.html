@@ -240,18 +240,18 @@
                                                 </div>
                                             </div>
                                             总共[[${logCount%logInfo.getList().size()==0?logCount/logInfo.getList().size():logCount/logInfo.getList().size()+1}]]页
-                                            <div class="ui button teal small">首页</div>
-                                            <div class="ui button teal small">上一页</div>
-                                            <div class="ui button blue small">第&nbsp;&nbsp;[[${logInfo.getPageNum()+1}]]&nbsp;&nbsp;页</div>
-                                            <div class="ui button teal small">下一页</div>
-                                            <div class="ui button teal small">尾页</div>
+                                            <a class="ui button teal small" th:onclick="searchPage([[${1}]])">首页</a>
+                                            <a class="ui button teal small" th:onclick="searchPage([[${logInfo.getPageNum()-1}]])">上一页</a>
+                                            <a class="ui button blue small">第&nbsp;&nbsp;[[${logInfo.getPageNum()+1}]]&nbsp;&nbsp;页</a>
+                                            <a class="ui button teal small" th:onclick="searchPage([[${logInfo.getPageNum()+1}]])">下一页</a>
+                                            <a class="ui button teal small" th:onclick="searchPage([[${logCount%logInfo.getList().size()==0?logCount/logInfo.getList().size():logCount/logInfo.getList().size()+1}]])">尾页</a>
                                             跳转到第
-                                            <div class="ui input focus small" style="width: 4% !important;"
+                                            <div class="ui input focus small pageArgs" style="width: 4% !important;"
                                                  th:placeholder="1">
                                                 <input type="text">
                                             </div>
                                             页
-                                            <div class="ui button teal small">确定</div>
+                                            <div class="ui button teal small" th:onclick="jumpPage()">确定</div>
                                         </th>
                                     </tr>
                                     </tfoot>
@@ -313,5 +313,32 @@
         $("#startTime").val("");
         $("#endTime").val("");
     });
+
+
+    function jumpPage() {
+        var page = $(".pageArgs").val();
+        $.ajax({
+            url: "/admin/pageLoges",
+            data: {startPage: page,pageSize:10},
+            type: 'GET',
+            success: function (data) {
+                $(".logList").html(data);
+            }
+        });
+    }
+
+    //分页查询日志
+    function searchPage(startPage) {
+
+            $.ajax({
+                url: "/admin/pageLoges",
+                data: {startPage: startPage,pageSize:10},
+                type: 'GET',
+                success: function (data) {
+                    $(".logList").html(data);
+                }
+            });
+        }
+
 </script>
 </html>

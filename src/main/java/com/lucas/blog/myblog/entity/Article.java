@@ -116,7 +116,6 @@ public class Article implements Serializable{
 
 	public Article() {
 		super();
-		this.author="何袁辉";
 		this.addtime=new Date();
 		this.agreenum=0;
 		this.browsenum=0;

@@ -4,10 +4,7 @@ import com.lucas.blog.myblog.entity.Admin;
 import com.lucas.blog.myblog.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ProjectName: myblog
@@ -21,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/page")
 public class AdminController {
 
 	@Autowired
@@ -46,10 +43,17 @@ public class AdminController {
 
 
 	//注册
-	public static  String reg(String username,String password){
-		return null;
+	/*@PostMapping("/signIn")
+	public   String   reg(String username,String password,String email){
+		 adminServiceImpl.reg(username,password,email);
+		 return "/admin/login";
 	}
 
+
+	@GetMapping("/reg")
+	public String toReg(){
+		return "page/reg";
+	}*/
 
 }
 

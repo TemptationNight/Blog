@@ -1,5 +1,6 @@
 package com.lucas.blog.myblog.controller.admin;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lucas.blog.myblog.aop.ActionType;
 import com.lucas.blog.myblog.aop.SystemLog;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -127,7 +130,7 @@ public class ArticleControllerAdmin {
 	@SystemLog(description = "添加一个动态:", actionType = ActionType.INSERT)
 	@RequiresRoles(value = "root")
 	@PostMapping("/upBlog")
-	public String upBlog(Article article, @RequestParam("typename") String typename, Model model) {
+	public String upBlog(HttpServletRequest request,Article article, @RequestParam("typename") String typename, Model model) {
 
 		System.out.println("啥子情况哟这个是");
 
@@ -145,6 +148,9 @@ public class ArticleControllerAdmin {
 		ar.setKeyword(article.getKeyword());
 		ar.setIsYuanChuang(article.getIsYuanChuang());
 		ar.setSummary(article.getSummary());
+
+		HttpSession session=request.getSession();
+		ar.setAuthor((String) session.getAttribute("username"));
 		Integer i = articleServiceImpl.addArticle(ar);
 
 

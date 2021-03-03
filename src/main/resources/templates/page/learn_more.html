@@ -1,7 +1,7 @@
 <!--suppress ThymeleafVariablesResolveInspection  -->     <!--使得thymeleaf模板进行后台变量取值时不显示红色波浪线-->
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>查询博客</title>
+    <title>搜索动态</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="stylesheet" th:href="@{/css/index.css}">
@@ -98,14 +98,14 @@
                    href="javascript:void(0)" th:onclick="searchByKeyTypeName([[${type.categoryname}]])">设计</a>
             </ul>
         </div>
-        <div class="cloud">
+        <!--<div class="cloud">
             <h2 class="hometitle">友情链接</h2>
             <ul>
                 <a href="" target="_blank" style="line-height: normal" th:each="link:${linkList}"
                    th:text="${link.linkname}"
                    th:href="${link.linkurl}">设计</a>
             </ul>
-        </div>
+        </div>-->
         <div class="guanzhu">
             <h2 class="hometitle">关注我们 么么哒！</h2>
             <ul>

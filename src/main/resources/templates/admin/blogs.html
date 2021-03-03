@@ -22,7 +22,7 @@
             <div class="ui segment  m-padded segment-border-none">
                 <div class="ui two column grid  middle aligned">
                     <div class="column">
-                        <h2 class="ui header">博客列表</h2>
+                        <h2 class="ui header">动态列表</h2>
                     </div>
                     <div class="right aligned column">
                         <div class="ui  action input ">
@@ -43,7 +43,7 @@
                         <th>类别</th>
                         <th>标签</th>
                         <th>浏览量</th>
-                        <th>博主推荐</th>
+                        <th>网站推荐</th>
                         <th>状态</th>
                         <th>发表时间</th>
                         <th>操做</th>
@@ -123,11 +123,11 @@
                                 </div>
                             </div>
                             总共[[${articleCount%articlePageInfo.getList().size()==0?articleCount/articlePageInfo.getList().size():articleCount/articlePageInfo.getList().size()+1}]]页
-                            <div class="ui button teal small">首页</div>
-                            <div class="ui button teal small">上一页</div>
-                            <div class="ui button blue small">第&nbsp;&nbsp;[[${articlePageInfo.getPageNum()+1}]]&nbsp;&nbsp;页</div>
-                            <div class="ui button teal small">下一页</div>
-                            <div class="ui button teal small">尾页</div>
+                            <a class="ui button teal small">首页</a>
+                            <a class="ui button teal small"  >上一页</a>
+                            <a class="ui button blue small">第&nbsp;&nbsp;[[${articlePageInfo.getPageNum()+1}]]&nbsp;&nbsp;页</a>
+                            <a class="ui button teal small">下一页</a>
+                            <a class="ui button teal small">尾页</a>
                             跳转到第
                             <div class="ui input focus small" style="width: 4% !important;">
                                 <input type="text">

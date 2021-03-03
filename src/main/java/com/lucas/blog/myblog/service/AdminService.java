@@ -16,6 +16,7 @@ public interface AdminService {
 
 	public Admin login(String username);
 
+	public void reg(String username,String password,String email);
 
 
 

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Login</title>
+    <title>Sign in</title>
     <link rel="stylesheet" href="" th:href="@{/css/login.css}">
 </head>
 <body>
@@ -19,7 +19,7 @@
     <div class="lowin-wrapper">
         <div class="lowin-box lowin-login">
             <div class="lowin-box-inner">
-                <form th:action="@{/page/sign_in}" th:method="POST">
+                <form th:action="@{/page/signIn}" th:method="POST">
                     <p>Sign in to continue</p>
                     <div class="lowin-group">
                         <label>Username</label>
@@ -29,11 +29,14 @@
                         <label>Password </label>
                         <input type="password" name="password"  class="lowin-input">
                     </div>
+                    <div class="lowin-group password-group">
+                        <label>Email </label>
+                        <input type="text"  name="email" class="lowin-input">
 
-                    <input class="lowin-btn login-btn" type="submit" value="Sign up">
+                    </div>
+                    <input class="lowin-btn login-btn" type="submit" value="Sign in">
 
                     </input>
-                    <a href="" th:href="@{/page/reg}">Sign in</a>
                 </form>
             </div>
         </div>

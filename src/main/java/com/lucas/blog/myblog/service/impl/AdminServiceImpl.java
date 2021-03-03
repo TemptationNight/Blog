@@ -32,4 +32,17 @@ public class AdminServiceImpl implements AdminService {
 		return admin;
 
 	}
+
+	//注册用户
+	@Override
+	public void reg(String username, String password,String email) {
+		System.out.println(username+""+password+""+email);
+		Admin admin=new Admin();
+		admin.setEmail(email);
+		admin.setPassword(password);
+		admin.setUsername(username);
+		//默认为普通用户
+		admin.setRoleId(5);
+		adminMapper.insert(admin);
+	}
 }

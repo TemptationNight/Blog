@@ -52,6 +52,18 @@ public class LogControllerAdmin {
 		return "admin/log";
 	}
 
+	@GetMapping("/pageLoges")
+	public String pageLogs(Integer startPage,Integer pageSize,Model model){
+		PageInfo<Log> logPageInfo = null;
+		logPageInfo = logServiceImpl.getLogByPage(startPage, pageSize);
+		Integer logCount=logServiceImpl.getLogCount();
+		model.addAttribute("logCount",logCount);
+		//对距离现在时间进行处理  获取实时时间数据
+		TimeOutUtils.TimeDistanceNow(logPageInfo);
+		model.addAttribute("logInfo", logPageInfo);
+		return "admin/log :: list";
+	}
+
 
 	//参数表达化查询
 	@SystemLog(description = "关键字查询日志",actionType = ActionType.SELECT)
@@ -73,6 +85,9 @@ public class LogControllerAdmin {
 		model.addAttribute("logCount",count);
 		return "admin/log :: list";
 	}
+
+
+
 
 
 	//按时间查询
