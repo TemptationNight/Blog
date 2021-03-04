@@ -316,12 +316,12 @@
                     <img class="ui mini circular image" th:src="@{../images/avatar/people/enid.png}"
                          alt="label-image"/>
                     <div class="menu">
-                        <a class="item" href="mail.html">收件箱</a>
+                       <!-- <a class="item" href="mail.html">收件箱</a>
                         <a class="item" href="profile.html">配置文件</a>
                         <a class="item" href="settings.html">设置</a>
                         <div class="ui divider"></div>
-                        <a class="item">帮助?</a>
-                        <a class="item" href="login.html">退出</a>
+                        <a class="item">帮助?</a>-->
+                        <a class="item" href="login.html" th:href="@{/page/logout}">退出</a>
                     </div>
                 </div>
                 <a class="item labeled rightsidebar computer only">
@@ -364,9 +364,9 @@
                     写动态
                 </a>
 
-                <a style="font-size: medium!important;" class="item" href="filter.html">
+              <!--  <a style="font-size: medium!important;" class="item" href="filter.html">
                     查询动态
-                </a>
+                </a>-->
                 <a style="font-size: medium!important;" class="item" href="todo.html" th:href="@{/admin/categorys}">
                     动态类别
                 </a>

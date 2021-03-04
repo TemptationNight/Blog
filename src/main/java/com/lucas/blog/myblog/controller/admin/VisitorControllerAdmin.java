@@ -52,6 +52,20 @@ public class VisitorControllerAdmin {
 	}
 
 
+	@GetMapping("/pageVisitors")
+	public String pageVisitors(Integer startPage,Integer pageSize,Model model){
+		PageInfo<Visitor> visitorPageInfo = null;
+		visitorPageInfo = visitorServiceImpl.getVisitorPage(startPage, pageSize);
+		int count=visitorServiceImpl.getCount();
+		int blackCount=visitorServiceImpl.getBlackIpCount();
+		int ipCount=visitorServiceImpl.getIpCount();
+		model.addAttribute("visitorPageInfo", visitorPageInfo);
+		model.addAttribute("count",count).addAttribute("blackCount",blackCount).addAttribute("ipCount",ipCount);
+		return "admin/visitors :: visitorList";
+	}
+
+
+
 
 
 

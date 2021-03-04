@@ -4,7 +4,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragments::adminHead(~{::title})">
-    <title>博客发布</title>
+    <title>发布动态</title>
 </head>
 
 <body>
@@ -387,7 +387,7 @@
             },
             success: function (data) {
                 if(data==="No Permission"){       //提示没有权限
-                    $('#permission').text("对不起，你没有发布文章权限");
+                    $('#permission').text("对不起，你没有发布动态权限");
                     $('.small.modal').modal('show');
                 }else{
                     window.location.reload();

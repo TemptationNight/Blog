@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface VisitorMapper extends MyMapper<Visitor> {
 	//查询ip列表
-	@Select("select * from visitor where black=1 group by ip  LIMIT #{startPage},#{pageSize} ")
+	@Select("select * from visitor where black=1 group by ip   ")
 	List<Visitor> getVisitorGroupByIp(@Param("startPage") Integer startPage,@Param("pageSize") Integer pageSize);
 
 	//查询黑名单列表
@@ -26,7 +26,7 @@ public interface VisitorMapper extends MyMapper<Visitor> {
 	List<Visitor> getBlackByArgs(String args);
 
 	//参数化查询ip列表
-	@Select("select * from visitor where black=1 and  ip like #{args} or city like #{args} or browseType like #{args} or osType like #{args}   group by ip  LIMIT #{startPage},#{pageSize} ")
+	@Select("select * from visitor where black=1 and  ip like #{args} or city like #{args} or browseType like #{args} or osType like #{args}   group by ip   ")
 	List<Visitor> getStatisticByArgs(@Param("args") String args,@Param("startPage") Integer startPage,@Param("pageSize") Integer pageSize);
 
 

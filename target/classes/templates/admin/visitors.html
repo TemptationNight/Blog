@@ -4,7 +4,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragments::adminHead(~{::title})">
-    <title>访客信息</title>
+    <title>用户记录</title>
 </head>
 
 
@@ -233,11 +233,11 @@
                                                 </div>
                                             </div>
                                             总共[[${count%visitorPageInfo.getList().size() == 0?count/visitorPageInfo.getList().size():(count/visitorPageInfo.getList().size()+1)}]]页
-                                            <div class="ui button teal small">首页</div>
-                                            <div class="ui button teal small">上一页</div>
+                                            <div class="ui button teal small" th:onclick="searchPage([[${1}]])">首页</div>
+                                            <div class="ui button teal small" th:onclick="searchPage([[${visitorPageInfo.getPageNum()-1}]])">上一页</div>
                                             <div class="ui button blue small">第&nbsp;&nbsp;[[${visitorPageInfo.getPageNum()+1}]]&nbsp;&nbsp;页</div>
-                                            <div class="ui button teal small">下一页</div>
-                                            <div class="ui button teal small">尾页</div>
+                                            <div class="ui button teal small" th:onclick="searchPage([[${visitorPageInfo.getPageNum()+1}]])"> 下一页</div>
+                                            <div class="ui button teal small" th:onclick="searchPage([[${count%visitorPageInfo.getList().size() == 0?count/visitorPageInfo.getList().size():(count/visitorPageInfo.getList().size()+1)}]])">尾页</div>
                                             跳转到第
                                             <div class="ui input focus small" style="width: 4% !important;">
                                                 <input type="text">
@@ -259,6 +259,23 @@
 </body>
 <th:block th:replace="_fragments::adminscript"></th:block>
 <script type="text/javascript">
+
+
+    //分页查询访客
+    function searchPage(startPage) {
+
+        $.ajax({
+            url: "/admin/pageVisitors",
+            data: {startPage: startPage,pageSize:10},
+            type: 'GET',
+            success: function (data) {
+                $(".visitorList").html(data);
+            }
+        });
+    }
+
+
+
     //日期重置
     $("#reSet").click(function () {
         $("#startTime").val("");

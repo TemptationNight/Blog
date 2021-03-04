@@ -3,12 +3,14 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragments::adminHead(~{::title})">
-    <title>未处理连接</title>
+    <title>用户统计</title>
 </head>
 <body style="background: white">
 <div id="contextWrap">
     <!--左侧菜单栏-->
-    <div th:replace="_fragments::leftmenu" class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey" style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
+    <div th:replace="_fragments::leftmenu"
+         class="ui sidebar vertical left menu overlay  borderless visible sidemenu inverted  grey"
+         style="-webkit-transition-duration: 0.1s; transition-duration: 0.1s;" data-color="grey"></div>
     <!--右侧隐藏小菜单-->
     <div th:replace="_fragments::rightmenu" class="ui right sidebar"></div>
     <!--中间部分-->
@@ -20,7 +22,7 @@
             <div class="ui segment ">
                 <div class="ui grid">
                     <!--中甲小菜单区域-->
-                    <div class="ui four wide tab column" style="background: #eaeaea">
+                    <div class="ui four wide tab column    " style="background: #eaeaea">
                         <div class="ui segment teal center aligned segment-border-none">
                             <div class="ui teal  label big fluid">访客记录</div>
                             <table class="ui red table left aligned" style=" border:0; background: #eaeaea">
@@ -157,7 +159,8 @@
                                 </div>
                             </div>
                             <div class="stasticList" th:fragment="stasticList">
-                                <table class="ui  table attached rounded segment-border-none" frame=hsides style="text-align: center !important;">
+                                <table class="ui  table attached rounded segment-border-none" frame=hsides
+                                       style="text-align: center !important;">
                                     <thead>
                                     <tr>
                                         <th>序号</th>
@@ -165,7 +168,7 @@
                                         <th>地区</th>
                                         <th>浏览器</th>
                                         <th>系统</th>
-                                        <th>访问次数</th>
+                                        <!--<th>访问次数</th>-->
                                         <th>操做</th>
                                     </tr>
                                     </thead>
@@ -176,7 +179,7 @@
                                         <td th:text="${visitor.city}">四川省成都市</td>
                                         <td th:text="${visitor.browsetype}">Chrome</td>
                                         <td th:text="${visitor.ostype}">Windows</td>
-                                        <td th:text="${visitor.visitCount}">378</td>
+                                        <!--   <td th:text="${visitor.visitCount}">378</td>-->
                                         <td>
                                             <div class="ui button red mini" th:onclick="addBlack([[${visitor.ip}]])">
                                                 <i class="trash icon"></i>
@@ -190,40 +193,18 @@
                                         </td>
                                     </tr>
                                     </tbody>
-                                   <tfoot>
-                                   <tr th:if="${ipCount1<=10&&ipCount1>0}">
-                                       <th colspan="10">
-                                           总共[[${ipCount1}]]条记录
-                                       </th>
-                                   </tr>
-                                   <tr th:if="${ipCount1>10}">
-                                       <th colspan="10">
-                                           总共[[${ipCount1}]]条记录
-                                           每页显示数据量
-                                           <div class="ui compact selection dropdown">
-                                               <i class="dropdown icon"></i>
-                                               <div class="text">10</div>
-                                               <div class="menu small">
-                                                   <div class="item">10</div>
-                                                   <div class="item">20</div>
-                                                   <div class="item">30</div>
-                                               </div>
-                                           </div>
-                                           总共[[${ipCount1%visitorPageInfo.size()==0?ipCount1/visitorPageInfo.size():ipCount1/visitorPageInfo.size()+1}]]页
-                                           <div class="ui button teal small">首页</div>
-                                           <div class="ui button teal small">上一页</div>
-                                           <div class="ui button blue small">第&nbsp;&nbsp;[[${currentPage+1}]]&nbsp;&nbsp;页</div>
-                                           <div class="ui button teal small">下一页</div>
-                                           <div class="ui button teal small">尾页</div>
-                                           跳转到第
-                                           <div class="ui input focus small" style="width: 4% !important;"
-                                                th:placeholder="1">
-                                               <input type="text">
-                                           </div>
-                                           页
-                                           <div class="ui button teal small">确定</div>
-                                       </th>
-                                   </tr>
+                                    <tfoot>
+                                    <tr th:if="${ipCount1<=10&&ipCount1>0}">
+                                        <th colspan="10">
+                                            总共[[${ipCount1}]]条记录
+                                        </th>
+                                    </tr>
+                                    <tr th:if="${ipCount1>10}">
+                                        <th colspan="10">
+                                            总共[[${ipCount1}]]条记录
+
+                                        </th>
+                                    </tr>
                                     </tfoot>
 
                                 </table>
@@ -261,18 +242,33 @@
             success: function (data) {
                 $(".stasticList").html(data);
             },
-            error:function () {
+            error: function () {
                 alert("错误");
             }
         });
     }
 
+
+    //分页查询访客
+    function searchPage(startPage) {
+        $.ajax({
+            url: "/admin/pageVisitorsStatistic",
+            data: {startPage: startPage, pageSize: 10},
+            type: 'GET',
+            success: function (data) {
+                alert("duduud");
+                $(".stasticList").html(data);
+            }
+        });
+    }
+
+
     //搜索
     function search() {
-        var args=$(".searchArgs").val();
-        if(args===null){
+        var args = $(".searchArgs").val();
+        if (args === null) {
             alert("请输入");
-        }else{
+        } else {
             $.ajax({
                 url: "/admin/getVisitorStatisticByArgs",
                 data: {args: args},
@@ -280,7 +276,7 @@
                 success: function (data) {
                     $(".stasticList").html(data);
                 },
-                error:function () {
+                error: function () {
                     alert("错误");
                 }
             });
@@ -294,10 +290,10 @@
             data: {ip: ip},
             type: "POST",
             success: function (data) {
-                if(data==="No Permission"){
+                if (data === "No Permission") {
                     $('#permission').text("对不起，你没有添加黑名单权限");
                     $('.small.modal').modal('show');
-                }else{
+                } else {
                     window.location.reload();
                 }
             },

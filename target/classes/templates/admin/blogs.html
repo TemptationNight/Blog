@@ -3,7 +3,7 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="_fragments::adminHead(~{::title})">
-    <title>博客列表</title>
+    <title>动态列表</title>
 </head>
 <body style="background-color: white !important;">
 <div id="contextWrap">
@@ -34,6 +34,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="ui segment segment-border-none">
                 <table class="ui red table" style="text-align: center !important;">
                     <thead>
@@ -52,7 +53,8 @@
                     <tbody>
                     <tr th:each="blog,iterStat:${articlePageInfo.getList()}">
                         <td th:text="${iterStat.count}">1</td>
-                        <td th:class="blogTitle" th:text="${blog.title}" th:onclick="blogDetail([[${blog.content}]])">
+                        <td th:class="blogTitle" th:text="${blog.title}"
+                            th:onclick="blogDetail([[${blog.content}]])">
                             Docker安装mysql
                         </td>
                         <td th:text="${blog.categoryName}">运维</td>
@@ -106,7 +108,7 @@
                     </tr>
                     </tbody>
                     <tfoot>
-                    <tr>
+                    <!--<tr>
                         <th colspan="10" th:if="${articlePageInfo.getList().size()<=10}">
                             总共[[${articleCount}]]条记录
                         </th>
@@ -123,17 +125,53 @@
                                 </div>
                             </div>
                             总共[[${articleCount%articlePageInfo.getList().size()==0?articleCount/articlePageInfo.getList().size():articleCount/articlePageInfo.getList().size()+1}]]页
-                            <a class="ui button teal small">首页</a>
-                            <a class="ui button teal small"  >上一页</a>
-                            <a class="ui button blue small">第&nbsp;&nbsp;[[${articlePageInfo.getPageNum()+1}]]&nbsp;&nbsp;页</a>
-                            <a class="ui button teal small">下一页</a>
-                            <a class="ui button teal small">尾页</a>
+                            <div class="ui button teal small" th:onclick="searchPage([[${1}]])">首页</div>
+                            <div class="ui button teal small"
+                                 th:onclick="searchPage([[${articlePageInfo.getPageNum()-1}]])">上一页
+                            </div>
+
+                            <div class="ui button blue small">第&nbsp;&nbsp;[[${articlePageInfo.getPageNum()+1}]]&nbsp;&nbsp;页</div>
+                            <div class="ui button teal small"
+                                 th:onclick="searchPage([[${articlePageInfo.getPageNum()-1}]])">下一页
+                            </div>
+                            <div class="ui button teal small"
+                                 th:onclick="searchPage([[${articleCount%articlePageInfo.getList().size()==0?articleCount/articlePageInfo.getList().size():articleCount/articlePageInfo.getList().size()+1}]])">
+                                尾页
+                            </div>
                             跳转到第
                             <div class="ui input focus small" style="width: 4% !important;">
                                 <input type="text">
                             </div>
                             页
                             <div class="ui button teal small">确定</div>
+                        </th>
+                    </tr>-->
+                    <tr th:if="${logCount>=1}">
+                        <th colspan="10">
+                            总共[[${articleCount}]]条记录
+                            每页显示数据量
+                            <div class="ui compact selection dropdown">
+                                <i class="dropdown icon"></i>
+                                <div class="text">10</div>
+                                <div class="menu small">
+                                    <div class="item">10</div>
+                                    <div class="item">20</div>
+                                    <div class="item">30</div>
+                                </div>
+                            </div>
+                            总共[[${articleCount%articlePageInfo.getList().size()==0?articleCount/articlePageInfo.getList().size():articleCount/articlePageInfo.getList().size()+1}]]页
+                            <a class="ui button teal small" th:onclick="searchPage([[${1}]])">首页</a>
+                            <a class="ui button teal small" th:onclick="searchPage([[${articlePageInfo.getPageNum()-1}]])">上一页</a>
+                            <a class="ui button blue small">第&nbsp;&nbsp;[[${articlePageInfo.getPageNum()+1}]]&nbsp;&nbsp;页</a>
+                            <a class="ui button teal small" th:onclick="searchPage([[${articlePageInfo.getPageNum()+1}]])">下一页</a>
+                            <a class="ui button teal small" th:onclick="searchPage([[${articleCount%articlePageInfo.getList().size()==0?articleCount/articlePageInfo.getList().size():articleCount/articlePageInfo.getList().size()+1}]])">尾页</a>
+                            跳转到第
+                            <div class="ui input focus small pageArgs" style="width: 4% !important;"
+                                 th:placeholder="1">
+                                <input type="text">
+                            </div>
+                            页
+                            <div class="ui button teal small" th:onclick="jumpPage()">确定</div>
                         </th>
                     </tr>
                     </tfoot>
@@ -146,39 +184,39 @@
                 <br>
             </div>
         </div>
+
     </div>
-</div>
 
 
-<!--弹出层-->
-<div class="ui longer modal">
-    <i class="close icon"></i>
-    <div class="header">
-        博客详情
-    </div>
-    <div class=" content">
-        <div class="description">
+    <!--弹出层-->
+    <div class="ui longer modal">
+        <i class="close icon"></i>
+        <div class="header">
+            动态详情
+        </div>
+        <div class=" content">
+            <div class="description">
+            </div>
+        </div>
+        <div class="actions">
+            <div class="ui button">编辑</div>
+            <div class="ui button">取消</div>
         </div>
     </div>
-    <div class="actions">
-        <div class="ui button">编辑</div>
-        <div class="ui button">取消</div>
+
+
+    <!--权限不足提示-->
+    <div class="ui small modal">
+        <i class="close icon"></i>
+        <br>
+        <br>
+        <h3>权限不足</h3>
+        <br>
+        <br>
+        <h3 id="permission">对不起，你没有删除权限</h3>
+        <br>
+        <br>
     </div>
-</div>
-
-
-<!--权限不足提示-->
-<div class="ui small modal">
-    <i class="close icon"></i>
-    <br>
-    <br>
-    <h3>权限不足</h3>
-    <br>
-    <br>
-    <h3 id="permission">对不起，你没有删除权限</h3>
-    <br>
-    <br>
-</div>
 </body>
 
 
@@ -187,6 +225,18 @@
 
 <script type="text/javascript">
 
+    //分页查询动态
+    function searchPage(startPage) {
+
+        $.ajax({
+            url: "/admin/pageArticles",
+            data: {startPage: startPage, pageSize: 10},
+            type: 'GET',
+            success: function (data) {
+                $(".ArticleList").html(data);
+            }
+        });
+    }
 
     //删除文章
     function deleteArticle(id) {

@@ -4,7 +4,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" xmlns:javascript="http://www.w3.org/1999/xhtml">
 <head th:replace="_fragments::adminHead(~{::title})">
-    <title>博客日志</title>
+    <title>系统日志</title>
 </head>
 <body style="background-color: white !important;">
 <div id="contextWrap">
@@ -315,6 +315,7 @@
     });
 
 
+    //出错误了这个方法
     function jumpPage() {
         var page = $(".pageArgs").val();
         $.ajax({

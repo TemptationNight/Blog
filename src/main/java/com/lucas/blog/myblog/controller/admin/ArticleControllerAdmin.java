@@ -58,6 +58,17 @@ public class ArticleControllerAdmin {
 	}
 
 
+	@GetMapping("pageArticles")
+	public String pageArticles(Model model,Integer startPage,Integer pageSize){
+		PageInfo pageInfo = articleServiceImpl.getArticleByPage(startPage, pageSize);
+		int articleCount = articleServiceImpl.getArticleCount();
+		model.addAttribute("articleCount", articleCount);
+		model.addAttribute("articlePageInfo", pageInfo);
+
+		return "admin/blogs :: list";
+	}
+
+
 	@RequiresRoles(value={"root"})
 	@SystemLog(description = "删除动态:", actionType = ActionType.DELETE)
 	@PostMapping("/delete/article")
@@ -115,7 +126,7 @@ public class ArticleControllerAdmin {
 	}
 
 
-	//写博客获取首图图片
+	//发布动态获取首图图片
 	@GetMapping("/writeBlog")
 	public String getPicture(Model model) {
 		List<Picture> pictures = pictureServiceImpl.getPictures();
@@ -126,13 +137,13 @@ public class ArticleControllerAdmin {
 	}
 
 
-	//发布博客
+	//发布动态
 	@SystemLog(description = "添加一个动态:", actionType = ActionType.INSERT)
-	@RequiresRoles(value = "root")
+	//@RequiresRoles(value = "root")
 	@PostMapping("/upBlog")
 	public String upBlog(HttpServletRequest request,Article article, @RequestParam("typename") String typename, Model model) {
 
-		System.out.println("啥子情况哟这个是");
+		//System.out.println("啥子情况哟这个是");
 
 		Category category = categoryServiceImpl.getCategoryByName(typename);
 		int typeId = category.getId();
@@ -154,7 +165,7 @@ public class ArticleControllerAdmin {
 		Integer i = articleServiceImpl.addArticle(ar);
 
 
-		System.out.println(i+"================================");
+		//System.out.println(i+"================================");
 		return "admin/write_blog";
 	}
 }
