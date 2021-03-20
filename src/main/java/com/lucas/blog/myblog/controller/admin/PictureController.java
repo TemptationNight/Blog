@@ -52,7 +52,7 @@ public class PictureController {
 
 	//private static  String FILE_PATH="src/main/resources/static/images";
 
-	private static String FILE_PATH = "target/classes/static/images";
+	private static String FILE_PATH = "/target/classes/static/images";
 
 
 	@Autowired
