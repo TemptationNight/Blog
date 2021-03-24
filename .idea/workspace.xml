@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e86fb84-5eaf-4774-8fce-5b30032f0890" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log/blog-dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/blog-dev.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myblog.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucas/blog/myblog/controller/admin/PictureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucas/blog/myblog/controller/admin/PictureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucas/blog/myblog/controller/admin/ArticleControllerAdmin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucas/blog/myblog/controller/admin/ArticleControllerAdmin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucas/blog/myblog/controller/admin/PictureController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucas/blog/myblog/controller/admin/PictureController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin/write_blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin/write_blog.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -111,8 +105,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/lucas/blog/myblog/controller/admin/PictureController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="84" column="32" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
+            <state relative-caret-position="2310">
+              <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -198,8 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,6 +253,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -356,16 +350,17 @@
       <workItem from="1614842720772" duration="1793000" />
       <workItem from="1614844554040" duration="1786000" />
       <workItem from="1615350636992" duration="1105000" />
+      <workItem from="1616464527963" duration="627000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58444000" />
+    <option name="totallyTimeSpent" value="59071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="7" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49860334" visible="true" weight="0.13069706" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49860334" visible="true" weight="0.13203754" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -769,8 +764,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/lucas/blog/myblog/controller/admin/PictureController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="84" column="32" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
+        <state relative-caret-position="2310">
+          <caret line="96" column="41" selection-start-line="96" selection-start-column="41" selection-end-line="96" selection-end-column="41" />
         </state>
       </provider>
     </entry>
