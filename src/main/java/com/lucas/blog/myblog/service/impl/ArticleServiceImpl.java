@@ -310,7 +310,11 @@ public class ArticleServiceImpl implements ArticleService {
 					it.remove();
 				}
 			}
-			return (List<Article>)set;
+
+
+			List<Article> ls=new ArrayList(set);
+
+			return ls;
 		}else {               //相关文章小于5，也要去掉自己本身
 			Iterator<Article> it=articles.iterator();
 			while(it.hasNext()){

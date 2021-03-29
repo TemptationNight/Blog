@@ -213,7 +213,7 @@
             type: "POST",
             success: function (data) {
                 if(data==="No Permission"){
-                    $('#permission').text("对不起，你没有修改权限");
+                    $('#permission').text("对不起，你没有修改分类权限");
                     $('.permission').modal('show');
                 }else{
                     window.location.reload();
@@ -267,7 +267,7 @@
             type:"POST",
             success:function(data) {
                 if(data==="No Permission"){       //提示没有权限
-                    $('#permission').text("对不起，你没有删除权限");
+                    $('#permission').text("对不起，你没有分类删除权限");
                     $('.permission.small.modal').modal('show');
                 }else{
                     window.location.reload();
