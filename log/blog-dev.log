@@ -3046,3 +3046,227 @@ Verify the connector's configuration, identify and stop any process that's liste
 
 2021-03-29 16:25:12.899  INFO 6764 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2021-03-29 16:25:12.941  INFO 6764 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2021-03-29 16:25:22.946 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:25:22.948 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 180.153.214.191(String)
+2021-03-29 16:25:22.964 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 138
+2021-03-29 16:25:22.978 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:25:22.979 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:25:22.974(Timestamp), 180.153.214.191(String), 中国上海(String), /page/34/blogDetail(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:25:22.981 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:25:22.982 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:25:22.983 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:25:22.992 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:25:22.993 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 180.153.206.24(String)
+2021-03-29 16:25:23.004 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 53
+2021-03-29 16:25:23.016 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:25:23.016 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:25:23.013(Timestamp), 180.153.206.24(String), 中国上海(String), /page/34/blogDetail(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:25:23.017 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:25:23.018 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:25:23.019 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:25:23.028 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article WHERE ( categoryName like ? ) 
+2021-03-29 16:25:23.029 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : ==> Parameters: %旅行日记%(String)
+2021-03-29 16:25:23.030 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : <==      Total: 1
+2021-03-29 16:25:23.033 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article WHERE ( isRecommend = ? ) 
+2021-03-29 16:25:23.033 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : ==> Parameters: 1(Integer)
+2021-03-29 16:25:23.035 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : <==      Total: 10
+2021-03-29 16:25:23.041 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article WHERE ( isTop = ? ) 
+2021-03-29 16:25:23.042 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : ==> Parameters: 1(Integer)
+2021-03-29 16:25:23.044 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : <==      Total: 11
+2021-03-29 16:25:23.047 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.getArticleByBrowsers         : ==>  Preparing: select * from article order by browsenum desc LIMIT 4 
+2021-03-29 16:25:23.047 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.getArticleByBrowsers         : ==> Parameters: 
+2021-03-29 16:25:23.049 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.getArticleByBrowsers         : <==      Total: 4
+2021-03-29 16:25:23.050 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.selectAll   : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article 
+2021-03-29 16:25:23.051 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.selectAll   : ==> Parameters: 
+2021-03-29 16:25:23.052 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.selectAll   : <==      Total: 11
+2021-03-29 16:25:23.057 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.LinkMapper.selectAll      : ==>  Preparing: SELECT id,linkUrl,linkName,isAgree,addTime,clickNum FROM link 
+2021-03-29 16:25:23.057 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.LinkMapper.selectAll      : ==> Parameters: 
+2021-03-29 16:25:23.059 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.LinkMapper.selectAll      : <==      Total: 8
+2021-03-29 16:25:23.061 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.CategoryMapper.selectAll  : ==>  Preparing: SELECT id,categoryName,addTime,articleNum FROM category 
+2021-03-29 16:25:23.062 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.CategoryMapper.selectAll  : ==> Parameters: 
+2021-03-29 16:25:23.063 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.CategoryMapper.selectAll  : <==      Total: 10
+2021-03-29 16:25:23.066 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.selectOneByExample           : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article WHERE ( id = ? ) 
+2021-03-29 16:25:23.066 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.selectOneByExample           : ==> Parameters: 34(Integer)
+2021-03-29 16:25:23.067 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.selectOneByExample           : <==      Total: 1
+2021-03-29 16:25:23.070 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.updateByExampleSelective     : ==>  Preparing: UPDATE article SET id = id,title = ?,categoryId = ?,author = ?,addTime = ?,agreeNum = ?,browseNum = ?,commentNum = ?,keyWord = ?,status = ?,isRecommend = ?,isTop = ?,images = ?,content = ?,summary = ?,isYuanChuang = ?,isDiscuss = ?,categoryName = ? WHERE ( id = ? ) 
+2021-03-29 16:25:23.071 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.updateByExampleSelective     : ==> Parameters: 花样俯卧撑(String), 30(Integer), 何袁辉(String), 2021-03-10 12:37:27.0(Timestamp), 0(Integer), 2(Integer), 0(Integer), 俯卧撑(String), 0(Integer), 0(Integer), 1(Integer), https://picsum.photos/200/130?grayscale(String), 
+                                    俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式(String), 俯卧撑是一种很好的运动方式(String), 1(Integer), 1(Integer), 燃脂运动(String), 34(Integer)
+2021-03-29 16:25:23.120 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.updateByExampleSelective     : <==    Updates: 1
+2021-03-29 16:25:23.129 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.selectByPrimaryKey           : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article WHERE id = ? 
+2021-03-29 16:25:23.131 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.selectByPrimaryKey           : ==> Parameters: 34(Integer)
+2021-03-29 16:25:23.134 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.A.selectByPrimaryKey           : <==      Total: 1
+2021-03-29 16:25:23.144 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.getPreOne   : ==>  Preparing: select * from article where id = (select MAX( id) from article where id < ?) 
+2021-03-29 16:25:23.146 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.getPreOne   : ==> Parameters: 34(Integer)
+2021-03-29 16:25:23.148 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.getPreOne   : <==      Total: 0
+2021-03-29 16:25:23.152 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.getNextOne  : ==>  Preparing: select * from article where id = (select MIN( id) from article where id > ? ) 
+2021-03-29 16:25:23.152 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.getNextOne  : ==> Parameters: 34(Integer)
+2021-03-29 16:25:23.157 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.mapper.ArticleMapper.getNextOne  : <==      Total: 1
+2021-03-29 16:25:23.162 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article WHERE ( keyWord like ? or title like ? or categoryName like ? ) 
+2021-03-29 16:25:23.163 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : ==> Parameters: %俯卧撑%(String), %花样俯卧撑%(String), %燃脂运动%(String)
+2021-03-29 16:25:23.165 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.ArticleMapper.selectByExample  : <==      Total: 9
+2021-03-29 16:25:23.168 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.CommentMapper.selectByExample  : ==>  Preparing: SELECT id,addTime,nickName,email,content,articleId,parent_commentId FROM comment WHERE ( articleId = ? ) order by addtime DESC 
+2021-03-29 16:25:23.168 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.CommentMapper.selectByExample  : ==> Parameters: 34(Integer)
+2021-03-29 16:25:23.169 DEBUG 5800 --- [http-nio-8081-exec-3] c.l.b.m.m.CommentMapper.selectByExample  : <==      Total: 0
+2021-03-29 16:25:23.696 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:25:23.697 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 101.226.33.201(String)
+2021-03-29 16:25:23.709 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 49
+2021-03-29 16:25:23.718 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:25:23.719 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:25:23.716(Timestamp), 101.226.33.201(String), 中国上海(String), /page/login(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:25:23.723 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:25:23.723 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:25:23.725 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:25:23.738 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:25:23.739 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 101.226.33.201(String)
+2021-03-29 16:25:23.750 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 50
+2021-03-29 16:25:23.759 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:25:23.760 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:25:23.756(Timestamp), 101.226.33.201(String), 中国上海(String), /page/login(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:25:23.761 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:25:23.761 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:25:23.762 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:26:06.224 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:26:06.225 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 112.64.235.251(String)
+2021-03-29 16:26:06.237 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 65
+2021-03-29 16:26:06.247 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:26:06.248 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:26:06.243(Timestamp), 112.64.235.251(String), 中国上海(String), /page/addComment(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:26:06.251 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:26:06.252 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:26:06.253 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:26:06.268 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.mapper.CommentMapper.insert      : ==>  Preparing: INSERT INTO comment ( id,addTime,nickName,email,content,articleId,parent_commentId ) VALUES( ?,?,?,?,?,?,? ) 
+2021-03-29 16:26:06.269 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.mapper.CommentMapper.insert      : ==> Parameters: null, 2021-03-29 16:26:06.262(Timestamp), 李二蛋(String), heyh_742567@163.com(String), 该动态比较真实，确实有利于我的健康，觉得很不错。(String), 34(Integer), -1(Integer)
+2021-03-29 16:26:06.273 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.mapper.CommentMapper.insert      : <==    Updates: 1
+2021-03-29 16:26:06.273 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.C.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:26:06.274 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.C.insert!selectKey             : <==      Total: 1
+2021-03-29 16:26:06.283 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.blog.myblog.mapper.LogMapper.insert  : ==>  Preparing: INSERT INTO log ( id,userType,args,description,time,ip,actionType,distanceNow ) VALUES( ?,?,?,?,?,?,?,? ) 
+2021-03-29 16:26:06.284 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.blog.myblog.mapper.LogMapper.insert  : ==> Parameters: null, 管理员(String), [Ljava.lang.Object;@4e3ad4b4(String), 发表评论(String), 2021-03-29 16:26:06.276(Timestamp), 180.153.206.36(String), INSERT(String), null
+2021-03-29 16:26:06.335 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.blog.myblog.mapper.LogMapper.insert  : <==    Updates: 1
+2021-03-29 16:26:06.336 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.LogMapper.insert!selectKey     : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:26:06.337 DEBUG 5800 --- [http-nio-8081-exec-9] c.l.b.m.m.LogMapper.insert!selectKey     : <==      Total: 1
+2021-03-29 16:26:06.382 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:26:06.383 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 101.226.33.217(String)
+2021-03-29 16:26:06.396 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 39
+2021-03-29 16:26:06.407 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:26:06.407 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:26:06.403(Timestamp), 101.226.33.217(String), 中国上海(String), /page/comments/34(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:26:06.409 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:26:06.409 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:26:06.410 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:26:06.419 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.CommentMapper.selectByExample  : ==>  Preparing: SELECT id,addTime,nickName,email,content,articleId,parent_commentId FROM comment WHERE ( articleId = ? ) order by addtime DESC 
+2021-03-29 16:26:06.420 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.CommentMapper.selectByExample  : ==> Parameters: 34(Integer)
+2021-03-29 16:26:06.421 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.CommentMapper.selectByExample  : <==      Total: 1
+2021-03-29 16:26:40.147 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:26:40.148 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 180.153.163.190(String)
+2021-03-29 16:26:40.160 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 57
+2021-03-29 16:26:40.170 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:26:40.171 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:26:40.167(Timestamp), 180.153.163.190(String), 中国上海(String), /page/addComment(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:26:40.173 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:26:40.173 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:26:40.174 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:26:40.185 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.CommentMapper.insert      : ==>  Preparing: INSERT INTO comment ( id,addTime,nickName,email,content,articleId,parent_commentId ) VALUES( ?,?,?,?,?,?,? ) 
+2021-03-29 16:26:40.186 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.CommentMapper.insert      : ==> Parameters: null, 2021-03-29 16:26:40.182(Timestamp), 王大鹅(String), heyh_742567@163.com(String), 一起进步(String), 34(Integer), -1(Integer)
+2021-03-29 16:26:40.194 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.CommentMapper.insert      : <==    Updates: 1
+2021-03-29 16:26:40.195 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.C.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:26:40.198 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.C.insert!selectKey             : <==      Total: 1
+2021-03-29 16:26:40.201 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.blog.myblog.mapper.LogMapper.insert  : ==>  Preparing: INSERT INTO log ( id,userType,args,description,time,ip,actionType,distanceNow ) VALUES( ?,?,?,?,?,?,?,? ) 
+2021-03-29 16:26:40.202 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.blog.myblog.mapper.LogMapper.insert  : ==> Parameters: null, 管理员(String), [Ljava.lang.Object;@67894e49(String), 发表评论(String), 2021-03-29 16:26:40.198(Timestamp), 112.65.193.14(String), INSERT(String), null
+2021-03-29 16:26:40.206 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.blog.myblog.mapper.LogMapper.insert  : <==    Updates: 1
+2021-03-29 16:26:40.207 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.LogMapper.insert!selectKey     : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:26:40.208 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.LogMapper.insert!selectKey     : <==      Total: 1
+2021-03-29 16:26:40.217 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:26:40.217 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 180.153.206.37(String)
+2021-03-29 16:26:40.228 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 40
+2021-03-29 16:26:40.238 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:26:40.239 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:26:40.236(Timestamp), 180.153.206.37(String), 中国上海(String), /page/comments/34(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:26:40.240 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:26:40.241 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:26:40.241 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:26:40.251 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.CommentMapper.selectByExample  : ==>  Preparing: SELECT id,addTime,nickName,email,content,articleId,parent_commentId FROM comment WHERE ( articleId = ? ) order by addtime DESC 
+2021-03-29 16:26:40.252 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.CommentMapper.selectByExample  : ==> Parameters: 34(Integer)
+2021-03-29 16:26:40.254 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.CommentMapper.selectByExample  : <==      Total: 2
+2021-03-29 16:28:09.395 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:28:09.395 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 180.153.206.23(String)
+2021-03-29 16:28:09.408 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 101
+2021-03-29 16:28:09.417 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:28:09.418 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:28:09.414(Timestamp), 180.153.206.23(String), 中国上海(String), /page/addAgreeOne(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:28:09.419 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:28:09.419 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:28:09.420 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:28:09.430 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.selectOneByExample           : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article WHERE ( id = ? ) 
+2021-03-29 16:28:09.430 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.selectOneByExample           : ==> Parameters: 34(Integer)
+2021-03-29 16:28:09.431 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.selectOneByExample           : <==      Total: 1
+2021-03-29 16:28:09.434 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.updateByExampleSelective     : ==>  Preparing: UPDATE article SET id = id,title = ?,categoryId = ?,author = ?,addTime = ?,agreeNum = ?,browseNum = ?,commentNum = ?,keyWord = ?,status = ?,isRecommend = ?,isTop = ?,images = ?,content = ?,summary = ?,isYuanChuang = ?,isDiscuss = ?,categoryName = ? WHERE ( id = ? ) 
+2021-03-29 16:28:09.435 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.updateByExampleSelective     : ==> Parameters: 花样俯卧撑(String), 30(Integer), 何袁辉(String), 2021-03-10 12:37:27.0(Timestamp), 1(Integer), 2(Integer), 0(Integer), 俯卧撑(String), 0(Integer), 0(Integer), 1(Integer), https://picsum.photos/200/130?grayscale(String), 
+                                    俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式俯卧撑是一种很好的运动方式
+									俯卧撑是一种很好的运动方式(String), 俯卧撑是一种很好的运动方式(String), 1(Integer), 1(Integer), 燃脂运动(String), 34(Integer)
+2021-03-29 16:28:09.480 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.updateByExampleSelective     : <==    Updates: 1
+2021-03-29 16:28:09.482 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.selectByPrimaryKey           : ==>  Preparing: SELECT id,title,categoryId,author,addTime,agreeNum,browseNum,commentNum,keyWord,status,isRecommend,isTop,images,content,summary,isYuanChuang,isDiscuss,categoryName FROM article WHERE id = ? 
+2021-03-29 16:28:09.482 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.selectByPrimaryKey           : ==> Parameters: 34(Integer)
+2021-03-29 16:28:09.483 DEBUG 5800 --- [http-nio-8081-exec-7] c.l.b.m.m.A.selectByPrimaryKey           : <==      Total: 1
+2021-03-29 16:37:26.621 DEBUG 5800 --- [http-nio-8081-exec-2] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:37:26.622 DEBUG 5800 --- [http-nio-8081-exec-2] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 180.153.214.197(String)
+2021-03-29 16:37:26.634 DEBUG 5800 --- [http-nio-8081-exec-2] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 54
+2021-03-29 16:37:26.643 DEBUG 5800 --- [http-nio-8081-exec-2] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:37:26.644 DEBUG 5800 --- [http-nio-8081-exec-2] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:37:26.639(Timestamp), 180.153.214.197(String), 中国上海(String), /page/login(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:37:26.646 DEBUG 5800 --- [http-nio-8081-exec-2] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:37:26.646 DEBUG 5800 --- [http-nio-8081-exec-2] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:37:26.647 DEBUG 5800 --- [http-nio-8081-exec-2] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:37:35.219 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:37:35.219 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 180.153.163.209(String)
+2021-03-29 16:37:35.232 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 114
+2021-03-29 16:37:35.238 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:37:35.239 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:37:35.236(Timestamp), 180.153.163.209(String), 中国上海(String), /page/sign_in(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:37:35.240 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:37:35.240 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:37:35.241 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:37:35.249 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.A.selectOneByExample           : ==>  Preparing: SELECT id,username,password,email,roleId FROM admin WHERE ( username= ? ) 
+2021-03-29 16:37:35.249 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.A.selectOneByExample           : ==> Parameters: heyuanhui(String)
+2021-03-29 16:37:35.251 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.A.selectOneByExample           : <==      Total: 1
+2021-03-29 16:37:35.266 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:37:35.266 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 112.64.235.89(String)
+2021-03-29 16:37:35.277 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 51
+2021-03-29 16:37:35.285 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:37:35.285 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:37:35.283(Timestamp), 112.64.235.89(String), 中国上海(String), /admin/index(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:37:35.286 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:37:35.286 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:37:35.287 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:37:35.304 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.A.selectCountByExample         : ==>  Preparing: SELECT COUNT(id) FROM article 
+2021-03-29 16:37:35.304 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.A.selectCountByExample         : ==> Parameters: 
+2021-03-29 16:37:35.305 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.A.selectCountByExample         : <==      Total: 1
+2021-03-29 16:37:35.307 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.selectCountByExample         : ==>  Preparing: SELECT COUNT(id) FROM visitor 
+2021-03-29 16:37:35.307 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.selectCountByExample         : ==> Parameters: 
+2021-03-29 16:37:35.311 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.V.selectCountByExample         : <==      Total: 1
+2021-03-29 16:37:35.313 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.C.selectCountByExample         : ==>  Preparing: SELECT COUNT(id) FROM category 
+2021-03-29 16:37:35.314 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.C.selectCountByExample         : ==> Parameters: 
+2021-03-29 16:37:35.315 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.C.selectCountByExample         : <==      Total: 1
+2021-03-29 16:37:35.317 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.C.selectCountByExample         : ==>  Preparing: SELECT COUNT(id) FROM comment 
+2021-03-29 16:37:35.317 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.C.selectCountByExample         : ==> Parameters: 
+2021-03-29 16:37:35.318 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.C.selectCountByExample         : <==      Total: 1
+2021-03-29 16:37:35.320 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.L.selectCountByExample         : ==>  Preparing: SELECT COUNT(id) FROM link 
+2021-03-29 16:37:35.321 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.L.selectCountByExample         : ==> Parameters: 
+2021-03-29 16:37:35.321 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.L.selectCountByExample         : <==      Total: 1
+2021-03-29 16:37:35.324 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.blog.myblog.mapper.LogMapper.insert  : ==>  Preparing: INSERT INTO log ( id,userType,args,description,time,ip,actionType,distanceNow ) VALUES( ?,?,?,?,?,?,?,? ) 
+2021-03-29 16:37:35.324 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.blog.myblog.mapper.LogMapper.insert  : ==> Parameters: null, 管理员(String), [Ljava.lang.Object;@5c8c8fd2(String), 登录(String), 2021-03-29 16:37:35.322(Timestamp), 180.153.163.208(String), UNKNOWN(String), null
+2021-03-29 16:37:35.329 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.blog.myblog.mapper.LogMapper.insert  : <==    Updates: 1
+2021-03-29 16:37:35.329 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.LogMapper.insert!selectKey     : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:37:35.330 DEBUG 5800 --- [http-nio-8081-exec-6] c.l.b.m.m.LogMapper.insert!selectKey     : <==      Total: 1
+2021-03-29 16:37:38.495 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : ==>  Preparing: SELECT id,time,ip,city,url,browseType,osType,black,visitCount FROM visitor WHERE ( ip = ? ) 
+2021-03-29 16:37:38.496 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : ==> Parameters: 101.226.66.173(String)
+2021-03-29 16:37:38.507 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.VisitorMapper.selectByExample  : <==      Total: 52
+2021-03-29 16:37:38.516 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : ==>  Preparing: INSERT INTO visitor ( id,time,ip,city,url,browseType,osType,black,visitCount ) VALUES( ?,?,?,?,?,?,?,?,? ) 
+2021-03-29 16:37:38.517 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : ==> Parameters: null, 2021-03-29 16:37:38.512(Timestamp), 101.226.66.173(String), 中国上海(String), /admin/writeBlog(String), Chrome 8(String), Windows 10(String), 1(Integer), null
+2021-03-29 16:37:38.518 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.VisitorMapper.insert      : <==    Updates: 1
+2021-03-29 16:37:38.519 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.V.insert!selectKey             : ==>  Executing: SELECT LAST_INSERT_ID() 
+2021-03-29 16:37:38.520 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.m.V.insert!selectKey             : <==      Total: 1
+2021-03-29 16:37:38.540 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.PictureMapper.selectAll   : ==>  Preparing: SELECT id,name,url FROM picture 
+2021-03-29 16:37:38.541 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.PictureMapper.selectAll   : ==> Parameters: 
+2021-03-29 16:37:38.542 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.PictureMapper.selectAll   : <==      Total: 3
+2021-03-29 16:37:38.544 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.CategoryMapper.selectAll  : ==>  Preparing: SELECT id,categoryName,addTime,articleNum FROM category 
+2021-03-29 16:37:38.544 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.CategoryMapper.selectAll  : ==> Parameters: 
+2021-03-29 16:37:38.547 DEBUG 5800 --- [http-nio-8081-exec-1] c.l.b.m.mapper.CategoryMapper.selectAll  : <==      Total: 10
